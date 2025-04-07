@@ -1,0 +1,47 @@
+do run.do
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:04:27 on Apr 06,2025
+# vlog -reportprogress 300 lif_neuron.sv 
+# -- Compiling module lif_neuron
+# 
+# Top level modules:
+# 	lif_neuron
+# End time: 22:04:28 on Apr 06,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:04:28 on Apr 06,2025
+# vlog -reportprogress 300 fully_connected_neural_network_synapses.sv 
+# -- Compiling module fully_connected_neural_network
+# ** Warning: fully_connected_neural_network_synapses.sv(92): (vlog-2251) Illegal concatenation of unpacked value 'spike_layer_2_int[NUM_NEURONS_LAYER_2-1:0]'.
+# 
+# Top level modules:
+# 	fully_connected_neural_network
+# End time: 22:04:28 on Apr 06,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:04:28 on Apr 06,2025
+# vlog -reportprogress 300 parameter_register_file_weights.sv 
+# -- Compiling module parameter_register_file
+# 
+# Top level modules:
+# 	parameter_register_file
+# End time: 22:04:28 on Apr 06,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:04:28 on Apr 06,2025
+# vlog -reportprogress 300 spi_slave_interface.sv 
+# -- Compiling module spi_slave_interface
+# 
+# Top level modules:
+# 	spi_slave_interface
+# End time: 22:04:28 on Apr 06,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:04:28 on Apr 06,2025
+# vlog -reportprogress 300 top.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 22:04:29 on Apr 06,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
