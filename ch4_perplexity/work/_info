@@ -1,0 +1,61 @@
+m255
+K4
+z2
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/u/nmallebo/SV/HW_AIML
+vlif_neuron
+2lif_neuron.sv
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1743638573
+!i10b 1
+!s100 2PdLB[[;36cac3hSD:H:V0
+IP>3YKcBCF5llfVIl@h69@1
+S1
+R0
+w1743633360
+8lif_neuron.sv
+Flif_neuron.sv
+!i122 4
+L0 1 64
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2024.2;79
+r1
+!s85 0
+31
+Z5 !s108 1743638573.000000
+!s107 lif_neuron.sv|
+!s90 -reportprogress|300|lif_neuron.sv|
+!i113 0
+Z6 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
+vneural_network
+2neural_network.sv
+R1
+R2
+!i10b 1
+!s100 8bBmJ=JJdE[Gj8IzNkdI?0
+IFcDS]_Qdo@ab2`0[][>DY1
+S1
+R0
+w1743633726
+8neural_network.sv
+Fneural_network.sv
+!i122 5
+L0 1 101
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 neural_network.sv|
+!s90 -reportprogress|300|neural_network.sv|
+!i113 0
+R6
+R7

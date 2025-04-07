@@ -1,0 +1,161 @@
+m255
+K4
+z2
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/u/nmallebo/SV/AIML
+vfully_connected_neural_network
+2fully_connected_neural_network_synapses.sv
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1743985171
+!i10b 1
+!s100 a[9PRjK2VH>7fkKKLX40Z2
+IZgbB`BI0^n_91oh>2UdXO3
+S1
+R0
+w1743979444
+8fully_connected_neural_network_synapses.sv
+Ffully_connected_neural_network_synapses.sv
+!i122 1
+L0 1 96
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2024.2;79
+r1
+!s85 0
+31
+Z5 !s108 1743985171.000000
+!s107 fully_connected_neural_network_synapses.sv|
+!s90 -reportprogress|300|fully_connected_neural_network_synapses.sv|
+!i113 0
+Z6 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
+vlif_neuron
+2lif_neuron.sv
+R1
+R2
+!i10b 1
+!s100 e52=h_Ai4H1b84B3RUeTz3
+I6VS]V9@m1H0H;gkSR8X@52
+S1
+R0
+w1743963008
+8lif_neuron.sv
+Flif_neuron.sv
+!i122 0
+L0 1 70
+R3
+R4
+r1
+!s85 0
+31
+!s108 1743985170.000000
+!s107 lif_neuron.sv|
+!s90 -reportprogress|300|lif_neuron.sv|
+!i113 0
+R6
+R7
+vparameter_register_file
+2parameter_register_file_weights.sv
+R1
+R2
+!i10b 1
+!s100 5^5kJUnc;XjBaT@lN[P8l3
+IV]=Z5S<1nmzG=z4A][zOS2
+S1
+R0
+w1743982077
+8parameter_register_file_weights.sv
+Fparameter_register_file_weights.sv
+!i122 2
+L0 1 90
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 parameter_register_file_weights.sv|
+!s90 -reportprogress|300|parameter_register_file_weights.sv|
+!i113 0
+R6
+R7
+vspi_slave_interface
+2spi_slave_interface.sv
+R1
+R2
+!i10b 1
+!s100 KL61eVBT@m?4d?]3RURG03
+IRA=aC861=A530^WiaGhFA3
+S1
+R0
+w1743982877
+8spi_slave_interface.sv
+Fspi_slave_interface.sv
+!i122 3
+L0 1 108
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 spi_slave_interface.sv|
+!s90 -reportprogress|300|spi_slave_interface.sv|
+!i113 0
+R6
+R7
+vtop
+2top.sv
+R1
+Z8 !s110 1743985172
+!i10b 1
+!s100 Q;dhR9lGF7T=fkz1Uc4=j0
+ITLzcjVI5=1;[8h;XcIb>Y3
+S1
+R0
+w1743984241
+8top.sv
+Ftop.sv
+!i122 4
+L0 1 89
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 top.sv|
+!s90 -reportprogress|300|top.sv|
+!i113 0
+R6
+R7
+vtop_tb
+2top_tb.sv
+R1
+R8
+!i10b 1
+!s100 XccVVdIB55bQ;gAQlXV503
+Ib<MaT23cF;QjT@l_T8VGY3
+S1
+R0
+w1743984904
+8top_tb.sv
+Ftop_tb.sv
+!i122 5
+L0 1 127
+R3
+R4
+r1
+!s85 0
+31
+!s108 1743985172.000000
+!s107 top_tb.sv|
+!s90 -reportprogress|300|top_tb.sv|
+!i113 0
+R6
+R7
