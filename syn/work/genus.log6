@@ -1,0 +1,584 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2024 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[09:58:10.350138] Configured Lic search path (23.02-s003): 5280@cadence-lic.cecs.pdx.edu:27000@synopsys-lic.cat.pdx.edu
+
+Version: 23.10-p004_1, built Thu Feb 01 13:43:46 PST 2024
+Options: 
+Date:    Mon Apr 07 09:58:10 2025
+Host:    mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB) (125666820KB)
+PID:     28836
+OS:      CentOS Linux release 7.9.2009 (Core)
+
+Checking out license: Genus_Synthesis
+[09:58:10.008179] Periodic Lic check successful
+[09:58:10.532512] Feature usage summary:
+[09:58:10.532515] Genus_Synthesis
+
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (2 seconds elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (25 seconds elapsed).
+
+WARNING: This version of the tool is 430 days old.
+@genus:root: 1> set top_design top
+top
+@genus:root: 2> source ../scripts/genus.tcl
+Sourcing '../scripts/genus.tcl' (Mon Apr 07 09:58:50 PDT 2025)...
+#@ Begin verbose source ../scripts/genus.tcl
+@file(genus.tcl) 1: history keep 100
+@file(genus.tcl) 2: set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+@file(genus.tcl) 4: source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../top.design_config.tcl' (Mon Apr 07 09:58:50 PDT 2025)...
+#@ Begin verbose source ../../top.design_config.tcl
+@file(top.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(top.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(top.design_config.tcl) 4: set top_design top
+set top_design top
+@file(top.design_config.tcl) 5: set FCL 1
+set FCL 1
+@file(top.design_config.tcl) 6: set add_ios 0
+set add_ios 0
+@file(top.design_config.tcl) 7: set pad_design 0
+set pad_design 0
+@file(top.design_config.tcl) 8: set design_size {100 100}
+set design_size {100 100}
+@file(top.design_config.tcl) 9: set design_io_border 10
+set design_io_border 10
+@file(top.design_config.tcl) 10: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(top.design_config.tcl) 11: set enable_dft 0
+set enable_dft 0
+@file(top.design_config.tcl) 12: set innovus_enable_manual_macro_placement 0
+set innovus_enable_manual_macro_placement 0
+@file(top.design_config.tcl) 13: set split_constraints 0
+set split_constraints 0
+@file(top.design_config.tcl) 15: set rtl_list [list ../rtl/$top_design.sv ]
+set rtl_list [list ../rtl/$top_design.sv ]
+@file(top.design_config.tcl) 17: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(top.design_config.tcl) 19: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(top.design_config.tcl) 20: set slow_metal 1p9m_Cmax_-40
+set slow_metal 1p9m_Cmax_-40
+@file(top.design_config.tcl) 21: set fast_metal 1p9m_Cmax_-40
+set fast_metal 1p9m_Cmax_-40
+@file(top.design_config.tcl) 23: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(top.design_config.tcl) 24: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(top.design_config.tcl) 25: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(top.design_config.tcl) 31: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm"
+@file(top.design_config.tcl) 32: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm"
+@file(top.design_config.tcl) 33: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(top.design_config.tcl) 34: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(top.design_config.tcl) 35: set sub_lib_type_target "saed32vt_dlvl"
+set sub_lib_type_target "saed32vt_dlvl"
+@file(top.design_config.tcl) 36: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(top.design_config.tcl) 38: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(top.design_config.tcl) 41: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+]
+@file(top.design_config.tcl) 47: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb"
+@file(top.design_config.tcl) 49: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(top.design_config.tcl) 50: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(top.design_config.tcl) 51: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(top.design_config.tcl) 52: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+ ]
+@file(top.design_config.tcl) 57: set sub_mwlib_type "saed32nm_?vt_dlvl* SRAM32NM saed32io_wb_*"
+set sub_mwlib_type "saed32nm_?vt_dlvl* SRAM32NM saed32io_wb_*"
+@file(top.design_config.tcl) 60: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+#@ End verbose source ../../top.design_config.tcl
+@file(genus.tcl) 6: set designs [get_db designs * ]
+@file(genus.tcl) 7: if { $designs != "" } {
+  delete_obj $designs
+}
+@file(genus.tcl) 11: source ../scripts/genus-get-timlibslefs.tcl
+Sourcing '../scripts/genus-get-timlibslefs.tcl' (Mon Apr 07 09:58:50 PDT 2025)...
+#@ Begin verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus-get-timlibslefs.tcl) 9: set search_path ""
+@file(genus-get-timlibslefs.tcl) 10: foreach i $lib_types { lappend search_path $i }
+@file(genus-get-timlibslefs.tcl) 20: set link_library ""
+@file(genus-get-timlibslefs.tcl) 21: foreach i $search_path {
+  foreach k $synth_corners {
+      foreach m $sub_lib_type {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 32: foreach i $lib_types_target { 
+   lappend search_path_target $i 
+   lappend search_path $i 
+}
+@file(genus-get-timlibslefs.tcl) 45: set target_library ""
+@file(genus-get-timlibslefs.tcl) 46: foreach i $search_path_target {
+  foreach k $synth_corners_target {
+      foreach m $sub_lib_type_target {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend target_library [file tail $j ]
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 58: set lef_path ""
+@file(genus-get-timlibslefs.tcl) 59: foreach k $lef_types {
+  foreach m $sub_lef_type {
+    foreach j [glob -nocomplain $k/$m ] {
+      lappend lef_path  $j 
+    }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 69: lappend search_path .
+#@ End verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus.tcl) 13: set_db init_lib_search_path $search_path
+  Setting attribute of root '/': 'init_lib_search_path' = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .
+@file(genus.tcl) 15: set_db library $link_library
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 75616)
+        : Sequential timing checks, such as 'setup_rising' or 'hold_rising', on flop and latch cells require a clock pin. Verify that the 'clock' attribute of the clock pin is set to 'true' or that the clock pin has a 'clocked_on' attribute.
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 75953)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226658 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226659 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 226660 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 75949)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226626 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226627 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 226628 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 75949)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226612 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226613 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-511'.
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 75949)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 75714)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 76053)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib, Line 75616)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib, Line 75955)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW1024x8' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 1441)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x48' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 2321)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x8' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 2761)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x46' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 1881)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x128' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 3201)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x46' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 4081)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x48' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 4521)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x32' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 3641)
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-525'.
+
+  Message Summary for Library all 19 libraries:
+  *********************************************
+  Missing clock pin in the sequential cell. [LBR-525]: 47
+  Missing a function attribute in the output pin definition. [LBR-518]: 384
+  An attribute is used before it is defined. [LBR-511]: 57
+  An unsupported construct was detected in this library. [LBR-40]: 180
+  *********************************************
+ 
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_dlvl_ss0p75vn40c_i0p95v'.
+        : This is a common source of delay calculation confusion and should be avoided.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_dlvl_ss0p75vn40c_i0p95v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_dlvl_ss0p75vn40c_i0p95v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32sram_ss0p95vn40c'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_ss0p75vn40c.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_ss0p75vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_ss0p75vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32sram_ss0p95vn40c.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_HVT' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'BUSKP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'BUSKP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'CLOAD1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'CLOAD1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLH2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLH2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHLHLS11_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHLHLS11_HVT' must have an output pin.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX1_HVT'.  Ignoring the test_cell.
+        : Review the definition of the test_cell's function or its parent library-cell's function.  An inconsistency between the two may exist.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRARX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRSSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRSSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'SDFFSSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'SDFFSSRX2_HVT'.  Ignoring the test_cell.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL128_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL128_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL2_HVT' must have an output pin.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-9'.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-64'.
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX1_RVT).
+        : Library cell names must be unique.  Any duplicates will be deleted.  Only the first (as determined by the order of libraries) will be retained.
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX8_RVT).
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-22'.
+  Setting attribute of root '/': 'library' = saed32rvt_ss0p75vn40c.lib saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib saed32rvt_ss0p95vn40c.lib saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib saed32lvt_ss0p75vn40c.lib saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib saed32lvt_ss0p95vn40c.lib saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib saed32hvt_ss0p75vn40c.lib saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib saed32hvt_ss0p95vn40c.lib saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib saed32sram_ss0p95vn40c.lib
+@file(genus.tcl) 17: set_db dft_opcg_domain_blocking true
+  Setting attribute of root '/': 'dft_opcg_domain_blocking' = true
+@file(genus.tcl) 19: set_db auto_ungroup none
+  Setting attribute of root '/': 'auto_ungroup' = none
+@file(genus.tcl) 23: read_hdl -language sv ../rtl/${top_design}.sv
+@file(genus.tcl) 35: elaborate $top_design
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX1_RVT/D' has no incoming setup arc.
+        : Pin used in a next_state function must have an incoming setup timing arc. Otherwise, the library cell will be treated as a timing model.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX1_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/SI' has no incoming setup arc.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-34'.
+  Libraries have 390 usable logic and 324 usable sequential lib-cells.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'top' from file '../rtl/top.sv'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'top' with default parameters value.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 21.
+        : Use the 'automatic' keyword for declaring functions and tasks.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 29.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 32.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 21.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : Usage of non-static tasks or functions might result in simulation-synthesis mismatch. [VLOGPT-692]
+        : in file '/pkgs/cadence/2024-03/DDI231/GENUS231/tools.lnx86/lib/chipware/syn/CW/CW_div_k_arch_3.v' on line 1, column 14.
+Warning : In legacy_ui mode, Genus creates a blackbox as description for a module is not found. Black boxes represent unresolved references in the design and are usually not expected. Another possible reason is, some libraries are not read and the tool could not get the content for some macros or lib_cells. [CDFG-428]
+        : A blackbox was created for instance 'neuron_layer_1' in file '../rtl/fully_connected_neural_network_synapses.sv' on line 35.
+        : Check the kind of module a black box is. If it is a lib_cell or a macro, check why the corresponding .lib was not read in. This could be either due to a missing or faulty file or due to an incomplete init_lib_search_path attribute value making restricting access to the missing file. If it is a module of your design, verify whether the path to this module is a part of the files you read or else check that the init_hdl_search_path attribute is not missing some paths.
+Error   : Could not find a port. [CDFG-211] [elaborate]
+        : Unable to find port 'threshold' of instance 'nn_inst' of module 'fully_connected_neural_network_WIDTH16_NUM_NEURONS_LAYER_14_NUM_NEURONS_LAYER_23'.  Available ports are 'input clk, input rst, input input_current, input synaptic_weights, input synaptic_weights[0], input synaptic_weights[0][0], input synaptic_weights[0][1], input synaptic_weights[0][2], input synaptic_weights[1], input synaptic_weights[1][0], input synaptic_weights[1][1], input synaptic_weights[1][2], input synaptic_weights[2], input synaptic_weights[2][0], input synaptic_weights[2][1], input synaptic_weights[2][2], input synaptic_weights[3], input synaptic_weights[3][0], input synaptic_weights[3][1], input synaptic_weights[3][2], output spikes_layer_2' in file '../rtl/top.sv' on line 79.
+        : Ensure that the desired port is defined in the module definition of the instantiated instance.
+Error   : Could not find a port. [CDFG-211] [elaborate]
+        : Unable to find port 'leak' of instance 'nn_inst' of module 'fully_connected_neural_network_WIDTH16_NUM_NEURONS_LAYER_14_NUM_NEURONS_LAYER_23' in file '../rtl/top.sv' on line 79.
+Error   : Could not find a port. [CDFG-211] [elaborate]
+        : Unable to find port 'reset_potential' of instance 'nn_inst' of module 'fully_connected_neural_network_WIDTH16_NUM_NEURONS_LAYER_14_NUM_NEURONS_LAYER_23' in file '../rtl/top.sv' on line 79.
+Error   : Could not find a port. [CDFG-211] [elaborate]
+        : Unable to find port 'refractory_cycles' of instance 'nn_inst' of module 'fully_connected_neural_network_WIDTH16_NUM_NEURONS_LAYER_14_NUM_NEURONS_LAYER_23' in file '../rtl/top.sv' on line 79.
+Warning : Ignored attempt to delete blackbox or cell. [CDFG-313]
+        : Blackbox 'lif_neuron_WIDTH16_THRESHOLD1000_LEAK10_RESET_POTENTIAL0_REFRACTORY_CYCLES10'.
+Info    : Unable to elaborate the design. [ELAB-4]
+        : Module 'top' contains errors and cannot be elaborated.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ../scripts/genus.tcl
+1
+@genus:root: 3> exit
+
+Lic Summary:
+[10:06:50.215963] Cdslmd servers: gashapon
+[10:06:50.215987] Feature usage summary:
+[10:06:50.215987] Genus_Synthesis
+
+Normal exit.

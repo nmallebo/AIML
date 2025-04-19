@@ -1,0 +1,45 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys Design Compiler(R)
+// Version   : Q-2019.12-SP3
+// Date      : Sun Apr  6 23:57:40 2025
+/////////////////////////////////////////////////////////////
+
+
+module top ( clk, rst, sclk, cs_n, mosi, miso, input_current, spikes );
+  input [15:0] input_current;
+  output [2:0] spikes;
+  input clk, rst, sclk, cs_n, mosi;
+  output miso;
+
+  tri   clk;
+  tri   rst;
+  tri   sclk;
+  tri   cs_n;
+  tri   mosi;
+  tri   miso;
+  tri   [15:0] input_current;
+  tri   [2:0] spikes;
+  tri   wr_en;
+  tri   [15:0] addr;
+  tri   [15:0] wr_data;
+  tri   [15:0] rd_data;
+  tri   [15:0] threshold;
+  tri   [15:0] leak;
+  tri   [15:0] reset_potential;
+  tri   [15:0] refractory_cycles;
+  tri   [191:0] synaptic_weights;
+
+  spi_slave_interface spi_inst ( .clk(clk), .rst(rst), .sclk(sclk), .cs_n(cs_n), .mosi(mosi), .miso(miso), .wr_en(wr_en), .addr(addr), .wr_data(wr_data), 
+        .rd_data(rd_data) );
+  parameter_register_file reg_file ( .clk(clk), .rst(rst), .wr_en(wr_en), 
+        .addr(addr), .wr_data(wr_data), .rd_data(rd_data), .threshold(
+        threshold), .leak(leak), .reset_potential(reset_potential), 
+        .refractory_cycles(refractory_cycles), .synaptic_weights(
+        synaptic_weights) );
+  fully_connected_neural_network nn_inst ( .clk(clk), .rst(rst), 
+        .input_current(input_current), .spikes_layer_2(spikes), .THRESHOLD(
+        threshold), .LEAK(leak), .RESET_POTENTIAL(reset_potential), 
+        .REFRACTORY_CYCLES(refractory_cycles), .synaptic_weights(
+        synaptic_weights) );
+endmodule
+

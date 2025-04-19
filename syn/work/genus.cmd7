@@ -1,0 +1,28 @@
+# Cadence Genus(TM) Synthesis Solution, Version 23.10-p004_1, built Feb  1 2024 13:43:46
+
+# Date: Mon Apr 07 10:07:00 2025
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+set top_design top
+source ../scripts/genus.tcl
+gui_show
+get_db insts
+llength [get_db insts]
+get_db clocks
+get_db ports
+get_db ports -if {.direction == input}
+get_db ports -if {.direction == true }
+get_db ports -if {.is_direction == true}
+get_db insts -if  {.is_sequential == true}
+llength [get_db insts -if  {.is_sequential == true}]
+llength [get_db insts -if  {.is_combinational == true}]
+get_db port
+get_db ports
+llength [get_db ports ]
+get_ports
+get_ports *
+get_clocks
+get_db clocks
+get_ports
+get_db clocks
