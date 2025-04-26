@@ -1,0 +1,10 @@
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 10:53:11 on Apr 26,2025
+# vlog max_q_finder.sv 
+# -- Compiling module max_q_finder
+# ** Warning: max_q_finder.sv(7): (vlog-13314) Defaulting port 'Q_values' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	max_q_finder
+# End time: 10:53:11 on Apr 26,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
