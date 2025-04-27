@@ -1,0 +1,55 @@
+N = 2^15 = 32768 elements
+Max error: 2.000000
+Execution time: 7.595136 ms
+Throughput: 0.008629 GFLOPS
+--------------------------------------
+N = 2^16 = 65536 elements
+Max error: 2.000000
+Execution time: 0.002464 ms
+Throughput: 53.194807 GFLOPS
+--------------------------------------
+N = 2^17 = 131072 elements
+Max error: 2.000000
+Execution time: 0.003200 ms
+Throughput: 81.920002 GFLOPS
+--------------------------------------
+N = 2^18 = 262144 elements
+Max error: 2.000000
+Execution time: 0.002912 ms
+Throughput: 180.043953 GFLOPS
+--------------------------------------
+N = 2^19 = 524288 elements
+Max error: 2.000000
+Execution time: 0.003072 ms
+Throughput: 341.333321 GFLOPS
+--------------------------------------
+N = 2^20 = 1048576 elements
+Max error: 2.000000
+Execution time: 0.002944 ms
+Throughput: 712.347810 GFLOPS
+--------------------------------------
+N = 2^21 = 2097152 elements
+Max error: 2.000000
+Execution time: 0.002880 ms
+Throughput: 1456.355533 GFLOPS
+--------------------------------------
+N = 2^22 = 4194304 elements
+Max error: 2.000000
+Execution time: 0.002944 ms
+Throughput: 2849.391241 GFLOPS
+--------------------------------------
+N = 2^23 = 8388608 elements
+Max error: 2.000000
+Execution time: 0.002944 ms
+Throughput: 5698.782482 GFLOPS
+--------------------------------------
+N = 2^24 = 16777216 elements
+Max error: 2.000000
+Execution time: 0.002912 ms
+Throughput: 11522.812971 GFLOPS
+--------------------------------------
+N = 2^25 = 33554432 elements
+Max error: 2.000000
+Execution time: 0.002912 ms
+Throughput: 23045.625942 GFLOPS
+--------------------------------------
