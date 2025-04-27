@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 __global__
@@ -11,7 +12,7 @@ int main(void)
 {
     for (int power = 15; power <= 25; power++) {
         int N = 1 << power;
-        printf("Running SAXPY with N = 2^%d = %d elements\n", power, N);
+        printf("N = 2^%d = %d elements\n", power, N);
 
         float *x, *y, *d_x, *d_y;
         x = (float*)malloc(N * sizeof(float));
