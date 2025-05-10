@@ -466,43 +466,31 @@ class SymmetricClockTree:
 
     # Helper method to determine which direction we'll travel in
     def getNextDirectionToTravel(self, start, goal, turning=False):
-
         # Algorithm checks to see which direction we have the most space to travel in.
         # Once one is selected, we do a lookup to see if we've already tried to go in
         # that direction during this iteration.
         # If we have, we try the opposite direction.
-        # If we've tried both, we'll call the function and move in a different
-        # orientation.
+        # If we've tried both, we'll call the function and move in a different orientation.
         if turning:
-            possible_dir = "right" if start[0] > goal[0] else "left"
-            if self.directionTraveled[possible_dir] == False:
-                return possible_dir
-            else:
-                new_dir = "left" if possible_dir == "right" else "right"
-
-                if self.directionTraveled[new_dir] == False:
-                    return new_dir
-                else:
-                    self.resetDirectionTravel()
-                    return getNextDirectionToTravel(start, goal, False)
-
+            # Horizontal turn
+            possible_dir = "right" if start[0] < goal[0] else "left"
+            alt_dir = "left" if possible_dir == "right" else "right"
         else:
-            possible_dir =  "up" if start[1] > goal[1] else "down"
+            # Vertical move
+            possible_dir = "up" if start[1] < goal[1] else "down"
+            alt_dir = "down" if possible_dir == "up" else "up"
 
-            if self.directionTraveled[possible_dir] == False:
-                return possible_dir
-            else:
-                new_dir = "up" if possible_dir == "down" else "down"
-
-                if self.directionTraveled[new_dir] == False:
-                    return new_dir
-                else:
-                    self.resetDirectionTravel()
-                    return getNextDirectionToTravel(start, goal, True)
+        if not self.directionTraveled[possible_dir]:
+            return possible_dir
+        elif not self.directionTraveled[alt_dir]:
+            return alt_dir
+        else:
+            # If both directions have been tried, toggle turning to switch axis
+            return self.getNextDirectionToTravel(start, goal, not turning)
 
 
 # Initialize a symmetric clock tree, with n sinks.
-tree = SymmetricClockTree(40)
+tree = SymmetricClockTree(100)
 
 # Uncomment the line below to input custom data
 # Method expects locations to be a list of x, y coordinates: [[x,y], [x,y],...]

@@ -26,7 +26,7 @@ set hack_lef_dir /u/bcruik2/hacked_lefs
 # The one pulled from a lab does have macros, but no RTL.  Similar to the version with RTL.
 # Below is an effort to get the design pulled from a lap working for ICC2
 # Original lab had sram_lp memories, but the NDMs don't seem to be build correctly for the current libraries.  Converted code to regular SRAMs.
-set top_design max_q_finder
+set top_design SequentialMultiplier 
 set FCL 0
 set add_ios 0
 set pad_design 0

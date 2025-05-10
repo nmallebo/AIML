@@ -1,6 +1,6 @@
 history keep 100
 set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
-set top_design max_q_finder
+#set top_design max_q_finder
 source -echo -verbose ../../$top_design.design_config.tcl
 
 set designs [get_db designs * ]

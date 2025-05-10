@@ -1,0 +1,68 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+vlog ISODATA.sv
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 17:25:19 on May 08,2025
+# vlog -reportprogress 300 ISODATA.sv 
+# -- Compiling module isodata_cluster
+# ** Warning: ISODATA.sv(14): (vlog-13314) Defaulting port 'sink_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ISODATA.sv(15): (vlog-13314) Defaulting port 'sink_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Error (suppressible): ISODATA.sv(64): (vlog-2244) Variable 'best_dist' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): ISODATA.sv(65): (vlog-2244) Variable 'best_k' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): ISODATA.sv(67): (vlog-2244) Variable 'dx' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(67): A static declaration may not use any non-static references in its initial expression
+# ** Error (suppressible): ISODATA.sv(68): (vlog-2244) Variable 'dy' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(68): A static declaration may not use any non-static references in its initial expression
+# ** Error: (vlog-13069) ISODATA.sv(69): near "dist": syntax error, unexpected "SystemVerilog keyword 'dist'", expecting IDENTIFIER or TYPE_IDENTIFIER or NETTYPE_IDENTIFIER or '='.
+# ** Error: (vlog-13069) ISODATA.sv(70): near "dist": syntax error, unexpected "SystemVerilog keyword 'dist'".
+# ** Error: ISODATA.sv(75): (vlog-2730) Undefined variable: 'i'.
+# ** Error: ISODATA.sv(75): (vlog-2730) Undefined variable: 'best_k'.
+# ** Error: (vlog-13069) ISODATA.sv(77): near ";": syntax error, unexpected ';', expecting ',' or ':'.
+# ** Error (suppressible): ISODATA.sv(87): (vlog-2244) Variable 'cid' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(87): A static declaration may not use any non-static references in its initial expression
+# ** Error (suppressible): ISODATA.sv(107): (vlog-2244) Variable 'acc' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error (suppressible): ISODATA.sv(110): (vlog-2244) Variable 'dx' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(110): A static declaration may not use any non-static references in its initial expression
+# ** Error (suppressible): ISODATA.sv(111): (vlog-2244) Variable 'dy' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(111): A static declaration may not use any non-static references in its initial expression
+# ** Error (suppressible): ISODATA.sv(134): (vlog-2244) Variable 'dx' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(134): A static declaration may not use any non-static references in its initial expression
+# ** Error (suppressible): ISODATA.sv(135): (vlog-2244) Variable 'dy' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: ISODATA.sv(135): A static declaration may not use any non-static references in its initial expression
+# ** Error: (vlog-13069) ISODATA.sv(136): near "dist": syntax error, unexpected "SystemVerilog keyword 'dist'", expecting IDENTIFIER or TYPE_IDENTIFIER or NETTYPE_IDENTIFIER or '='.
+# ** Error: (vlog-13069) ISODATA.sv(137): near "dist": syntax error, unexpected "SystemVerilog keyword 'dist'".
+# ** Error: ISODATA.sv(80): 'ACCUM' already exists; must not be redefined as a named block
+# ** Error: ISODATA.sv(95): 'UPDATE' already exists; must not be redefined as a named block
+# ** Error: ISODATA.sv(105): 'SPREAD' already exists; must not be redefined as a named block
+# ** Error: ISODATA.sv(120): 'SPLIT' already exists; must not be redefined as a named block
+# ** Error: ISODATA.sv(131): 'MERGE' already exists; must not be redefined as a named block
+# ** Error (suppressible): ISODATA.sv(156): (vlog-2720) A generate begin/end pair has been found outside of generate construct.
+# ** Error: ISODATA.sv(156): 'DONE' already exists; must not be redefined as a generate block
+# ** Error: (vlog-13069) ISODATA.sv(156): near "<=": syntax error, unexpected <=.
+# ** Error: ISODATA.sv(156): (vlog-13205) Syntax error found in the scope following 'done'. Is there a missing '::'?
+# End time: 17:25:19 on May 08,2025, Elapsed time: 0:00:00
+# Errors: 33, Warnings: 2
+# /pkgs/mentor/questa/2024.2/questasim/linux_x86_64/vlog failed.
+exit

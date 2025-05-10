@@ -1,0 +1,40 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2024 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[23:20:28.350090] Configured Lic search path (23.02-s003): 5280@cadence-lic.cecs.pdx.edu:27000@synopsys-lic.cat.pdx.edu
+
+Version: 23.10-p004_1, built Thu Feb 01 13:43:46 PST 2024
+Options: 
+Date:    Sat Apr 26 23:20:28 2025
+Host:    mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB) (125666820KB)
+PID:     8307
+OS:      CentOS Linux release 7.9.2009 (Core)
+
+Checking out license: Genus_Synthesis
+[23:20:28.300131] Periodic Lic check successful
+[23:20:28.824457] Feature usage summary:
+[23:20:28.824459] Genus_Synthesis
+
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (1 second elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (27 seconds elapsed).
+
+WARNING: This version of the tool is 450 days old.
+@genus:root: 1> exit
+
+Lic Summary:
+[23:21:20.151272] Cdslmd servers: gashapon
+[23:21:20.151291] Feature usage summary:
+[23:21:20.151297] Genus_Synthesis
+
+Normal exit.
