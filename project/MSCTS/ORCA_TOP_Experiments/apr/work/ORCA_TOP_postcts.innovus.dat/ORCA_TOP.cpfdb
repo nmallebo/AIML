@@ -1,0 +1,288 @@
+#IEEE1801 power intent data
+set 1801_ack_explicit_supply {1}
+set 1801_cln_reconnect {3.0}
+set 1801_default_applies_to {2.1}
+set 1801_domain_interface_definition {1.0}
+set 1801_ports_anon_supply {1}
+set 1801_support_wildcard {1}
+set allSNetVoltageSet {0}
+set all_inputfiles {../../syn/outputs/ORCA_TOP.dct.upf}
+set always_on_libcells {AODFFNARX2_LVT AODFFNARX1_LVT AODFFARX2_LVT AODFFARX1_LVT AOBUFX4_LVT AOBUFX2_LVT AOBUFX1_LVT AOINVX4_LVT AOINVX2_LVT AOINVX1_LVT AODFFNARX2_HVT AODFFNARX1_HVT AODFFARX2_HVT AODFFARX1_HVT AOBUFX4_HVT AOBUFX2_HVT AOBUFX1_HVT AOINVX4_HVT AOINVX2_HVT AOINVX1_HVT AODFFNARX2_RVT AODFFNARX1_RVT AODFFARX2_RVT AODFFARX1_RVT AOBUFX4_RVT AOBUFX2_RVT AOBUFX1_RVT AOINVX4_RVT AOINVX2_RVT AOINVX1_RVT}
+set connectAOBLast {0}
+set current_apply_inst ""
+set current_model ""
+set current_scope {/}
+set debugFilterNoIsoShift {0}
+set debug_pst_powermode {0}
+set default_pd {PD_ORCA_TOP}
+set design_attr(0,-attribute) {{domain_interface_def 1.0}}
+set design_attr(0,-elements) {.}
+set dontExpandPst {1}
+set dottedname(PD_RISC_CORE.ls_out) {ls_out}
+set dottedname(PD_RISC_CORE.ls_in) {ls_in}
+set downShifterNeeded(PD_ORCA_TOP,PD_ORCA_TOP) {0}
+set downShifterNeeded(PD_RISC_CORE,PD_RISC_CORE) {0}
+set downShifterNeeded(PD_ORCA_TOP,PD_RISC_CORE) {0}
+set downShifterNeeded(PD_RISC_CORE,PD_ORCA_TOP) {1}
+set edi_noIso(PD_RISC_CORE) { I_RISC_CORE/FE_OFN182_n714 I_RISC_CORE/FE_OFN181_n714}
+set edi_noShift(PD_RISC_CORE) { I_RISC_CORE/FE_OFN182_n714 I_RISC_CORE/FE_OFN181_n714}
+set etsNoEco {0}
+set exe_version {23.10-p003_1}
+set feedthrough_ports ""
+set gvoltageRange(PD_RISC_CORE,high) {0}
+set gvoltageRange(PD_ORCA_TOP,low) {0}
+set gvoltageRange(PD_RISC_CORE,low) {0}
+set gvoltageRange(PD_ORCA_TOP,high) {0}
+set handlePowerStateAsPst {1}
+set handle_model_port_map {1}
+set hier_sepc {/}
+set ieee1801Committed {31}
+set ieee1801Loaded {1}
+set implicitUPFRules(rule,autogen_shift_up_PD_ORCA_TOP_PD_RISC_CORE) {0}
+set implicitUPFRules(0) {shifter_up autogen_shift_up_PD_ORCA_TOP_PD_RISC_CORE LSDNENCLX2_LVT PD_ORCA_TOP PD_RISC_CORE PD_RISC_CORE {} {}}
+set implicitUPFRules(num) {1}
+set internal_domains ""
+set internal_pgnet ""
+set is_analog_ports ""
+set is_isolated_ports ""
+set is_virtual_nets ""
+set is_virtual_ports ""
+set isoLSNeededInitialized {1}
+set isolationNeeded(PD_ORCA_TOP,PD_ORCA_TOP) {0}
+set isolationNeeded(PD_RISC_CORE,PD_RISC_CORE) {0}
+set isolationNeeded(PD_ORCA_TOP,PD_RISC_CORE) {0}
+set isolationNeeded(PD_RISC_CORE,PD_ORCA_TOP) {0}
+set keepGNC {0}
+set level_shifter(ls_in,-domain) {PD_RISC_CORE}
+set level_shifter(ls_in,-applies_to) {inputs}
+set level_shifter(ls_in,-rule) {low_to_high}
+set level_shifter(ls_in,-line) {../../syn/outputs/ORCA_TOP.dct.upf:20}
+set level_shifter(ls_out,level_shifter_name) {ls_out}
+set level_shifter(ls_in,-location) {self}
+set level_shifter(ls_out,-domain) {PD_RISC_CORE}
+set level_shifter(ls_out,-applies_to) {outputs}
+set level_shifter(ls_out,-rule) {high_to_low}
+set level_shifter(ls_out,-line) {../../syn/outputs/ORCA_TOP.dct.upf:21}
+set level_shifter(ls_out,-location) {parent}
+set level_shifter(ls_in,level_shifter_name) {ls_in}
+set lib_lpcells(retention) {RDFFNSRASRX1_LVT RDFFNSRASRQX2_LVT RDFFNSRASRQX1_LVT RDFFNSRASRNX2_LVT RDFFNSRASRNX1_LVT RDFFNSRARX2_LVT RDFFNSRARX1_LVT RDFFNARX2_LVT RDFFNARX1_LVT RDFFARX2_LVT RDFFARX1_LVT RDFFSRASX2_LVT RDFFSRASX1_LVT RDFFSRASRX2_LVT RDFFSRASRX1_LVT RDFFSRARX2_LVT RDFFSRARX1_LVT RDFFNX2_LVT RDFFNX1_LVT RDFFNSRX2_LVT RDFFNSRX1_LVT RDFFNSRASX2_LVT RDFFNSRASX1_LVT RDFFNSRASRX2_LVT RSDFFNSRASRNX1_LVT RSDFFNSRARX2_LVT RSDFFNSRARX1_LVT RSDFFNARX2_LVT RSDFFNARX1_LVT RSDFFARX2_LVT RSDFFARX1_LVT RDFFX2_LVT RDFFX1_LVT RDFFSRX2_LVT RDFFSRX1_LVT RDFFSRSSRX2_LVT RDFFSRSSRX1_LVT RSDFFSRARX2_LVT RSDFFSRARX1_LVT RSDFFNX2_LVT RSDFFNX1_LVT RSDFFNSRX2_LVT RSDFFNSRX1_LVT RSDFFNSRASX2_LVT RSDFFNSRASX1_LVT RSDFFNSRASRX2_LVT RSDFFNSRASRX1_LVT RSDFFNSRASRQX2_LVT RSDFFNSRASRQX1_LVT RSDFFNSRASRNX2_LVT RSDFFX2_LVT RSDFFX1_LVT RSDFFSRX2_LVT RSDFFSRX1_LVT RSDFFSRSSRX2_LVT RSDFFSRSSRX1_LVT RSDFFSRASX2_LVT RSDFFSRASX1_LVT RSDFFSRASRX2_LVT RSDFFSRASRX1_LVT RDFFNSRASRX1_HVT RDFFNSRASRQX2_HVT RDFFNSRASRQX1_HVT RDFFNSRASRNX2_HVT RDFFNSRASRNX1_HVT RDFFNSRARX2_HVT RDFFNSRARX1_HVT RDFFNARX2_HVT RDFFNARX1_HVT RDFFARX2_HVT RDFFARX1_HVT RDFFSRASX2_HVT RDFFSRASX1_HVT RDFFSRASRX2_HVT RDFFSRASRX1_HVT RDFFSRARX2_HVT RDFFSRARX1_HVT RDFFNX2_HVT RDFFNX1_HVT RDFFNSRX2_HVT RDFFNSRX1_HVT RDFFNSRASX2_HVT RDFFNSRASX1_HVT RDFFNSRASRX2_HVT RSDFFNSRASRNX1_HVT RSDFFNSRARX2_HVT RSDFFNSRARX1_HVT RSDFFNARX2_HVT RSDFFNARX1_HVT RSDFFARX2_HVT RSDFFARX1_HVT RDFFX2_HVT RDFFX1_HVT RDFFSRX2_HVT RDFFSRX1_HVT RDFFSRSSRX2_HVT RDFFSRSSRX1_HVT RSDFFSRARX2_HVT RSDFFSRARX1_HVT RSDFFNX2_HVT RSDFFNX1_HVT RSDFFNSRX2_HVT RSDFFNSRX1_HVT RSDFFNSRASX2_HVT RSDFFNSRASX1_HVT RSDFFNSRASRX2_HVT RSDFFNSRASRX1_HVT RSDFFNSRASRQX2_HVT RSDFFNSRASRQX1_HVT RSDFFNSRASRNX2_HVT RSDFFX2_HVT RSDFFX1_HVT RSDFFSRX2_HVT RSDFFSRX1_HVT RSDFFSRSSRX2_HVT RSDFFSRSSRX1_HVT RSDFFSRASX2_HVT RSDFFSRASX1_HVT RSDFFSRASRX2_HVT RSDFFSRASRX1_HVT RDFFNSRASRX1_RVT RDFFNSRASRQX2_RVT RDFFNSRASRQX1_RVT RDFFNSRASRNX2_RVT RDFFNSRASRNX1_RVT RDFFNSRARX2_RVT RDFFNSRARX1_RVT RDFFNARX2_RVT RDFFNARX1_RVT RDFFARX2_RVT RDFFARX1_RVT RDFFSRASX2_RVT RDFFSRASX1_RVT RDFFSRASRX2_RVT RDFFSRASRX1_RVT RDFFSRARX2_RVT RDFFSRARX1_RVT RDFFNX2_RVT RDFFNX1_RVT RDFFNSRX2_RVT RDFFNSRX1_RVT RDFFNSRASX2_RVT RDFFNSRASX1_RVT RDFFNSRASRX2_RVT RSDFFNSRASRNX1_RVT RSDFFNSRARX2_RVT RSDFFNSRARX1_RVT RSDFFNARX2_RVT RSDFFNARX1_RVT RSDFFARX2_RVT RSDFFARX1_RVT RDFFX2_RVT RDFFX1_RVT RDFFSRX2_RVT RDFFSRX1_RVT RDFFSRSSRX2_RVT RDFFSRSSRX1_RVT RSDFFSRARX2_RVT RSDFFSRARX1_RVT RSDFFNX2_RVT RSDFFNX1_RVT RSDFFNSRX2_RVT RSDFFNSRX1_RVT RSDFFNSRASX2_RVT RSDFFNSRASX1_RVT RSDFFNSRASRX2_RVT RSDFFNSRASRX1_RVT RSDFFNSRASRQX2_RVT RSDFFNSRASRQX1_RVT RSDFFNSRASRNX2_RVT RSDFFX2_RVT RSDFFX1_RVT RSDFFSRX2_RVT RSDFFSRX1_RVT RSDFFSRSSRX2_RVT RSDFFSRSSRX1_RVT RSDFFSRASX2_RVT RSDFFSRASX1_RVT RSDFFSRASRX2_RVT RSDFFSRASRX1_RVT}
+set lib_lpcells(level_shifter) {LSDNENCLX2_LVT LSDNENCLX1_LVT LSDNENCLSSX8_LVT LSDNENCLSSX4_LVT LSDNENCLSSX2_LVT LSDNENCLSSX1_LVT LSDNSSX4_LVT LSDNSSX2_LVT LSDNSSX1_LVT LSDNENX8_LVT LSDNENX4_LVT LSDNENX2_LVT LSDNENX1_LVT LSDNENSSX8_LVT LSDNENSSX4_LVT LSDNENSSX2_LVT LSDNENSSX1_LVT LSDNENCLX8_LVT LSDNENCLX4_LVT LSUPENX8_LVT LSUPENX4_LVT LSUPENX2_LVT LSUPENX1_LVT LSUPENCLX8_LVT LSUPENCLX4_LVT LSUPENCLX2_LVT LSUPENCLX1_LVT LSDNX8_LVT LSDNX4_LVT LSDNX2_LVT LSDNX1_LVT LSDNSSX8_LVT LSUPX8_LVT LSUPX4_LVT LSUPX2_LVT LSUPX1_LVT LSDNENCLX2_HVT LSDNENCLX1_HVT LSDNENCLSSX8_HVT LSDNENCLSSX4_HVT LSDNENCLSSX2_HVT LSDNENCLSSX1_HVT LSDNSSX4_HVT LSDNSSX2_HVT LSDNSSX1_HVT LSDNENX8_HVT LSDNENX4_HVT LSDNENX2_HVT LSDNENX1_HVT LSDNENSSX8_HVT LSDNENSSX4_HVT LSDNENSSX2_HVT LSDNENSSX1_HVT LSDNENCLX8_HVT LSDNENCLX4_HVT LSUPENX8_HVT LSUPENX4_HVT LSUPENX2_HVT LSUPENX1_HVT LSUPENCLX8_HVT LSUPENCLX4_HVT LSUPENCLX2_HVT LSUPENCLX1_HVT LSDNX8_HVT LSDNX4_HVT LSDNX2_HVT LSDNX1_HVT LSDNSSX8_HVT LSUPX8_HVT LSUPX4_HVT LSUPX2_HVT LSUPX1_HVT LSDNENCLX2_RVT LSDNENCLX1_RVT LSDNENCLSSX8_RVT LSDNENCLSSX4_RVT LSDNENCLSSX2_RVT LSDNENCLSSX1_RVT LSDNSSX4_RVT LSDNSSX2_RVT LSDNSSX1_RVT LSDNENX8_RVT LSDNENX4_RVT LSDNENX2_RVT LSDNENX1_RVT LSDNENSSX8_RVT LSDNENSSX4_RVT LSDNENSSX2_RVT LSDNENSSX1_RVT LSDNENCLX8_RVT LSDNENCLX4_RVT LSUPENX8_RVT LSUPENX4_RVT LSUPENX2_RVT LSUPENX1_RVT LSUPENCLX8_RVT LSUPENCLX4_RVT LSUPENCLX2_RVT LSUPENCLX1_RVT LSDNX8_RVT LSDNX4_RVT LSDNX2_RVT LSDNX1_RVT LSDNSSX8_RVT LSUPX8_RVT LSUPX4_RVT LSUPX2_RVT LSUPX1_RVT}
+set lib_lpcells(always_on) {AODFFNARX2_LVT AODFFNARX1_LVT AODFFARX2_LVT AODFFARX1_LVT AOBUFX4_LVT AOBUFX2_LVT AOBUFX1_LVT AOINVX4_LVT AOINVX2_LVT AOINVX1_LVT AODFFNARX2_HVT AODFFNARX1_HVT AODFFARX2_HVT AODFFARX1_HVT AOBUFX4_HVT AOBUFX2_HVT AOBUFX1_HVT AOINVX4_HVT AOINVX2_HVT AOINVX1_HVT AODFFNARX2_RVT AODFFNARX1_RVT AODFFARX2_RVT AODFFARX1_RVT AOBUFX4_RVT AOBUFX2_RVT AOBUFX1_RVT AOINVX4_RVT AOINVX2_RVT AOINVX1_RVT}
+set lib_lpcells(power_switch) ""
+set lib_lpcells(isolation) {ISOLORAOX2_LVT ISOLORAOX1_LVT ISOLANDX8_LVT ISOLANDX4_LVT ISOLANDX2_LVT ISOLANDX1_LVT ISOLANDAOX8_LVT ISOLANDAOX4_LVT ISOLANDAOX2_LVT ISOLANDAOX1_LVT ISOLORX8_LVT ISOLORX4_LVT ISOLORX2_LVT ISOLORX1_LVT ISOLORAOX8_LVT ISOLORAOX4_LVT LSDNENCLX2_LVT LSDNENCLX1_LVT LSDNENCLSSX8_LVT LSDNENCLSSX4_LVT LSDNENCLSSX2_LVT LSDNENCLSSX1_LVT LSDNENX8_LVT LSDNENX4_LVT LSDNENX2_LVT LSDNENX1_LVT LSDNENSSX8_LVT LSDNENSSX4_LVT LSDNENSSX2_LVT LSDNENSSX1_LVT LSDNENCLX8_LVT LSDNENCLX4_LVT LSUPENX8_LVT LSUPENX4_LVT LSUPENX2_LVT LSUPENX1_LVT LSUPENCLX8_LVT LSUPENCLX4_LVT LSUPENCLX2_LVT LSUPENCLX1_LVT ISOLORAOX2_HVT ISOLORAOX1_HVT ISOLANDX8_HVT ISOLANDX4_HVT ISOLANDX2_HVT ISOLANDX1_HVT ISOLANDAOX8_HVT ISOLANDAOX4_HVT ISOLANDAOX2_HVT ISOLANDAOX1_HVT ISOLORX8_HVT ISOLORX4_HVT ISOLORX2_HVT ISOLORX1_HVT ISOLORAOX8_HVT ISOLORAOX4_HVT LSDNENCLX2_HVT LSDNENCLX1_HVT LSDNENCLSSX8_HVT LSDNENCLSSX4_HVT LSDNENCLSSX2_HVT LSDNENCLSSX1_HVT LSDNENX8_HVT LSDNENX4_HVT LSDNENX2_HVT LSDNENX1_HVT LSDNENSSX8_HVT LSDNENSSX4_HVT LSDNENSSX2_HVT LSDNENSSX1_HVT LSDNENCLX8_HVT LSDNENCLX4_HVT LSUPENX8_HVT LSUPENX4_HVT LSUPENX2_HVT LSUPENX1_HVT LSUPENCLX8_HVT LSUPENCLX4_HVT LSUPENCLX2_HVT LSUPENCLX1_HVT ISOLORAOX2_RVT ISOLORAOX1_RVT ISOLANDX8_RVT ISOLANDX4_RVT ISOLANDX2_RVT ISOLANDX1_RVT ISOLANDAOX8_RVT ISOLANDAOX4_RVT ISOLANDAOX2_RVT ISOLANDAOX1_RVT ISOLORX8_RVT ISOLORX4_RVT ISOLORX2_RVT ISOLORX1_RVT ISOLORAOX8_RVT ISOLORAOX4_RVT LSDNENCLX2_RVT LSDNENCLX1_RVT LSDNENCLSSX8_RVT LSDNENCLSSX4_RVT LSDNENCLSSX2_RVT LSDNENCLSSX1_RVT LSDNENX8_RVT LSDNENX4_RVT LSDNENX2_RVT LSDNENX1_RVT LSDNENSSX8_RVT LSDNENSSX4_RVT LSDNENSSX2_RVT LSDNENSSX1_RVT LSDNENCLX8_RVT LSDNENCLX4_RVT LSUPENX8_RVT LSUPENX4_RVT LSUPENX2_RVT LSUPENX1_RVT LSUPENCLX8_RVT LSUPENCLX4_RVT LSUPENCLX2_RVT LSUPENCLX1_RVT}
+set lineno {32}
+set lint_error {0}
+set lint_scope {/}
+set noExpandPst {0}
+set normalizePstSupply {0}
+set num_always_on_cell {0}
+set num_apply_model {0}
+set num_associate_ss {0}
+set num_design_attr {1}
+set num_diode_clamp_cell {0}
+set num_eq_supply {0}
+set num_isolation_cell {0}
+set num_level_shifter_cell {0}
+set num_port_attr {0}
+set num_power_domain {2}
+set num_power_switch_cell {0}
+set num_related_supplynet {0}
+set num_related_supplypin {0}
+set num_retention_cell {0}
+set num_suppnet_conn {3}
+set num_suppset_conn {0}
+set pdCrossingUPFRules(ls_in) {lvl ls_in {PD_ORCA_TOP PD_RISC_CORE}}
+set pdCrossingUPFRules(ls_out) {lvl ls_out {PD_RISC_CORE PD_ORCA_TOP}}
+set pd_binding(PD_RISC_CORE,tl) {0x7f251e300f38 0x7f251e301070 0x7f251e301138 0x7f251e301200 0x7f251e3012c8 0x7f251e301388 0x7f251e301450 0x7f251e301518 0x7f251e3015e0 0x7f251e3016a0 0x7f251e301768 0x7f251e301830 0x7f251e3018f8 0x7f251e3019b8 0x7f251e301a80 0x7f251e301b48 0x7f251e301c10 0x7f251e301cd0 0x7f251e301d98 0x7f251e301e60 0x7f251e301f28 0x7f24e3b48020 0x7f24e3b480e8 0x7f24e3b481b0 0x7f24e3b48278 0x7f251e300020 0x7f251e300158 0x7f251e300220 0x7f251e3002e8 0x7f251e3003b0 0x7f251e300470 0x7f251e300538 0x7f251e3005f8 0x7f251e3006c0 0x7f251e300788 0x7f251e300850 0x7f251e300910 0x7f251e3009d8 0x7f251e300a98 0x7f251e300b60 0x7f251e300c28 0x7f251e300cf0 0x7f251e300db0 0x7f251e300e78}
+set pd_intnets(PD_ORCA_TOP,ground) {VSS}
+set pd_intnets(PD_RISC_CORE,power) {VDDH}
+set pd_intnets(PD_ORCA_TOP,power) {VDD}
+set pd_intnets(PD_RISC_CORE,ground) {VSS}
+set pd_list {PD_RISC_CORE PD_ORCA_TOP}
+set pd_pgconn(PD_ORCA_TOP,ground) { (VSS:VSS)}
+set pd_pgconn(PD_RISC_CORE,power) { (VDDH:VDD VDDL)}
+set pd_pgconn(PD_ORCA_TOP,power) { (VDD:VDD VDDL)}
+set pd_pgconn(PD_RISC_CORE,ground) { (VSS:VSS)}
+set pd_techsite_list(PD_RISC_CORE) {unit}
+set pd_techsite_list(PD_ORCA_TOP) {unit}
+set pgvWithoutCSN {0}
+set port_state(VDDH,-state) {{V0p75 0.750000} {V0p95 0.950000} {V1p16 1.160000}}
+set port_state(VDD,-state) {{V0p75 0.750000} {V0p95 0.950000}}
+set port_state(VSS,-line) {../../syn/outputs/ORCA_TOP.dct.upf:22}
+set port_state(VSS,port_name) {VSS}
+set port_state(VSS,-state) {{always 0.000000}}
+set port_state(VDDH,-line) {../../syn/outputs/ORCA_TOP.dct.upf:27}
+set port_state(VDDH,port_name) {VDDH}
+set port_state(VDD,-line) {../../syn/outputs/ORCA_TOP.dct.upf:26}
+set port_state(VDD,port_name) {VDD}
+set power_domain(0) {PD_ORCA_TOP}
+set power_domain(PD_ORCA_TOP,all_libset) {best_libs worst_libs}
+set power_domain(1) {PD_RISC_CORE}
+set power_domain(PD_ORCA_TOP,supply_net) {VSS VDD VDDH}
+set power_domain(PD_ORCA_TOP,-primary_power_net) {VDD}
+set power_domain(PD_RISC_CORE,all_libset) {best_libs worst_libs}
+set power_domain(PD_RISC_CORE,-primary_power_net) {VDDH}
+set power_domain(PD_RISC_CORE,supply_net) {VSS VDD VDDH}
+set power_domain(PD_ORCA_TOP,-primary_ground_net) {VSS}
+set power_domain(PD_RISC_CORE,-primary_ground_net) {VSS}
+set power_domain(PD_ORCA_TOP,domain_name) {PD_ORCA_TOP}
+set power_domain(PD_ORCA_TOP,supply_port) {VDD VSS VDDH}
+set power_domain(PD_ORCA_TOP,-include_scope) ""
+set power_domain(PD_RISC_CORE,domain_name) {PD_RISC_CORE}
+set power_domain(PD_RISC_CORE,-elements) {I_RISC_CORE}
+set power_domain(PD_ORCA_TOP,default) {1}
+set power_domain(PD_ORCA_TOP,-line) {../../syn/outputs/ORCA_TOP.dct.upf:4}
+set power_domain(PD_RISC_CORE,-line) {../../syn/outputs/ORCA_TOP.dct.upf:5}
+set power_model_ignore_list {add_port_state add_pst_state create_pst}
+set pst(power_state,risc_low_best) {V0p95 V0p95 always}
+set pst(power_state,risc_low_worst) {V0p75 V0p75 always}
+set pst(power_state,states) {risc_high_worst risc_low_worst risc_high_best risc_low_best}
+set pst(power_state,table_name) {power_state}
+set pst(power_state,risc_high_best) {V0p95 V1p16 always}
+set pst(power_state,-line) {../../syn/outputs/ORCA_TOP.dct.upf:28}
+set pst(power_state,risc_high_worst) {V0p75 V0p95 always}
+set pst(power_state,-supplies) {VDD VDDH VSS}
+set resolved_pst_num_states {0}
+set scope_error {0}
+set scope_list { / }
+set singlePD {0}
+set skip_commit_iso_shifter {0}
+set sorted_iso_rules ""
+set sorted_ls_rules {ls_out ls_in}
+set sorted_ret_rules ""
+set source_quiet {0}
+set ss_deref(PD_ORCA_TOP.primary) {PD_ORCA_TOP_primary_ss_}
+set ss_deref(PD_RISC_CORE.primary) {PD_RISC_CORE_primary_ss_}
+set ss_handle(PD_ORCA_TOP.primary) {PD_ORCA_TOP_primary_ss_}
+set ss_handle(PD_RISC_CORE.primary) {PD_RISC_CORE_primary_ss_}
+set startCpuTime {77.190000}
+set startRealTime {96.000000}
+set supply_net(VSS,pg_type) {ground}
+set supply_net(VDDH,net_name) {VDDH}
+set supply_net(VDD,net_name) {VDD}
+set supply_net(VSS,-domain) {PD_ORCA_TOP}
+set supply_net(VDDH,pg_type) {power}
+set supply_net(VDD,pg_type) {power}
+set supply_net(VDDH,-domain) {PD_ORCA_TOP}
+set supply_net(VDD,-domain) {PD_ORCA_TOP}
+set supply_net(VSS,net_name) {VSS}
+set supply_net_reuse(VDDH,PD_RISC_CORE,net_name) {VDDH}
+set supply_net_reuse(VDD,PD_RISC_CORE,net_name) {VDD}
+set supply_net_reuse(VSS,PD_RISC_CORE,-reuse) ""
+set supply_net_reuse(VSS,PD_RISC_CORE,-domain) {PD_RISC_CORE}
+set supply_net_reuse(VDDH,PD_RISC_CORE,-reuse) ""
+set supply_net_reuse(VDDH,PD_RISC_CORE,-domain) {PD_RISC_CORE}
+set supply_net_reuse(VDD,PD_RISC_CORE,-reuse) ""
+set supply_net_reuse(VDD,PD_RISC_CORE,-domain) {PD_RISC_CORE}
+set supply_net_reuse(VSS,PD_RISC_CORE,net_name) {VSS}
+set supply_port(VSS,pg_type) {ground}
+set supply_port(VDDH,-direction) {in}
+set supply_port(VSS,loConn) {VSS}
+set supply_port(VDD,hiConn) {VDD}
+set supply_port(VDDH,pg_type) {power}
+set supply_port(VDDH,loConn) {VDDH}
+set supply_port(VSS,port_name) {VSS}
+set supply_port(VSS,-domain) {PD_ORCA_TOP}
+set supply_port(VDD,supply_net) {VDD}
+set supply_port(VSS,hiConn) {VSS}
+set supply_port(VDDH,port_name) {VDDH}
+set supply_port(VDDH,-domain) {PD_ORCA_TOP}
+set supply_port(VDD,-direction) {in}
+set supply_port(VDDH,hiConn) {VDDH}
+set supply_port(VDD,pg_type) {power}
+set supply_port(VSS,supply_net) {VSS}
+set supply_port(VDD,loConn) {VDD}
+set supply_port(VDDH,supply_net) {VDDH}
+set supply_port(VSS,-direction) {in}
+set supply_port(VDD,port_name) {VDD}
+set supply_port(VDD,-domain) {PD_ORCA_TOP}
+set supply_set(PD_ORCA_TOP_primary_ss_,-function) {{power VDD} {ground VSS}}
+set supply_set(PD_RISC_CORE_primary_ss_,internal) {1}
+set supply_set(PD_ORCA_TOP_primary_ss_,set_name) {PD_ORCA_TOP_primary_ss_}
+set supply_set(PD_ORCA_TOP_primary_ss_,internal) {1}
+set supply_set(PD_RISC_CORE_primary_ss_,-function) {{power VDDH} {ground VSS}}
+set supply_set(PD_RISC_CORE_primary_ss_,set_name) {PD_RISC_CORE_primary_ss_}
+set supplynet_conn(1,net_name) {VDD}
+set supplynet_conn(2,net_name) {VDDH}
+set supplynet_conn(0,-ports) {VSS}
+set supplynet_conn(1,-ports) {VDD}
+set supplynet_conn(2,-ports) {VDDH}
+set supplynet_conn(0,net_name) {VSS}
+set supplynet_domain(PD_RISC_CORE,-primary_ground_net) {VSS}
+set supplynet_domain(PD_ORCA_TOP,-primary_power_net) {VDD}
+set supplynet_domain(PD_RISC_CORE,-primary_power_net) {VDDH}
+set supplynet_domain(PD_ORCA_TOP,-primary_ground_net) {VSS}
+set supported_modelattrs {is_analog is_isolated unconnected feedthrough clamp_value}
+set supported_portattrs {related_power_port related_ground_port driver_supply receiver_supply attribute is_analog is_isolated feedthrough unconnected clamp_value}
+set unconnected_ports ""
+set upShifterNeeded(PD_ORCA_TOP,PD_ORCA_TOP) {0}
+set upShifterNeeded(PD_RISC_CORE,PD_RISC_CORE) {0}
+set upShifterNeeded(PD_ORCA_TOP,PD_RISC_CORE) {1}
+set upShifterNeeded(PD_RISC_CORE,PD_ORCA_TOP) {0}
+set upfVersion {2.0}
+set upf_debug {0}
+set upf_file {../../syn/outputs/ORCA_TOP.dct.upf}
+set upf_inputfiles {../../syn/outputs/ORCA_TOP.dct.upf}
+set upf_lpcells(retention) ""
+set upf_lpcells(level_shifter) ""
+set upf_lpcells(diode_clamp) ""
+set upf_lpcells(always_on) ""
+set upf_lpcells(power_switch) ""
+set upf_lpcells(isolation) ""
+set upf_reinit {1}
+set useTriVoltValue {1}
+set user_pif_version ""
+set verifyUpfNoIsoShift {0}
+set verifyUpfThroughFeedthru {1}
+set voltageRange(PD_ORCA_TOP,low) {0.75}
+set voltageRange(PD_RISC_CORE,high) {1.16}
+set voltageRange(PD_ORCA_TOP,high) {0.95}
+set voltageRange(PD_RISC_CORE,low) {0.75}
+set pif_ruleid_insts(1) {I_RISC_CORE/ls_in_35_test_si1 I_RISC_CORE/ls_in_34_scan_enable I_RISC_CORE/ls_in_33_Instrn_0_ I_RISC_CORE/ls_in_32_Instrn_1_ I_RISC_CORE/ls_in_31_Instrn_2_ I_RISC_CORE/ls_in_30_Instrn_3_ I_RISC_CORE/ls_in_29_Instrn_4_ I_RISC_CORE/ls_in_28_Instrn_5_ I_RISC_CORE/ls_in_27_Instrn_6_ I_RISC_CORE/ls_in_26_Instrn_7_ I_RISC_CORE/ls_in_25_Instrn_8_ I_RISC_CORE/ls_in_24_Instrn_9_ I_RISC_CORE/ls_in_23_Instrn_10_ I_RISC_CORE/ls_in_22_Instrn_11_ I_RISC_CORE/ls_in_21_Instrn_12_ I_RISC_CORE/ls_in_20_Instrn_13_ I_RISC_CORE/ls_in_19_Instrn_14_ I_RISC_CORE/ls_in_18_Instrn_15_ I_RISC_CORE/ls_in_17_Instrn_16_ I_RISC_CORE/ls_in_16_Instrn_17_ I_RISC_CORE/ls_in_15_Instrn_18_ I_RISC_CORE/ls_in_14_Instrn_19_ I_RISC_CORE/ls_in_13_Instrn_20_ I_RISC_CORE/ls_in_12_Instrn_21_ I_RISC_CORE/ls_in_11_Instrn_22_ I_RISC_CORE/ls_in_10_Instrn_23_ I_RISC_CORE/ls_in_9_Instrn_24_ I_RISC_CORE/ls_in_8_Instrn_25_ I_RISC_CORE/ls_in_7_Instrn_26_ I_RISC_CORE/ls_in_6_Instrn_27_ I_RISC_CORE/ls_in_5_Instrn_28_ I_RISC_CORE/ls_in_4_Instrn_29_ I_RISC_CORE/ls_in_3_Instrn_30_ I_RISC_CORE/ls_in_2_Instrn_31_ I_RISC_CORE/ls_in_1_reset_n I_RISC_CORE/ls_in_0_clk}
+set pif_ruleid_insts(2) {ls_out_61_test_so1 ls_out_60_STACK_FULL ls_out_59_OUT_VALID ls_out_58_RESULT_DATA_0_ ls_out_57_RESULT_DATA_1_ ls_out_56_RESULT_DATA_2_ ls_out_55_RESULT_DATA_3_ ls_out_54_RESULT_DATA_4_ ls_out_53_RESULT_DATA_5_ ls_out_52_RESULT_DATA_6_ ls_out_51_RESULT_DATA_7_ ls_out_50_RESULT_DATA_8_ ls_out_49_RESULT_DATA_9_ ls_out_48_RESULT_DATA_10_ ls_out_47_RESULT_DATA_11_ ls_out_46_RESULT_DATA_12_ ls_out_45_RESULT_DATA_13_ ls_out_44_RESULT_DATA_14_ ls_out_43_RESULT_DATA_15_ ls_out_42_Rd_Instr ls_out_41_PSW_2_ ls_out_40_PSW_3_ ls_out_39_PSW_4_ ls_out_38_PSW_5_ ls_out_37_PSW_6_ ls_out_36_PSW_7_ ls_out_35_PSW_8_ ls_out_34_PSW_9_ ls_out_33_PSW_10_ ls_out_32_EndOfInstrn ls_out_31_Xecutng_Instrn_0_ ls_out_30_Xecutng_Instrn_1_ ls_out_29_Xecutng_Instrn_2_ ls_out_28_Xecutng_Instrn_3_ ls_out_27_Xecutng_Instrn_4_ ls_out_26_Xecutng_Instrn_5_ ls_out_25_Xecutng_Instrn_6_ ls_out_24_Xecutng_Instrn_7_ ls_out_23_Xecutng_Instrn_8_ ls_out_22_Xecutng_Instrn_9_ ls_out_21_Xecutng_Instrn_10_ ls_out_20_Xecutng_Instrn_11_ ls_out_19_Xecutng_Instrn_12_ ls_out_18_Xecutng_Instrn_13_ ls_out_17_Xecutng_Instrn_14_ ls_out_16_Xecutng_Instrn_15_ ls_out_15_Xecutng_Instrn_16_ ls_out_14_Xecutng_Instrn_17_ ls_out_13_Xecutng_Instrn_18_ ls_out_12_Xecutng_Instrn_19_ ls_out_11_Xecutng_Instrn_20_ ls_out_10_Xecutng_Instrn_21_ ls_out_9_Xecutng_Instrn_22_ ls_out_8_Xecutng_Instrn_23_ ls_out_7_Xecutng_Instrn_24_ ls_out_6_Xecutng_Instrn_25_ ls_out_5_Xecutng_Instrn_26_ ls_out_4_Xecutng_Instrn_27_ ls_out_3_Xecutng_Instrn_28_ ls_out_2_Xecutng_Instrn_29_ ls_out_1_Xecutng_Instrn_30_ ls_out_0_Xecutng_Instrn_31_}
+::MSV::setSNetVoltageForView VDDH func_best_scenario 0.95
+::MSV::setSNetVoltageForView VDDH func_worst_scenario 0.75
+::MSV::setSNetVoltageForView VDDH test_best_scenario 0.95
+::MSV::setSNetVoltageForView VDDH test_worst_scenario 0.75
+::MSV::setSNetVoltageForView VSS func_best_scenario 0
+::MSV::setSNetVoltageForView VSS func_worst_scenario 0
+::MSV::setSNetVoltageForView VSS test_best_scenario 0
+::MSV::setSNetVoltageForView VSS test_worst_scenario 0
+::MSV::setSNetVoltageForView VDD func_best_scenario 0.95
+::MSV::setSNetVoltageForView VDD func_worst_scenario 0.75
+::MSV::setSNetVoltageForView VDD test_best_scenario 0.95
+::MSV::setSNetVoltageForView VDD test_worst_scenario 0.75
+if {$::rdagVersionName >= 16.12 || ($::rdagVersionName >= 15.25 && $::rdagVersionName < 16.0)} {
+}
+set ::MSV_UPF::allSNetVoltageSet 1
+
+
+
+namespace eval ::pd_physical_data {
+set pd_data {
+POWERDOMAIN: NAME=PD_RISC_CORE 
+	PRIM_POWER=VDDH PRIM_GND=VSS VOLT=0.9500 LAYER=0 EEQID=0 
+	NRLIB=6 
+	TIMELIB=saed32hvt_ss0p95vn40c(worst_libs) 
+	TIMELIB=saed32rvt_ss0p95vn40c(worst_libs) 
+	TIMELIB=saed32lvt_ss0p95vn40c(worst_libs) 
+	TIMELIB=saed32lvt_dlvl_ss0p75vn40c_i0p95v(worst_libs) 
+	TIMELIB=saed32lvt_ulvl_ss0p95vn40c_i0p75v(worst_libs) 
+	TIMELIB=saed32sram_ss0p95vn40c(worst_libs) 
+	MINGAPTOP=0.0560 MINGAPBOT=0.0560 MINGAPLEFT=0.0560 MINGAPRIGHT=0.0560 
+	MINGAPS={4,0.0560,0.0560,0.0560,0.0560}
+	ROWFLIP=3 SITE=unit ROWSPACETYPE=0 ROWSPACING=0.0000 
+	MODULE=LSUPX1_RVT POWER=(VDDH:VDDH) POWER=(VDD:VDDL->PD_ORCA_TOP) GND=(VSS:VSS) 
+	MODULE=I_RISC_CORE POWER=(VDDH:VDD,VDDL) GND=(VSS:VSS) 
+END_PD
+POWERDOMAIN: NAME=PD_ORCA_TOP 
+	PRIM_POWER=VDD PRIM_GND=VSS LAYER=1 ISDEFAULT=1 EEQID=0 
+	ROWFLIP=3 SITE=unit ROWSPACETYPE=0 ROWSPACING=0.0000 
+	MODULE=LSDNSSX8_RVT POWER=(VDD:VDDL) GND=(VSS:VSS) 
+	MODULE=* POWER=(VDD:VDD,VDDL) GND=(VSS:VSS) 
+END_PD
+}
+set pd_constraint(PD_RISC_CORE) {
+    {10032 10032 420032 185032}
+}
+}

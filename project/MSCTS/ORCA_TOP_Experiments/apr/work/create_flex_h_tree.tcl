@@ -1,0 +1,4 @@
+create_ccopt_flexible_htree -name my_flex_PCI_CLK -trunk_cell IBUFFX16_LVT -final_cell IBUFFX8_LVT -sink_grid { 4 4 } -image_directory htree_debug_PCI_CLK -omit_symmetry false -pin pclk -sink_grid_box { 11.248 148.808 972.496 369.512 } 
+create_ccopt_flexible_htree -name my_flex_SYS_2x_CLK -trunk_cell IBUFFX16_LVT -final_cell IBUFFX8_LVT -sink_grid { 4 4 } -image_directory htree_debug_SYS_2x_CLK -omit_symmetry false -pin sys_2x_clk -sink_grid_box { 0x0 0x0 856.52 382.888 } 
+create_ccopt_flexible_htree -name my_flex_ate_clk -trunk_cell IBUFFX16_LVT -final_cell IBUFFX8_LVT -sink_grid { 4 4 } -image_directory htree_debug_ate_clk -omit_symmetry false -pin ate_clk -sink_grid_box { 0.304 138.776 0852.72 381.216 } 
+create_ccopt_flexible_htree -name my_flex_SDRAM_CLK -trunk_cell IBUFFX16_LVT -final_cell IBUFFX8_LVT -sink_grid { 4 4 } -image_directory htree_debug_SDRAM_CLK -omit_symmetry false -pin sdram_clk -sink_grid_box { 0x0 0x0 972.496 583.68 } 

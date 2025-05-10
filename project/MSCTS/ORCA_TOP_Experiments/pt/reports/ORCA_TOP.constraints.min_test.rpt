@@ -1,0 +1,77 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : ORCA_TOP
+Version: O-2018.06
+Date   : Thu Apr 10 23:20:45 2025
+****************************************
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   ropt_mt_inst_8410/Y        82.000        163.397        -81.397  (VIOLATED)
+   ropt_mt_inst_8411/Y        82.000        161.943        -79.943  (VIOLATED)
+   I_SDRAM_TOP/I_SDRAM_IF/HFSINV_24234_f_1815/Y
+                              82.000         82.851         -0.851  (VIOLATED)
+   I_SDRAM_TOP/I_SDRAM_IF/HFSINV_2759_1906/Y
+                               8.000          8.370         -0.370  (VIOLATED)
+   I_RISC_CORE/ropt_mt_inst_8523/Y
+                              16.000         16.352         -0.352  (VIOLATED)
+   I_SDRAM_TOP/I_SDRAM_IF/HFSBUF_6980_2392/Y
+                              32.000         32.173         -0.173  (VIOLATED)
+   I_BLENDER_1/HFSINV_525_1082/Y
+                               8.000          8.078         -0.078  (VIOLATED)
+   I_BLENDER_0/ZBUF_403_inst_4813/Y
+                              16.000         16.023         -0.023  (VIOLATED)
+   I_BLENDER_1/HFSINV_152_918/Y
+                               8.000          8.021         -0.021  (VIOLATED)
+   I_BLENDER_1/HFSINV_474_1179/Y
+                              16.000         16.017         -0.017  (VIOLATED)
+
+
+   min_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[0]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[1]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[2]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[3]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[4]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[5]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[6]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM/O2[7]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[8]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[9]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[10]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[11]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[12]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[13]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[14]
+                               0.100          0.011         -0.089  (VIOLATED)
+   I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/O2[15]
+                               0.100          0.011         -0.089  (VIOLATED)
+
+
+1

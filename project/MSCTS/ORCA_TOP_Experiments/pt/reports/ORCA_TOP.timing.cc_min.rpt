@@ -1,0 +1,129 @@
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-input_pins
+	-nets
+	-slack_lesser_than 0.0000
+	-max_paths 10000
+	-transition_time
+	-capacitance
+	-crosstalk_delta
+	-derate
+	-sort_by slack
+Design : ORCA_TOP
+Version: O-2018.06
+Date   : Thu Apr 10 23:20:46 2025
+****************************************
+
+
+  Startpoint: sd_DQ_in[21]
+               (input port clocked by v_SDRAM_CLK)
+  Endpoint: I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_21_
+               (falling edge-triggered flip-flop clocked by SDRAM_CLK)
+  Path Group: SDRAM_CLK
+  Path Type: min
+
+  Point                      Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  --------------------------------------------------------------------------------------------------
+  clock v_SDRAM_CLK (fall edge)                      0.0000                     2.0500     2.0500
+  clock network delay (ideal)                                                   0.0000     2.0500
+  input external delay                                                          0.1000     2.1500 f
+  sd_DQ_in[21] (in)                                  0.0075                     0.0035 &   2.1535 f
+  sd_DQ_in[21] (net)           1   1.9303 
+  I_SDRAM_TOP/I_SDRAM_IF/U1375/A (NBUFFX2_HVT)
+                                           -0.0006   0.0075   1.0000  -0.0005  -0.0005 &   2.1530 f
+  I_SDRAM_TOP/I_SDRAM_IF/U1375/Y (NBUFFX2_HVT)       0.0188   1.0000            0.0276 &   2.1806 f
+  I_SDRAM_TOP/I_SDRAM_IF/n5784 (net)
+                               1   3.2962 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7005/A (NBUFFX2_HVT)
+                                           -0.0048   0.0188   1.0000  -0.0045  -0.0044 &   2.1762 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7005/Y (NBUFFX2_HVT)
+                                                     0.0142   1.0000            0.0277 &   2.2039 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1467 (net)
+                               1   1.4040 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7004/A (NBUFFX2_HVT)
+                                           -0.0023   0.0142   1.0000  -0.0016  -0.0016 &   2.2023 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7004/Y (NBUFFX2_HVT)
+                                                     0.0175   1.0000            0.0289 &   2.2311 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1466 (net)
+                               1   2.7046 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7003/A (NBUFFX4_HVT)
+                                           -0.0017   0.0175   1.0000  -0.0004  -0.0003 &   2.2308 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7003/Y (NBUFFX4_HVT)
+                                                     0.0353   1.0000            0.0394 &   2.2702 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1465 (net)
+                               2  17.9354 
+  I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_21_/D (SDFFNX1_HVT)
+                                           -0.0022   0.0357   1.0000  -0.0003   0.0035 &   2.2737 f
+  data arrival time                                                                        2.2737
+
+  clock SDRAM_CLK (fall edge)                                                   2.0500     2.0500
+  clock network delay (propagated)                                              0.2377     2.2877
+  clock reconvergence pessimism                                                 0.0000     2.2877
+  I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_21_/CLK (SDFFNX1_HVT)                                 2.2877 f
+  library hold time                                           1.0000           -0.0127     2.2750
+  data required time                                                                       2.2750
+  --------------------------------------------------------------------------------------------------
+  data required time                                                                       2.2750
+  data arrival time                                                                       -2.2737
+  --------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                        -0.0014
+
+
+  Startpoint: sd_DQ_in[23]
+               (input port clocked by v_SDRAM_CLK)
+  Endpoint: I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_23_
+               (falling edge-triggered flip-flop clocked by SDRAM_CLK)
+  Path Group: SDRAM_CLK
+  Path Type: min
+
+  Point                      Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  --------------------------------------------------------------------------------------------------
+  clock v_SDRAM_CLK (fall edge)                      0.0000                     2.0500     2.0500
+  clock network delay (ideal)                                                   0.0000     2.0500
+  input external delay                                                          0.1000     2.1500 f
+  sd_DQ_in[23] (in)                                  0.0081                     0.0038 &   2.1538 f
+  sd_DQ_in[23] (net)           1   2.1376 
+  I_SDRAM_TOP/I_SDRAM_IF/ZBUF_17_inst_2603/A (NBUFFX4_HVT)
+                                           -0.0010   0.0082   1.0000  -0.0009  -0.0009 &   2.1529 f
+  I_SDRAM_TOP/I_SDRAM_IF/ZBUF_17_inst_2603/Y (NBUFFX4_HVT)
+                                                     0.0399   1.0000            0.0383 &   2.1912 f
+  I_SDRAM_TOP/I_SDRAM_IF/ZBUF_17_3 (net)
+                               2  20.9671 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7006/A (NBUFFX2_HVT)
+                                           -0.0058   0.0405   1.0000  -0.0053  -0.0000 &   2.1911 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7006/Y (NBUFFX2_HVT)
+                                                     0.0163   1.0000            0.0334 &   2.2245 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1468 (net)
+                               1   0.8485 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7008/A (NBUFFX2_HVT)
+                                            0.0000   0.0163   1.0000   0.0000   0.0000 &   2.2245 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7008/Y (NBUFFX2_HVT)
+                                                     0.0135   1.0000            0.0265 &   2.2510 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1470 (net)
+                               1   1.3017 
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7012/A (NBUFFX2_HVT)
+                                           -0.0006   0.0135   1.0000  -0.0001  -0.0001 &   2.2509 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_h_inst_7012/Y (NBUFFX2_HVT)
+                                                     0.0159   1.0000            0.0275 &   2.2784 f
+  I_SDRAM_TOP/I_SDRAM_IF/copt_net_1474 (net)
+                               1   2.2133 
+  I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_23_/D (SDFFNX1_HVT)
+                                            0.0000   0.0159   1.0000   0.0000   0.0000 &   2.2784 f
+  data arrival time                                                                        2.2784
+
+  clock SDRAM_CLK (fall edge)                                                   2.0500     2.0500
+  clock network delay (propagated)                                              0.2377     2.2877
+  clock reconvergence pessimism                                                 0.0000     2.2877
+  I_SDRAM_TOP/I_SDRAM_IF/DQ_in_1_reg_23_/CLK (SDFFNX1_HVT)                                 2.2877 f
+  library hold time                                           1.0000           -0.0080     2.2797
+  data required time                                                                       2.2797
+  --------------------------------------------------------------------------------------------------
+  data required time                                                                       2.2797
+  data arrival time                                                                       -2.2784
+  --------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                        -0.0012
+
+
+1

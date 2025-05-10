@@ -1,0 +1,242 @@
+Using Power View: test_worst_scenario.
+
+Begin Power Analysis
+
+          0.95V	    VDDH
+             0V	    VSS
+          0.75V	    VDD
+Begin Processing Timing Library for Power Calculation
+
+Ended Processing Timing Library for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4258.25MB/9091.98MB/7660.38MB)
+
+
+
+Begin Processing Power Net/Grid for Power Calculation
+
+Ended Processing Power Net/Grid for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4258.25MB/9091.98MB/7660.38MB)
+
+Begin Processing Timing Window Data for Power Calculation
+
+CK: assigning clock SYS_2x_CLK to net sys_2x_clk
+CK: assigning clock SD_DDR_CLKn to net sd_CKn
+CK: assigning clock SD_DDR_CLK to net sd_CK
+CK: assigning clock SDRAM_CLK to net sdram_clk
+CK: assigning clock SYS_CLK to net I_CLOCKING/n23
+CK: assigning clock PCI_CLK to net pclk
+CK: assigning clock ate_clk to net ate_clk
+Ended Processing Timing Window Data for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4258.25MB/9091.98MB/7660.38MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4258.25MB/9091.98MB/7660.38MB)
+
+Begin Processing Signal Activity
+
+
+Starting Activity Propagation
+2024-May-30 23:45:51 (2024-May-31 06:45:51 GMT)
+2024-May-30 23:45:52 (2024-May-31 06:45:52 GMT): 10%
+2024-May-30 23:45:52 (2024-May-31 06:45:52 GMT): 20%
+2024-May-30 23:45:53 (2024-May-31 06:45:53 GMT): 30%
+
+Finished Activity Propagation
+2024-May-30 23:45:55 (2024-May-31 06:45:55 GMT)
+Ended Processing Signal Activity: (cpu=0:00:05, real=0:00:05, mem(process/total/peak)=4258.69MB/9091.98MB/7660.38MB)
+
+Begin Power Computation
+
+      ----------------------------------------------------------
+      # of cell(s) missing both power/leakage table: 0
+      # of cell(s) missing power table: 3
+      # of cell(s) missing leakage table: 4
+      ----------------------------------------------------------
+CellName                                  Missing Table(s)
+DCAP_HVT                                  internal power, 
+SRAM2RW128x16                             leakage power, 
+SRAM2RW32x4                               leakage power, 
+SRAM2RW64x32                              leakage power, 
+SRAM2RW64x8                               leakage power, 
+TIEH_HVT                                  internal power, 
+TIEL_HVT                                  internal power, 
+
+
+** WARN:  (VOLTUS_POWR-3401): Leakage Power table for pg_pins VDDH VDDL not present in library of cell LSUPX1_RVT.
+
+
+Starting Calculating power
+2024-May-30 23:45:55 (2024-May-31 06:45:55 GMT)
+2024-May-30 23:45:59 (2024-May-31 06:45:59 GMT): 10%
+2024-May-30 23:45:59 (2024-May-31 06:45:59 GMT): 20%
+2024-May-30 23:45:59 (2024-May-31 06:45:59 GMT): 30%
+2024-May-30 23:45:59 (2024-May-31 06:45:59 GMT): 40%
+2024-May-30 23:45:59 (2024-May-31 06:45:59 GMT): 50%
+2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT): 60%
+2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT): 70%
+2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT): 80%
+2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT): 90%
+
+Finished Calculating power
+2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT)
+      # of MSMV cell(s) missing power_level: 0
+Ended Power Computation: (cpu=0:00:13, real=0:00:04, mem(process/total/peak)=4276.13MB/9172.01MB/7660.38MB)
+
+Begin Processing User Attributes
+
+Begin Processing set_power
+Ended Processing set_power: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=4276.13MB/9172.01MB/7660.38MB)
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4276.13MB/9172.01MB/7660.38MB)
+
+Ended Power Analysis: (cpu=0:00:20, real=0:00:10, mem(process/total/peak)=4276.13MB/9172.01MB/7660.38MB)
+
+Begin Boundary Leakage Calculation
+Ended Boundary Leakage Calculation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=4276.13MB/9172.01MB/7660.38MB)
+Begin Static Power Report Generation
+*----------------------------------------------------------------------------------------
+*	Innovus 23.10-p003_1 (64bit) 02/01/2024 13:54 (Linux 3.10.0-693.el7.x86_64)
+*	
+*
+* 	Date & Time:	2024-May-30 23:46:00 (2024-May-31 06:46:00 GMT)
+*
+*----------------------------------------------------------------------------------------
+*
+*	Design: ORCA_TOP
+*
+*	Liberty Libraries used:
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib
+*
+*	Parasitic Files used:
+*
+*       Power View : test_worst_scenario
+*
+*       User-Defined Activity : N.A.
+*
+*       Activity File: N.A.
+*
+*       Hierarchical Global Activity: N.A.
+*
+*       Global Activity: N.A.
+*
+*       Sequential Element Activity: 0.200000
+*
+*       Primary Input Activity: 0.200000
+*
+*       Default icg ratio: N.A.
+*
+*       Global Comb ClockGate Ratio: N.A.
+*
+*	Power Units = 1mW
+*
+*	Time Units = 1e-09 secs
+*
+*       report_power
+*
+-----------------------------------------------------------------------------------------
+*
+
+
+
+Total Power
+-----------------------------------------------------------------------------------------
+Total Internal Power:        2.42298829 	   58.8184%
+Total Switching Power:       0.91921604 	   22.3141%
+Total Leakage Power:         0.77723409 	   18.8675%
+Total Power:                 4.11943841
+-----------------------------------------------------------------------------------------
+
+
+Group                           Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+Sequential                         1.234      0.1306      0.6131       1.978       48.01
+Macro                           0.004192     0.01057    0.007038      0.0218      0.5293
+IO                                     0           0           0           0           0
+Combinational                      1.126       0.778      0.1565       2.061       50.03
+Clock (Combinational)            0.04494           0   0.0003344     0.04527       1.099
+Clock (Sequential)               0.01362   6.678e-06   0.0003205     0.01394      0.3385
+-----------------------------------------------------------------------------------------
+Total                              2.423      0.9192      0.7772       4.119         100
+-----------------------------------------------------------------------------------------
+
+
+Rail                  Voltage   Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+VDDH                     0.95   0.005349     0.01986     0.01692     0.04213       1.023
+VDD                      0.75      2.418      0.8994      0.7603       4.077       98.98
+
+
+Clock                           Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+SYS_CLK                        0.0008477           0   6.579e-06   0.0008542     0.02074
+PCI_CLK                         0.008092   6.678e-06   0.0003038    0.008402       0.204
+SDRAM_CLK                        0.02446           0   0.0001256     0.02459      0.5968
+SYS_2x_CLK                       0.02299           0   9.983e-05     0.02309      0.5605
+ate_clk                         0.002324           0   0.0001192    0.002443      0.0593
+-----------------------------------------------------------------------------------------
+Total                            0.05855   6.678e-06   0.0006549     0.05921       1.437
+-----------------------------------------------------------------------------------------
+Clock: SYS_CLK
+Clock Period: 0.004800 usec 
+Clock Toggle Rate:   416.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: PCI_CLK
+Clock Period: 0.007500 usec 
+Clock Toggle Rate:   266.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: SDRAM_CLK
+Clock Period: 0.004100 usec 
+Clock Toggle Rate:   487.8049 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: SYS_2x_CLK
+Clock Period: 0.002400 usec 
+Clock Toggle Rate:   833.3333 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: ate_clk
+Clock Period: 0.030000 usec 
+Clock Toggle Rate:    66.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+ 
+ 
+-----------------------------------------------------------------------------------------
+*	Power Distribution Summary: 
+*              Highest Average Power:         CTS_cfh_buf_00149 (NBUFFX16_LVT):          0.02152
+*              Highest Leakage Power: I_RISC_CORE/I_DATA_PATH_Oprnd_B_reg_2_ (SDFFX2_RVT):          0.00653
+*                Total Cap:      1.84667e-10 F
+*                Total instances in design: 40804
+*                Total instances in design with no power:     0
+*                Total instances in design with no activty:     0
+
+*                Total Fillers and Decap:     0
+-----------------------------------------------------------------------------------------
+ 
+** INFO:  (VOLTUS_POWR-3465): There are 0 decaps and 404 fillers in the design
+
+Ended Static Power Report Generation: (cpu=0:00:01, real=0:00:01,
+mem(process/total/peak)=4278.97MB/9172.01MB/7660.38MB)
+

@@ -1,0 +1,112 @@
+****************************************
+Report : qor
+Design : ORCA_TOP
+Version: O-2018.06
+Date   : Thu Apr 10 23:20:45 2025
+****************************************
+
+  Timing Path Group '**async_default**' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                            5
+  Critical Path Length:                   3.452
+  Critical Path Slack:                    0.038
+  Total Negative Slack:                   0.000
+  No. of Violating Paths:                     0
+  ---------------------------------------------
+
+  Timing Path Group '**clock_gating_default**' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                           11
+  Critical Path Length:                   8.238
+  Critical Path Slack:                   -5.405
+  Total Negative Slack:                 -58.067
+  No. of Violating Paths:                    16
+  ---------------------------------------------
+
+  Timing Path Group 'PCI_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                           10
+  Critical Path Length:                   7.329
+  Critical Path Slack:                   -0.038
+  Total Negative Slack:                  -0.126
+  No. of Violating Paths:                     8
+  ---------------------------------------------
+
+  Timing Path Group 'SDRAM_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                            5
+  Critical Path Length:                   2.277
+  Critical Path Slack:                   -0.066
+  Total Negative Slack:                  -0.692
+  No. of Violating Paths:                    55
+  ---------------------------------------------
+
+  Timing Path Group 'SD_DDR_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                            4
+  Critical Path Length:                   3.749
+  Critical Path Slack:                   -1.741
+  Total Negative Slack:                 -49.093
+  No. of Violating Paths:                    71
+  ---------------------------------------------
+
+  Timing Path Group 'SYS_2x_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                           11
+  Critical Path Length:                   9.443
+  Critical Path Slack:                   -7.300
+  Total Negative Slack:                -590.687
+  No. of Violating Paths:                   252
+  ---------------------------------------------
+
+  Timing Path Group 'SYS_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                            4
+  Critical Path Length:                   4.011
+  Critical Path Slack:                    0.826
+  Total Negative Slack:                   0.000
+  No. of Violating Paths:                     0
+  ---------------------------------------------
+
+  Timing Path Group 'v_PCI_CLK' (max_delay/setup)
+  ---------------------------------------------
+  Levels of Logic:                            5
+  Critical Path Length:                   4.750
+  Critical Path Slack:                    0.150
+  Total Negative Slack:                   0.000
+  No. of Violating Paths:                     0
+  ---------------------------------------------
+
+  Cell Count
+  ---------------------------------------------
+  Hierarchical Cell Count:                   64
+  Hierarchical Port Count:                 3002
+  Leaf Cell Count:                        37771
+  ---------------------------------------------
+
+
+  Area
+  ---------------------------------------------
+  Net Interconnect area:              61100.457
+  Total cell area:                   375705.469
+  Design Area:                       436805.938
+  ---------------------------------------------
+
+
+  Design Rule Violations
+  ---------------------------------------------
+  Total No. of Pins in Design:           165633
+  clock_gating_setup Count:                  16
+  sequential_clock_pulse_width Count:        53
+  max_capacitance Count:                     34
+  min_capacitance Count:                     16
+  max_transition Count:                      26
+  clock_gating_setup Cost:              -58.067
+  sequential_clock_pulse_width Cost:     -2.082
+  max_capacitance Cost:                -791.962
+  min_capacitance Cost:                  -1.424
+  max_transition Cost:                   -1.987
+  Total DRC Cost:                      -855.522
+  ---------------------------------------------
+
+1

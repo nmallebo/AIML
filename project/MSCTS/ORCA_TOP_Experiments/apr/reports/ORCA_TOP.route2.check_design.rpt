@@ -1,0 +1,54 @@
+****************************************
+ Report : check_design 
+ Options: { pre_route_stage }
+ Design : ORCA_TOP
+ Version: V-2023.12
+ Date   : Sat May 18 18:52:26 2024
+****************************************
+
+Running mega-check 'pre_route_stage': 
+    Running atomic-check 'design_mismatch'
+    Running atomic-check 'scan_chain'
+    Running atomic-check 'mv_design'
+    Running atomic-check 'timing'
+    Running atomic-check 'routability'
+    Running atomic-check 'hier_pre_route'
+
+  *** EMS Message summary ***
+  ----------------------------------------------------------------------------------------------------
+  Rule         Type   Count      Message
+  ----------------------------------------------------------------------------------------------------
+  MV-012       Warn   185        %drvType '%driver' (supply net '%drvSupplyNet' [%drvVoltage]) ca...
+  TCK-001      Warn   30839      The reported endpoint '%endpoint' is unconstrained. Reason: '%re...
+  TCK-002      Warn   3534       The register clock pin '%pin' has no fanin clocks. Mode:'%mode'.
+  TCK-012      Warn   16         The input port '%port' has no clock_relative delay specified. Mo...
+  TCK-013      Warn   2          The clocks '%clocks' at gated clock point '%conn' has no fanout ...
+  ----------------------------------------------------------------------------------------------------
+  Total 34576 EMS messages : 0 errors, 34576 warnings, 0 info.
+  ----------------------------------------------------------------------------------------------------
+
+  *** Non-EMS message summary ***
+  ----------------------------------------------------------------------------------------------------
+  Rule         Type   Count      Message
+  ----------------------------------------------------------------------------------------------------
+  POW-005      Info   4          Activity for scenario %s was cached, no propagation required.
+  ZRT-022      Warn   1          Cannot find a default contact code for layer %s.
+  ZRT-027      Warn   1          Ignore %d top cell ports with no pins.
+  ZRT-511      Warn   1          Cell contains tie connections which are not connected to real PG.
+  ZRT-619      Info   1          Via ladder engine would be activated for pattern must join conne...
+  ZRT-703      Info   1          Option route.detail.force_end_on_preferred_grid will be ignored ...
+  ZRT-706      Info   1          When applicable layer based tapering will taper up to %.2f in di...
+  ZRT-707      Info   1          When applicable Min-max layer allow_pin_connection mode will all...
+  ZRT-718      Info   1          When applicable Min-max layer allow_pin_connection mode will all...
+  ZRT-740      Warn   6          %s is unplaced.  This may impact routing result.
+  ZRT-761      Warn   19         pin is off track in the region (%.4f %.4f) (%.4f %.4f) on layer %s.
+  ZRT-764      Warn   3          PG net %s has opens.
+  ----------------------------------------------------------------------------------------------------
+  Total 40 non-EMS messages : 0 errors, 31 warnings, 9 info.
+  ----------------------------------------------------------------------------------------------------
+
+Warning: EMS database "check_design.ems" already exists, over-writing it. (EMS-040)
+
+Information: EMS database is saved to file 'check_design.ems'.
+Information: Non-EMS messages are saved into file 'check_design2024May18185226.log'.
+1

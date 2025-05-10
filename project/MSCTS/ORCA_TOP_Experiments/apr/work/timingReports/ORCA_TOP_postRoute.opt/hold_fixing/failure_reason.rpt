@@ -1,0 +1,32 @@
+
+
+// Path 1
+Endpoint:      occ_int2/U2_clone_2/A3
+Analysis View: func_best_scenario
+Hold Slack:    -55.4ps
+
+  Failed Reason: no timing path found due to clock net.
+
+
+// Path 2
+Endpoint:      occ_int2/U2_clone/A3
+Analysis View: func_best_scenario
+Hold Slack:    -52.1ps
+
+  Failed Reason: no timing path found due to clock net.
+
+
+// Path 3
+Endpoint:      occ_int2/U2_clone_3/A3
+Analysis View: func_best_scenario
+Hold Slack:    -51.0ps
+
+  Failed Reason: no timing path found due to clock net.
+
+
+// Path 4
+Endpoint:      occ_int2/U2_clone_1/A3
+Analysis View: func_best_scenario
+Hold Slack:    -44.3ps
+
+  Failed Reason: no timing path found due to clock net.

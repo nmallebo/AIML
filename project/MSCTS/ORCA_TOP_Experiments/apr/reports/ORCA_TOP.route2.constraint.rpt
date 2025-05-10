@@ -1,0 +1,269 @@
+****************************************
+Report : constraint
+        -all_violators
+Design : ORCA_TOP
+Version: V-2023.12
+Date   : Sat May 18 18:52:15 2024
+****************************************
+
+   late_timing
+   -----------
+
+Information: Timer using 'SI, Timing Window Analysis, CRPR'. (TIM-050)
+Endpoint                         Path Delay     Path Required       CRP    Slack Group    Scenario
+----------------------------------------------------------------------------------------------------------
+I_PCI_TOP/I_PCI_CORE_d_out_i_bus_reg_5_/D (SDFFARX1_RVT)   7.38 f   7.34   0.00  -0.04 **in2reg_default** func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__26_/D (SDFFARX1_RVT)   7.50 f   7.47   0.07  -0.03 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__26_/D (SDFFARX1_RVT)   7.47 f   7.45   0.05  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__22_/D (SDFFARX1_RVT)   7.47 f   7.44   0.04  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__24_/D (SDFFARX1_RVT)   7.47 f   7.45   0.05  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_0__18_/D (SDFFARX1_HVT)   6.72 f   6.70   0.05  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__28_/D (SDFFARX1_RVT)   7.49 f   7.47   0.04  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__13_/D (SDFFARX1_RVT)   7.37 f   7.36   0.04  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__20_/D (SDFFARX1_RVT)   7.48 f   7.46   0.04  -0.02 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__28_/D (SDFFARX1_RVT)   7.47 f   7.45   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__29_/D (SDFFARX1_RVT)   7.48 f   7.47   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_6__19_/D (SDFFARX1_HVT)   6.76 f   6.75   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__22_/D (SDFFARX1_RVT)   7.46 f   7.45   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__30_/D (SDFFARX1_RVT)   7.43 f   7.42   0.04  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__23_/D (SDFFARX1_RVT)   7.49 f   7.48   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__27_/D (SDFFARX1_RVT)   7.46 f   7.45   0.05  -0.01 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_1__24_/D (SDFFARX1_RVT)   7.46 f   7.45   0.05  -0.00 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__31_/D (SDFFARX1_RVT)   7.45 f   7.44   0.05  -0.00 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__24_/D (SDFFARX1_RVT)   7.45 f   7.45   0.05  -0.00 PCI_CLK func_worst
+I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__22_/D (SDFFARX1_RVT)   7.45 f   7.45   0.05  -0.00 PCI_CLK func_worst
+I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_TOS_int_reg_1_/D (SDFFARX1_HVT)   2.81 f   2.81   0.05  -0.01 SYS_2x_CLK func_worst
+I_SDRAM_TOP/I_SDRAM_IF/R_10/D (SDFFASX1_RVT)   4.54 f   4.50     0.09    -0.04   SDRAM_CLK func_worst
+I_SDRAM_TOP/I_SDRAM_IF/R_18/D (SDFFASX1_RVT)   4.49 f   4.48     0.09    -0.01   SDRAM_CLK func_worst
+I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_39__30_/D (SDFFARX1_HVT)   3.65 f   3.64   0.09  -0.01 SDRAM_CLK func_worst
+I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_30__5_/D (SDFFARX1_HVT)   3.74 f   3.74   0.08  -0.00 SDRAM_CLK func_worst
+
+   early_timing
+   -----------
+
+Warning: Scenario func_worst is not configured for hold analysis: skipping. (UIC-058)
+Error: None of the specified scenarios are active for hold analysis. (UIC-057)
+Information: Timer using 'SI, Timing Window Analysis, CRPR'. (TIM-050)
+Endpoint                         Path Delay     Path Required       CRP    Slack Group    Scenario
+----------------------------------------------------------------------------------------------------------
+No paths.
+
+   Mode: func Corner: Cmax
+   Scenario: func_worst
+   max_transition                                                              
+                             Required        Actual                            
+   Net                      Transition     Transition        Slack  Violation  
+  ---------------------------------------------------------------------------
+   pad_out[18]                  0.35           0.36          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8376/Y     0.35        0.36          -0.00  (VIOLATED) 
+
+   net_sd_wfifo_data[34]        0.39           0.40          -0.00  (VIOLATED) 
+     PIN : U465/Y               0.39           0.40          -0.00  (VIOLATED) 
+
+   pad_out[31]                  0.35           0.36          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8346/Y     0.35        0.36          -0.00  (VIOLATED) 
+
+   pad_out[24]                  0.35           0.36          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8347/Y     0.35        0.36          -0.00  (VIOLATED) 
+
+   I_BLENDER_0/n6839            0.47           0.48          -0.00  (VIOLATED) 
+     PIN : I_BLENDER_0/U4479/SO     0.47       0.48          -0.00  (VIOLATED) 
+
+   pad_out[0]                   0.35           0.35          -0.00  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7066/Y     0.35     0.35         -0.00  (VIOLATED) 
+
+   I_CONTEXT_MEM/ropt_net_1832     0.42        0.42          -0.00  (VIOLATED) 
+     PIN : I_CONTEXT_MEM/ropt_mt_inst_8338/Y     0.42     0.42    -0.00 (VIOLATED)
+
+   pad_out[19]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8371/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+   pad_out[8]                   0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8355/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+   pad_out[1]                   0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8363/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+   pad_out[27]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8381/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+   pad_out[13]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8356/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+   pad_out[28]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8354/Y     0.35        0.35          -0.00  (VIOLATED) 
+
+  ---------------------------------------------------------------------------
+   Number of max_transition violation(s): 13
+
+   Mode: func Corner: Cmax
+   Scenario: func_worst
+   max_capacitance                                                             
+                             Required        Actual                            
+   Net                      Capacitance    Capacitance       Slack  Violation  
+  ---------------------------------------------------------------------------
+   sd_DQ_en[0]                 82.00         163.90         -81.90  (VIOLATED) 
+     PIN : ropt_mt_inst_8410/Y    82.00      163.90         -81.90  (VIOLATED) 
+
+   sd_DQ_en[1]                 82.00         162.27         -80.27  (VIOLATED) 
+     PIN : ropt_mt_inst_8411/Y    82.00      162.27         -80.27  (VIOLATED) 
+
+   pad_out[23]                 82.00         104.10         -22.10  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5348/Y    82.00     104.10         -22.10  (VIOLATED) 
+
+   pad_out[21]                 82.00         103.81         -21.81  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6880/Y    82.00     103.81         -21.81  (VIOLATED) 
+
+   pad_out[31]                 82.00         102.97         -20.97  (VIOLATED) 
+     PIN : ropt_mt_inst_8346/Y    82.00      102.97         -20.97  (VIOLATED) 
+
+   pad_out[12]                 82.00         102.88         -20.88  (VIOLATED) 
+     PIN : ropt_mt_inst_8412/Y    82.00      102.88         -20.88  (VIOLATED) 
+
+   pad_out[6]                  82.00         102.80         -20.80  (VIOLATED) 
+     PIN : ropt_mt_inst_8413/Y    82.00      102.80         -20.80  (VIOLATED) 
+
+   pad_out[0]                  82.00         102.73         -20.73  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7066/Y    82.00   102.73        -20.73  (VIOLATED) 
+
+   pad_out[25]                 82.00         102.70         -20.70  (VIOLATED) 
+     PIN : ropt_mt_inst_8415/Y    82.00      102.70         -20.70  (VIOLATED) 
+
+   pad_out[24]                 82.00         102.29         -20.29  (VIOLATED) 
+     PIN : ropt_mt_inst_8347/Y    82.00      102.29         -20.29  (VIOLATED) 
+
+   pad_out[1]                  82.00         102.22         -20.22  (VIOLATED) 
+     PIN : ropt_mt_inst_8363/Y    82.00      102.22         -20.22  (VIOLATED) 
+
+   pad_out[20]                 82.00         102.15         -20.15  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5006/Y    82.00     102.15         -20.15  (VIOLATED) 
+
+   pad_out[3]                  82.00         102.04         -20.04  (VIOLATED) 
+     PIN : ropt_mt_inst_8348/Y    82.00      102.04         -20.04  (VIOLATED) 
+
+   pad_out[18]                 82.00         102.03         -20.03  (VIOLATED) 
+     PIN : ropt_mt_inst_8376/Y    82.00      102.03         -20.03  (VIOLATED) 
+
+   pad_out[15]                 82.00         102.00         -20.00  (VIOLATED) 
+     PIN : ropt_mt_inst_8365/Y    82.00      102.00         -20.00  (VIOLATED) 
+
+   pad_out[8]                  82.00         101.79         -19.79  (VIOLATED) 
+     PIN : ropt_mt_inst_8355/Y    82.00      101.79         -19.79  (VIOLATED) 
+
+   pad_out[26]                 82.00         101.77         -19.77  (VIOLATED) 
+     PIN : HFSINV_22_f_398/Y    82.00        101.77         -19.77  (VIOLATED) 
+
+   pad_out[13]                 82.00         101.75         -19.75  (VIOLATED) 
+     PIN : ropt_mt_inst_8356/Y    82.00      101.75         -19.75  (VIOLATED) 
+
+   pad_out[7]                  82.00         101.72         -19.72  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5327/Y    82.00     101.72         -19.72  (VIOLATED) 
+
+   pad_out[28]                 82.00         101.65         -19.65  (VIOLATED) 
+     PIN : ropt_mt_inst_8354/Y    82.00      101.65         -19.65  (VIOLATED) 
+
+   pad_out[30]                 82.00         101.62         -19.62  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7936/Y    82.00   101.62        -19.62  (VIOLATED) 
+
+   pad_out[17]                 82.00         101.58         -19.58  (VIOLATED) 
+     PIN : ropt_mt_inst_8350/Y    82.00      101.58         -19.58  (VIOLATED) 
+
+   pad_out[14]                 82.00         101.52         -19.52  (VIOLATED) 
+     PIN : ropt_mt_inst_8378/Y    82.00      101.52         -19.52  (VIOLATED) 
+
+   pad_out[29]                 82.00         101.43         -19.43  (VIOLATED) 
+     PIN : ropt_mt_inst_8373/Y    82.00      101.43         -19.43  (VIOLATED) 
+
+   pad_out[11]                 82.00         101.42         -19.42  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5323/Y    82.00     101.42         -19.42  (VIOLATED) 
+
+   pad_out[27]                 82.00         101.39         -19.39  (VIOLATED) 
+     PIN : ropt_mt_inst_8381/Y    82.00      101.39         -19.39  (VIOLATED) 
+
+   pad_out[22]                 82.00         101.38         -19.38  (VIOLATED) 
+     PIN : ropt_mt_inst_8345/Y    82.00      101.38         -19.38  (VIOLATED) 
+
+   pad_out[5]                  82.00         101.38         -19.38  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6015/Y    82.00     101.38         -19.38  (VIOLATED) 
+
+   pad_out[4]                  82.00         101.32         -19.32  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7929/Y    82.00   101.32        -19.32  (VIOLATED) 
+
+   pad_out[19]                 82.00         101.31         -19.31  (VIOLATED) 
+     PIN : ropt_mt_inst_8371/Y    82.00      101.31         -19.31  (VIOLATED) 
+
+   pad_out[2]                  82.00         101.27         -19.27  (VIOLATED) 
+     PIN : ropt_mt_inst_8368/Y    82.00      101.27         -19.27  (VIOLATED) 
+
+   pad_out[16]                 82.00         101.19         -19.19  (VIOLATED) 
+     PIN : ropt_mt_inst_8349/Y    82.00      101.19         -19.19  (VIOLATED) 
+
+   pad_out[9]                  82.00         101.17         -19.17  (VIOLATED) 
+     PIN : ropt_mt_inst_8492/Y    82.00      101.17         -19.17  (VIOLATED) 
+
+   pad_out[10]                 82.00         101.16         -19.16  (VIOLATED) 
+     PIN : ropt_mt_inst_8379/Y    82.00      101.16         -19.16  (VIOLATED) 
+
+   I_RISC_CORE/ropt_net_1790    16.00         17.15          -1.15  (VIOLATED) 
+     PIN : I_RISC_CORE/ropt_mt_inst_8294/Y    16.00    17.15    -1.15 (VIOLATED)
+
+   I_RISC_CORE/ropt_net_1854    16.00         16.80          -0.80  (VIOLATED) 
+     PIN : I_RISC_CORE/ropt_mt_inst_8375/Y    16.00    16.80    -0.80 (VIOLATED)
+
+   ropt_net_1770               16.00          16.64          -0.64  (VIOLATED) 
+     PIN : I_RISC_CORE/ropt_mt_inst_8272/Y    16.00    16.64    -0.64 (VIOLATED)
+
+   I_RISC_CORE/ropt_net_1936    16.00         16.36          -0.36  (VIOLATED) 
+     PIN : I_RISC_CORE/ropt_mt_inst_8523/Y    16.00    16.36    -0.36 (VIOLATED)
+
+   I_BLENDER_0/n6839            8.00           8.23          -0.23  (VIOLATED) 
+     PIN : I_BLENDER_0/U4479/SO     8.00       8.23          -0.23  (VIOLATED) 
+
+   net_sd_wfifo_data[34]        8.00           8.14          -0.14  (VIOLATED) 
+     PIN : U465/Y               8.00           8.14          -0.14  (VIOLATED) 
+
+   I_PCI_TOP/ropt_net_1816     16.00          16.14          -0.14  (VIOLATED) 
+     PIN : I_PCI_TOP/ropt_mt_inst_8320/Y    16.00    16.14    -0.14 (VIOLATED) 
+
+   I_SDRAM_TOP/I_SDRAM_IF/HFSNET_277     8.00     8.05       -0.05  (VIOLATED) 
+     PIN : I_SDRAM_TOP/I_SDRAM_IF/HFSINV_2759_1906/Y     8.00     8.05    -0.05 (VIOLATED)
+
+   occ_int2/U_clk_control_i_0/ropt_0    16.00    16.03       -0.03  (VIOLATED) 
+     PIN : occ_int2/U_clk_control_i_0/ropt_mt_inst_8288/Y    16.00    16.03    -0.03 (VIOLATED)
+
+   I_SDRAM_TOP/I_SDRAM_IF/ropt_net_1784    16.00    16.03    -0.03  (VIOLATED) 
+     PIN : I_SDRAM_TOP/I_SDRAM_IF/ropt_mt_inst_8283/Y    16.00    16.03    -0.03 (VIOLATED)
+
+   I_BLENDER_1/test_so10_gOb239     8.00       8.02          -0.02  (VIOLATED) 
+     PIN : I_BLENDER_1/mega_shift_reg_10__5_/QN     8.00     8.02    -0.02 (VIOLATED)
+
+   I_CONTEXT_MEM/sram_fixnet_237    16.00     16.01          -0.01  (VIOLATED) 
+     PIN : I_CONTEXT_MEM/sram_fixcell_237/Y    16.00    16.01    -0.01 (VIOLATED)
+
+   I_CONTEXT_MEM/ropt_net_1805    16.00       16.00          -0.00  (VIOLATED) 
+     PIN : I_CONTEXT_MEM/ropt_mt_inst_8309/Y    16.00    16.00    -0.00 (VIOLATED)
+
+   I_RISC_CORE/ZBUF_81_60      32.00          32.00          -0.00  (VIOLATED) 
+     PIN : I_RISC_CORE/ZBUF_81_inst_5285/Y    32.00    32.00    -0.00 (VIOLATED)
+
+  ---------------------------------------------------------------------------
+   Number of max_capacitance violation(s): 48
+
+
+   Mode: func Corner: Cmax
+   Scenario: func_worst
+  ---------------------------------------------------------------------------
+   Number of min_capacitance violation(s): 0
+
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+
+                                   Required        Actual                                       
+   Pin                            pulse width    pulse width       Slack             Clk        
+  ---------------------------------------------------------------------------
+   I_CLOCKING/sys_2x_rst_ff_reg/CLK  (low)     1.04     1.01       -0.03  (VIOLATED) SYS_2x_CLK 
+  ---------------------------------------------------------------------------
+   Number of min_pulse_width violation(s): 1
+   Total number of violation(s): 62
+1

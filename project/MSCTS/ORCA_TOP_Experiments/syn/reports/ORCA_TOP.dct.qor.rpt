@@ -1,0 +1,140 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'ORCA_TOP' contains 5 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : qor
+Design : ORCA_TOP
+Version: V-2023.12-SP2
+Date   : Fri May 17 15:47:34 2024
+****************************************
+
+
+  Timing Path Group 'PCI_CLK'
+  -----------------------------------
+  Levels of Logic:              19.00
+  Critical Path Length:          6.80
+  Critical Path Slack:           0.02
+  Critical Path Clk Period:      7.50
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'SDRAM_CLK'
+  -----------------------------------
+  Levels of Logic:               3.00
+  Critical Path Length:          0.66
+  Critical Path Slack:           0.04
+  Critical Path Clk Period:      4.10
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'SYS_2x_CLK'
+  -----------------------------------
+  Levels of Logic:              20.00
+  Critical Path Length:          2.17
+  Critical Path Slack:           0.00
+  Critical Path Clk Period:      2.40
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'SYS_CLK'
+  -----------------------------------
+  Levels of Logic:               0.00
+  Critical Path Length:          0.67
+  Critical Path Slack:           3.86
+  Critical Path Clk Period:      4.80
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'v_PCI_CLK'
+  -----------------------------------
+  Levels of Logic:               1.00
+  Critical Path Length:          1.14
+  Critical Path Slack:           3.76
+  Critical Path Clk Period:      7.50
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:         -0.66
+  Total Hold Violation:        -17.74
+  No. of Hold Violations:       32.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         32
+  Hierarchical Port Count:       1948
+  Leaf Cell Count:              38245
+  Buf/Inv Cell Count:            6554
+  Buf Cell Count:                2506
+  Inv Cell Count:                4048
+  CT Buf/Inv Cell Count:            3
+  Combinational Cell Count:     33067
+  Sequential Cell Count:         5178
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:    95282.397551
+  Noncombinational Area: 46399.324819
+  Buf/Inv Area:          12693.222192
+  Total Buffer Area:          7232.43
+  Total Inverter Area:        5460.79
+  Macro/Black Box Area: 232258.152132
+  Net Area:                  0.000000
+  Net XLength        :      622684.31
+  Net YLength        :      606291.56
+  -----------------------------------
+  Cell Area:            373939.874502
+  Design Area:          373939.874502
+  Net Length        :      1228975.88
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:         40844
+  Nets With Violations:           290
+  Max Trans Violations:           190
+  Max Cap Violations:             267
+  -----------------------------------
+
+
+  Hostname: mo.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.33
+  Logic Optimization:                 58.56
+  Mapping Optimization:              318.32
+  -----------------------------------------
+  Overall Compile Time:              750.43
+  Overall Compile Wall Clock Time:   433.55
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.66  TNS: 17.74  Number of Violating Paths: 32
+
+  --------------------------------------------------------------------
+
+
+1

@@ -1,0 +1,1906 @@
+Error: Library Compiler executable path is not set. (PT-063)
+setting auto_restore_mw_cel_lib_setup true
+pt_shell> set top_design ORCA_TOP
+ORCA_TOP
+pt_shell> source ../scripts/dmsa.tcl
+Launching 8 Distributed Worker(s)
+   1] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   2] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   3] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   4] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   5] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   6] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   7] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+   8] Launched : ssh mo /pkgs/synopsys/pts_vO-2018.06/pts/O-2018.06/bin/pt_shell \
+                  -slv_type dmsa_slv -max_cores 4
+
+  ---------------------------------------------------------------------------
+  Distributed farm creation timeout   : 21600 seconds
+  Waiting for   8 (of   8) workers    : Thu Apr 10 23:20:23 2025
+  Waiting for   0 (of   8) workers    : Thu Apr 10 23:20:33 2025
+  ---------------------------------------------------------------------------
+
+****************************************
+Report : host_usage
+Version: O-2018.06
+Date   : Thu Apr 10 23:20:34 2025
+****************************************
+
+  Options Name          Host Name    Num Processes           Protocol
+  --------------------------------------------------------------------
+  my_opts1              mo           8                       auto
+
+  Options Name     #    Host Name    Job ID    Process ID    Status
+  --------------------------------------------------------------------
+  my_opts1         1    mo           -         18013         ONLINE
+                   2    mo           -         18012         ONLINE
+                   3    mo           -         18015         ONLINE
+                   4    mo           -         18017         ONLINE
+                   5    mo           -         18018         ONLINE
+                   6    mo           -         18016         ONLINE
+                   7    mo           -         18014         ONLINE
+                   8    mo           -         18019         ONLINE
+
+  Usage limits (cores)
+
+  Options Name     #                                         Effective
+  --------------------------------------------------------------------
+  (local process)  -                                         4
+  my_opts1         1                                         4
+                   2                                         4
+                   3                                         4
+                   4                                         4
+                   5                                         4
+                   6                                         4
+                   7                                         4
+                   8                                         4
+  --------------------------------------------------------------------
+  Total                                                      32
+
+pt_shell> pwd
+/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/pt/work
+pt_shell> man create_clock
+2.  Synopsys Commands                                        Command Reference
+                                 create_clock
+
+NAME
+       create_clock
+              Creates a clock object.
+
+SYNTAX
+       string create_clock
+              -period period_value
+              [-name clock_name]
+              [-waveform edge_list]
+              [-add]
+              [-comment comment_string]
+              [source_objects]
+
+   Data Types
+       period_value        float
+       clock_name          string
+       edge_list           list
+       source_objects      list
+       comment_string      string
+
+ARGUMENTS
+       -period period_value
+              Specifies  the  clock period in library time units.  This is the
+              minimum  time  over  which  the  clock  waveform  repeats.   The
+              period_value type must be greater than or equal to zero.
+
+       -name clock_name
+              Specifies  the name of the clock being created, enclosed in quo-
+              tation marks.  If you do not use this option, the clock gets the
+              same   name   as   the  first  clock  source  specified  in  the
+              source_objects   option.    If   you   did   not   specify   the
+              source_objects option, you must use the -name option, which cre-
+              ates a virtual clock not associated with a port or pin.  You can
+              use  both the -name and source_objects options to give the clock
+              a more descriptive name than the first source pin or  port.   If
+              you  specify  the -add option, you must use the -name option and
+              the clocks with the same source must have different names.
+
+       -waveform edge_list
+              Specifies the rise and fall edge times of the clock waveforms of
+              the  clock,  in library time units, over an entire clock period.
+              The first time in the edge_list is a  rising  transition,  typi-
+              cally  the  first rising transition after time zero.  There must
+              be an even number of edges, and they are assumed to be alternat-
+              ing  rise and fall.  The edges must be monotonically increasing,
+              except for a special case with two edges, where fall can be less
+              than  rise.  The numbers should represent one full clock period.
+              If you do  not  specify  this  option,  a  default  waveform  is
+              assumed,  which  has  a  rise  edge  of  0.0  and a fall edge of
+              period_value/2.
+
+       -add   Specifies whether to add this clock to the existing clock or  to
+              overwrite  it.  Use this option to capture the case where multi-
+              ple clocks must be specified on the same source for simultaneous
+              analysis  with different clock waveforms.  When you specify this
+              option, you must also use the -name option.
+
+              Defining multiple clocks on the same source pin or  port  causes
+              longer  runtime  and  higher  memory  usage than a single clock,
+              because PrimeTime must  explore  all  possible  combinations  of
+              launch  and  capture  clocks.  Use the set_false_path command to
+              disable unwanted clock combinations.
+
+       -comment comment_string
+              Associate a string description with  the  command  for  tracking
+              purposes. This can be useful when writing out SDC to a tag, such
+              as  the methodology or tool that originally synthesized the com-
+              mand.
+
+       source_objects
+              Specifies the objects used as sources of the clock.  The sources
+              can be ports, pins, or nets in the design.  If you  do  not  use
+              this option, you must use the -name option, which creates a vir-
+              tual clock not associated with a port,  pin,  or  net.   If  you
+              specify a clock on a pin that already has a clock, the new clock
+              replaces the old one unless you use the -add option. When a  net
+              is  used  as  the source, the first driver pin of the net is the
+              actual source used in creating the clock.
+
+DESCRIPTION
+       Creates a clock object.  It is created in the  current  design  and  is
+       applied to the specified source_objects value.  If you do not specify a
+       source_objects value, but give a clock_name value, a virtual  clock  is
+       created.  You can create a virtual clock to represent an off-chip clock
+       for input or output delay specification.  For  more  information  about
+       input  and  output  delay, see the set_input_delay and set_output_delay
+       man pages.
+
+       If one of the source_objects values is already the source of  a  clock,
+       the  source is removed from that clock.  This clock is eliminated if it
+       has just one source.
+
+       The create_clock command also defines the waveform for the clock.   The
+       clock can have multiple pulses per period.
+
+       The  create_clock  command is used together with the set_clock_latency,
+       set_clock_uncertainty, set_propagated_clock,  and  set_clock_transition
+       commands  to  specify  properties of clock networks.  By default, a new
+       path group is created for  the  clock.   This  new  path  group  brings
+       together the endpoints related to this clock for cost function calcula-
+       tion.  To remove the clock from its assigned group, use the  group_path
+       command  to  reassign the clock to another group or to the default path
+       group.  For more information, see the group_path man page.
+
+       The new clock has ideal clock latency and transition  time;  no  propa-
+       gated  delay through the clock network is assumed and a transition time
+       of zero is used at the clock source pin.  To enable propagated  latency
+       for  a  clock network, use the set_propagated_clock command.  To set an
+       estimated latency, use the set_clock_latency command.
+
+       To show information about clocks in the design,  use  the  report_clock
+       command.   To  create  a  collection  of  clocks matching a pattern and
+       optionally matching filter criteria, use the get_clocks command.
+
+       To undo create_clock, use the remove_clock command.
+
+EXAMPLES
+       The following example creates a clock on  a  port  named  PHI1  with  a
+       period of 10.0, a rise at 5.0, and a fall at 9.5.
+
+         pt_shell> create_clock PHI1 -period 10 -waveform { 5.0 9.5 }
+
+       The following example shows a clock named PHI2 with a falling edge at 5
+       and a rising edge at 10 with a period of 10.  Because the edges for the
+       -waveform option should be ordered as first rise, then fall, and should
+       increase in value, the fall edge can be given as 15.  This  places  the
+       next falling edge after the first rise edge at 10.
+
+         pt_shell> create_clock PHI2 -period 10 -waveform { 10 15 }
+
+       The  following  example  creates  a virtual clock PHI2 with a period of
+       10.0, a rise at 0.0, and a fall at 5.0.
+
+         pt_shell> create_clock -name PHI2 -period 10 -waveform {0.0 5.0}
+
+       The following example creates a clock named clk2 with multiple sources.
+
+         pt_shell> create_clock -name clk2 -period 10 \
+         -waveform {2.0 4.0} {clkgen1/Z clkgen2/Z clkgen3/Z}
+
+       The  following  example  creates  a clock named CLK on pin u13/Z with a
+       period of 25, a fall at 0.0, a rise at 5.0, a fall at 10.0, a  rise  at
+       15.0, and so on.
+
+         pt_shell> create_clock u13/Z -name CLK -period 25 -waveform { 5 10 15 25}
+
+SEE ALSO
+       all_clocks(2)
+       get_clocks(2)
+       group_path(2)
+       remove_clock(2)
+       report_clock(2)
+       set_clock_latency(2)
+       set_clock_uncertainty(2)
+       set_input_delay(2)
+       set_output_delay(2)
+       set_propagated_clock(2)
+       set_clock_transition(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> man set_input_delay
+2.  Synopsys Commands                                        Command Reference
+                                set_input_delay
+
+NAME
+       set_input_delay
+              Defines the arrival time relative to a clock.
+
+SYNTAX
+       string set_input_delay
+              [-clock clock_name]
+              [-reference_pin pin_port_name]
+              [-clock_fall]
+              [-level_sensitive]
+              [-rise]
+              [-fall]
+              [-max]
+              [-min]
+              [-add_delay]
+              [-network_latency_included]
+              [-source_latency_included]
+              delay_value
+              port_pin_list
+
+   Data Types
+       clock_name               list
+       pin_port_name            list
+       delay_value              float
+       port_pin_list            list
+
+ARGUMENTS
+       -clock clock_name
+              Specifies  the clock to which the specified delay is related. If
+              you use the -clock_fall option,  you  must  specify  the  -clock
+              clock_name  option. If you do not specify the -clock option, the
+              delay is relative to time zero for combinational designs.  With-
+              out  using  -clock, the input delay is not relative to any clock
+              and will not create constrained paths from the  port  with  rep-
+              spect     to     any    clock.    See    the    variable    tim-
+              ing_input_port_default_clock to change this behavior.
+
+       -reference_pin pin_port_name
+              Specifies the clock pin or port to which the specified delay  is
+              related.   If you use this option and the propagated clocking is
+              being used, the delay value is related to the  arrival  time  at
+              the  specified reference pin, which is clock source latency plus
+              its network latency from the clock source to this reference pin.
+              The   -network_latency_included   and   -source_latency_included
+              options cannot be used at the same time  as  the  -reference_pin
+              option. For ideal clock network, only source latency is applied.
+
+              The pin specified with the -reference_pin  option  should  be  a
+              leaf pin or port in a clock network, in the direct or transitive
+              fanout of a clock source specified with the  -clock  option.  If
+              multiple  clocks reach the port or pin where you are setting the
+              input delay and if the -clock option is not  used,  the  command
+              considers all of the clocks.
+
+       -clock_fall
+              Specifies  that the delay is relative to the falling edge of the
+              clock. When it is used with -reference_pin option, the delay  is
+              relative  to  the  falling transition of the reference pin.  The
+              default is the rising edge or rising transition of  a  reference
+              pin.
+
+       -level_sensitive
+              Specifies  that  the  source  of  the delay is a level-sensitive
+              latch. This allows the tool to derive setup and  hold  relation-
+              ship  for  paths  from this port as if it were a level-sensitive
+              latch. If you do not use the -level_sensitive option, the  input
+              delay is treated as if it were a path from a flip-flop.
+
+       -rise  Specifies  that  delay_value  refers  to  a rising transition on
+              specified ports of the current design. If you do not specify the
+              -rise  or -fall option, rising and falling delays are assumed to
+              be equal.
+
+       -fall  Specifies that delay_value refers to  a  falling  transition  on
+              specified ports of the current design. If you do not specify the
+              -rise or -fall option, rising and falling delays are assumed  to
+              be equal.
+
+       -max   Specifies that delay_value refers to the longest path. If you do
+              not specify  the -max or -min option, maximum and minimum  input
+              delays are assumed to be equal.
+
+       -min   Specifies  that  delay_value refers to the shortest path. If you
+              do not specify the -max or  -min  option,  maximum  and  minimum
+              input delays are assumed to be equal.
+
+       -add_delay
+              Specifies whether to add delay information to the existing input
+              delay or to overwrite. Use  the  -add_delay  option  to  capture
+              information  about  multiple paths leading to an input port that
+              are relative to different clocks or clock edges.
+
+              For example, set_input_delay 5.0  -max  -rise  -clock  phi1  {A}
+              removes all other maximum rise input delay from "A", because the
+              -add_delay option is not  specified.  Other  input  delays  with
+              different clocks or with clock_fall are removed.
+
+              In  another  example,  the  -add_delay  option  is  specified as
+              set_input_delay 5.0 -max -rise -clock phi1 -add_delay  {A}.   If
+              there  is  an input maximum rise delay for "A" relative to clock
+              "phi1" rising edge, the larger value is used. The smaller  value
+              does  not result in critical timing for maximum delay. For mini-
+              mum delay, the smaller value is used. If there is  maximum  rise
+              input  delay  relative to a different clock or different edge of
+              the same clock, it remains with the new delay.
+
+       -network_latency_included
+              Specifies whether the clock network latency should not be  added
+              to  the input delay value. If this option is not specified , the
+              clock network latency of the related clock will be added to  the
+              input  delay  value. It has no effect if the clock is propagated
+              or the input delay is not specified with respect to any clock.
+
+       -source_latency_included
+              Specifies whether the clock source latency should not  be  added
+              to  the input delay value. If this option is not specified , the
+              clock source latency of the related clock will be added  to  the
+              input  delay  value.  It has no effect if the input delay is not
+              specified with respect to any clock.
+
+       delay_value
+              Specifies the path delay. The  delay_value  option  must  be  in
+              units  consistent with the technology library used during analy-
+              sis. The delay_value option represents the amount of  time  that
+              the  signal is available after a clock edge. This usually repre-
+              sents a combinational path delay from the clock pin of a  regis-
+              ter.
+
+       port_pin_list
+              Provides  a list of input port or internal pin names in the cur-
+              rent design to which delay_value is  assigned.  If  you  specify
+              more than one object, the objects are enclosed in braces ({}).
+
+DESCRIPTION
+       Sets  input  path  delay  values  for the current design. Used with the
+       set_load and set_driving_cell commands, the  input  and  output  delays
+       characterize the operating environment of the current design.
+
+       The set_input_delay command sets input path delays on input ports rela-
+       tive to a clock edge. Unless specified, input ports are assumed to have
+       zero  input delay. For inout (bidirectional) ports, you can specify the
+       path delays for both input and output modes.
+
+       To describe  a  path  delay  from  a  level-sensitive  latch,  use  the
+       -level_sensitive  option.  If  the  latch  is positive-enabled, set the
+       input delay relative to the rising clock edge. If the latch is negative
+       enabled,  set  the  input  delay relative to the falling clock edge. If
+       time is borrowed at that latch, add that  time  borrowed  to  the  path
+       delay from the latch when determining input delay.
+
+       The  characterize_context  command  automatically sets input and output
+       delay, drive, and load values  based  on  the  environment  of  a  cell
+       instance.
+
+       If  for  a specific clock the maximum delay is less than minimum delay,
+       PrimeTime makes the maximum delay equal to that of the minimum delay.
+
+       PrimeTime adds input delay to path delay for paths starting at  primary
+       inputs, and to output delay for paths ending at primary outputs.
+
+       PrimeTime  allows an input port to behave simultaneously as a clock and
+       data port. You can use the timing_simultaneous_clock_data_port_compati-
+       bility  variable  to enable or disable the simultaneous behavior of the
+       input port as a clock and data port. When this variable is set  to  its
+       default  of false, simultaneous behavior is enabled and you can use the
+       set_input_delay command to define the  timing  requirements  for  input
+       ports relative to a clock. In this situation, the following applies:
+
+      o If you specify the set_input_delay command relative to a clock defined
+       at the same port and the port has data sinks, the  command  is  ignored
+       and  an  error  message  is  issued. There is only one signal coming to
+       port, and it cannot be at the same time data relative to  a  clock  and
+       the clock signal itself.
+
+      o If you specify the set_input_delay command relative to a clock defined
+       at a different port and the port has data sinks, the input delay is set
+       and controls data edges launched from the port relative to the clock.
+
+      o  Regardless  of  the location of the data port, if the clock port does
+       not fanout to data sinks, the input delay on the clock port is  ignored
+       and you receive an error message.
+
+       When   you  set  the  timing_simultaneous_clock_data_port_compatibility
+       variable to  true,  the  simultaneous  behavior  is  disabled  and  the
+       set_input_delays  command defines the arrival time relative to a clock.
+       In this situation, when an input port has a clock defined on it, Prime-
+       Time  considers  the  port  exclusively  as  a  clock  port and imposes
+       restriction on the data edges that are launched.  PrimeTime  also  pre-
+       vents setting input delays relative to another clock.
+
+       To  control the clock source latency for any clocks defined on an input
+       port, you must use the set_clock_latency command.
+
+       If a reference pin is not reachable by any given  clock,  zero  arrival
+       time is assumed. If no clock is specified with a reference pin and this
+       reference pin is not reachable by any clock, an unconstrained  path  is
+       reported.  This  behavior  is  changed after version X-2005.06. The new
+       behavior is these invalid constraints are ignored and the path is  con-
+       strained by whatever it should be as if no such constraints are defined
+       at all. The check_timing command generates a warning if  the  reference
+       pin  is  not reachable by any active clock, or if multiple clocks reach
+       the reference pin and no clock is specified in the command.
+
+       To get a report on the latency calculation using a reference  pin,  use
+       one of the following commands:
+       report_timing -path_type full_clock
+       report_timing -path_type full_clock_expanded
+
+       To  list  input  delays associated with ports, use the report_port com-
+       mand. To list input delays of internal pins, use the report_design com-
+       mand.  To  remove  input  delay  values,  use the remove_input_delay or
+       reset_design command.
+
+EXAMPLES
+       The following example sets an input delay of 2.3 for  ports  "IN1"  and
+       "IN2"  on  a combinational design. Because the design is combinational,
+       no clock is needed.
+
+         pt_shell> set_input_delay 2.3 { IN1 IN2 }
+
+       The following example sets input delay of 1.2 relative  to  the  rising
+       edge of "CLK1" for all input ports in the design.
+
+         pt_shell> set_input_delay 1.2 -clock CLK1 [all_inputs]
+
+       The following example sets the input and output delays for the bidirec-
+       tional port "INOUT1". The input signal arrives at  "INOUT1"  2.5  units
+       after  the  falling  edge  of  "CLK1". The output signal is required at
+       "INOUT1" at 1.4 units before the rising edge of "CLK2".
+
+         pt_shell> set_input_delay 2.5 -clock CLK1 -clock_fall { INOUT1 }
+
+         pt_shell> set_output_delay 1.4 -clock CLK2 { INOUT1 }
+
+       The following example models the situation where there are three  paths
+       to  input  port "IN1". The first path is relative to the rising edge of
+       "CLK1". The second path is relative to the falling edge of "CLK1".  The
+       third  path  is  relative to the falling edge of "CLK2". The -add_delay
+       option is used to indicate that new input delay  information  does  not
+       cause old information to be removed.
+
+         pt_shell> set_input_delay 2.2 -max clock CLK1 -add_delay { IN1 }
+
+         pt_shell> set_input_delay 1.7 -max clock CLK1 -clock_fall -add_delay { IN1 }
+
+         pt_shell> set_input_delay 4.3 -max clock CLK2 -clock_fall -add_delay { IN1 }
+
+       In  the following example, two different maximum delays and two minimum
+       delays for port "A" are specified using the  -add_delay  option.  Since
+       the  information is relative to the same clock and clock edge, only the
+       largest of the maximum values and the smallest of  the  minimum  values
+       are maintained (in this case, 5.0 and 1.1). If the -add_delay option is
+       not used, the new information overwrites the old information.
+
+         pt_shell> set_input_delay 3.4 -max -clock CLK1 -add_delay { A }
+
+         pt_shell> set_input_delay 5.0 -max -clock CLK1 -add_delay { A }
+
+         pt_shell> set_input_delay 1.1 -min -clock CLK1 -add_delay { A }
+
+         pt_shell> set_input_delay 1.3 -min -clock CLK1 -add_delay { A }
+
+SEE ALSO
+       all_inputs(2)
+       characterize_context(2)
+       create_clock(2)
+       current_design(2)
+       remove_input_delay(2)
+       report_design(2)
+       report_port(2)
+       report_timing(2)
+       check_timing(2)
+       reset_design(2)
+       set_driving_cell(2)
+       set_load(2)
+       set_output_delay(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> man set_drive
+2.  Synopsys Commands                                        Command Reference
+                                   set_drive
+
+NAME
+       set_drive
+              Sets  the  resistance to a specified value on specified input or
+              inout ports in the current design.
+
+SYNTAX
+       status set_drive
+              [-rise]
+              [-fall]
+              [-min]
+              [-max]
+              resistance_value
+              port_list
+
+   Data Types
+       resistance_value    float
+       port_list           list
+
+ARGUMENTS
+       -rise  Specifies that the resistance_value argument is  used  to  drive
+              the ports only for the rising case.
+
+       -fall  Specifies  that  the  resistance_value argument is used to drive
+              the ports only for the falling case.
+
+       -min   Applies only to designs in min-max mode (min and  max  operating
+              conditions). Indicates that the resistance_value argument is the
+              minimum resistance.
+
+       -max   Applies only to designs in min-max mode (min and  max  operating
+              conditions). Indicates that the resistance_value argument is the
+              maximum resistance.
+
+       resistance_value
+              Specifies a nonnegative port  drive  resistance  value  for  the
+              ports  in  the  port_list. The value must be >= 0; units must be
+              the same as those in the logic library.
+
+       port_list
+              Specifies a list of input or inout ports in the current  design,
+              in which the resistance_value argument is set.
+
+DESCRIPTION
+       This  command  sets  the  resistance  to a specified value on specified
+       input or inout ports in  the  current  design.   PrimeTime  models  the
+       driver  as a resistance and uses that value to calculate the wire delay
+       of the port. To view the drive that is set, use the report_port  -drive
+       attribute.
+
+       Depending  on  the  options  used,  the  set_drive  command  sets these
+       attributes on the specified ports:
+
+         drive_resistance_fall_max
+         drive_resistance_fall_min
+         drive_resistance_rise_max
+         drive_resistance_rise_min
+
+       If  the  set_drive  command  is  issued  without   any   options,   the
+       drive_resistance_fall_max  and drive_resistance_rise_max attributes are
+       set; in min-max mode, the other two attributes are also set.
+
+       If the set_drive command is issued with only the -rise option, only the
+       drive_resistance_rise_max  attribute  is  set;  in  min-max  mode,  the
+       drive_resistance_rise_min attribute is also set.
+
+       If the set_drive command is issued with only the -fall option, only the
+       drive_resistance_fall_max  attribute  is  set;  in  min-max  mode,  the
+       drive_resistance_fall_min attribute is also set.
+
+       Drive resistance is the output resistance of the cell that  drives  the
+       port, so that a higher drive resistance means less drive capability and
+       longer delays. Thus, a drive resistance_value of 0 is  infinite  drive,
+       or  no delay between the ports and all ports connected to them. Setting
+       resistance_value to 0 is the same as removing the drive resistance with
+       the remove_drive_resistance command.
+
+       There  are  two  other  methods  of  describing  port drive capability.
+       set_driving_cell command or the set_input_transition command.  The most
+       recent drive command has precedence.
+
+EXAMPLES
+       The following example sets the drive resistance to 5 on all input ports
+       in the current design, and displays the ports on which the drive resis-
+       tance has been set.
+
+         pt_shell> set_drive 5 [all_inputs]
+         1
+         pt_shell> report_port -drive
+         ****************************************
+         Report : port
+                 -drive
+         Design : counter
+         ****************************************
+
+                         Resistance          Transition
+         Input Port    Rise      Fall      Rise      Fall
+         ------------------------------------------------------------
+         A             5.00      5.00      --        --
+         B             5.00      5.00      --        --
+         C             5.00      5.00      --        --
+         CL            5.00      5.00      --        --
+         CLK           5.00      5.00      --        --
+         D             5.00      5.00      --        --
+         JOKE          5.00      5.00      --        --
+         L             5.00      5.00      --        --
+         P             5.00      5.00      --        --
+         RESET         5.00      5.00      --        --
+         T             5.00      5.00      --        --
+
+SEE ALSO
+       remove_drive_resistance(2)
+       report_port(2)
+       set_load(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> man timing_crpr_threshold_ps
+3.  Attributes and Variables                                 Command Reference
+                           timing_crpr_threshold_ps
+
+NAME
+       timing_crpr_threshold_ps
+              Specifies amount of pessimism that clock reconvergence pessimism
+              removal (CRPR) is allowed to leave in the report.
+
+TYPE
+       float
+
+DEFAULT
+       5
+
+DESCRIPTION
+       This variable specifies the amount of pessimism  that  clock  reconver-
+       gence  pessimism removal (CRPR) is allowed to leave in the report.  The
+       unit is in picoseconds (ps),  regardless  of  the  units  of  the  main
+       library.  The minimum allowed value is 1 picosecond.
+
+       The  threshold  is per reported slack; setting this variable to the TH1
+       value means that reported slack is no worse than S - TH1,  where  S  is
+       the  reported slack when timing_crpr_threshold_ps is set close to zero.
+
+       The  variable  has  no   effect   if   CRPR   is   not   active   (tim-
+       ing_remove_clock_reconvergence_pessimism  is  false).   The  larger the
+       value of timing_crpr_threshold_ps, the faster the runtime when CRPR  is
+       active.   The  recommended setting is about one half of the stage (gate
+       plus net) delay of a typical stage in the clock network.
+
+       In most cases, the  default  setting  provides  a  reasonable  tradeoff
+       between accuracy and runtime. You can use different settings throughout
+       the design cycle: larger during the design phase, smaller for  signoff.
+       You might need to experiment and set a different value when moving to a
+       different technology.
+
+SEE ALSO
+       timing_remove_clock_reconvergence_pessimism(3)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> man set_false_path
+2.  Synopsys Commands                                        Command Reference
+                                set_false_path
+
+NAME
+       set_false_path
+              Identifies  paths in a design that are to be marked as false, so
+              that they are not considered during timing analysis.
+
+SYNTAX
+       status set_false_path
+              [-setup]
+              [-hold]
+              [-rise]
+              [-fall]
+              [-reset_path]
+              [-from from_list
+                 | -rise_from rise_from_list
+                 | -fall_from fall_from_list]
+              [-through through_list]
+              [-rise_through rise_through_list]
+              [-fall_through fall_through_list]
+              [-to to_list
+                 | -rise_to rise_to_list
+                 | -fall_to fall_to_list]
+              [-comment comment_string]
+
+   Data Types
+       from_list                 list
+       rise_from_list            list
+       fall_from_list            list
+       through_list              list
+       rise_through_list         list
+       fall_through_list         list
+       to_list                   list
+       rise_to_list              list
+       fall_to_list              list
+       comment_string            string
+
+ARGUMENTS
+       -setup Indicates that setup (maximum) paths are to be marked as  false.
+              This  option disables setup checking for specified paths. If you
+              do not specify either the -setup or -hold option, both setup and
+              hold timing are marked false.
+
+       -hold  Indicates  that  hold (minimum) paths are to be marked as false.
+              This option disables hold checking for specified paths.  If  you
+              do not specify either the -setup or -hold option, both setup and
+              hold timing are marked false.
+
+       -rise  Indicates that rising delays are to be marked as false, as  mea-
+              sured  on  the  path  endpoint. If you do not specify either the
+              -rise or -fall option, both rise  and  fall  timing  are  marked
+              false.
+
+       -fall  Indicates that falling delays are to be marked as false, as mea-
+              sured on the path endpoint. If you do  not  specify  either  the
+              -rise  or  -fall  option,  both  rise and fall timing are marked
+              false.
+
+       -reset_path
+              Indicates that existing point-to-point exception information  is
+              to  be  removed  from the specified paths. If used with only the
+              -to option, all paths leading to  the  specified  endpoints  are
+              reset.  If  used  with  only the -from option, all paths leading
+              from the specified startpoints are reset. If used with the -from
+              and -to options, only paths between those points are reset. Only
+              information of the same rise/fall setup/hold type is reset. This
+              is equivalent to using the reset_path command with similar argu-
+              ments before the set_false_path command is issued.
+
+       -from from_list
+              Specifies a list of timing path startpoint objects. A valid tim-
+              ing  startpoint  is  a  clock,  a primary input or inout port, a
+              sequential cell, a clock pin of a sequential cell, a data pin of
+              a  level-sensitive  latch,  or a pin that has input delay speci-
+              fied. If a clock is specified, all registers and primary  inputs
+              related to that clock are used as path startpoints. If you spec-
+              ify a cell, one path startpoint on that cell is  affected.   You
+              can  use  only  one  of  the  -from,  -rise_from,  or -fall_from
+              options.
+
+       -rise_from rise_from_list
+              Same as the -from option, except that the path  must  rise  from
+              the  objects  specified.  If  a  clock object is specified, this
+              option selects startpoints clocked by the named clock, but  only
+              the  paths  launched  by  rising  edge of the clock at the clock
+              source, taking into account any  logical  inversions  along  the
+              clock  path.   You can use only one of the -from, -rise_from, or
+              -fall_from options.
+
+       -fall_from fall_from_list
+              Same as the -from option, except that the path  must  fall  from
+              the  objects  specified.  If  a  clock object is specified, this
+              option selects startpoints clocked by the named clock, but  only
+              the  paths  launched  by  falling edge of the clock at the clock
+              source, taking into account any  logical  inversions  along  the
+              clock  path.   You can use only one of the -from, -rise_from, or
+              -fall_from options.
+
+       -through through_list
+              Specifies a list of pins, ports, cells or nets through which the
+              disabled  paths  must  pass. By default, a net is interpreted to
+              imply  its  driver  pins.  In  case  the  previous  through_list
+              includes  the  driver,  the net is interpreted to imply its load
+              pins. If you do not specify any type of through option, all tim-
+              ing  paths  specified  using  the  -from  and  -to  options  are
+              affected.
+
+              You can use multiple -through, -rise_through, and  -fall_through
+              options  in  a  single  command  to  specify paths that traverse
+              through multiple points in the design.  The  tool  respects  the
+              order in which you specify these options.
+
+              The  following  example specifies paths beginning at A1, passing
+              through B1, then through C1, and ending at D1.
+
+                -from A1 -through B1 -through C1 -to D1
+
+              If  you  specify  more  than  one  object  with  one   -through,
+              -rise_through,  or  -fall_through  option,  the  path  can  pass
+              through any of the  objects.  The  following  example  specifies
+              paths  beginning  at  A1,  passing through either B1 or B2, then
+              passing through either C1 or C2, and ending at D1.
+
+                -from A1 -through {B1 B2} -through {C1 C2} -to D1
+
+       -rise_through rise_through_list
+              The same as the -through option, but the paths must have a  ris-
+              ing transition at the through points.
+
+       -fall_through fall_through_list
+              The  same  as  the  -through  option,  but the paths must have a
+              falling transition at the through points.
+
+       -to to_list
+              Specifies a list of timing path endpoint objects. A valid timing
+              endpoint  is  a clock, a primary output or inout port, a sequen-
+              tial cell, a data pin of a sequential cell, or a  pin  that  has
+              output  delay  specified. If a clock is specified, all registers
+              and primary outputs related to that clock are used as path  end-
+              points.   If  you specify a cell, one path endpoint on that cell
+              is affected.
+
+              You can use only one of the -to, -rise_to, or -fall_to  options.
+
+       -rise_to rise_to_list
+              Same  as the -to option, but applies only to paths rising at the
+              endpoint. If a clock object is specified,  this  option  selects
+              endpoints  clocked  by  the named clock, but only the paths cap-
+              tured by rising edge of the clock at clock source,  taking  into
+              account  any  logical  inversions along the clock path.  You can
+              use only one of the -to, -rise_to, or -fall_to options.
+
+       -fall_to fall_to_list
+              Same as the -to option,but applies only to paths falling at  the
+              endpoint.  If  a  clock object is specified, this option selects
+              endpoints clocked  by  the  named  clock,  but  only  the  paths
+              launched  by falling edge of the clock at the clock source, tak-
+              ing into account any logical inversions along  the  clock  path.
+              You  can use only one of the -to, -rise_to, or -fall_to options.
+
+       -comment comment_string
+              Associate a string description with  the  command  for  tracking
+              purposes. This can be useful when writing out SDC to a tag, such
+              as  the methodology or tool that originally synthesized the com-
+              mand.
+
+DESCRIPTION
+       The  set_false_path  command  marks  startpoint/endpoint pairs as false
+       timing paths; that is, paths that cannot propagate a signal.  The  com-
+       mand  removes timing constraints on these false paths, so that they are
+       not considered during timing  analysis.   Path  startpoints  are  input
+       ports  or register clock pins; path endpoints are register data pins or
+       output ports. The command disables maximum delay (setup)  checking  and
+       minimum delay (hold) checking for the specified paths.
+
+       The  set_false_path  command  is a point-to-point timing exception com-
+       mand, and overrides the default single-cycle  timing  relationship  for
+       one  or  more  timing paths. False path information always takes prece-
+       dence over multicycle path information. Also, the  set_false_path  com-
+       mand overrides the set_max_delay and set_min_delay commands.
+
+       In  general,  for timing exceptions with different path specifications,
+       the more specific command has priority over the more general one. False
+       paths  represent  an exception to this rule. If a timing path is satis-
+       fied by two or more false path specifications,  the  more  general  one
+       wins. This can be seen with the report_exceptions -ignored command.
+
+       To  disable  the  timing  at  a  particular  cell along a path, use the
+       set_disable_timing command.
+
+       To remove the false path designations set by  the  set_false_path  com-
+       mand, use the reset_path command.
+
+       For  crosstalk  analysis  the  false paths are treated as sensitizable.
+       Therefore, the aggressors on the false paths  could  still  effect  its
+       victims.  However,  the  presence of false path could change the borrow
+       behavior in level-sensitive latch designs, potentially  borrow  latches
+       may  no  longer borrow leading to change in delta delays for logic nets
+       that are in the fanout of affected latches. When the clocks  are  asyn-
+       chronous  to  each  other,  the  set_clock_groups -asynchronous command
+       should be used instead of the set_false_path command between the  asyn-
+       chronous  clocks.   Without the set_clock_groups -asynchronous command,
+       the clocks are treated to be synchronous to each other.
+
+EXAMPLES
+       The following example disables timing paths from ff12 to ff34.
+
+         pt_shell> set_false_path -from ff12 -to ff34
+
+       The following example  disables  rising  timing  paths  from  U14/Z  to
+       ff29/Reset.
+
+         pt_shell> set_false_path -rise_from U14/Z -to ff29/Reset
+
+       The  following examples disables hold checking for endpoints clocked by
+       CLK1.
+
+         pt_shell> set_false_path -hold -to [get_clocks CLK1]
+
+       The following example disables all timing paths from  ff1/CP  to  ff2/D
+       that  pass  through one or more of {U1/Z U2/Z} and one or more of {U3/Z
+       U4/C}.
+
+         pt_shell> set_false_path -from ff1/CP -through {U1/Z U2/Z}
+            -through {U3/Z U4/C} -to ff2/D
+
+       The following example disables all timing paths from  ff1/CP  to  ff2/D
+       that rise through one or more of {U1/Z U2/Z} and fall to one or more of
+       {U3/Z U4/C}.
+
+         pt_shell> set_false_path -from ff1/CP
+            -rise_through {U1/Z U2/Z}
+            -fall_through {U3/Z U4/C} -to ff2/D
+
+SEE ALSO
+       current_design(2)
+       report_exceptions(2)
+       reset_design(2)
+       reset_path(2)
+       set_clock_groups(2)
+       set_disable_timing(2)
+       set_max_delay(2)
+       set_min_delay(2)
+       set_multicycle_path(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> report_timing -path_type full_clock_expanded -group reg2reg
+****************************************
+Report : timing
+        -path_type full_clock_expanded
+        -delay_type max
+        -max_paths 1
+        -group reg2reg
+        -sort_by slack
+Design : multi-scenario design
+Version: O-2018.06
+Date   : Sat Apr 12 23:25:31 2025
+****************************************
+
+
+Start of Master/Slave Task Processing
+-------------------------------------
+Started    : Command execution in scenario 'func_min'
+Started    : Command execution in scenario 'func_max'
+Started    : Command execution in scenario 'func_slowfast'
+Started    : Command execution in scenario 'func_fastslow'
+Started    : Command execution in scenario 'test_worst'
+Started    : Command execution in scenario 'test_best'
+Started    : Command execution in scenario 'test_slowfast'
+Started    : Command execution in scenario 'test_fastslow'
+Succeeded  : Command execution in scenario 'test_worst'
+Succeeded  : Command execution in scenario 'func_min'
+Succeeded  : Command execution in scenario 'test_slowfast'
+Succeeded  : Command execution in scenario 'func_slowfast'
+Succeeded  : Command execution in scenario 'func_max'
+Succeeded  : Command execution in scenario 'test_best'
+Succeeded  : Command execution in scenario 'func_fastslow'
+Succeeded  : Command execution in scenario 'test_fastslow'
+-----------------------------------
+End of Master/Slave Task Processing
+
+
+1
+pt_shell> report_timing -path_type full_clock_expanded -group REG2REG
+****************************************
+Report : timing
+        -path_type full_clock_expanded
+        -delay_type max
+        -max_paths 1
+        -group REG2REG
+        -sort_by slack
+Design : multi-scenario design
+Version: O-2018.06
+Date   : Sat Apr 12 23:25:57 2025
+****************************************
+
+
+Start of Master/Slave Task Processing
+-------------------------------------
+Started    : Command execution in scenario 'func_min'
+Started    : Command execution in scenario 'func_max'
+Started    : Command execution in scenario 'test_worst'
+Started    : Command execution in scenario 'test_slowfast'
+Started    : Command execution in scenario 'func_slowfast'
+Started    : Command execution in scenario 'test_best'
+Started    : Command execution in scenario 'func_fastslow'
+Started    : Command execution in scenario 'test_fastslow'
+Succeeded  : Command execution in scenario 'test_worst'
+Succeeded  : Command execution in scenario 'test_best'
+Succeeded  : Command execution in scenario 'test_fastslow'
+Succeeded  : Command execution in scenario 'func_min'
+Succeeded  : Command execution in scenario 'func_slowfast'
+Succeeded  : Command execution in scenario 'func_fastslow'
+Succeeded  : Command execution in scenario 'func_max'
+Succeeded  : Command execution in scenario 'test_slowfast'
+-----------------------------------
+End of Master/Slave Task Processing
+
+
+1
+pt_shell> get_path_groups
+Error: Command 'get_path_groups' is disabled. (CMD-080)
+pt_shell> report_timing
+****************************************
+Report : timing
+        -path_type full
+        -delay_type max
+        -max_paths 1
+        -sort_by slack
+Design : multi-scenario design
+Version: O-2018.06
+Date   : Sat Apr 12 23:26:21 2025
+****************************************
+
+
+Start of Master/Slave Task Processing
+-------------------------------------
+Started    : Command execution in scenario 'func_min'
+Started    : Command execution in scenario 'test_slowfast'
+Started    : Command execution in scenario 'func_slowfast'
+Started    : Command execution in scenario 'func_max'
+Started    : Command execution in scenario 'test_fastslow'
+Started    : Command execution in scenario 'test_best'
+Started    : Command execution in scenario 'test_worst'
+Started    : Command execution in scenario 'func_fastslow'
+Succeeded  : Command execution in scenario 'func_min'
+Succeeded  : Command execution in scenario 'test_best'
+Succeeded  : Command execution in scenario 'test_fastslow'
+Succeeded  : Command execution in scenario 'func_fastslow'
+Succeeded  : Command execution in scenario 'test_slowfast'
+Succeeded  : Command execution in scenario 'func_slowfast'
+Succeeded  : Command execution in scenario 'test_worst'
+Succeeded  : Command execution in scenario 'func_max'
+-----------------------------------
+End of Master/Slave Task Processing
+
+
+  Startpoint: I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_27_
+               (rising edge-triggered flip-flop clocked by SYS_2x_CLK)
+  Endpoint: I_RISC_CORE/I_ALU_Lachd_Result_reg_1_
+               (rising edge-triggered flip-flop clocked by SYS_2x_CLK)
+  Last common pin: I_RISC_CORE/ZCTSBUF_3599_5616/Y
+  Path Group: SYS_2x_CLK
+  Path Type: max
+  Scenario: func_max
+  Min Clock Paths Derating Factor : 0.95
+
+  Point                                                   Incr       Path
+  ------------------------------------------------------------------------------
+  clock SYS_2x_CLK (rise edge)                            0.00       0.00
+  clock network delay (propagated)                        1.03       1.03
+  I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_27_/CLK (SDFFARX1_HVT)
+                                                          0.00       1.03 r
+  I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_27_/Q (SDFFARX1_HVT)
+                                                          1.29 &     2.33 f
+  I_RISC_CORE/HFSBUF_407_984/Y (NBUFFX8_HVT)              0.44 &     2.77 f
+  I_RISC_CORE/U225/Y (OR3X2_HVT)                          1.00 &     3.77 f
+  I_RISC_CORE/U294/Y (OR2X4_HVT)                          0.90 &     4.67 f
+  I_RISC_CORE/U1039/Y (NOR2X0_HVT)                        0.73 &     5.39 r
+  I_RISC_CORE/U1046/Y (NOR2X0_HVT)                        0.49 &     5.88 f
+  I_RISC_CORE/U1047/Y (MUX21X1_HVT)                       0.72 &     6.60 f
+  I_RISC_CORE/ctmTdsLR_1_4353/Y (OAI221X1_HVT)            0.88 &     7.49 r
+  I_RISC_CORE/ctmTdsLR_5_4619/Y (AOI221X1_HVT)            0.92 &     8.41 f
+  I_RISC_CORE/U1051/Y (OA21X1_HVT)                        0.48 &     8.89 f
+  I_RISC_CORE/U1539/Y (NOR2X0_HVT)                        0.65 &     9.53 r
+  I_RISC_CORE/I_ALU_Lachd_Result_reg_1_/D (SDFFX1_HVT)
+                                                          0.01 &     9.54 r
+  data arrival time                                                  9.54
+
+  clock SYS_2x_CLK (rise edge)                            2.40       2.40
+  clock network delay (propagated)                        0.92       3.32
+  clock reconvergence pessimism                           0.06       3.38
+  clock uncertainty                                      -0.10       3.28
+  I_RISC_CORE/I_ALU_Lachd_Result_reg_1_/CLK (SDFFX1_HVT)             3.28 r
+  library setup time                                     -1.11       2.17
+  data required time                                                 2.17
+  ------------------------------------------------------------------------------
+  data required time                                                 2.17
+  data arrival time                                                 -9.54
+  ------------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -7.38
+
+
+1
+pt_shell> man current_session
+2.  Synopsys Commands                                        Command Reference
+                                current_session
+
+NAME
+       current_session
+              Selects a set of scenarios for analysis.
+
+SYNTAX
+       string current_session
+              [scenario_list]
+              [-all]
+
+   Data Types
+       scenario_list     list
+
+ARGUMENTS
+       scenario_list
+              Brings  the  specified  scenarios  into  focus for analysis.  To
+              specify multiple scenarios, you can use the  *  and  ?  wildcard
+              symbols.
+
+       -all   Brings all defined scenarios into focus for analysis.
+
+DESCRIPTION
+       This  command  is  available  only  if you invoke the pt_shell with the
+       -multi_scenario option.
+
+       To set the current session, you need the following resources:
+
+       o At least one PrimeTime license is available for usage; since the mas-
+         ter  can share its license with workers this criterion is always met;
+         to query additional license that are currently checked out and can be
+         shared  with  use  the  report_multi_scenario_design  commadn passing
+         -license option.
+       o At least one host option has been defined using the  set_host_options
+         command;  to  query  the  host options that have been created use the
+         report_host_usage command.
+       o At least one  worker  process  has  been  brought  online  using  the
+         start_hosts  command; to query the workers that have come online, use
+         the report_host_usage command.
+
+       After all required resources are available, and the scenarios are  cre-
+       ated,  you  must select a set of scenarios to analyze by using the cur-
+       rent_session command. Calling this command with  a  list  of  scenarios
+       brings  those  scenarios  into  focus  for the current session (session
+       focus) and into focus for receiving commands (command focus)  from  the
+       master. The current session can be set with all or a subset of the cre-
+       ated scenarios. If a scenario selected has an  affinity  specification,
+       then  the  scenario  will only be allowed enter the session if at least
+       one worker process is online from the  host  options  in  its  affinity
+       specification.
+
+       The  current_session  command  returns  a collection containing all the
+       scenarios in the current session.
+
+       Calling the current_session command resets all  scenarios  to  the  way
+       they  were when created by the create_scenario command. As part of exe-
+       cuting the subsequent distributed command,  the  scenarios  in  command
+       focus in the session will be rebuilt from the scripts or images used to
+       originally define them.
+
+       If the multi_scenario_license_mode variable is set to 'core' then there
+       is  a  requirement  that all the scenarios in the session are using the
+       same design. When each scenario loads its design,  if  it  detects  its
+       design is different to any other scenario in the session, then the sce-
+       nario will error out, the command executing at the  master  will  error
+       out and the current session will terminate with an error.
+
+EXAMPLES
+       In  the  following  example,  a configuration and three scenarios named
+       scen1, scen2 and scen3 are created. The current  session  is  set  such
+       that scen2 and scen3 are in session and command focus.
+
+       o scen1 is created using common_s1.pt and specific_s1.pt
+       o scen2 is created using common_s2.pt and specific_s2.pt
+       o scen3 is created using common_s3.pt and specific_s3.pt
+
+       The scen2 and scen3 scenarios are brought into focus.
+
+         pt_shell> create_scenario -name scen1 -common_data {common_s1.pt} \
+                     -specific_data  {specific_s1.pt}
+         1
+         pt_shell> create_scenario -name scen2 -common_data {common_s2.pt} \
+                     -specific_data  {specific_s2.pt}
+         1
+         pt_shell> create_scenario -name scen3 -common_data {common_s3.pt} \
+                     -specific_data  {specific_s3.pt}
+         1
+         pt_shell> current_session {scen2 scen3}
+         {"scen2", "scen3"}
+
+SEE ALSO
+       current_scenario(2)
+       remove_scenario(2)
+       report_host_usage(2)
+       report_multi_scenario_design(2)
+       multi_scenario_license_mode(3)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> get_clocks
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clock
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clock *
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> *clock*
+Error: unknown command '*clock*' (CMD-005)
+pt_shell> help *clock*
+ report_clock_gate_savings # report savings of clock gates
+ report_clock_timing  # Report clock timing info
+pt_shell> report_clocks
+Error: Command 'report_clock' is disabled. (CMD-080)
+pt_shell> report_clock_timing
+Error: Required argument '-type' was not found (CMD-007)
+pt_shell> report_clock_timing -type *
+Error: value '*' for option '-type' is not valid.  Specify one of:
+        skew, interclock_skew, latency, transition, summary (CMD-031)
+pt_shell> report_clock_timing -type summary
+****************************************
+Report : clock timing
+        -type summary
+Design : multi-scenario design
+Version: O-2018.06
+Date   : Sat Apr 12 23:55:59 2025
+****************************************
+
+
+Start of Master/Slave Task Processing
+-------------------------------------
+Started    : Command execution in scenario 'test_best'
+Started    : Command execution in scenario 'func_min'
+Started    : Command execution in scenario 'test_fastslow'
+Started    : Command execution in scenario 'func_max'
+Started    : Command execution in scenario 'func_slowfast'
+Started    : Command execution in scenario 'func_fastslow'
+Started    : Command execution in scenario 'test_slowfast'
+Started    : Command execution in scenario 'test_worst'
+Succeeded  : Command execution in scenario 'func_slowfast'
+Succeeded  : Command execution in scenario 'func_min'
+Succeeded  : Command execution in scenario 'func_max'
+Succeeded  : Command execution in scenario 'test_worst'
+Succeeded  : Command execution in scenario 'test_slowfast'
+Succeeded  : Command execution in scenario 'func_fastslow'
+Succeeded  : Command execution in scenario 'test_best'
+Succeeded  : Command execution in scenario 'test_fastslow'
+-----------------------------------
+End of Master/Slave Task Processing
+
+Scenarios: func_max, func_min, test_best, test_worst, func_slowfast, func_fastslow, test_slowfast, test_fastslow
+
+  Clock: PCI_CLK                                       Scen    
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__1_/CLK    test_worst
+                                                               0.71    rp-+
+
+  Minimum setup capture latency:
+      I_CLOCKING/pci_rst_n_buf_reg/CLK                 test_best
+                                                               0.14    rp-+
+
+  Minimum hold launch latency:
+      I_CLOCKING/pci_rst_n_buf_reg/CLK                 test_best
+                                                               0.14    rp-+
+
+  Maximum hold capture latency:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__1_/CLK    test_worst
+                                                               0.71    rp-+
+
+  Maximum active transition:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__8_/CLK    test_worst
+                                                               0.11    rp-+
+
+  Minimum active transition:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__0_/CLK    func_min
+                                                               0.02    rp-+
+
+  Maximum setup skew:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__1_/CLK                    rp-+
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_10__26_/CLK  test_slowfast
+                                                               0.04    rp-+
+
+  Maximum hold skew:
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__1_/CLK                    rp-+
+      I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__13_/CLK   test_worst
+                                                               0.05    rp-+
+----------------------------------------------------------------------------
+
+  Clock: SDRAM_CLK                                     Scen    
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_2__14_/CLK
+                                                       test_worst
+                                                               1.19    fp-+
+
+  Minimum setup capture latency:
+      occ_int2/U_clk_control_i_1/load_n_meta_2_l_reg/CLK
+                                                       test_best
+                                                               0.17    rp-+
+
+  Minimum hold launch latency:
+      occ_int2/U_clk_control_i_1/load_n_meta_2_l_reg/CLK
+                                                       test_best
+                                                               0.17    rp-+
+
+  Maximum hold capture latency:
+      I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_2__14_/CLK
+                                                       test_worst
+                                                               1.19    fp-+
+
+  Maximum active transition:
+      I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_36__5_/CLK
+                                                       func_max
+                                                               0.14    rp-+
+
+  Minimum active transition:
+      I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1/CE1  func_min
+                                                               0.01    rp-+
+
+  Maximum setup skew:
+      occ_int2/U_clk_control_i_1/load_n_meta_1_l_reg/CLK               rp-+
+      occ_int2/U_clk_control_i_1/load_n_meta_2_l_reg/CLK
+                                                       test_slowfast
+                                                               0.15    rp-+
+
+  Maximum hold skew:
+      I_CLOCKING/sdram_rst_n_buf_reg/CLK                               rp-+
+      I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_2__14_/CLK
+                                                       func_slowfast
+                                                               0.17    fp-+
+----------------------------------------------------------------------------
+
+  Clock: SYS_2x_CLK                                    Scen    
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_Crnt_Stack_reg_0_/CLK
+                                                       test_worst
+                                                               1.04    rp-+
+
+  Minimum setup capture latency:
+      I_CLOCKING/sys_clk_in_reg/CLK                    func_min
+                                                               0.01    rp-+
+
+  Minimum hold launch latency:
+      I_CLOCKING/sys_clk_in_reg/CLK                    func_min
+                                                               0.01    rp-+
+
+  Maximum hold capture latency:
+      I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_Crnt_Stack_reg_0_/CLK
+                                                       test_worst
+                                                               1.04    rp-+
+
+  Maximum active transition:
+      I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_0_/CLK
+                                                       test_worst
+                                                               0.17    rp-+
+
+  Minimum active transition:
+      I_CLOCKING/sys_clk_in_reg/CLK                    func_min
+                                                               0.01    rp-+
+
+  Maximum setup skew:
+      I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_0_/CLK                rp-+
+      I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/CE1        test_slowfast
+                                                               0.13    rp-+
+
+  Maximum hold skew:
+      I_CLOCKING/sys_2x_rst_n_buf_reg/CLK                              rp-+
+      I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_Crnt_Stack_reg_0_/CLK
+                                                       func_max
+                                                               0.32    rp-+
+----------------------------------------------------------------------------
+
+  Clock: SYS_CLK                                       Scen    
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_worst
+                                                               0.77    rp-+
+
+  Minimum setup capture latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_best
+                                                               0.12    rp-+
+
+  Minimum hold launch latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_best
+                                                               0.12    rp-+
+
+  Maximum hold capture latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_worst
+                                                               0.77    rp-+
+
+  Maximum active transition:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       func_max
+                                                               0.10    rp-+
+
+  Minimum active transition:
+      I_CLOCKING/sys_rst_ff_reg/CLK                    func_min
+                                                               0.01    rp-+
+
+  Maximum setup skew:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                                       rp-+
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_slowfast
+                                                               0.04    rp-+
+
+  Maximum hold skew:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                                       rp-+
+      I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]/CLK
+                                                       test_slowfast
+                                                               0.04    rp-+
+----------------------------------------------------------------------------
+
+  Clock: ate_clk                                       Scen    
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_Crnt_Stack_reg_0_/CLK
+                                                       test_worst
+                                                               1.28    rp-+
+
+  Minimum setup capture latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/slow_clk_enable_l_reg/CLK
+                                                       test_best
+                                                               0.17    rp-+
+
+  Minimum hold launch latency:
+      I_CLOCKING/occ_int1/U_clk_control_i_0/slow_clk_enable_l_reg/CLK
+                                                       test_best
+                                                               0.17    rp-+
+
+  Maximum hold capture latency:
+      I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_Crnt_Stack_reg_0_/CLK
+                                                       test_worst
+                                                               1.28    rp-+
+
+  Maximum active transition:
+      I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_0_/CLK
+                                                       test_worst
+                                                               0.17    rp-+
+
+  Minimum active transition:
+      I_CLOCKING/sys_2x_rst_ff_reg/CLK                 test_best
+                                                               0.01    rp-+
+
+  Maximum setup skew:
+      I_RISC_CORE/I_INSTRN_LAT_Crnt_Instrn_2_reg_0_/CLK                rp-+
+      I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/CE1        test_slowfast
+                                                               0.13    rp-+
+
+  Maximum hold skew:
+      I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_CTL_U1_syncff_reg_6_/CLK   rp-+
+      I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_40__26_/CLK
+                                                       test_slowfast
+                                                               0.11    rp-+
+----------------------------------------------------------------------------
+
+1
+pt_shell> man set_input_transition
+2.  Synopsys Commands                                        Command Reference
+                             set_input_transition
+
+NAME
+       set_input_transition
+              Sets a fixed transition time on input or inout ports.
+
+SYNTAX
+       string set_input_transition
+              [-rise]
+              [-fall]
+              [-min]
+              [-max]
+              [-clock clock_name]
+              [-clock_fall]
+              transition
+              port_list
+
+   Data Types
+       clock_name            string
+       transition            float
+       port_list             list
+
+ARGUMENTS
+       -rise  Sets only the rise transition.
+
+       -fall  Sets only the fall transition.
+
+       -min   Sets transition for minimum conditions.
+
+       -max   Sets transition for maximum conditions.
+
+       -clock clock_name
+              The  input transition is set relative the specified clock.  This
+              option is deprecated, and will be ignored.
+
+       -clock_fall
+              Specifies that the transition is relative to the falling edge of
+              the clock. The default is the rising edge. This option is depre-
+              cated, and will be ignored.
+
+       transition
+              Port transition value. This is a floating point  number  greater
+              than or equal to zero.
+
+       port_list
+              A list of input or inout ports.
+
+DESCRIPTION
+       The  set_input_transition command specifies a fixed transition time for
+       a list of input or inout ports. This transition time is not affected by
+       the  capacitance  of the net connected to the port. The transition time
+       calculates delays for nets and cells in the transitive  fanout  of  the
+       port. The port itself has no cell delay.
+
+       To  display  port  transition  or drive capability information, use the
+       report_port -drive command.
+
+       There are two other methods of describing port  drive  capability.  The
+       set_driving_cell command causes the port to have transition time calcu-
+       lated as if a given library cell was driving  the  net.  The  set_driv-
+       ing_cell command also has a cell delay equal to the load-dependent por-
+       tion of the delay driving the net of the library cell. The driving cell
+       approach is accurate for nonlinear delay models even if the capacitance
+       is changed. Another method is to use the set_drive command, which  mod-
+       els  the  driver as a linear resistance.  The most recent drive command
+       has precedence.
+
+EXAMPLES
+       This example specifies that ports matching the pattern "DATA_IN*" has a
+       transition time of 0.75 units.
+
+         pt_shell> set_input_transition 0.75 [get_ports DATA_IN*]
+
+SEE ALSO
+       set_driving_cell(2) set_drive(2) report_port(2) set_clock_transition(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> man set_max_delay
+2.  Synopsys Commands                                        Command Reference
+                                 set_max_delay
+
+NAME
+       set_max_delay
+              Specifies a maximum delay for timing paths.
+
+SYNTAX
+       status set_max_delay
+              [-rise]
+              [-fall]
+              [-reset_path]
+              [-ignore_clock_latency]
+              [-from from_list]
+               [-rise_from rise_from_list]
+               [-fall_from fall_from_list]
+              [-to to_list]
+               [-rise_to rise_to_list]
+               [-fall_to fall_to_list]
+              [-through through_list]
+               [-rise_through rise_through_list]
+               [-fall_through fall_through_list]
+              [-comment comment_string]
+              delay_value
+
+   Data Types
+       from_list                list
+       rise_from_list           list
+       fall_from_list           list
+       to_list                  list
+       rise_to_list             list
+       fall_to_list             list
+       through_list             list
+       rise_through_list        list
+       fall_through_list        list
+       comment_string           string
+       delay_value              float
+
+ARGUMENTS
+       -rise  Indicates  that  only  rising path delays are to be constrained.
+              If neither the -rise nor -fall option is specified, both  rising
+              and falling delays are constrained.
+
+       -fall  Indicates  that  only falling path delays are to be constrained.
+              If neither the -rise nor -fall option is specified, both  rising
+              and falling delays are constrained.
+
+       -reset_path
+              Indicates  that existing point-to-point exception information is
+              to be removed from the specified paths. If  used  with  the  -to
+              option  only,  all  paths leading to the specified endpoints are
+              reset. If used with -from only, all paths leading from the spec-
+              ified  startpoints  are  reset.  If  used with the -from and -to
+              options, only the paths between those  points  are  reset.  Only
+              information  of  the  same  rise  or  fall setup or hold type is
+              reset. Using this option  is equivalent to using the  reset_path
+              command  with similar arguments before issuing the set_max_delay
+              command.
+
+       -ignore_clock_latency
+              Indicates that the launch and capture clock latencies is  to  be
+              ignored  when  computing slack on the specified paths. Note that
+              these paths will be considered  as  clock-less,  and  therefore,
+              reporting  these  paths  by their respective ignored clocks will
+              result in  unconstrained  paths.  To  report  these  paths  with
+              ignore_clock_latency,  the  user may specify the launched and/or
+              captured devices as options in the report_timing command.  Addi-
+              tionally,  PBA  reporting  will conservatively use GBA crosstalk
+              delta delays if SI is enabled.
+
+       -from from_list
+              Specifies a list of timing path startpoint objects. A valid tim-
+              ing  startpoint  is  a  clock,  a primary input or inout port, a
+              sequential cell, a clock pin of a sequential cell, a data pin of
+              a  level-sensitive  latch,  or a pin that has input delay speci-
+              fied. If a clock is specified, all registers and primary  inputs
+              related to that clock are used as path startpoints. If a cell is
+              specified, one path startpoint on that cell  is  affected.   You
+              can  use  only  one  of  the  -from,  -rise_from, and -fall_from
+              options.
+
+       -rise_from rise_from_list
+              Same as the -from option, except that the path  must  rise  from
+              the  objects  specified.  If  a  clock object is specified, this
+              option selects startpoints clocked by the named clock, but  only
+              the  paths  launched  by  rising  edge of the clock at the clock
+              source, taking into account any  logical  inversions  along  the
+              clock  path.  You can use only one of the -from, -rise_from, and
+              -fall_from options.
+
+       -fall_from fall_from_list
+              Same as the -from option, except that the path  must  fall  from
+              the  objects  specified.  If  a  clock object is specified, this
+              option selects startpoints clocked by the named clock, but  only
+              the  paths  launched  by  falling edge of the clock at the clock
+              source, taking into account any  logical  inversions  along  the
+              clock  path.  You can use only one of the -from, -rise_from, and
+              -fall_from options.
+
+       -to to_list
+              Specifies a list of timing path endpoint objects. A valid timing
+              endpoint  is  a clock, a primary output or inout port, a sequen-
+              tial cell, a data pin of a sequential cell, or a  pin  that  has
+              output  delay  specified. If a clock is specified, all registers
+              and primary outputs related to that clock are used as path  end-
+              points.   If a cell is specified, one path endpoint on that cell
+              is affected.  You can use only one of  the  -to,  -rise_to,  and
+              -fall_to options.
+
+       -rise_to rise_to_list
+              Same  as the -to option, but applies only to paths rising at the
+              endpoint. If a clock object is specified,  this  option  selects
+              endpoints  clocked  by  the named clock, but only the paths cap-
+              tured by rising edge of the clock at clock source,  taking  into
+              account  any  logical  inversions along the clock path.  You can
+              use only one of the -to, -rise_to, and -fall_to options.
+
+       -fall_to fall_to_list
+              Same as the -to option, but applies only to paths falling at the
+              endpoint.  If  a  clock object is specified, this option selects
+              endpoints clocked  by  the  named  clock,  but  only  the  paths
+              launched  by falling edge of the clock at the clock source, tak-
+              ing into account any logical inversions along  the  clock  path.
+              You can use only one of the -to, -rise_to, and -fall_to options.
+
+       -through through_list
+              Specifies a list of pins, ports, cells, and nets  through  which
+              the  paths must pass for maximum delay definition. By default, a
+              net is interpreted to imply its driver pins. In case the  previ-
+              ous  through_list includes the driver, the net is interpreted to
+              imply its load pins. If you omit the -through option, all timing
+              paths specified using the -from and -to options are affected.
+
+       -rise_through rise_through_list
+              This  option is similar to the -through option, but applies only
+              to paths with a rising transition at the specified objects.
+
+       -fall_through fall_through_list
+              This option is similar to the -through option, but applies  only
+              to paths with a falling transition at the specified objects.
+
+       -comment comment_string
+              Associate  a  string  description  with the command for tracking
+              purposes. This can be useful when writing out SDC to a tag, such
+              as  the methodology or tool that originally synthesized the com-
+              mand.
+
+       delay_value
+              Specifies a floating point number that represents  the  required
+              maximum  delay value for specified paths. The delay_value option
+              must have the same units as the logic library used during analy-
+              sis.  If a path startpoint is on a sequential device, clock skew
+              is included in the computed delay. If a path startpoint  has  an
+              input  delay  specified,  that  delay value is added to the path
+              delay. If a path endpoint is on a sequential device, clock  skew
+              and  library  setup  time are included in the computed delay. If
+              the endpoint has an output delay specified, that delay is  added
+              into the path delay.
+
+DESCRIPTION
+       This command specifies a required maximum delay for timing paths in the
+       current design.  The path length for any startpoint in the from_list to
+       any endpoint in the to_list must be less than the delay_value.
+
+       The  value  of a max_rise_delay attribute cannot be less than that of a
+       min_rise_delay attribute on the  same  path  (and  similarly  for  fall
+       attributes).  If this condition occurs, the older attribute is removed.
+
+       Individual maximum delay targets are automatically derived  from  clock
+       waveforms  and  port  input or output delays. For more information, see
+       the create_clock, set_input_delay, and set_output_delay man pages.
+
+       The set_max_delay command is a point-to-point timing exception command.
+       For  example,  the  command  overrides  the default single-cycle timing
+       relationship for one or more timing paths. Other point-to-point  timing
+       exception  commands  include  set_multicycle_path,  set_min_delay,  and
+       set_false_path. A set_max_delay or set_min_delay  command  overrides  a
+       set_multicycle_path command.
+
+       Applying  a  set_max_delay  either using the from/-rise_from/-fall_from
+       options on invalid timing start points  or  using  to/-rise_to/-fall_to
+       option on invalid timing endpoints will cause timing path segmentation.
+       PrimeTime will issue UITE-217 warning under  such  scenarios.  If  this
+       happens  on  a clock path, it will stop the propagation of clock at the
+       point where the set_max_delay was applied.
+
+       The more general commands apply to more than  one  path.  For  example,
+       either  the  -from  or -to option is used (but not both), or clocks are
+       used in the specification. Within a given point-to-point exception com-
+       mand,  the  more specific command overrides the more general.  The fol-
+       lowing list of commands is arranged in order, from the highest  to  the
+       lowest precedence (more specific to more general):
+
+         1. set_max_delay -from pin -to pin
+
+         2. set_max_delay -from pin -to clock
+
+         3. set_max_delay -from pin
+
+         4. set_max_delay -from clock -to pin
+
+         5. set_max_delay -to pin
+
+         6. set_max_delay -from clock -to clock
+
+         7. set_max_delay -from clock
+
+         8. set_max_delay -to clock
+
+       To  list  the  max_delay,  min_delay,  multicycle_path,  and false_path
+       information for the design, use the report_exceptions command.  To list
+       the defined path groups, use the report_path_group command.
+
+       To  remove  information  set  by  the  set_max_delay  command,  use the
+       reset_path or reset_design command.
+
+EXAMPLES
+       The following command specifies that any delay path to port "Y" must be
+       less than 10.0 units.
+
+         pt_shell> set_max_delay 10.0 -to {Y}
+
+       The  following  command  specifies  that all paths from ff1a or ff1b to
+       ff2e must have delays less than 15.0 units.
+
+         pt_shell> set_max_delay 15.0 -from {ff1a ff1b} -to {ff2e}
+
+       The following example specifies that all paths to endpoints clocked  by
+       PHI2 must have delays less than 8.5 units.
+
+         pt_shell> set_max_delay 8.5 -to [get_clocks PHI2]
+
+       The  following  example  sets  a  requirement that all paths leading to
+       ports named "busA[*]" must have delays less than 5.0.
+
+         pt_shell> set_max_delay 5.0 -to "busA[*]"
+
+       The following example specifies that all timing paths  from  ff1/CP  to
+       ff2/D  that  pass through one or more of {U1/Z U2/Z} and one or more of
+       {U3/Z U4/C} must have delays less than 8.0 units.
+
+         pt_shell> set_max_delay 8.0 -from ff1/CP -through {U1/Z U2/Z} -through {U3/Z U4/C} -to ff2/D
+
+       The following example specifies that all timing paths  from  ff1/CP  to
+       ff2/D that rise through one or more of {U1/Z U2/Z} and fall through one
+       or more of {U3/Z U4/C} must have delays less than 8.0 units.
+
+         pt_shell> set_max_delay 8.0 -from ff1/CP -rise_through {U1/Z U2/Z}           -fall_through {U3/Z U4/C} -to ff2/D
+
+SEE ALSO
+       create_clock(2)
+       current_design(2)
+       group_path(2)
+       report_constraint(2)
+       report_path_group(2)
+       reset_design(2)
+       reset_path(2)
+       set_false_path(2)
+       set_input_delay(2)
+       set_min_delay(2)
+       set_multicycle_path(2)
+       set_output_delay(2)
+
+                            Version O-2018.06
+            Copyright (c) 2018 Synopsys, Inc. All rights reserved.
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> get_clock
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clocks
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clocks
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clock
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> get_clocks
+Error: Command 'get_clocks' is disabled. (CMD-080)
+pt_shell> history
+     1  set top_design ORCA_TOP
+     2  source ../scripts/dmsa.tcl
+     3  pwd
+     4  man create_clock
+     5  man set_input_delay
+     6  man set_drive
+     7  man timing_crpr_threshold_ps
+     8  man set_false_path
+     9  report_timing -path_type full_clock_expanded -group reg2reg
+    10  report_timing -path_type full_clock_expanded -group REG2REG
+    11  get_path_groups
+    12  report_timing
+    13  man current_session
+    14  get_clocks
+    15  get_clock
+    16  get_clock *
+    17  *clock*
+    18  help *clock*
+    19  report_clocks
+    20  report_clock_timing
+    21  report_clock_timing -type *
+    22  report_clock_timing -type summary
+    23  man set_input_transition
+    24  man set_max_delay
+    25  get_clock
+    26  get_clocks
+    27  get_clocks
+    28  get_clock
+    29  get_clocks
+    30  history
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> 
+pt_shell> exit
+Maximum memory usage for distributed processes:
+my_opts1        1   mo                 752.75 MB
+                2   mo                 740.99 MB
+                3   mo                 757.48 MB
+                4   mo                 736.82 MB
+                5   mo                 764.18 MB
+                6   mo                 766.96 MB
+                7   mo                 756.54 MB
+                8   mo                 755.50 MB
+CPU time usage for distributed processes:
+my_opts1        1   mo                 77 seconds
+                2   mo                 77 seconds
+                3   mo                 79 seconds
+                4   mo                 80 seconds
+                5   mo                 82 seconds
+                6   mo                 79 seconds
+                7   mo                 77 seconds
+                8   mo                 77 seconds
+Elapsed time for distributed processes:
+my_opts1        1   mo                 869288 seconds
+                2   mo                 869288 seconds
+                3   mo                 869288 seconds
+                4   mo                 869288 seconds
+                5   mo                 869288 seconds
+                6   mo                 869288 seconds
+                7   mo                 869288 seconds
+                8   mo                 869288 seconds
+Maximum memory usage for this session: 894.52 MB
+CPU usage for this session: 238 seconds 
+Elapsed time for this session: 869465 seconds
+Shutting down worker processes ...
+ Shutdown Process 1
+ Shutdown Process 2
+ Shutdown Process 3
+ Shutdown Process 4
+ Shutdown Process 5
+ Shutdown Process 6
+ Shutdown Process 7
+ Shutdown Process 8
+Diagnostics summary: 14 errors, 24 informationals
+
+Thank you for using pt_shell!
+

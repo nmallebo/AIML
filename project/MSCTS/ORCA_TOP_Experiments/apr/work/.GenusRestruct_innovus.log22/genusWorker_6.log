@@ -1,0 +1,12 @@
+Info: setting up worker #6 < pip/t06_to.pipe > pip/t06_from.pipe
+Info: opened input pipe
+Info: opened output pipe
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 286s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.7, cpu: 32, total: 119.8G, free: 15.3G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 301s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 302s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}

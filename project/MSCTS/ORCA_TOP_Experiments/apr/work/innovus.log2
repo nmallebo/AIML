@@ -1,0 +1,1558 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2024 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v23.10-p003_1, built Thu Feb 1 13:54:57 PST 2024
+Options:	
+Date:		Thu May  1 15:32:03 2025
+Host:		mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*Intel Xeon Processor (Cascadelake) 16384KB)
+OS:		CentOS Linux 7 (Core)
+
+License:
+		[15:32:04.350074] Configured Lic search path (23.02-s003): 5280@cadence-lic.cecs.pdx.edu:27000@synopsys-lic.cat.pdx.edu
+
+		invs	Innovus Implementation System	23.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (245 mbytes). Set global soft_stack_size_limit to change the value.
+Sourcing startup file ./enc.tcl
+<CMD> alias fs set top_design fifo1_sram
+<CMD> alias f set top_design fifo1
+<CMD> alias o set top_design ORCA_TOP
+<CMD> alias e set top_design ExampleRocketSystem
+<CMD> set_table_style -name report_timing -max_widths { 8,6,23,70} -no_frame_fix_width
+**WARN: (TCLCMD-1083):	'-no_frame_fix_width are global controls that affect all of the various timing reports.  The -name option is used to specify a report-specific behavior, and therefore cannot be used with these global options. You should use a separate set_table_style command to specify the desired global options. You can then use additional set_table_style commands to refine the behaviors of specific timing reports.'
+<CMD> set_global report_timing_format  {delay arrival slew cell hpin}
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> getVersion
+<CMD> define_proc_arguments ViaFillQor -info {This procedure extracts Viafill details from innovus db} -define_args {
+        {-window "window coordinates" "" list optional}
+        {-window_size "window size in microns" "" string optional}
+    
+    }
+[INFO] Loading Pegasus 23.20 fill procedures
+<CMD> define_proc_arguments ProcessFills -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+<CMD> define_proc_arguments FillQor -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+<CMD> define_proc_arguments ProcessFills_fast -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+<CMD> define_proc_arguments FillQor_fast -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+<CMD> define_proc_arguments ProcessFills_fast_stampOnly -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+	
+}
+<CMD> define_proc_arguments FillQor_fast_stampOnly -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+}
+<CMD> win
+<CMD> o
+### Start verbose source output (echo mode) for '../../ORCA_TOP.design_config.tcl' ...
+# set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# set hack_lef_dir /u/bcruik2/hacked_lefs
+# set top_design ORCA_TOP
+# set FCL 0
+# set add_ios 0
+# set pad_design 0
+# set design_size {1000 644}
+# set design_io_border 10
+# set dc_floorplanning 1
+# set enable_dft  1
+# set innovus_enable_manual_macro_placement 1
+# set split_constraints 0
+# set rtl_list [list ../../syn/rtl/$top_design.sv ]
+# set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+# set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+# set synth_corners_slow $slow_corner
+# set synth_corners_fast $fast_corner
+# set slow_metal Cmax.tlup_-40
+# set fast_metal Cmin.tlup_-40
+# set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+# set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+# set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+# set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+# set sub_lib_type_target "saed32rvt_"
+# set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+# set tech_lef ${hack_lef_dir}/tech.lef 
+# set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+# set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+# set synth_corners $slow_corner
+# set synth_corners_slow $slow_corner
+# set synth_corners_fast $fast_corner
+# set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+# set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+# if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+# set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+# set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+# set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+# set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+# if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+<CMD> is_common_ui_mode
+<CMD> setMultiCpuUsage -localCpu 8
+### End verbose source output for '../../ORCA_TOP.design_config.tcl'.
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> set search_path {}
+<CMD> set init_lef_file {/u/bcruik2/hacked_lefs/tech.lef saed32sram.lef saed32nm_rvt_1p9m.lef saed32nm_hvt_1p9m.lef saed32_PLL.lef saed32nm_lvt_1p9m.lef}
+<CMD> is_common_ui_mode
+<CMD> is_common_ui_mode
+<CMD> set init_mmmc_file mmmc.tcl
+<CMD> set init_design_netlisttype Verilog
+<CMD> set init_verilog ../../syn/outputs/ORCA_TOP.dct.vg
+<CMD> set init_top_cell ORCA_TOP
+<CMD> set init_pwr_net VDD
+<CMD> set init_gnd_net VSS
+<CMD> init_design
+#% Begin Load MMMC data ... (date=05/01 15:33:17, mem=1509.6M)
+#% End Load MMMC data ... (date=05/01 15:33:17, total cpu=0:00:00.1, real=0:00:00.0, peak res=1510.8M, current mem=1510.8M)
+cmin cmax
+
+Loading LEF file /u/bcruik2/hacked_lefs/tech.lef ...
+
+Loading LEF file saed32sram.lef ...
+Set DBUPerIGU to M2 pitch 152.
+WARNING (LEFPARS-2003): BUSBITCHARS is a required statement in LEF files with version 5.5 and earlier.
+Without BUSBITCHARS defined, the LEF file is technically incorrect.
+Refer to the LEF/DEF 5.5 or earlier Language Reference manual on how to define this statement. See file saed32sram.lef at line 197399.
+
+Loading LEF file saed32nm_rvt_1p9m.lef ...
+WARNING (LEFPARS-2003): BUSBITCHARS is a required statement in LEF files with version 5.5 and earlier.
+Without BUSBITCHARS defined, the LEF file is technically incorrect.
+Refer to the LEF/DEF 5.5 or earlier Language Reference manual on how to define this statement. See file saed32nm_rvt_1p9m.lef at line 148040.
+
+Loading LEF file saed32nm_hvt_1p9m.lef ...
+WARNING (LEFPARS-2003): BUSBITCHARS is a required statement in LEF files with version 5.5 and earlier.
+Without BUSBITCHARS defined, the LEF file is technically incorrect.
+Refer to the LEF/DEF 5.5 or earlier Language Reference manual on how to define this statement. See file saed32nm_hvt_1p9m.lef at line 191962.
+
+Loading LEF file saed32_PLL.lef ...
+WARNING (LEFPARS-2003): BUSBITCHARS is a required statement in LEF files with version 5.5 and earlier.
+Without BUSBITCHARS defined, the LEF file is technically incorrect.
+Refer to the LEF/DEF 5.5 or earlier Language Reference manual on how to define this statement. See file saed32_PLL.lef at line 372.
+
+Loading LEF file saed32nm_lvt_1p9m.lef ...
+WARNING (LEFPARS-2003): BUSBITCHARS is a required statement in LEF files with version 5.5 and earlier.
+Without BUSBITCHARS defined, the LEF file is technically incorrect.
+Refer to the LEF/DEF 5.5 or earlier Language Reference manual on how to define this statement. See file saed32nm_lvt_1p9m.lef at line 67466.
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Loading view definition file from mmmc.tcl
+Starting library reading in 'Multi-threaded flow' (with '8' threads)
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib.
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 84611)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 84662)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 84713)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT3_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 120051)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 120102)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 120153)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'PMT1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'PMT2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'PMT3_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT3_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT2_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT1_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT3_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT2_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT1_RVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Read 294 cells in library saed32rvt_ss0p75vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Read 24 cells in library saed32rvt_dlvl_ss0p75vn40c_i0p95v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Read 12 cells in library saed32rvt_ulvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Read 24 cells in library saed32rvt_dlvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib.
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 84607)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 84658)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 84709)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT3_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 120047)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 120098)
+Message <TECHLIB-1277> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'PMT1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'PMT2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Message <TECHLIB-313> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 294 cells in library saed32rvt_ss0p95vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Read 12 cells in library saed32rvt_ulvl_ss0p95vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib.
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 84607)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 84658)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 84709)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT3_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+Read 294 cells in library saed32lvt_ss0p75vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Read 24 cells in library saed32lvt_dlvl_ss0p75vn40c_i0p95v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Read 12 cells in library saed32lvt_ulvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib.
+**WARN: (TECHLIB-1161):	The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib)
+**WARN: (TECHLIB-1161):	The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Message <TECHLIB-1161> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 24 cells in library saed32lvt_dlvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib.
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 84607)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 84658)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 84709)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT3_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT3_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT2_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT1_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT3_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT2_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT1_LVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib)
+Read 294 cells in library saed32lvt_ss0p95vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib.
+Read 12 cells in library saed32lvt_ulvl_ss0p95vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib.
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 84713)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 84764)
+**WARN: (TECHLIB-1277):	The attribute 'fanout_load' has been defined for output pin 'D'. 'fanout_load' cannot be defined at this level and is being ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 84815)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT1_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT2_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-313):	Property 'fanout_load' can not be set on pin 'D' of cell 'NMT3_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT3_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT2_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib)
+Message <TECHLIB-302> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 294 cells in library saed32hvt_ss0p75vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib.
+Read 24 cells in library saed32hvt_dlvl_ss0p75vn40c_i0p95v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib.
+Read 12 cells in library saed32hvt_ulvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib.
+Read 24 cells in library saed32hvt_dlvl_ss0p75vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib.
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT3_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT2_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'PMT1_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT3_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT2_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'NMT1_HVT'. The cell will only be used for analysis. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib)
+Read 294 cells in library saed32hvt_ss0p95vn40c.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib.
+Read 12 cells in library saed32hvt_ulvl_ss0p95vn40c_i0p75v.
+Reading worst_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib.
+Read 35 cells in library saed32sram_ss0p95vn40c.
+Library reading multithread flow ended.
+Starting library reading in 'Multi-threaded flow' (with '8' threads)
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff0p95vn40c.lib.
+Read 294 cells in library saed32rvt_ff0p95vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ff0p95vn40c_i1p16v.lib.
+Read 24 cells in library saed32rvt_dlvl_ff0p95vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ff0p95vn40c_i0p95v.lib.
+Read 12 cells in library saed32rvt_ulvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ff0p95vn40c_i0p95v.lib.
+Read 24 cells in library saed32rvt_dlvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff1p16vn40c.lib.
+Read 294 cells in library saed32rvt_ff1p16vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ff1p16vn40c_i1p16v.lib.
+Read 12 cells in library saed32rvt_ulvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ff1p16vn40c_i1p16v.lib.
+Read 24 cells in library saed32rvt_dlvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ff1p16vn40c_i0p95v.lib.
+Read 12 cells in library saed32rvt_ulvl_ff1p16vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ff0p95vn40c.lib.
+Read 294 cells in library saed32lvt_ff0p95vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ff0p95vn40c_i1p16v.lib.
+Read 24 cells in library saed32lvt_dlvl_ff0p95vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ff0p95vn40c_i0p95v.lib.
+Read 12 cells in library saed32lvt_ulvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ff0p95vn40c_i0p95v.lib.
+Read 24 cells in library saed32lvt_dlvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ff1p16vn40c.lib.
+Read 294 cells in library saed32lvt_ff1p16vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ff1p16vn40c_i1p16v.lib.
+Read 12 cells in library saed32lvt_ulvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ff1p16vn40c_i1p16v.lib.
+Read 24 cells in library saed32lvt_dlvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ff1p16vn40c_i0p95v.lib.
+Read 12 cells in library saed32lvt_ulvl_ff1p16vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ff0p95vn40c.lib.
+Read 294 cells in library saed32hvt_ff0p95vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ff0p95vn40c_i1p16v.lib.
+Read 24 cells in library saed32hvt_dlvl_ff0p95vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ff0p95vn40c_i0p95v.lib.
+Read 12 cells in library saed32hvt_ulvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ff0p95vn40c_i0p95v.lib.
+Read 24 cells in library saed32hvt_dlvl_ff0p95vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ff1p16vn40c.lib.
+Read 294 cells in library saed32hvt_ff1p16vn40c.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ff1p16vn40c_i1p16v.lib.
+Read 12 cells in library saed32hvt_ulvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ff1p16vn40c_i1p16v.lib.
+Read 24 cells in library saed32hvt_dlvl_ff1p16vn40c_i1p16v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ff1p16vn40c_i0p95v.lib.
+Read 12 cells in library saed32hvt_ulvl_ff1p16vn40c_i0p95v.
+Reading best_libs timing library /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ff1p16vn40c.lib.
+Read 35 cells in library saed32sram_ff1p16vn40c.
+Library reading multithread flow ended.
+*** End library_loading (cpu=0.51min, real=0.15min, mem=150.0M, fe_cpu=1.11min, fe_real=1.40min, fe_mem=1939.0M) ***
+#% Begin Load netlist data ... (date=05/01 15:33:27, mem=1611.3M)
+*** Begin netlist parsing (mem=1939.0M) ***
+Created 1025 new cells from 44 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+Reading verilog netlist '../../syn/outputs/ORCA_TOP.dct.vg'
+
+*** Memory Usage v#2 (Current mem = 1939.012M, initial mem = 820.664M) ***
+*** End netlist parsing (cpu=0:00:00.3, real=0:00:01.0, mem=1939.0M) ***
+#% End Load netlist data ... (date=05/01 15:33:28, total cpu=0:00:00.3, real=0:00:01.0, peak res=1653.4M, current mem=1653.4M)
+Set top cell to ORCA_TOP.
+Hooked 4138 DB cells to tlib cells.
+Starting recursive module instantiation check.
+No recursion found.
+Building hierarchical netlist for Cell ORCA_TOP ...
+***** UseNewTieNetMode *****.
+*** Netlist is unique.
+** info: there are 4264 modules.
+** info: there are 38947 stdCell insts.
+** info: there are 404 insts with no signal pins.
+** info: there are 40 macros.
+
+*** Memory Usage v#2 (Current mem = 1984.426M, initial mem = 820.664M) ***
+**WARN: (IMPFP-3961):	The techSite 'fillSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'cornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'ioSiteEW' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'ioSiteNS' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+Horizontal Layer M1 offset = 0 (derived)
+Vertical Layer M2 offset = 0 (derived)
+Start create_tracks
+Generated pitch 0.228 in M9 is different from 2.432 defined in technology file in preferred direction.
+Generated pitch 0.152 in M8 is different from 1.216 defined in technology file in preferred direction.
+Generated pitch 0.152 in M7 is different from 1.216 defined in technology file in preferred direction.
+Generated pitch 0.152 in M6 is different from 0.608 defined in technology file in preferred direction.
+Generated pitch 0.152 in M5 is different from 0.608 defined in technology file in preferred direction.
+Generated pitch 0.152 in M4 is different from 0.304 defined in technology file in preferred direction.
+Generated pitch 0.152 in M3 is different from 0.304 defined in technology file in preferred direction.
+Extraction setup Started for TopCell ORCA_TOP 
+Initializing multi-corner RC extraction with 2 active RC Corners ...
+Reading Capacitance Table File ../../cadence_cap_tech/saed32nm_1p9m_Cmax.cap ...
+Process name: saed32nm_1p9m_Cmax.
+Reading Capacitance Table File ../../cadence_cap_tech/saed32nm_1p9m_Cmin.cap ...
+Process name: saed32nm_1p9m_Cmin.
+Importing multi-corner RC tables ... 
+Summary of Active RC-Corners : 
+ 
+ Analysis View: test_worst_scenario
+    RC-Corner Name        : cmax
+    RC-Corner Index       : 0
+    RC-Corner Temperature : -40 Celsius
+    RC-Corner Cap Table   : '../../cadence_cap_tech/saed32nm_1p9m_Cmax.cap'
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+ 
+ Analysis View: func_worst_scenario
+    RC-Corner Name        : cmax
+    RC-Corner Index       : 0
+    RC-Corner Temperature : -40 Celsius
+    RC-Corner Cap Table   : '../../cadence_cap_tech/saed32nm_1p9m_Cmax.cap'
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+ 
+ Analysis View: test_best_scenario
+    RC-Corner Name        : cmin
+    RC-Corner Index       : 1
+    RC-Corner Temperature : -40 Celsius
+    RC-Corner Cap Table   : '../../cadence_cap_tech/saed32nm_1p9m_Cmin.cap'
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+ 
+ Analysis View: func_best_scenario
+    RC-Corner Name        : cmin
+    RC-Corner Index       : 1
+    RC-Corner Temperature : -40 Celsius
+    RC-Corner Cap Table   : '../../cadence_cap_tech/saed32nm_1p9m_Cmin.cap'
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+Updating RC Grid density data for preRoute extraction ...
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+*Info: initialize multi-corner CTS.
+Multithreaded Timing Analysis is initialized with 8 threads
+
+Reading timing constraints file '../../constraints/ORCA_TOP_func_best.sdc' ...
+Current (total cpu=0:01:11, real=0:01:31, peak res=2232.2M, current mem=2220.2M)
+**WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File ../../constraints/ORCA_TOP_func_best.sdc, Line 8).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_PCI_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 261).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_SDRAM_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 286).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLK was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 289).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLKn was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 292).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 786).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_func_best.sdc, Line 787).
+
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+INFO (CTE): Reading of timing constraints file ../../constraints/ORCA_TOP_func_best.sdc completed, with 7 WARNING
+Ending "Constraint file reading stats" (total cpu=0:00:00.2, real=0:00:00.0, peak res=2238.4M, current mem=2237.4M)
+Current (total cpu=0:01:12, real=0:01:31, peak res=2238.4M, current mem=2237.4M)
+Reading timing constraints file '../../constraints/ORCA_TOP_test_best.sdc' ...
+Current (total cpu=0:01:12, real=0:01:31, peak res=2238.4M, current mem=2237.5M)
+**WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File ../../constraints/ORCA_TOP_test_best.sdc, Line 8).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_PCI_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 265).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_SDRAM_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 290).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLK was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 293).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLKn was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 296).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 822).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_test_best.sdc, Line 823).
+
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+INFO (CTE): Reading of timing constraints file ../../constraints/ORCA_TOP_test_best.sdc completed, with 7 WARNING
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2260.1M, current mem=2260.1M)
+Current (total cpu=0:01:12, real=0:01:32, peak res=2260.1M, current mem=2260.1M)
+Reading timing constraints file '../../constraints/ORCA_TOP_func_worst.sdc' ...
+Current (total cpu=0:01:12, real=0:01:32, peak res=2260.2M, current mem=2260.2M)
+**WARN: (TCLCMD-1142):	Virtual clock 'v_PCI_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_func_worst.sdc, Line 263).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_SDRAM_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_func_worst.sdc, Line 288).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLK was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_func_worst.sdc, Line 291).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLKn was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_func_worst.sdc, Line 298).
+
+INFO (CTE): Reading of timing constraints file ../../constraints/ORCA_TOP_func_worst.sdc completed, with 4 WARNING
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2260.9M, current mem=2260.9M)
+Current (total cpu=0:01:12, real=0:01:32, peak res=2260.9M, current mem=2260.9M)
+Reading timing constraints file '../../constraints/ORCA_TOP_test_worst.sdc' ...
+Current (total cpu=0:01:12, real=0:01:32, peak res=2260.9M, current mem=2260.9M)
+**WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 8).
+
+**WARN: (TCLCMD-1014):	The SDC set_operating_conditions assertion is not supported. Please use the create_delay_corner command to specify the desired operating enviroment. Use the setAnalysisMode command to control single vs. bestCase/worstCase vs. on-chip variation timing analysis. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 9).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_PCI_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 266).
+
+**WARN: (TCLCMD-1142):	Virtual clock 'v_SDRAM_CLK' is being created with no source objects. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 291).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLK was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 294).
+
+**WARN: (TCLCMD-1333):	The combinational generated clock SD_DDR_CLKn was specified without any of -divide_by, -multiply_by, or -edges options which are normally used to define the output waveform. A -divide_by 1 specification has been inferred for this clock. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 301).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 831).
+
+**WARN: (TCLCMD-1015):	The set_timing_derate command is not currently supported as a constraint which can be loaded as part of your SDC file. You can use the set_timing_Derate command interactively or in a Tcl command script. (File ../../constraints/ORCA_TOP_test_worst.sdc, Line 832).
+
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+INFO (CTE): Reading of timing constraints file ../../constraints/ORCA_TOP_test_worst.sdc completed, with 8 WARNING
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2261.3M, current mem=2261.3M)
+Current (total cpu=0:01:12, real=0:01:32, peak res=2261.3M, current mem=2261.3M)
+Total number of combinational cells: 375
+Total number of sequential cells: 396
+Total number of tristate cells: 18
+Total number of level shifter cells: 108
+Total number of power gating cells: 0
+Total number of isolation cells: 48
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+Total number of physical cells: 27
+List of usable buffers: NBUFFX2_LVT NBUFFX16_LVT NBUFFX32_LVT NBUFFX4_LVT NBUFFX8_LVT
+Total number of usable buffers: 5
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: IBUFFX2_HVT IBUFFX16_HVT IBUFFX32_HVT INVX0_HVT IBUFFX4_HVT IBUFFX8_HVT INVX16_HVT INVX1_HVT INVX2_HVT INVX32_HVT INVX4_HVT IBUFFX2_LVT INVX8_HVT IBUFFX16_LVT IBUFFX32_LVT INVX0_LVT IBUFFX4_LVT IBUFFX8_LVT INVX16_LVT INVX1_LVT INVX2_LVT INVX32_LVT INVX4_LVT IBUFFX2_RVT INVX8_LVT IBUFFX16_RVT IBUFFX32_RVT INVX0_RVT IBUFFX4_RVT IBUFFX8_RVT INVX16_RVT INVX1_RVT INVX2_RVT INVX32_RVT INVX4_RVT INVX8_RVT
+Total number of usable inverters: 36
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells: DELLN1X2_HVT DELLN2X2_HVT DELLN3X2_HVT NBUFFX2_HVT NBUFFX16_HVT NBUFFX32_HVT NBUFFX4_HVT NBUFFX8_HVT DELLN1X2_LVT DELLN2X2_LVT DELLN3X2_LVT DELLN1X2_RVT DELLN2X2_RVT DELLN3X2_RVT NBUFFX2_RVT NBUFFX16_RVT NBUFFX32_RVT NBUFFX4_RVT NBUFFX8_RVT
+Total number of identified usable delay cells: 19
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPFP-3961           4  The techSite '%s' has no related standar...
+ERROR     DMMMC-271            9  The software does not currently support ...
+WARNING   TCLCMD-1014          1  The SDC set_operating_conditions asserti...
+WARNING   TCLCMD-1015          6  The %s command is not currently supporte...
+WARNING   TCLCMD-1142          8  Virtual clock '%s' is being created with...
+WARNING   TCLCMD-1333          8  The combinational generated clock %s was...
+WARNING   TCLCMD-1461          3  Skipped unsupported command: %s          
+WARNING   TECHLIB-302         72  No function defined for cell '%s'. The c...
+WARNING   TECHLIB-313         72  Property '%s' can not be set on pin '%s'...
+WARNING   TECHLIB-1161       132  The library level attribute %s on line %...
+WARNING   TECHLIB-1277        72  The %s '%s' has been defined for %s %s '...
+*** Message Summary: 378 warning(s), 9 error(s)
+
+<CMD> defIn ../outputs/ORCA_TOP.floorplan.innovus.macros_3B.def
+Reading DEF file '../outputs/ORCA_TOP.floorplan.innovus.macros_3B.def', current time is Thu May  1 15:33:35 2025 ...
+--- DIVIDERCHAR '/'
+--- UnitsPerDBU = 1.0000
+**WARN: (IMPFP-3961):	The techSite 'fillSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'cornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'ioSiteEW' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'ioSiteNS' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+Horizontal Layer M1 offset = 0 (derived)
+Vertical Layer M2 offset = 0 (derived)
+Start create_tracks
+Generated pitch 0.228 in M9 is different from 2.432 defined in technology file in preferred direction.
+Generated pitch 0.152 in M8 is different from 1.216 defined in technology file in preferred direction.
+Generated pitch 0.152 in M7 is different from 1.216 defined in technology file in preferred direction.
+Generated pitch 0.152 in M6 is different from 0.608 defined in technology file in preferred direction.
+Generated pitch 0.152 in M5 is different from 0.608 defined in technology file in preferred direction.
+Generated pitch 0.152 in M4 is different from 0.304 defined in technology file in preferred direction.
+Generated pitch 0.152 in M3 is different from 0.304 defined in technology file in preferred direction.
+--- DIEAREA (0 0) (982528 593712)
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pad_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'ppar_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'ppar_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pc_be_out[3]' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pc_be_out[2]' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pc_be_out[1]' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pc_be_out[0]' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pc_be_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pframe_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pframe_n_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'ptrdy_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'ptrdy_n_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pirdy_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pirdy_n_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pdevsel_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pdevsel_n_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pstop_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pstop_n_en' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pperr_n_out' is inconsistent with netlist.
+**WARN: (IMPDF-247):	Net 'VSS' specified in Pin 'pperr_n_en' is inconsistent with netlist.
+**WARN: (EMS-27):	Message (IMPDF-247) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4' is only supported by defIn/defOut, but not other applications.
+**WARN: (IMPDF-141):	Linking placement blockage with component 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4' is only supported by defIn/defOut, but not other applications.
+**WARN: (EMS-27):	Message (IMPDF-141) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+DEF file '../outputs/ORCA_TOP.floorplan.innovus.macros_3B.def' is parsed, current time is Thu May  1 15:33:35 2025.
+Updating the floorplan ...
+<CMD> add_tracks -honor_pitch
+Start create_tracks
+Generated pitch 2.432 in MRDL is different from previous one 0.228 in unpreferred direction.
+Generated pitch 1.216 in M9 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 2.432 in M9 is different from previous one 0.228 in preferred direction.
+Generated pitch 1.216 in M8 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 1.216 in M8 is different from previous one 0.152 in preferred direction.
+Generated pitch 0.608 in M7 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 1.216 in M7 is different from previous one 0.152 in preferred direction.
+Generated pitch 0.608 in M6 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 0.608 in M6 is different from previous one 0.152 in preferred direction.
+Generated pitch 0.304 in M5 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 0.608 in M5 is different from previous one 0.152 in preferred direction.
+Generated pitch 0.304 in M4 is different from previous one 0.152 in unpreferred direction.
+Generated pitch 0.304 in M4 is different from previous one 0.152 in preferred direction.
+Generated pitch 0.304 in M3 is different from previous one 0.152 in preferred direction.
+<CMD> defIn /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.scan.def
+Reading DEF file '/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.scan.def', current time is Thu May  1 15:33:35 2025 ...
+--- CASESENSITIVE ON
+--- DIVIDERCHAR '/'
+DEF file '/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.scan.def' is parsed, current time is Thu May  1 15:33:35 2025.
+<CMD> read_power_intent ../../syn/outputs/ORCA_TOP.dct.upf -1801
+Reading power intent file ../../syn/outputs/ORCA_TOP.dct.upf ...
+Checking power intent
+Checking scoped supply_net connected to top-level supply_net
+IEEE1801_RUNTIME: checking scoped supply_net: cpu=0:00:00.00 real=0:00:00.00
+Checking supply_set/supply_net
+IEEE1801_RUNTIME: checking pst supplies: cpu=0:00:00.00 real=0:00:00.00
+Setting boundaryports(3) from port_attr
+IEEE1801_RUNTIME: checking port_attribute: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: checking related_supply_net: cpu=0:00:00.00 real=0:00:00.00
+<CMD> commit_power_intent
+IEEE1801_RUNTIME: freeTimingGraph: cpu=0:00:00.40 real=0:00:00.00
+IEEE1801_RUNTIME: commit_logic_port/net: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: commit_supply_net: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: commit_power_domain: cpu=0:00:00.06 real=0:00:00.00
+IEEE1801_RUNTIME: commit_global_connect: cpu=0:00:00.03 real=0:00:00.00
+IEEE1801_RUNTIME: commit_power_mode: cpu=0:00:00.00 real=0:00:00.00
+worst_corner best_corner
+worst_corner best_corner
+IEEE1801_RUNTIME: define_low_power_cells: cpu=0:00:00.07 real=0:00:00.00
+worst_corner best_corner
+IEEE1801_RUNTIME: GNC_connect_existing_iso_shifter: cpu=0:00:00.21 real=0:00:00.00
+IEEE1801_RUNTIME: connectAlwaysOnBuf: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: replaceAlwaysOnAssignBuffer: cpu=0:00:00.00 real=0:00:00.00
+number of pgNets = 3
+IEEE1801_RUNTIME: commit_power_switch: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: commit_retention: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: commit_isolation: cpu=0:00:00.00 real=0:00:00.00
+INFO: level_shifter strategy ls_out: added 62 level_shifter insts
+INFO: level_shifter strategy ls_in: added 36 level_shifter insts
+IEEE1801_RUNTIME: commit_level_shifter: cpu=0:00:00.02 real=0:00:00.00
+Current (total cpu=0:01:14, real=0:01:34, peak res=2313.2M, current mem=2294.1M)
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2308.8M, current mem=2308.8M)
+Current (total cpu=0:01:14, real=0:01:34, peak res=2313.2M, current mem=2308.8M)
+Current (total cpu=0:01:14, real=0:01:34, peak res=2313.2M, current mem=2308.8M)
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2311.5M, current mem=2311.5M)
+Current (total cpu=0:01:14, real=0:01:34, peak res=2313.2M, current mem=2311.5M)
+Current (total cpu=0:01:14, real=0:01:34, peak res=2313.2M, current mem=2311.5M)
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2311.9M, current mem=2311.9M)
+Current (total cpu=0:01:15, real=0:01:34, peak res=2313.2M, current mem=2311.9M)
+Current (total cpu=0:01:15, real=0:01:34, peak res=2313.2M, current mem=2311.9M)
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+**ERROR: (DMMMC-271):	The software does not currently support the SDC set_voltage command. You should use operating conditions to control the default operating voltage and any power domain specific voltages.
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=2312.6M, current mem=2312.6M)
+Current (total cpu=0:01:15, real=0:01:35, peak res=2313.2M, current mem=2312.6M)
+IEEE1801_RUNTIME: buildTimingGraph: cpu=0:00:01.12 real=0:00:02.00
+IEEE1801_RUNTIME: connectAlwaysOnBuf: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: misc: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: update_pd_libset_by_voltages: cpu=0:00:00.00 real=0:00:00.00
+IEEE1801_RUNTIME: setDenseRecIsoInstToDB: cpu=0:00:00.00 real=0:00:00.00
+Total number of combinational cells: 357
+Total number of sequential cells: 204
+Total number of tristate cells: 18
+Total number of level shifter cells: 108
+Total number of power gating cells: 0
+Total number of isolation cells: 48
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 30
+Total number of retention cells: 180
+Total number of physical cells: 27
+List of usable buffers: NBUFFX2_LVT NBUFFX16_LVT NBUFFX32_LVT NBUFFX4_LVT NBUFFX8_LVT
+Total number of usable buffers: 5
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: IBUFFX2_HVT IBUFFX16_HVT IBUFFX32_HVT INVX0_HVT IBUFFX4_HVT IBUFFX8_HVT INVX16_HVT INVX1_HVT INVX2_HVT INVX32_HVT INVX4_HVT IBUFFX2_LVT INVX8_HVT IBUFFX16_LVT IBUFFX32_LVT INVX0_LVT IBUFFX4_LVT IBUFFX8_LVT INVX16_LVT INVX1_LVT INVX2_LVT INVX32_LVT INVX4_LVT IBUFFX2_RVT INVX8_LVT IBUFFX16_RVT IBUFFX32_RVT INVX0_RVT IBUFFX4_RVT IBUFFX8_RVT INVX16_RVT INVX1_RVT INVX2_RVT INVX32_RVT INVX4_RVT INVX8_RVT
+Total number of usable inverters: 36
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells: DELLN1X2_HVT DELLN2X2_HVT DELLN3X2_HVT NBUFFX2_HVT NBUFFX16_HVT NBUFFX32_HVT NBUFFX4_HVT NBUFFX8_HVT DELLN1X2_LVT DELLN2X2_LVT DELLN3X2_LVT DELLN1X2_RVT DELLN2X2_RVT DELLN3X2_RVT NBUFFX2_RVT NBUFFX16_RVT NBUFFX32_RVT NBUFFX4_RVT NBUFFX8_RVT
+Total number of identified usable delay cells: 19
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+number of pgNets = 3
+<CMD> is_common_ui_mode
+<CMD> modifyPowerDomainAttr PD_RISC_CORE -box 10.032 10.032 420.032 185.032
+**WARN: (IMPMSMV-4010):	The '-box' parameter of the 'modifypowerdomainattr' command is obsolete and will be removed in a future release. Use 'setObjFPlanBox Group <domain_name>' instead.
+Type 'man IMPMSMV-4010' for more detail.
+Power Domain 'PD_RISC_CORE'.
+	  Boundary = 10.0320 10.0320 420.0320 185.0320
+	   minGaps = T:0.0560 B:0.0560 L:0.0560 R:0.0560
+	   rsExts  = T:0.0000 B:0.0000 L:0.0000 R:0.0000
+	   core2Side = T:0.0000 B:0.0000 L:0.0000 R:0.0000
+	   rowSpaceType = 0
+	   rowSpacing = 0.0000
+	   rowFlip = first (fplan:auto)
+	   site = unit
+<CMD> is_common_ui_mode
+<CMD> set_ccopt_property target_max_trans 0.3ns
+<CMD> is_common_ui_mode
+<CMD> setNanoRouteMode -drouteEndIteration 5
+<CMD> is_common_ui_mode
+<CMD> setOptMode -opt_enable_podv2_clock_opt_flow false
+<CMD> setDesignMode -earlyClockFlow false
+<CMD> setNanoRouteMode -routeWithViaOnlyForMacroCellPin false
+<CMD> setNanoRouteMode -routeWithViaOnlyForStandardCellPin 1:1
+<CMD> setOptMode -usefulSkew false
+<CMD> setOptMode -usefulSkewCCOpt none
+<CMD> setOptMode -usefulSkewPostRoute false
+<CMD> setOptMode -usefulSkewPreCTS false
+<CMD> is_common_ui_mode
+<CMD> setPinAssignMode -pinEditInBatch true
+<CMD> all_constraint_modes -active
+func_best_mode test_best_mode func_worst_mode test_worst_mode
+<CMD> set_interactive_constraint_modes [all_constraint_modes -active]
+<CMD> set_units -time ns -resistance MOhm -capacitance fF -voltage V -current uA
+**WARN: (TCLCMD-1461):	Skipped unsupported command: set_units
+<CMD> setDontUse DELLN true
+**WARN: (IMPOPT-3593):	The cell DELLN is not defined in any library file. If you wish to use this cell please ensure a timing library file defining this cell is bound to each timing analysis-view.
+Type 'man IMPOPT-3593' for more detail.
+<CMD> createBasicPathGroups -expanded
+Created reg2reg path group
+Effort level <high> specified for reg2reg path_group
+Created reg2cgate path group
+Effort level <high> specified for reg2cgate path_group
+<CMD> saveDesign ORCA_TOP_floorplan.innovus
+#% Begin save design ... (date=05/01 15:33:40, mem=2352.1M)
+INFO: Current data have to be saved into a temporary db: 'ORCA_TOP_floorplan.innovus.dat.tmp' first. It will be renamed to the correct name 'ORCA_TOP_floorplan.innovus.dat' after the old db was deleted.
+% Begin Save ccopt configuration ... (date=05/01 15:33:40, mem=2352.1M)
+% End Save ccopt configuration ... (date=05/01 15:33:40, total cpu=0:00:00.0, real=0:00:00.0, peak res=2353.8M, current mem=2353.8M)
+% Begin Save netlist data ... (date=05/01 15:33:40, mem=2353.8M)
+Writing Binary DB to ORCA_TOP_floorplan.innovus.dat.tmp/vbin/ORCA_TOP.v.bin in multi-threaded mode...
+% End Save netlist data ... (date=05/01 15:33:41, total cpu=0:00:00.3, real=0:00:01.0, peak res=2353.9M, current mem=2353.9M)
+Saving symbol-table file in separate thread ...
+Saving congestion map file in separate thread ...
+Saving congestion map file ORCA_TOP_floorplan.innovus.dat.tmp/ORCA_TOP.route.congmap.gz ...
+% Begin Save AAE data ... (date=05/01 15:33:41, mem=2355.7M)
+Saving AAE Data ...
+% End Save AAE data ... (date=05/01 15:33:41, total cpu=0:00:00.1, real=0:00:00.0, peak res=2379.6M, current mem=2355.9M)
+Saving preference file ORCA_TOP_floorplan.innovus.dat.tmp/gui.pref.tcl ...
+Saving mode setting ...
+Saving global file ...
+*info - save blackBox cells to lef file ORCA_TOP_floorplan.innovus.dat.tmp/ORCA_TOP.bbox.lef
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+Saving SCANDEF file ...
+**WARN: (IMPSC-1020):	Instance's output pin "snps_clk_chain_1/U2/Y" (Cell "AO22X1_RVT") has multiple corresponding input pins for scan tracing. Please specify the instance in scan DEF.  You can also apply "setScanReorderMode -compLogic true" to trace through the chain but it could be not exactly the chain that user needed.
+**WARN: (IMPSC-1001):	Unable to trace scan chain "5". Check the information during tracing.
+Type 'man IMPSC-1001' for more detail.
+**WARN: (IMPSC-1020):	Instance's output pin "I_CLOCKING/snps_clk_chain_0/U2/Y" (Cell "AO22X1_RVT") has multiple corresponding input pins for scan tracing. Please specify the instance in scan DEF.  You can also apply "setScanReorderMode -compLogic true" to trace through the chain but it could be not exactly the chain that user needed.
+**WARN: (IMPSC-1001):	Unable to trace scan chain "6". Check the information during tracing.
+Type 'man IMPSC-1001' for more detail.
+*** Scan Trace Summary (runtime: cpu: 0:00:00.0 , real: 0:00:01.0): 
+Successfully traced 3 scan chains (total 4530 scan bits).
+Start applying DEF ordered sections ...
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_count_int_reg_5_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_0/s3_op2_reg_25_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_0/R_81" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_0/mega_shift_reg_0__13_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_0/mega_shift_reg_0__4_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/R_540" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/s1_op1_reg_10_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__22_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__21_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/trans3_reg" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/R_567" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/R_51" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/R_50" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__17_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__24_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__0_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__13_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__16_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__28_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (IMPSC-1138):	In scan chain "3" DEF ordered section, buffers or logics following scan instance "I_BLENDER_1/mega_shift_reg_0__4_" are corrected to match the netlist.
+Type 'man IMPSC-1138' for more detail.
+**WARN: (EMS-27):	Message (IMPSC-1138) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPSC-1144):	Scan chain "5" was not traced through. Skip apply DEF ordered section.
+**WARN: (IMPSC-1144):	Scan chain "6" was not traced through. Skip apply DEF ordered section.
+**WARN: (IMPSC-1143):	Unable to apply DEF ordered sections for 2 scan chain(s). Check previous warning.
+*** Scan Sanity Check Summary:
+*** 3 scan chains passed sanity check.
+Saving special route data file in separate thread ...
+Saving PG file in separate thread ...
+Saving placement file in separate thread ...
+Saving route file in separate thread ...
+Saving PG file ORCA_TOP_floorplan.innovus.dat.tmp/ORCA_TOP.pg.gz, version#2, (Created by Innovus v23.10-p003_1 on Thu May  1 15:33:43 2025)
+Saving property file in separate thread ...
+** Saving stdCellPlacement_binary (version# 2) ...
+TAT_INFO: ::saveSpecialRoute REAL = 0 : CPU = 0 : MEM = 0.
+Save Adaptive View Pruning View Names to Binary file
+Saving property file ORCA_TOP_floorplan.innovus.dat.tmp/ORCA_TOP.prop
+*** Completed saveProperty (cpu=0:00:00.1 real=0:00:00.0 mem=2845.4M) ***
+*** Completed savePGFile (cpu=0:00:00.2 real=0:00:00.0 mem=2845.4M) ***
+TAT_INFO: ::savePGFile REAL = 0 : CPU = 0 : MEM = 0.
+TAT_INFO: ::savePlace REAL = 0 : CPU = 0 : MEM = 0.
+*** Completed saveRoute (cpu=0:00:00.3 real=0:00:00.0 mem=2845.4M) ***
+TAT_INFO: ::saveRoute REAL = 0 : CPU = 0 : MEM = 0.
+TAT_INFO: ::db::saveAnnotationAndProp REAL = 0 : CPU = 0 : MEM = 0.
+Saving power intent database ...
+worst_corner best_corner
+TAT_INFO: ::db::saveSymbolTable REAL = 0 : CPU = 0 : MEM = 0.
+TAT_INFO: ::saveCongMap REAL = 0 : CPU = 0 : MEM = 0.
+% Begin Save power constraints data ... (date=05/01 15:33:44, mem=2370.5M)
+% End Save power constraints data ... (date=05/01 15:33:44, total cpu=0:00:00.0, real=0:00:00.0, peak res=2370.6M, current mem=2370.6M)
+cmin cmax
+Generated self-contained design ORCA_TOP_floorplan.innovus.dat.tmp
+best_libs worst_libs
+cmin cmax
+func_best_mode test_best_mode func_worst_mode test_worst_mode
+../../constraints/ORCA_TOP_func_best.sdc
+../../constraints/ORCA_TOP_test_best.sdc
+../../constraints/ORCA_TOP_func_worst.sdc
+../../constraints/ORCA_TOP_test_worst.sdc
+#% End save design ... (date=05/01 15:33:48, total cpu=0:00:04.8, real=0:00:08.0, peak res=2399.8M, current mem=2372.9M)
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPSC-1001           2  Unable to trace scan chain "%s". Check t...
+WARNING   IMPSC-1138         111  In scan chain "%s" DEF ordered section, ...
+WARNING   IMPSC-1143           1  Unable to apply DEF ordered sections for...
+WARNING   IMPSC-1144           2  Scan chain "%s" was not traced through. ...
+WARNING   IMPSC-1020           2  Instance's output pin "%s/%s" (Cell "%s"...
+*** Message Summary: 118 warning(s), 0 error(s)
+
+<CMD> add_tracks -honor_pitch
+Start create_tracks
+<CMD> clearGlobalNets
+<CMD> globalNetConnect VDD -type pgpin -pin VDD -inst *
+<CMD> globalNetConnect VSS -type pgpin -pin VSS -inst *
+<CMD> checkDesign -powerGround -noHtml -outfile pg.rpt
+Design check done.
+
+
+---
+--- Please refer to file pg.rpt for detailed report.
+---
+*** Message Summary: 0 warning(s), 0 error(s)
+
+<CMD> addRing -type core_rings -nets {VDD VSS} -layer {top M8 bottom M8 left M7 right M7} -offset 1 -width 4 -spacing 1.0
+#% Begin addRing (date=05/01 15:33:48, mem=2373.0M)
+
+
+viaInitial starts at Thu May  1 15:33:48 2025
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA12BAR_C' and 'VIA12SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA12LG_C' and 'VIA12SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA12BAR' and 'VIA12SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA12LG' and 'VIA12SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA23BAR_C' and 'VIA23SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA23LG_C' and 'VIA23SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA23BAR' and 'VIA23SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA23LG' and 'VIA23SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA34BAR_C' and 'VIA34SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA34LG_C' and 'VIA34SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA34BAR' and 'VIA34SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA34LG' and 'VIA34SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA45BAR_C' and 'VIA45SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA45LG_C' and 'VIA45SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA45BAR' and 'VIA45SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA45LG' and 'VIA45SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA56BAR_C' and 'VIA56SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA56LG_C' and 'VIA56SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA56BAR' and 'VIA56SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (IMPPP-543):	Inconsistent cut size definition in VIARULE 'VIA56LG' and 'VIA56SQ_C'.
+Type 'man IMPPP-543' for more detail.
+**WARN: (EMS-27):	Message (IMPPP-543) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+viaInitial ends at Thu May  1 15:33:48 2025
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2649.7M)
+The power planner has cut rows, and such rows will be considered to be placement objects.
+**WARN: (IMPPP-220):	The power planner does not create core rings outside the design boundary. Check the design boundary, or specify valid offsets.
+**WARN: (IMPPP-4051):	Failed to add rings, because the IO cells might contain gaps. Run the 'addIoFiller' command to fill gaps between the cells and try again.
+Type 'man IMPPP-4051' for more detail.
+#% End addRing (date=05/01 15:33:48, total cpu=0:00:00.0, real=0:00:00.0, peak res=2373.9M, current mem=2373.9M)
+<CMD> addStripe -nets {VDD VSS} -direction vertical -layer M4 -width 0.060 -set_to_set_distance 20 -spacing 10
+#% Begin addStripe (date=05/01 15:33:48, mem=2373.9M)
+
+Initialize fgc environment(mem: 2649.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2649.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2650.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2650.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2650.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+The core ring for VDD is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+The core ring for VSS is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 100% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 216 wires.
+ViaGen created 0 via, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|   M4   |       216      |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/01 15:33:48, total cpu=0:00:00.1, real=0:00:00.0, peak res=2378.1M, current mem=2378.1M)
+<CMD> addStripe -nets {VDD VSS} -direction horizontal -layer M5 -width 0.120 -set_to_set_distance 20 -spacing 10
+#% Begin addStripe (date=05/01 15:33:48, mem=2378.1M)
+
+Initialize fgc environment(mem: 2652.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+The core ring for VDD is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+The core ring for VSS is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2652.7M)
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 308 wires.
+ViaGen created 1502 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  VIA4  |      1502      |        0       |
+|   M5   |       308      |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/01 15:33:48, total cpu=0:00:00.2, real=0:00:00.0, peak res=2378.9M, current mem=2378.9M)
+<CMD> addStripe -nets {VDD VSS} -direction vertical -layer M6 -width 0.120 -set_to_set_distance 20 -spacing 10
+#% Begin addStripe (date=05/01 15:33:48, mem=2378.9M)
+
+Initialize fgc environment(mem: 2653.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+The core ring for VDD is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+The core ring for VSS is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 100% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Stripe generation is complete.
+vias are now being generated.
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (10.03, 185.12) (10.09, 414.35).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (10.03, 483.97) (10.09, 511.40).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (10.03, 581.02) (10.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (30.03, 185.12) (30.09, 405.39).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (30.03, 486.71) (30.09, 502.45).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (50.03, 185.12) (50.09, 405.39).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (50.03, 486.71) (50.09, 502.45).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (70.03, 185.12) (70.09, 404.75).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (70.03, 486.71) (70.09, 501.80).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M6 at (69.96, 486.33) (70.26, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M6 at (69.96, 583.38) (70.26, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (90.03, 185.12) (90.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (110.03, 185.12) (110.09, 404.75).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (110.03, 486.71) (110.09, 501.80).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (130.03, 185.12) (130.09, 404.49).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (130.03, 486.71) (130.09, 501.55).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M6 at (130.01, 486.33) (130.31, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M6 at (130.01, 583.38) (130.31, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (150.03, 185.12) (150.09, 404.75).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M6 & M4 at (150.03, 486.71) (150.09, 501.80).
+**WARN: (EMS-27):	Message (IMPPP-532) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (350.03, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (350.03, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.12 at (570.03, 30.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.12 at (570.03, 50.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.12 at (570.03, 110.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.12 at (570.03, 130.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (590.03, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (590.03, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (100.15, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (100.15, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (280.26, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (280.26, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (380.17, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (380.17, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.12 at (500.16, 20.21).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (520.26, 486.48).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (520.26, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (760.15, 80.12).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (780.25, 583.53).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 0.12 x 0.30 at (940.16, 10.18).
+**WARN: (EMS-27):	Message (IMPPP-612) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+addStripe created 97 wires.
+ViaGen created 1577 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  VIA5  |      1577      |        0       |
+|   M6   |       97       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/01 15:33:48, total cpu=0:00:00.1, real=0:00:00.0, peak res=2379.0M, current mem=2379.0M)
+<CMD> addStripe -nets {VDD VSS} -direction horizontal -layer M7 -width 2 -set_to_set_distance 40 -spacing 20
+#% Begin addStripe (date=05/01 15:33:48, mem=2379.0M)
+
+Initialize fgc environment(mem: 2653.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+The core ring for VDD is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+The core ring for VSS is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 100% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Stripe generation is complete.
+vias are now being generated.
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (420.12, 10.03) (431.85, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (484.52, 10.03) (501.45, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (554.12, 10.03) (571.06, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (623.73, 10.03) (640.66, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (693.33, 10.03) (709.82, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (762.49, 10.03) (779.87, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (832.54, 10.03) (849.48, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (902.15, 10.03) (919.08, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M7 & M5 at (971.75, 10.03) (972.50, 10.15).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (920.52, 10.03) (920.82, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (929.52, 10.03) (929.82, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (928.62, 10.03) (928.92, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (925.02, 10.03) (925.32, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (924.12, 10.03) (924.42, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (947.52, 10.03) (947.82, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (945.72, 10.03) (946.02, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (946.62, 10.03) (946.92, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (944.82, 10.03) (945.12, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (941.22, 10.03) (941.52, 10.33).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M7 at (931.32, 10.03) (931.62, 10.33).
+**WARN: (EMS-27):	Message (IMPPP-532) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to SPACING rule violation, viaGen fail to generate via on layer VIA6 at (480.33, 10.03) (480.38, 10.33).
+addStripe created 29 wires.
+ViaGen created 3449 vias, deleted 375 vias to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  VIA4  |       756      |       370      |
+|  VIA5  |      1113      |        5       |
+|  VIA6  |      1580      |        0       |
+|   M7   |       29       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/01 15:33:49, total cpu=0:00:00.2, real=0:00:01.0, peak res=2379.5M, current mem=2379.5M)
+<CMD> addStripe -nets {VDD VSS} -direction vertical -layer M8 -width 4 -set_to_set_distance 80 -spacing 40
+#% Begin addStripe (date=05/01 15:33:49, mem=2379.5M)
+
+Initialize fgc environment(mem: 2653.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+The core ring for VDD is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+The core ring for VSS is incomplete. The core ring will not be used as a boundary for stripes. In this situation, the power planner will generate stripes only within the core area.
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Completing 100% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 2653.7M)
+Stripe generation is complete.
+vias are now being generated.
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (10.03, 185.12) (10.09, 414.35).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (10.03, 483.97) (10.09, 511.40).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (10.03, 581.02) (10.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M6 at (10.03, 185.12) (10.15, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (13.27, 486.33) (13.56, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (11.47, 486.33) (11.77, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (13.27, 583.38) (13.56, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (11.47, 583.38) (11.77, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (90.03, 185.12) (90.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M6 at (90.03, 185.12) (90.15, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (94.01, 486.33) (94.31, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (92.21, 486.33) (92.51, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (94.01, 583.38) (94.31, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (92.21, 583.38) (92.51, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (170.03, 185.12) (170.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M6 at (170.03, 185.12) (170.15, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (172.95, 486.33) (173.25, 486.63).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M5 & M8 at (172.95, 583.38) (173.25, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M4 at (250.03, 185.12) (250.09, 583.68).
+**WARN: (IMPPP-532):	ViaGen Warning: The top layer and bottom layer have same direction but only orthogonal via is allowed between layer M8 & M6 at (250.03, 185.12) (250.15, 583.68).
+**WARN: (EMS-27):	Message (IMPPP-532) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 4.00 x 0.12 at (570.03, 30.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 4.00 x 0.12 at (570.03, 50.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 4.00 x 0.12 at (570.03, 110.09).
+**WARN: (IMPPP-612):	The intersection area is insufficient to satisfy MINIMUMCUT rule, so no via was created between layer: M5 & M6, size: 4.00 x 0.12 at (570.03, 130.09).
+**WARN: (IMPPP-610):	The power planner failed to find a matching VIARULE, so no via was created between layer: M7 & M8, size: 4.00 x 0.30 at (814.01, 583.53).
+Type 'man IMPPP-610' for more detail.
+**WARN: (IMPPP-610):	The power planner failed to find a matching VIARULE, so no via was created between layer: M7 & M8, size: 4.00 x 0.30 at (538.01, 80.12).
+Type 'man IMPPP-610' for more detail.
+**WARN: (IMPPP-610):	The power planner failed to find a matching VIARULE, so no via was created between layer: M7 & M8, size: 4.00 x 0.30 at (534.04, 486.48).
+Type 'man IMPPP-610' for more detail.
+**WARN: (IMPPP-610):	The power planner failed to find a matching VIARULE, so no via was created between layer: M7 & M8, size: 4.00 x 0.30 at (534.04, 583.53).
+Type 'man IMPPP-610' for more detail.
+**WARN: (IMPPP-610):	The power planner failed to find a matching VIARULE, so no via was created between layer: M7 & M8, size: 4.00 x 0.30 at (854.04, 583.53).
+Type 'man IMPPP-610' for more detail.
+addStripe created 24 wires.
+ViaGen created 1835 vias, deleted 241 vias to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  VIA5  |       554      |       238      |
+|  VIA6  |       554      |        3       |
+|  VIA7  |       727      |        0       |
+|   M8   |       24       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/01 15:33:49, total cpu=0:00:00.2, real=0:00:00.0, peak res=2381.9M, current mem=2381.9M)
+<CMD> sroute -connect {corePin padPin} -crossoverViaLayerRange {1 4}
+#% Begin sroute (date=05/01 15:33:49, mem=2381.9M)
+*** Begin SPECIAL ROUTE on Thu May  1 15:33:49 2025 ***
+SPECIAL ROUTE ran on directory: /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/apr/work
+SPECIAL ROUTE ran on machine: mo.ece.pdx.edu (Linux 3.10.0-1160.119.1.el7.x86_64 Xeon 2.50Ghz)
+
+Begin option processing ...
+srouteConnectPowerBump set to false
+routeSpecial set to true
+srouteConnectBlockPin set to false
+srouteConnectConverterPin set to false
+srouteConnectStripe set to false
+srouteCrossoverViaBottomLayer set to 1
+srouteCrossoverViaTopLayer set to 4
+srouteFollowCorePinEnd set to 3
+srouteFollowPadPin set to false
+srouteJogControl set to "preferWithChanges differentLayer"
+sroutePadPinAllPorts set to true
+sroutePreserveExistingRoutes set to true
+srouteRoutePowerBarPortOnBothDir set to true
+End option processing: cpu: 0:00:00, real: 0:00:00, peak: 441.00 megs.
+
+Reading DB technology information...
+Finished reading DB technology information.
+Reading floorplan and netlist information...
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY showBlockEdgeNum not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY showBlockEdgeNum not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY showBlockEdgeNum not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+   **WARN: PROPERTY scScanTag not defined
+Finished reading floorplan and netlist information.
+   A total of 23 warnings.
+Read in 21 layers, 10 routing layers, 1 overlap layer
+Read in 1054 macros, 114 used
+Read in 219 components
+  179 core components: 179 unplaced, 0 placed, 0 fixed
+  40 block/ring components: 0 unplaced, 0 placed, 40 fixed
+Read in 242 physical pins
+  242 physical pins: 0 unplaced, 0 placed, 242 fixed
+Read in 3 logical pins
+Read in 1 blockages
+Read in 220 nets
+Read in 3 special nets, 2 routed
+Read in 681 terminals
+Begin power routing ...
+**WARN: (IMPSR-1256):	Unable to find any CORE class pad pin of the VDD net due to unavailability of the pin or check netlist in the routing area or layer. Change routing area or layer to include the expected pin or check netlist. Alternatively, change port class in the technology file.
+Type 'man IMPSR-1256' for more detail.
+Cannot find any AREAIO class pad pin of net VDD. Check net list, or change port class in the technology file, or change option to include pin in given range.
+**WARN: (IMPSR-1256):	Unable to find any CORE class pad pin of the VDDH net due to unavailability of the pin or check netlist in the routing area or layer. Change routing area or layer to include the expected pin or check netlist. Alternatively, change port class in the technology file.
+Type 'man IMPSR-1256' for more detail.
+Cannot find any AREAIO class pad pin of net VDDH. Check net list, or change port class in the technology file, or change option to include pin in given range.
+**WARN: (IMPSR-1256):	Unable to find any CORE class pad pin of the VSS net due to unavailability of the pin or check netlist in the routing area or layer. Change routing area or layer to include the expected pin or check netlist. Alternatively, change port class in the technology file.
+Type 'man IMPSR-1256' for more detail.
+Cannot find any AREAIO class pad pin of net VSS. Check net list, or change port class in the technology file, or change option to include pin in given range.
+**WARN: (IMPSR-2031):	For net VDDH, no suitable cell can be taken as reference cell for followpin generation at (97.736 10.032) (112.632 11.704). Specify option -corePinLayer to generate followpin on M3 or above layers. Similar warnings suppressed.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (32.235, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (33.603, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (34.971, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (36.339, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (37.707, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (39.075, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (40.443, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (41.811, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (43.179, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (44.547, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (45.915, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (47.283, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (48.651, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (50.019, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (51.387, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (112.977, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (114.345, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (115.713, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (117.081, 501.570), it will not be connected.
+**WARN: (IMPSR-481):	Row/Power/Ground pin overlap with a block or obstruction around (118.449, 501.570), it will not be connected.
+**WARN: (EMS-27):	Message (IMPSR-481) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+CPU time for VDD FollowPin 0 seconds
+CPU time for VDDH FollowPin 0 seconds
+CPU time for VSS FollowPin 0 seconds
+**WARN: (IMPPP-531):	ViaGen Warning: Due to SPACING rule violation, viaGen fail to generate via on layer VIA4 at (560.08, 560.09) (560.35, 560.10).
+  Number of IO ports routed: 0
+  Number of Core ports routed: 3662  ignored: 123  open: 475
+  Number of Followpin connections: 2486
+End power routing: cpu: 0:00:10, real: 0:00:10, peak: 668.00 megs.
+
+
+
+ Begin updating DB with routing results ...
+ Updating DB with 242 io pins ...
+ Updating DB with 36 via definition ...Extracting standard cell pins and blockage ...... 
+Pin and blockage extraction finished
+
+
+sroute post-processing starts at Thu May  1 15:33:59 2025
+The viaGen is rebuilding shadow vias for net VSS.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (880.14, 473.58) (880.27, 473.69).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (880.14, 342.40) (880.27, 342.51).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (20.14, 486.80) (20.27, 486.91).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (100.14, 486.80) (100.27, 486.91).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (180.14, 486.80) (180.27, 486.91).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M3 at (20.14, 501.70) (20.27, 501.81).
+sroute post-processing ends at Thu May  1 15:34:00 2025
+
+sroute post-processing starts at Thu May  1 15:34:00 2025
+The viaGen is rebuilding shadow vias for net VDD.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to SPACING rule violation, viaGen fail to generate via on layer VIA4 at (972.58, 234.12) (972.60, 234.15).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 50.074000, 501.600000 between the M1 and M2 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 50.040000, 501.875000 between the M1 and M4 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 130.091000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (130.02, 502.00) (130.15, 502.11).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 210.091000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (210.02, 502.00) (210.15, 502.11).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 290.130000, 502.121000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (290.03, 501.96) (290.16, 502.07).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 370.091000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (370.02, 502.00) (370.15, 502.11).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 450.091000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (450.02, 502.00) (450.15, 502.11).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 530.091000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-531):	ViaGen Warning: Due to MINAREA rule violation, viaGen fail to generate via on layer M5 at (530.02, 502.00) (530.15, 502.11).
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 610.092000, 502.056000 between the M1 and M6 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 438.188000, 501.261000 between the M2 and M3 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+**WARN: (IMPPP-4500):	Extended number of geometries exist around 438.188000, 501.331000 between the M1 and M2 layers. This may increase the run time.
+Type 'man IMPPP-4500' for more detail.
+sroute post-processing ends at Thu May  1 15:34:00 2025
+sroute created 11109 wires.
+ViaGen created 45086 vias, deleted 6 vias to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|   M1   |      6563      |       NA       |
+|  VIA1  |      11678     |        0       |
+|   M2   |       308      |       NA       |
+|  VIA2  |      11652     |        0       |
+|   M3   |       931      |       NA       |
+|  VIA3  |      11651     |        0       |
+|   M4   |       10       |       NA       |
+|  VIA4  |      2709      |        0       |
+|   M5   |       115      |       NA       |
+|  VIA5  |      2703      |        0       |
+|   M6   |       762      |       NA       |
+|  VIA6  |      4585      |        5       |
+|   M7   |      2420      |       NA       |
+|  VIA7  |       108      |        1       |
++--------+----------------+----------------+
+#% End sroute (date=05/01 15:34:01, total cpu=0:00:11.4, real=0:00:12.0, peak res=2613.3M, current mem=2404.4M)
+<CMD> createRow -area {0.0000 0.0000 1000 644} -site unitdouble
+<CMD> deselectAll
+<CMD> fit
+### Start verbose source output (echo mode) for '../../ORCA_TOP.design_config.tcl' ...
+# set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# set hack_lef_dir /u/bcruik2/hacked_lefs
+# set top_design ORCA_TOP
+# set FCL 0
+# set add_ios 0
+# set pad_design 0
+# set design_size {1000 644}
+# set design_io_border 10
+# set dc_floorplanning 1
+# set enable_dft  1
+# set innovus_enable_manual_macro_placement 1
+# set split_constraints 0
+# set rtl_list [list ../../syn/rtl/$top_design.sv ]
+# set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+# set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+# set synth_corners_slow $slow_corner
+# set synth_corners_fast $fast_corner
+# set slow_metal Cmax.tlup_-40
+# set fast_metal Cmin.tlup_-40
+# set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+# set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+# set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+# set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+# set sub_lib_type_target "saed32rvt_"
+# set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+# set tech_lef ${hack_lef_dir}/tech.lef 
+# set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+# set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+# set synth_corners $slow_corner
+# set synth_corners_slow $slow_corner
+# set synth_corners_fast $fast_corner
+# set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+# set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+# if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+# set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+# set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+# set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+# set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+# if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+<CMD> is_common_ui_mode
+<CMD> setMultiCpuUsage -localCpu 8
+### End verbose source output for '../../ORCA_TOP.design_config.tcl'.
+<CMD> delete_gui_object design:ORCA_TOP
+
+Usage: delete_gui_object [-help] [-shape | -text | -marker | -all | -selected ]
+
+**ERROR: (IMPTCM-48):	"design:ORCA_TOP" is not a legal option for command "delete_gui_object". Either the current option or an option prior to it is not specified correctly.
+  
+
+*** Memory Usage v#2 (Current mem = 3068.926M, initial mem = 820.664M) ***
+*** Message Summary: 1452 warning(s), 19 error(s)
+
+--- Ending "Innovus" (totcpu=0:03:34, real=0:25:32, mem=3068.9M) ---

@@ -1,0 +1,1498 @@
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set hack_lef_dir /u/bcruik2/hacked_lefs
+/u/bcruik2/hacked_lefs
+# Decoder ring for the libraries
+# You will need to follow another example or look in the library directories to understand.
+# lib_types is used for the dc/dct linking variables and ICC2 NDM lcoations.
+# /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# /          $lib_dir                   /lib/ $lib_type /db_nldm
+# link_library, Target_library use the sub_lib_types and corner variables. 
+# For sub_lib_types and corner:
+# Example:
+#     saed32hvt_ss0p75v125c.db
+#     |sub_lib  corner    .db
+# The current flow tries to find all sub_lib and all corners in all the search paths.  Any match will be put in the library list.
+# Wild cards can be used, but be careful.  Multiple matches can occur in ways you don't want.
+# For the target library, the same method is used as the link library except only HVT and RVT lib_types are used.
+# ICC2 NDM choosing also uses the sub_lib_types so that only the required libraries and extras are not loaded.
+# ORCA
+# The RTL version does not currently have macros
+# The one pulled from a lab does have macros, but no RTL.  Similar to the version with RTL.
+# Below is an effort to get the design pulled from a lap working for ICC2
+# Original lab had sram_lp memories, but the NDMs don't seem to be build correctly for the current libraries.  Converted code to regular SRAMs.
+set top_design ORCA_TOP
+ORCA_TOP
+set FCL 0
+0
+set add_ios 0
+0
+set pad_design 0
+0
+set design_size {1000 644 }
+1000 644 
+set design_io_border 10
+10
+set dc_floorplanning 1
+1
+set enable_dft  1
+1
+set innovus_enable_manual_macro_placement 0
+0
+set split_constraints 0
+0
+# This is the raw RTL without SRAMS
+#set rtl_list [list [glob /pkgs/synopsys/32_28nm/SAED_EDK32.28nm_REF_v_15032018/SAED32_EDK/references/orca/dc/rtl/*.vhd ] ../rtl/MUX21X2.sv ]
+# This is hacked P&R netlist with SRAMs and test and level shifters removed.
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+../../syn/rtl/ORCA_TOP.sv
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set synth_corners_slow $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set slow_metal Cmax.tlup_-40
+Cmax.tlup_-40
+set fast_metal Cmin.tlup_-40
+Cmin.tlup_-40
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_
+set sub_lib_type_target "saed32rvt_"
+saed32rvt_
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+ss0p95vn40c ss0p75vn40c
+#set synth_corners_target "ss0p95v125c" 
+set tech_lef ${hack_lef_dir}/tech.lef 
+/u/bcruik2/hacked_lefs/tech.lef
+# set tech_lef ../../cadence_cap_tech/tech.lef
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+/u/bcruik2/hacked_lefs /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/lef/ /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/lef
+#set lef_types [list $lib_dir/stdcell_hvt/lef  $lib_dir/stdcell_rvt/lef $lib_dir/stdcell_lvt/lef $lib_dir/sram/lef $lib_dir/io_std/lef $lib_dir/pll/lef ]
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef
+set synth_corners $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_slow $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*
+#set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram"
+# Get just the main standard cells, srams
+#set sub_lib_type "saed32?vt_ saed32sram_ saed32?vt_ulvl_ saed32?vt_dlvl_ "
+# Full MCMM Corners
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+#set topdir /u/$env(USER)/PSU_RTL2GDS
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/
+#declaring sub blocks
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 4  
+        } else { setMultiCpuUsage -localCpu 4 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 4 
+}
+Warning: No designs to list. (UID-275)
+Start to load technology file /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/../tech/milkyway/saed32nm_1p9m_mw.tf.
+Warning: Layer 'M1' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.13 or 0.105. (TFCHK-049)
+Warning: Layer 'M2' has a pitch 0.152 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M3' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M4' has a pitch 0.304 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M5' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M6' has a pitch 0.608 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M7' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.139. (TFCHK-049)
+Warning: Layer 'M8' has a pitch 1.216 that does not match the recommended wire-to-via pitch 0.179 or 0.164. (TFCHK-049)
+Warning: Layer 'M9' has a pitch 2.432 that does not match the recommended wire-to-via pitch 1.74. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the recommended wire-to-via pitch 4.5. (TFCHK-049)
+Warning: Layer 'MRDL' has a pitch 4.864 that does not match the doubled pitch 2.432 or tripled pitch 3.648. (TFCHK-050)
+Warning: CapModel sections are missing. Capacitance models should be loaded with a TLU+ file later. (TFCHK-084)
+Technology file /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/../tech/milkyway/saed32nm_1p9m_mw.tf has been loaded successfully.
+Information: Using the '-autoread' option is not recommended. This option will be removed in a future release.  See the man page for more information.  (INFO-109)
+Information: Use of command 'analyze -autoread' is not recommended. This command will be obsolete in a future release. (INFO-103)
+== ANALYZE autoread all files ==
+
+Starting ANALYZE autoread mode...
+Information: Adding '/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/rtl/ORCA_TOP.sv'.  (AUTOREAD-100)
+Information: Scanning file { ORCA_TOP.sv }. (AUTOREAD-303)
+Compiling source file /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/rtl/ORCA_TOP.sv
+Presto compilation completed successfully.
+Autoread command completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/current/design_compiler/syn/V-2023.12-SP2/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/current/design_compiler/syn/V-2023.12-SP2/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_ss0p75vn40c'
+  Loading link library 'saed32rvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32rvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32rvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32rvt_ss0p95vn40c'
+  Loading link library 'saed32rvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32lvt_ss0p75vn40c'
+  Loading link library 'saed32lvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32lvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32lvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32lvt_ss0p95vn40c'
+  Loading link library 'saed32lvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32hvt_ss0p75vn40c'
+  Loading link library 'saed32hvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32hvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32hvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32hvt_ss0p95vn40c'
+  Loading link library 'saed32hvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32sram_ss0p95vn40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (ORCA_TOP)
+Elaborated 1 design.
+Current design is now 'ORCA_TOP'.
+Information: Building the design 'SDRAM_TOP'. (HDL-193)
+Presto compilation completed successfully. (SDRAM_TOP)
+Information: Building the design 'BLENDER_1'. (HDL-193)
+Presto compilation completed successfully. (BLENDER_1)
+Information: Building the design 'BLENDER_0'. (HDL-193)
+Presto compilation completed successfully. (BLENDER_0)
+Information: Building the design 'RISC_CORE'. (HDL-193)
+Presto compilation completed successfully. (RISC_CORE)
+Information: Building the design 'CONTEXT_MEM'. (HDL-193)
+Presto compilation completed successfully. (CONTEXT_MEM)
+Information: Building the design 'PARSER'. (HDL-193)
+Presto compilation completed successfully. (PARSER)
+Information: Building the design 'PCI_TOP'. (HDL-193)
+Presto compilation completed successfully. (PCI_TOP)
+Information: Building the design 'CLOCKING'. (HDL-193)
+Presto compilation completed successfully. (CLOCKING)
+Information: Building the design 'SDRAM_IF'. (HDL-193)
+Presto compilation completed successfully. (SDRAM_IF)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_BLENDER_1'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_BLENDER_1)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_BLENDER_0'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_BLENDER_0)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_10'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_10)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_11'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_11)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_12'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_12)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_13'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_13)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_14'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_14)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_15'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_15)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_16'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_16)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_17'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_17)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_18'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_MEM_18)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_STACK_FSM'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_STACK_FSM)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_PRGRM_CNT'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_PRGRM_CNT)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_INSTRN_LAT'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_INSTRN_LAT)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_0'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_DATA_PATH_0)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_1'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_DATA_PATH_1)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_2'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_DATA_PATH_2)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_ALU_0'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_ALU_0)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_1'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_1)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_0'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_0)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_PCI_CORE'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_PCI_CORE)
+Information: Building the design 'SNPS_CLOCK_GATE_LOW_SDRAM_IF'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_LOW_SDRAM_IF)
+Information: Building the design 'SNPS_CLOCK_GATE_HIGH_SDRAM_IF'. (HDL-193)
+Presto compilation completed successfully. (SNPS_CLOCK_GATE_HIGH_SDRAM_IF)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+Warning: In the design CLOCKING, net 'sdram_clk_cts_2' is connecting multiple ports. (UCN-1)
+Warning: In the design CLOCKING, net 'pclk' is connecting multiple ports. (UCN-1)
+Warning: In the design CLOCKING, net 'sys_clk' is connecting multiple ports. (UCN-1)
+Warning: In the design CLOCKING, net 'sys_2x_clk' is connecting multiple ports. (UCN-1)
+Information: linking reference library : /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway/saed32nm_hvt_1p9m. (PSYN-878)
+Information: linking reference library : /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/milkyway/saed32nm_rvt_1p9m. (PSYN-878)
+Information: linking reference library : /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway/saed32nm_lvt_1p9m. (PSYN-878)
+Information: linking reference library : /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/milkyway/SRAM32NM. (PSYN-878)
+Information: linking reference library : /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway/SAED32_PLL_FR. (PSYN-878)
+
+  Linking design 'ORCA_TOP'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  ORCA_TOP                    /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.db
+  saed32rvt_ss0p75vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db
+  saed32rvt_dlvl_ss0p75vn40c_i0p95v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db
+  saed32rvt_ulvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db
+  saed32rvt_dlvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db
+  saed32rvt_ss0p95vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db
+  saed32rvt_ulvl_ss0p95vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db
+  saed32lvt_ss0p75vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db
+  saed32lvt_dlvl_ss0p75vn40c_i0p95v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db
+  saed32lvt_ulvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db
+  saed32lvt_dlvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db
+  saed32lvt_ss0p95vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db
+  saed32lvt_ulvl_ss0p95vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db
+  saed32hvt_ss0p75vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db
+  saed32hvt_dlvl_ss0p75vn40c_i0p95v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db
+  saed32hvt_ulvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db
+  saed32hvt_dlvl_ss0p75vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db
+  saed32hvt_ss0p95vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db
+  saed32hvt_ulvl_ss0p95vn40c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db
+  saed32sram_ss0p95vn40c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db
+  dw_foundation.sldb (library) /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb
+  * (32 designs)              /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/SDRAM_TOP.db, etc
+
+Information: No preferred routing direction found for design layer M1. Using reference direction H. (DCT-035)
+Information: No preferred routing direction found for design layer M2. Using reference direction V. (DCT-035)
+Information: No preferred routing direction found for design layer M3. Using reference direction H. (DCT-035)
+Information: No preferred routing direction found for design layer M4. Using reference direction V. (DCT-035)
+Information: No preferred routing direction found for design layer M5. Using reference direction H. (DCT-035)
+Information: No preferred routing direction found for design layer M6. Using reference direction V. (DCT-035)
+Information: No preferred routing direction found for design layer M7. Using reference direction H. (DCT-035)
+Information: No preferred routing direction found for design layer M8. Using reference direction V. (DCT-035)
+Information: No preferred routing direction found for design layer M9. Using reference direction H. (DCT-035)
+Information: No preferred routing direction found for design layer MRDL. Using reference direction V. (DCT-035)
+Information: Reading input def file '/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/apr/outputs/ORCA_TOP.floorplan.def.gz'. (DEFR-56)
+Warning: NAMECASESENSITIVITY always assumed to be ON. (DDEFR-005)
+Information: Parsing ROWS statement (DDEFR-038)
+Information: Parsing TRACKS statement (DDEFR-038)
+Information: Parsing VIAS section (DDEFR-038)
+Information: Completed VIAS section (DDEFR-040)
+Information: Layer NWELL will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer PO will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer CO will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M1 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA1 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M2 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA2 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M3 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA3 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M4 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA4 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M5 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA5 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M6 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA6 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M7 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA7 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M8 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIA8 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer M9 will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer VIARDL will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Layer MRDL will be ignored as it is not a two or three mask layer. (DCT-437)
+Information: Parsing COMPONENTS section (DDEFR-038)
+Information: Completed COMPONENTS section (DDEFR-040)
+Information: Parsing PINS section (DDEFR-038)
+Information: Completed PINS section (DDEFR-040)
+Information: Parsing BLOCKAGES section (DDEFR-038)
+Information: Completed BLOCKAGES section (DDEFR-040)
+Information: Parsing SPECIALNETS section (DDEFR-038)
+Information: Completed SPECIALNETS section (DDEFR-040)
+Information: Parsing NETS section (DDEFR-038)
+Information: Completed NETS section (DDEFR-040)
+Information: Attribute 'is_fixed' is set on 40 objects. (UID-186)
+if { [info exists synopsys_program_name ] } {
+	switch $synopsys_program_name {
+	 "fc_shell" -
+         "icc2_shell"  {
+		# If the flow variable is set, then we should be in regular APR flow and not the macro floorplanning mode
+		# We want to use the UPF associated with the correct netlist.  APR flow uses DCT output.  Macro fp uses DC output.
+                if { [ info exists fc_rtl ] && $fc_rtl } {
+		    puts " Sourcing the RTL UPF"
+		    source ../../constraints/ORCA_TOP.upf
+                } elseif { [info exists flow ] } {
+		    puts " Sourcing the Physical Synthesis DCT UPF"
+		    source ../../syn/outputs/ORCA_TOP.dct.upf
+		} else {
+		    puts " Sourcing the Logical Synthesis DC UPF"
+		    source ../../syn/outputs/ORCA_TOP.dc.upf
+		}
+
+		puts " Creating ICC2 MCMM "
+		foreach mode { func test } {
+		  create_mode $mode
+		}
+		foreach corner { {Cmax -40 ss0p75vn40c} {Cmin -40 ff0p95vn40c} } {
+		  set corner_name [lindex $corner 0 ]
+		  set corner_temp [lindex $corner 1 ]
+		  set corner_op_cond [ lindex $corner 2 ]
+		  create_corner $corner_name
+		  # Read the TLUplus file and give it a name.  
+		  read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_${corner_name}.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name ${corner_name}.tlup
+		  # In our current case, we will use the same TLUplus and temperature for both launch and capture and for setup and hold for a particular corner.
+		  # set the TLUplus and temp to be used for early side of paths.  (launch on setup, capture on hold)
+		  set_parasitic_parameters -early_spec ${corner_name}.tlup -early_temperature $corner_temp
+		  # set the TLUplus and temp to be used for late side of paths.  (capture on setup, launch on hold)
+		  set_parasitic_parameters -late_spec ${corner_name}.tlup -late_temperature $corner_temp
+		  # indicate which operating condition to use for the standard cells. It needs to know the PVT.  
+		  # UPF may indicate additional information for the voltage in a multivoltage design.
+		  set_operating_condition $corner_op_cond -library saed32lvt_c
+		}
+
+		foreach scenario { {func_worst func Cmax } {func_best func Cmin} {test_worst test Cmax} {test_best test Cmin} } {
+		  create_scenario -name [lindex $scenario 0 ] -mode [lindex $scenario 1 ] -corner [lindex $scenario 2 ]
+		  current_scenario [lindex $scenario 0]
+		  source -echo -verbose -continue_on_error ../../constraints/ORCA_TOP_[lindex $scenario 0 ].sdc 
+		  set_false_path -from SDRAM_CLK -to SD_DDR_CLK 
+		}
+
+		set_scenario_status func_worst -active true -hold false -setup true
+		set_scenario_status func_best  -active true -hold true  -setup false
+		set_scenario_status test_worst -active true -hold false -setup true
+		set_scenario_status test_best  -active true -hold true  -setup false
+
+		current_scenario "func_worst"
+
+	 }
+	 "dc_shell" {
+		 set upf_create_implicit_supply_sets false
+		source ../../constraints/ORCA_TOP.upf
+		set_operating_conditions ss0p75vn40c -library saed32lvt_ss0p75vn40c
+		source ../../constraints/ORCA_TOP_func_worst.sdc
+		set_false_path -from SDRAM_CLK -to SD_DDR_CLK
+
+		# Define voltage area for DCT mode.  We define the mw_lib variable in DCT mode script.
+		# In the ICC2_flow it is defined in ORCA_TOP.design_options.tcl. Slightly different syntax.
+		if { [ info exists mw_lib ] } {
+		   create_voltage_area  -coordinate {{580 0} {1000 400}} -power_domain PD_RISC_CORE
+		}
+	 }
+	 "pt_shell" {
+		source $topdir/apr/outputs/ORCA_TOP.route2.upf
+		if [ regexp "max" $corner_name ] {
+		    set_operating_conditions ss0p75vn40c -library saed32lvt_ss0p75vn40c
+		    source $topdir/constraints/ORCA_TOP_func_worst.sdc
+		}
+		if [ regexp "min" $corner_name]  {
+		    set_operating_conditions ff0p95vn40c -library saed32lvt_ff0p95vn40c
+		    source $topdir/constraints/ORCA_TOP_func_best.sdc
+		}
+		 if [ regexp "min_test" $corner_name]  {
+		    set_operating_conditions ff0p95vn40c -library saed32lvt_ff0p95vn40c
+		    source $topdir/constraints/ORCA_TOP_test_best.sdc
+		}
+		if [ regexp "max_test" $corner_name]  {
+		    set_operating_conditions ss0p75vn40c -library saed32lvt_ss0p75vn40c
+		    source $topdir/constraints/ORCA_TOP_test_worst.sdc
+		}
+		 if [ regexp "cc_min" $corner_name]  {
+		    set_operating_conditions ff0p95vn40c -library saed32lvt_ff0p95vn40c
+		    source $topdir/constraints/ORCA_TOP_func_best.sdc
+		}
+		 if [ regexp "cc_max" $corner_name]  {
+		    set_operating_conditions ss0p75vn40c -library saed32lvt_ss0p75vn40c
+		    source $topdir/constraints/ORCA_TOP_func_worst.sdc
+		}
+		 if [ regexp "cc_min_test" $corner_name]  {
+		    set_operating_conditions ff0p95vn40c -library saed32lvt_ff0p95vn40c
+		    source $topdir/constraints/ORCA_TOP_test_best.sdc
+		}
+		 if [ regexp "cc_max_test" $corner_name]  {
+		    set_operating_conditions ss0p75vn40c -library saed32lvt_ss0p75vn40c
+		    source $topdir/constraints/ORCA_TOP_test_worst.sdc
+		}
+	 }
+	}
+} elseif {[get_db root: .program_short_name] == "genus"} {
+   read_power_intent ../../constraints/ORCA_TOP.upf -version 2.0 -module $top_design -1801
+   apply_power_intent
+   commit_power_intent
+#   report_power_intent 
+   set_units -time ns
+   source -echo -verbose ../../constraints/${top_design}_func_worst.sdc
+   set_false_path -from SDRAM_CLK -to SD_DDR_CLK
+   
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+
+	set_units -time ns -resistance MOhm -capacitance fF -voltage V -current uA
+}
+Information: Resolving '.' to the current scope 'ORCA_TOP'.
+Information: Design attribute lower_domain_boundary will be made obsolete in the future. Consider using -applies_to_boundary option of strategy commands. (UPF-807)
+Using operating conditions 'ss0p75vn40c' found in library 'saed32lvt_ss0p75vn40c'.
+Information: Setting sdc_version outside of an SDC file has no effect (SDC-1)
+Warning: Design rule attributes from the driving cell will be set on the port 'sdram_clk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sys_2x_clk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'shutdown'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_mode'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'test_si[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'scan_enable'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'ate_clk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'occ_bypass'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'occ_reset'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pclk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'prst_n'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pidsel'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pgnt_n'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[31]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[30]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[29]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[28]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[27]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[26]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[25]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[24]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[23]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[22]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[21]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[20]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[19]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[18]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[17]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[16]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pad_in[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'ppar_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pc_be_in[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pc_be_in[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pc_be_in[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pc_be_in[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pframe_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'ptrdy_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pirdy_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pdevsel_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pstop_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pperr_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pserr_n_in'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'pm66en'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[31]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[30]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[29]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[28]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[27]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[26]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[25]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[24]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[23]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[22]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[21]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[20]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[19]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[18]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[17]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[16]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'sd_DQ_in[0]'. (UID-401)
+Warning: Creating virtual clock named 'v_PCI_CLK' with no sources. (UID-348)
+Warning: Creating virtual clock named 'v_SDRAM_CLK' with no sources. (UID-348)
+Warning: Given coordinates are out of the core area. (PSYN-111)
+Information: Voltage area PD_RISC_CORE will be created during compile. (OPT-1415)
+1
+Current design is 'ORCA_TOP'.
+Information: setting M1 as ignored_layer due to min_max layer setting. (PSYN-178)
+Information: setting M8 as ignored_layer due to min_max layer setting. (PSYN-178)
+Information: setting M9 as ignored_layer due to min_max layer setting. (PSYN-178)
+Information: setting MRDL as ignored_layer due to min_max layer setting. (PSYN-178)
+Information: setting M2 as min routing layer.  (PSYN-179)
+Information: setting M7 as max routing layer.  (PSYN-179)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_2 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: A total of 36 operating conditions have been inferred.  (LIBSETUP-754)
+Information: Performing leakage power optimization. (PWR-850)
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db"
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db"
+Library analysis succeeded.
+
+TLU+ File = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/../tech/star_rcxt//saed32nm_1p9m_Cmax.tluplus
+TLU+ File = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/../tech/star_rcxt//saed32nm_1p9m_Cmin.tluplus
+
+--------- Sanity Check on TLUPlus Files -------------
+1. Checking the conducting layer names in ITF and mapping file ... 
+[ Passed! ]
+2. Checking the via layer names in ITF and mapping file ... 
+[ Passed! ]
+3. Checking the consistency of Min Width and Min Spacing between MW-tech and ITF ... 
+[ Passed! ]
+----------------- Check Ends ------------------
+Warning: Total of 990 technology library cells with the same names are found. Run '-check_only' with 'compile_ultra' to see more details. (OPT-1434)
+
+Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | V-2023.12-DWBB_202312.2 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler Topographical                                                     |
+| Command Line | compile_ultra -no_autoungroup -scan                                               |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 48955                                  |
+| Number of User Hierarchies                              | 32                                     |
+| Sequential Cell Count                                   | 5383                                   |
+| Macro Count                                             | 40                                     |
+| Number of Power Domains                                 | 2                                      |
+| Number of Path Groups                                   | 9                                      |
+| Number of VT Class                                      | 3                                      |
+| Number of Voltage Areas                                 | 2                                      |
+| Number of Clocks                                        | 8                                      |
+| Number of Dont Touch Cells                              | 576                                    |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 24                                     |
+| Design with UPF Data                                    | true                                   |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 13179 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+Warning: Found 98 pin to pin connections requiring level shifter(s).  (MV-229)
+Information: Related supplies are not explicitly specified on 238 port(s) and primary supplies (VDD, VSS) of top power domain will be assumed as the related supply. (UPF-405)
+Information: Total 0 repeater cells are inserted. (UPF-464)
+Information: A total of 0 isolation cells are inserted. (UPF-214)
+  Simplifying Design 'ORCA_TOP'
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_20__3_' will be removed. (OPT-1207)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_4__9_' will be removed. (OPT-1207)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/LOCKUP' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/LOCKUP' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/LOCKUP1' will be removed. (OPT-1207)
+Information: The register 'I_BLENDER_0/R_734' will be removed. (OPT-1207)
+Information: The register 'LOCKUP' will be removed. (OPT-1207)
+
+Information: Layer M1 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer M8 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer M9 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer MRDL is ignored for resistance and capacitance computation. (RCEX-019)
+****************************************************************
+Information: TLUPlus based RC computation is enabled. (RCEX-141)
+****************************************************************
+Information: The distance unit in Capacitance and Resistance is 1 micron. (RCEX-007)
+Information: The RC model used is TLU+. (RCEX-015)
+Information: Library Derived Cap for layer M1 : 0.16 0.14 (RCEX-011)
+Information: Library Derived Res for layer M1 : 2e-06 2e-06 (RCEX-011)
+Information: Library Derived Cap for layer M2 : 0.17 0.15 (RCEX-011)
+Information: Library Derived Res for layer M2 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M3 : 0.11 0.096 (RCEX-011)
+Information: Library Derived Res for layer M3 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M4 : 0.11 0.096 (RCEX-011)
+Information: Library Derived Res for layer M4 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M5 : 0.094 0.079 (RCEX-011)
+Information: Library Derived Res for layer M5 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M6 : 0.094 0.079 (RCEX-011)
+Information: Library Derived Res for layer M6 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M7 : 0.092 0.076 (RCEX-011)
+Information: Library Derived Res for layer M7 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M8 : 0.092 0.076 (RCEX-011)
+Information: Library Derived Res for layer M8 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M9 : 0.11 0.088 (RCEX-011)
+Information: Library Derived Res for layer M9 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer MRDL : 0.11 0.11 (RCEX-011)
+Information: Library Derived Res for layer MRDL : 1.8e-07 1.8e-07 (RCEX-011)
+Information: Library Derived Horizontal Cap : 0.098 0.084 (RCEX-011)
+Information: Library Derived Horizontal Res : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Vertical Cap : 0.12 0.11 (RCEX-011)
+Information: Library Derived Vertical Res : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Using derived R and C coefficients. (RCEX-008)
+Information: Using region-based R and C coefficients. (RCEX-013)
+Information: Library Derived Via Res : 5.8e-07 5.8e-07 (RCEX-011)
+Loaded alib file './alib-52/saed32rvt_ss0p95vn40c.db.alib'
+Loaded alib file './alib-52/saed32rvt_ss0p75vn40c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_2 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: A total of 36 operating conditions have been inferred.  (LIBSETUP-754)
+....
+  Processing 'SDRAM_IF'
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_18_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_17_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_21_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_4_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_5_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_3_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_6_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_11_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_2_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_8_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_7_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_13_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_12_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_30_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_29_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_25_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_27_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_28_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_26_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_23_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_16_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_15_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_20_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_14_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_22_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_31_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_9_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_1_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_10_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_24_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+Information: In design 'SDRAM_IF', the register 'sd_DQ_en_reg_19_' is removed because it is merged to 'sd_DQ_en_reg_0_'. (OPT-1215)
+  Processing 'BLENDER_0'
+Information: In design 'BLENDER_0', the register 'R_95' is removed because it is merged to 'R_94_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_740' is removed because it is merged to 'R_728'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_80' is removed because it is merged to 'R_79_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_78' is removed because it is merged to 'R_77_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_59' is removed because it is merged to 'R_58_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_131' is removed because it is merged to 'R_130_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_97' is removed because it is merged to 'R_96_IP'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_82_IP' is removed because it is merged to 'R_81'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 'R_704' is removed because it is merged to 'R_425'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 's3_op2_reg_1__rep1' is removed because it is merged to 's3_op2_reg_1_'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 's3_op2_reg_17__rep1' is removed because it is merged to 's3_op2_reg_17_'. (OPT-1215)
+Information: In design 'BLENDER_0', the register 's3_op2_reg_11__rep1' is removed because it is merged to 's3_op2_reg_11_'. (OPT-1215)
+  Processing 'BLENDER_1'
+Information: In design 'BLENDER_1', the register 'R_644' is removed because it is merged to 'R_643_IP'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_677' is removed because it is merged to 'R_676_IP'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 's3_op1_reg_0__rep1' is removed because it is merged to 's3_op1_reg_0_'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_109' is removed because it is merged to 'R_108_IP'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_751' is removed because it is merged to 'R_597'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 's3_op2_reg_1__rep1' is removed because it is merged to 's3_op2_reg_1_'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 's3_op2_reg_17__rep1' is removed because it is merged to 's3_op2_reg_17_'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_389' is removed because it is merged to 'R_368'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_442' is removed because it is merged to 'R_368'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_498' is removed because it is merged to 'R_368'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_510' is removed because it is merged to 'R_368'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_360' is removed because it is merged to 'R_348'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_365' is removed because it is merged to 'R_348'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_502' is removed because it is merged to 'R_348'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_508' is removed because it is merged to 'R_348'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_351' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_371' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_512' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_326' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_335' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_341' is removed because it is merged to 'R_270'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_518' is removed because it is merged to 'R_515'. (OPT-1215)
+Information: In design 'BLENDER_1', the register 'R_532' is removed because it is merged to 'R_515'. (OPT-1215)
+  Processing 'PCI_TOP'
+  Processing 'PARSER'
+  Processing 'CONTEXT_MEM'
+  Processing 'RISC_CORE'
+Information: The register 'I_ALU_Carry_Flag_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_6__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_PopDataOut_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_DATA_PATH_PSWL_Neg_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_7__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_5__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_4__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_3__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_2__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_1__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_0__1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_6__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_PopDataOut_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_DATA_PATH_PSWL_Carry_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_7__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_5__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_4__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_3__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_2__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_1__0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_STACK_TOP_I3_STACK_MEM_Stack_Mem_reg_0__0_' is a constant and will be removed. (OPT-1206)
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_17'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_15'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_13'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_11'
+  Processing 'SNPS_CLOCK_GATE_HIGH_BLENDER_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_SDRAM_IF'
+  Processing 'SNPS_CLOCK_GATE_HIGH_PCI_CORE'
+  Processing 'ORCA_TOP'
+  Processing 'SDRAM_TOP'
+  Processing 'CLOCKING'
+  Processing 'SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_CONTEXT_MEM_1'
+  Processing 'SNPS_CLOCK_GATE_HIGH_ALU_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_2'
+  Processing 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_1'
+  Processing 'SNPS_CLOCK_GATE_HIGH_DATA_PATH_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_INSTRN_LAT'
+  Processing 'SNPS_CLOCK_GATE_HIGH_PRGRM_CNT'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_FSM'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_18'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_16'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_14'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_12'
+  Processing 'SNPS_CLOCK_GATE_HIGH_STACK_MEM_10'
+  Processing 'SNPS_CLOCK_GATE_HIGH_BLENDER_1'
+  Processing 'SNPS_CLOCK_GATE_LOW_SDRAM_IF'
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_2 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: A total of 36 operating conditions have been inferred.  (LIBSETUP-754)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+Warning: Given coordinates are out of the core area. (PSYN-111)
+***********************
+Voltage Area PD_RISC_CORE Created Successfully 
+Block (s)  I_RISC_CORE	
+Total Cell Area  : 3959.31
+Total Macro Area : 0.00
+Area of Region   : 168000.00
+Utilization     : 0.02
+Bounding Box Dimension : (580.00  0.00 1000.00 400.00)
+************************
+
+Information: Updated utilization of voltage area PD_RISC_CORE is 0.023627. (PSYN-379)
+Information: Total 0 level shifters are removed. (MV-238)
+Information: Total 0 level shifters are inserted. (MV-239)
+Warning: 94 nets required level shifters but matching level shifters were not found. (MV-611)
+Warning: 1 nets required level shifters but was ignored. (MV-612)
+Warning: 3 nets has level shifter constraints but no level shifters are inserted. (MV-614)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_17__26__rep1' will be removed. (OPT-1207)
+Information: Complementing port 'IN19' in design 'BLENDER_1'.
+	 The new name of the port is 'IN19_BAR'. (OPT-319)
+Information: Complementing port 'test_so17' in design 'BLENDER_1'.
+	 The new name of the port is 'test_so17_BAR'. (OPT-319)
+Information: Complementing port 'IN47' in design 'BLENDER_1'.
+	 The new name of the port is 'IN47_BAR'. (OPT-319)
+Information: Complementing port 'test_so3' in design 'BLENDER_1'.
+	 The new name of the port is 'test_so3_BAR'. (OPT-319)
+Information: Complementing port 'sys_clk_cts_6' in design 'SDRAM_TOP'.
+	 The new name of the port is 'sys_clk_cts_6_BAR'. (OPT-319)
+Information: Complementing port 'sys_clk_cts_5_1' in design 'CONTEXT_MEM'.
+	 The new name of the port is 'sys_clk_cts_5_1_BAR'. (OPT-319)
+Information: Complementing port 'pcmd_valid_BAR' in design 'PARSER'.
+	 The new name of the port is 'pcmd_valid'. (OPT-319)
+Information: Complementing port 'cmd_valid_BAR' in design 'PCI_TOP'.
+	 The new name of the port is 'cmd_valid'. (OPT-319)
+Information: Complementing port 'cmd_3__BAR' in design 'PCI_TOP'.
+	 The new name of the port is 'cmd_3_'. (OPT-319)
+Information: Complementing port 'sdram_clk_cts_3' in design 'SDRAM_IF'.
+	 The new name of the port is 'sdram_clk_cts_3_BAR'. (OPT-319)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/sync_control_bus_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/control_bus_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/sync_control_bus_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_SDRAM_TOP/I_SDRAM_IF/control_bus_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: In design 'ORCA_TOP', the register 'I_BLENDER_1/R_755' is removed because it is merged to 'I_BLENDER_1/R_754'. (OPT-1215)
+Information: In design 'ORCA_TOP', the register 'I_BLENDER_1/R_753' is removed because it is merged to 'I_BLENDER_1/R_683'. (OPT-1215)
+Information: In design 'ORCA_TOP', the register 'I_BLENDER_1/R_752' is removed because it is merged to 'I_BLENDER_1/R_368'. (OPT-1215)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.39%, saed32cell_svt 99.61%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Updating design information... (UID-85)
+.....
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+Information: Added key list 'DesignWare' to design 'BLENDER_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'BLENDER_0'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'RISC_CORE'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'PARSER'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'PCI_TOP'. (DDB-72)
+Warning: In design ORCA_TOP, there are sequential cells not driving any load. (OPT-109)
+Information: Use the 'check_design' command for 
+	 more information about warnings. (LINT-98)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.34%, saed32cell_svt 99.66%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.34%, saed32cell_svt 99.66%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:04:13  374076.4      2.28     120.9   30422.5                           165686576.0000
+    0:04:13  374071.0      1.88     113.9   30267.1                           165689536.0000
+    0:04:13  374071.0      1.88     113.9   30267.1                           165689536.0000
+    0:04:23  374871.8      0.00       0.0   30390.0                           165782640.0000
+    0:04:23  374871.8      0.00       0.0   30390.0                           165782640.0000
+    0:04:23  374871.8      0.00       0.0   30390.0                           165782640.0000
+    0:04:23  374871.8      0.00       0.0   30390.0                           165782640.0000
+    0:04:26  374667.0      0.00       0.0   30288.0                           730511040.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.34%, saed32cell_svt 99.66%
+Information: Total 0 level shifters are removed incrementally. (MV-238)
+Information: Total 0 level shifters are inserted incrementally. (MV-239)
+Warning: 94 nets required level shifters but matching level shifters were not found. (MV-611)
+Warning: 1 nets required level shifters but was ignored. (MV-612)
+Warning: 1 nets has level shifter constraints but no level shifters are inserted. (MV-614)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_syncff_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_empty_int_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_count_int_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_syncff_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_syncff_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_syncff_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_syncff_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_syncff_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_syncff_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_count_int_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_count_int_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_count_int_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_665' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_666' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_count_int_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_689' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_2_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U1_syncff_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_4' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_687' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_2' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_6' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_1_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_0_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_pad_en_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_3' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_3_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_pc_be_en_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_mega_enable_reg' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_8_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_9_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_10_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_11_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_20_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_21_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_22_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_4_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_5_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_6_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_7_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_0' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_17_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/R_5' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_19_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_12_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_13_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_14_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_p_bus_reg_15_' is a constant and will be removed. (OPT-1206)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_4_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_1_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_CTL_U2_this_addr_g_int_reg_0_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_3_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_2_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_1_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_CTL_U1_this_addr_g_int_reg_0_' will be removed. (OPT-1207)
+Information: The register 'I_PCI_TOP/I_PCI_CORE_d_out_i_bus_reg_1_' will be removed. (OPT-1207)
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db'
+Warning: Design 'ORCA_TOP' contains 5 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'I_BLENDER_1/net10198': 1462 load(s), 1 driver(s)
+     Net 'I_BLENDER_0/net10200': 1338 load(s), 1 driver(s)
+     Net 'I_SDRAM_TOP/I_SDRAM_IF/net10210': 5454 load(s), 1 driver(s)
+     Net 'I_SDRAM_TOP/I_SDRAM_IF/clk_gate_mega_shift_1_reg_0_/ENCLK': 1343 load(s), 1 driver(s)
+     Net 'I_SDRAM_TOP/I_SDRAM_IF/clk_gate_mega_shift_0_reg_0_/ENCLK': 1343 load(s), 1 driver(s)
+Warning: Found 225 pin to pin connections requiring level shifter(s).  (MV-229)
+  Loading design 'ORCA_TOP'
+Warning: Design 'ORCA_TOP' contains 5 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: The register 'I_PARSER/r_pcmd_out_valid_reg' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/r_pcmd_out_reg_3_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/r_pcmd_out_reg_0_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/r_pcmd_out_reg_2_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/r_pcmd_out_reg_1_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/i_pcmd_out_valid_reg' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/i_pcmd_out_reg_0_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/sync_pcmd_out_valid_reg' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/i_pcmd_out_reg_3_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/sync_pcmd_out_reg_0_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/sync_pcmd_out_reg_3_' will be removed. (OPT-1207)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p75vn40c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Layer M1 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer M8 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer M9 is ignored for resistance and capacitance computation. (RCEX-019)
+Information: Layer MRDL is ignored for resistance and capacitance computation. (RCEX-019)
+****************************************************************
+Information: TLUPlus based RC computation is enabled. (RCEX-141)
+****************************************************************
+Information: The distance unit in Capacitance and Resistance is 1 micron. (RCEX-007)
+Information: The RC model used is TLU+. (RCEX-015)
+Information: Library Derived Cap for layer M1 : 0.16 0.14 (RCEX-011)
+Information: Library Derived Res for layer M1 : 2e-06 2e-06 (RCEX-011)
+Information: Library Derived Cap for layer M2 : 0.17 0.15 (RCEX-011)
+Information: Library Derived Res for layer M2 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M3 : 0.11 0.096 (RCEX-011)
+Information: Library Derived Res for layer M3 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M4 : 0.11 0.096 (RCEX-011)
+Information: Library Derived Res for layer M4 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M5 : 0.094 0.079 (RCEX-011)
+Information: Library Derived Res for layer M5 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M6 : 0.094 0.079 (RCEX-011)
+Information: Library Derived Res for layer M6 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M7 : 0.092 0.076 (RCEX-011)
+Information: Library Derived Res for layer M7 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M8 : 0.092 0.076 (RCEX-011)
+Information: Library Derived Res for layer M8 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer M9 : 0.11 0.088 (RCEX-011)
+Information: Library Derived Res for layer M9 : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Cap for layer MRDL : 0.11 0.11 (RCEX-011)
+Information: Library Derived Res for layer MRDL : 1.8e-07 1.8e-07 (RCEX-011)
+Information: Library Derived Horizontal Cap : 0.098 0.084 (RCEX-011)
+Information: Library Derived Horizontal Res : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Library Derived Vertical Cap : 0.12 0.11 (RCEX-011)
+Information: Library Derived Vertical Res : 1.8e-06 1.8e-06 (RCEX-011)
+Information: Using derived R and C coefficients. (RCEX-008)
+Information: Using region-based R and C coefficients. (RCEX-013)
+Information: Library Derived Via Res : 5.8e-07 5.8e-07 (RCEX-011)
+Information: 56076 net shapes were created from physical constraints. (DCT-021)
+Warning: Given coordinates are out of the core area. (PSYN-111)
+***********************
+Voltage Area PD_RISC_CORE Created Successfully 
+Block (s)  I_RISC_CORE	
+Total Cell Area  : 5055.99
+Total Macro Area : 0.00
+Area of Region   : 168000.00
+Utilization     : 0.03
+Bounding Box Dimension : (580.00  0.00 1000.00 400.00)
+************************
+
+
+************************************************
+Voltage Area DEFAULT_VA Created Successfully
+Cells 37369
+Total Cell Area  : 135917.00
+Voltage Area area 479827.28
+Voltage Area utilization :  0.28
+**************************************************
+Information: Updated utilization of voltage area PD_RISC_CORE is 0.030172. (PSYN-379)
+
+Running Main Compile placer.
+Placing standard cells from scratch.
+Warning: The orientation of the fixed cell 'I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_RISC_CORE/I_REG_FILE_REG_FILE_C_RAM' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_3_4' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_3_3' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_3_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_3_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_2_4' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_2_3' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_2_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_2_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_1_4' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_1_3' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_1_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_1_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_0_4' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_0_3' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_0_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_CONTEXT_MEM/I_CONTEXT_RAM_0_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+Warning: The orientation of the fixed cell 'I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6' does not match legal orientations. Ignoring the legal orientations. (PSYN-256)
+...14%...29%...43%...57%...71%...86%...100% done.
+Running Main Compile placer - done.
+
+
+ Collecting Buffer Trees ... Found 2511
+
+ Processing Buffer Trees ... 
+
+    [252]  10% ...
+    [504]  20% ...
+    [756]  30% ...
+    [1008]  40% ...
+    [1260]  50% ...
+Information: Complementing port 'fifo_read_empty' in design 'PARSER'.
+	 The new name of the port is 'fifo_read_empty_BAR'. (OPT-319)
+    [1512]  60% ...
+    [1764]  70% ...
+    [2016]  80% ...
+    [2268]  90% ...
+Information: Complementing port 'sd_DQ_en[19]' in design 'SDRAM_IF'.
+	 The new name of the port is 'sd_DQ_en[19]_BAR'. (OPT-319)
+Information: Complementing port 'sd_DQ_en[19]' in design 'SDRAM_TOP'.
+	 The new name of the port is 'sd_DQ_en[19]_BAR'. (OPT-319)
+    [2511] 100% Done ...
+
+
+Information: Automatic high-fanout synthesis deletes 3852 cells. (HFS-802)
+Information: Automatic high-fanout synthesis adds 2500 new cells. (PSYN-864)
+
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.35%, saed32cell_svt 99.65%
+
+
+  Beginning Timing Optimizations
+  ------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:05:30  373327.9      1.02      60.1  103899.2                           730444864.0000
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+    0:05:32  373327.9      1.02      60.1  103899.2                           730444864.0000
+    0:05:37  371713.3      1.02      53.9  102198.3                           729884608.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ------------------------------------
+Info-lpmode: computing default table with library = lib26
+    0:06:26  376273.9      1.00      12.9   18279.8                           843973184.0000
+    0:06:28  376331.6      0.27       2.1   18334.4                           844078848.0000
+    0:06:28  376331.6      0.27       2.1   18334.4                           844078848.0000
+    0:06:30  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:33  376585.3      0.00       0.0   18541.4                           844202752.0000
+    0:06:44  373941.1      0.01       0.0   18388.6                           811495424.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.35%, saed32cell_svt 99.65%
+
+
+  Beginning High Effort Optimization Phase
+  ----------------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.35%, saed32cell_svt 99.65%
+
+
+  Beginning Timing Optimization
+  -----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:06:44  373941.1      0.01       0.0   18388.6                           811495424.0000
+    0:06:44  373941.1      0.01       0.0   18388.6                           811495424.0000
+    0:06:51  373987.7      0.02       0.0   18376.6                           808035968.0000
+    0:06:53  373987.7      0.02       0.0   18376.6                           808035968.0000
+    0:06:53  373987.9      0.00       0.0   18376.6                           808036032.0000
+    0:06:53  373987.9      0.00       0.0   18376.6                           808036032.0000
+    0:06:53  373992.0      0.00       0.0   18376.6                           808036608.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.35%, saed32cell_svt 99.65%
+
+
+  High Effort Optimization Phase Complete
+  ---------------------------------------
+
+Skipping remaining steps due to timing met. Go to finish
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 0.35%, saed32cell_svt 99.65%
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db'
+Information: The register 'I_PARSER/i_pcmd_out_reg_2_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/i_pcmd_out_reg_1_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/sync_pcmd_out_reg_1_' will be removed. (OPT-1207)
+Information: The register 'I_PARSER/sync_pcmd_out_reg_2_' will be removed. (OPT-1207)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+Information: Total number of MV cells in the design.
+----------------------------------------------------------------------------------------------------
+ MV Cells                                           Total Number                                   
+----------------------------------------------------------------------------------------------------
+ Level Shifter:                                     0                                             
+ Enable Level Shifter:                              0                                             
+ Isolation Cell:                                    0                                             
+ Retention Cell:                                    0                                             
+ Retention Clamp Cell:                              0                                             
+ Switch Cell:                                       0                                             
+ Always-On Cell:                                    0                                             
+ Repeater Cell:                                     0                                             
+
+----------------------------------------------------------------------------------------------------
+Unmapped MV Cells 
+----------------------------------------------------------------------------------------------------
+0 Isolation Cells are unmapped 
+0 Retention Clamp Cells are unmapped 
+----------------------------------------------------------------------------------------------------
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[22]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[30]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[21]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[14]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[8]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[11]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design ORCA_TOP, net 'sd_DQ_en[5]' is connecting multiple ports. (UCN-1)
+Warning: In the design CLOCKING, net 'pclk_in' is connecting multiple ports. (UCN-1)
+Warning: In the design CLOCKING, net 'sys_2x_clk_in' is connecting multiple ports. (UCN-1)
+Warning: In the design SDRAM_IF, net 'sdram_clk' is connecting multiple ports. (UCN-1)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 (saed32sram_ss0p95vn40c:SRAM2RW64x32).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_2 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_4 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: Apply operating condition old:ss0p75vn40c -> new:0.95 (voltage = [0.95], process = 0.990000, temperature = -40.000000) to cell I_CONTEXT_MEM/I_CONTEXT_RAM_2_3 (saed32sram_ss0p95vn40c:SRAM2RW64x8).   (LIBSETUP-751)
+Information: A total of 36 operating conditions have been inferred.  (LIBSETUP-754)
+Writing verilog file '/u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Writing ddc file '../outputs/ORCA_TOP.dct.ddc'.
+Information: The default DEF output is in version 5.8. (DCT-320)
+Information: The desired unit for the output DEF is not specified, the largest unit 1000 defined in the input DEF(s) read through extract_physical_constraints will be used for the output DEF. (DCT-322)
+Information: 56076 net shapes were created from physical constraints. (DCT-021)
+Warning: Given coordinates are out of the core area. (PSYN-111)
+***********************
+Voltage Area PD_RISC_CORE Created Successfully 
+Block (s)  I_RISC_CORE	
+Total Cell Area  : 5512.19
+Total Macro Area : 0.00
+Area of Region   : 168000.00
+Utilization     : 0.03
+Bounding Box Dimension : (580.00  0.00 1000.00 400.00)
+************************
+
+
+************************************************
+Voltage Area DEFAULT_VA Created Successfully
+Cells 36063
+Total Cell Area  : 136004.06
+Voltage Area area 479827.28
+Voltage Area utilization :  0.28
+**************************************************
+Information: Updated utilization of voltage area PD_RISC_CORE is 0.032894. (PSYN-379)
+Information: Writing COMPONENTS section (DDEFW-014)
+Information: Completed COMPONENTS section  (DDEFW-016)
+Information: Writing PINS section (DDEFW-014)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_0' for unconnected port 'shutdown'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_1' for unconnected port 'test_si[5]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_2' for unconnected port 'test_si[4]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_3' for unconnected port 'test_si[3]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_4' for unconnected port 'test_si[2]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_5' for unconnected port 'test_si[1]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_6' for unconnected port 'test_si[0]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_7' for unconnected port 'test_so[5]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_8' for unconnected port 'test_so[3]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_9' for unconnected port 'test_so[2]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_10' for unconnected port 'test_so[1]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_11' for unconnected port 'test_so[0]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_12' for unconnected port 'scan_enable'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_13' for unconnected port 'ate_clk'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_14' for unconnected port 'occ_bypass'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_15' for unconnected port 'occ_reset'. (DDEFW-006)
+Information: Completed PINS section  (DDEFW-016)
+Information: Writing BLOCKAGES section (DDEFW-014)
+Information: Completed BLOCKAGES section  (DDEFW-016)
+Warning: Design Compiler topographical mode does not support option '-scanchain' in the command 'write_def', and the option is ignored. (DCT-081)
+Information: The default DEF output is in version 5.8. (DCT-320)
+Information: The desired unit for the output DEF is not specified, the largest unit 1000 defined in the input DEF(s) read through extract_physical_constraints will be used for the output DEF. (DCT-322)
+Information: 56076 net shapes were created from physical constraints. (DCT-021)
+Information: Updated utilization of voltage area PD_RISC_CORE is 0.032894. (PSYN-379)
+Information: Writing VIAS section (DDEFW-014)
+Information: Completed VIAS section  (DDEFW-016)
+Information: Writing COMPONENTS section (DDEFW-014)
+Information: Completed COMPONENTS section  (DDEFW-016)
+Information: Writing PINS section (DDEFW-014)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_0' for unconnected port 'shutdown'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_1' for unconnected port 'test_si[5]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_2' for unconnected port 'test_si[4]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_3' for unconnected port 'test_si[3]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_4' for unconnected port 'test_si[2]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_5' for unconnected port 'test_si[1]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_6' for unconnected port 'test_si[0]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_7' for unconnected port 'test_so[5]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_8' for unconnected port 'test_so[3]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_9' for unconnected port 'test_so[2]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_10' for unconnected port 'test_so[1]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_11' for unconnected port 'test_so[0]'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_12' for unconnected port 'scan_enable'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_13' for unconnected port 'ate_clk'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_14' for unconnected port 'occ_bypass'. (DDEFW-006)
+Information: Creating dummy net 'SYNOPSYS_UNCONNECTED_15' for unconnected port 'occ_reset'. (DDEFW-006)
+Information: Completed PINS section  (DDEFW-016)
+Information: Writing BLOCKAGES section (DDEFW-014)
+Information: Completed BLOCKAGES section  (DDEFW-016)
+Information: Writing SPECIALNETS section (DDEFW-014)
+Information: Completed SPECIALNETS section  (DDEFW-016)
+Information: Writing NETS section (DDEFW-014)
+Information: Completed NETS section  (DDEFW-016)
+1

@@ -1,0 +1,684 @@
+
+Finished executable startup (1 second elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (25 seconds elapsed).
+
+***************************************************************************************
+WARNING: R&D BUILD - use only as directed by your Cadence support team.
+INFO:    The prefix [DEV] has been added to the prompt as a reminder of that situation.
+***************************************************************************************
+
+#@ Processing -execute option
+@[DEV]genus:root: 1> encrypt -tcl coeGenusHelpers.tcl > coeGenusHelpers.enc; tcl_source coeGenusInit.tcl
+  Setting attribute of root '/': 'flow_verbose' = false
+  Setting attribute of root '/': 'metric_enable' = false
+Warning : Partition Based Synthesis (PBS) is turned off. Expect very long runtime. [PBS-3]
+  Setting attribute of root '/': 'partition_based_synthesis' = false
+  Setting attribute of root '/': 'pbs_debug_level' = 0
+  Setting attribute of root '/': 'tinfo_tstamp_file' = 
+  Setting attribute of root '/': 'write_verification_files' = false
+  Setting attribute of root '/': 'write_vlog_bit_blast_bus_connections' = true
+  Setting attribute of root '/': 'write_vlog_line_wrap_limit' = 3990
+  Setting attribute of root '/': 'metric_auto_capture' = false
+  Setting attribute of root '/': 'power_unit' = nW
+  Setting attribute of root '/': 'power_format' = %.4f
+  Setting attribute of root '/': 'avoid_tied_inputs' = false
+  Setting attribute of root '/': 'joules_silent' = true
+  Setting attribute of root '/': 'read_lef_ver60' = true
+  Setting attribute of root '/': 'exp_opt_generic_timing_area_aware' = false
+LBR_SCALING: Non-trilib voltage scaling version is identified
+
+Info: waiting for genus.go........................
+Info: 36/1086 cells changed from unpreserve to preserve {SRAM2RW64x4 SRAM2RW64x8 SRAM2RW64x16 SRAM2RW64x32 SRAM2RW128x4 SRAM2RW128x8 SRAM2RW128x16 SRAM2RW128x32 SRAM2RW32x22 SRAM1RW32x50 SRAM1RW64x8 SRAM1RW64x32 SRAM1RW64x34 SRAM1RW64x128 SRAM1RW128x8 SRAM1RW128x46 SRAM1RW128x48 SRAM1RW256x8 SRAM1RW256x32 SRAM1RW256x46 SRAM1RW256x48 SRAM1RW256x128 SRAM1RW512x8 SRAM1RW512x32 SRAM1RW512x128 SRAM1RW1024x8 SRAM2RW16x4 SRAM2RW16x8 SRAM2RW16x16 SRAM2RW16x32 SRAM2RW32x4 SRAM2RW32x8 SRAM2RW32x16 SRAM2RW32x32 SRAM2RW32x39 PLL}
+Info: 0/1086 cells changed from preserve to unpreserve {}
+Info: 36/1086 cells changed from usable to dont_use {SRAM2RW64x4 SRAM2RW64x8 SRAM2RW64x16 SRAM2RW64x32 SRAM2RW128x4 SRAM2RW128x8 SRAM2RW128x16 SRAM2RW128x32 SRAM2RW32x22 SRAM1RW32x50 SRAM1RW64x8 SRAM1RW64x32 SRAM1RW64x34 SRAM1RW64x128 SRAM1RW128x8 SRAM1RW128x46 SRAM1RW128x48 SRAM1RW256x8 SRAM1RW256x32 SRAM1RW256x46 SRAM1RW256x48 SRAM1RW256x128 SRAM1RW512x8 SRAM1RW512x32 SRAM1RW512x128 SRAM1RW1024x8 SRAM2RW16x4 SRAM2RW16x8 SRAM2RW16x16 SRAM2RW16x32 SRAM2RW32x4 SRAM2RW32x8 SRAM2RW32x16 SRAM2RW32x32 SRAM2RW32x39 PLL}
+Info: 0/1086 cells changed from dont_use to usable {}
+Info: checking genus version has optional features...
+# version: 23.10-b027_1
+Started checking and loading power intent for design test...
+============================================================
+No power intent for design 'test'.
+Completed checking and loading power intent for design test (runtime:0.00s memory_usage:0.00M peak_memory:0.00M).
+=================================================================================================================
+
+Stage: pre_early_cg
+-----------------------------------------------
+| Transform | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------
+-----------------------------------------------
+Mapping ChipWare ICG instances in test
+Found 0 unmapped ChipWare ICG instances
+Mapped 0 of 0 ChipWare ICG instances
+##Generic Timing Info for library domain: _default_ typical gate delay: 176.5 ps std_slew: 20.9 ps std_load: 1.0 fF
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: test, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: pre_to_gen_setup
+-----------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |        0.00 | 
+-----------------------------------------------------
+Running DP early constant propagation (netlist test)...
+Running DP early redundancy removal
+Completed DP early redundancy removal on test (runtime = 0.0s)
+...done running DP early constant propagation (0 seconds CPU time, netlist test).
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.000
+Via Resistance      : 1.600 ohm (from lef_library)
+Site size           : 1.824 um (from lef [tech+cell])
+
+                                   Capacitance  
+  Layer                             / Length         Data source:
+Name        Direction Utilization  (pF/micron)       default value
+------------------------------------------------
+<default>       U         n/a         0.000250  
+
+** = DEFAULT cap per unit length is used for timing analysis
+
+                                    Resistance   
+  Layer                              / Length         Data source:
+Name        Direction Utilization  (ohm/micron)       default value
+-------------------------------------------------
+<default>       U         n/a          0.000000  
+
+** = DEFAULT res per unit length is used for timing analysis
+
+                                        Area     
+  Layer                               / Length        Data source:
+Name        Direction Utilization     (micron)        lef_library
+-------------------------------------------------
+M1              H         0.00         0.050000  
+M2              V         1.00         0.056000  
+M3              H         1.00         0.056000  
+M4              V         1.00         0.056000  
+M5              H         1.00         0.056000  
+M6              V         1.00         0.056000  
+M7              H         1.00         0.056000  
+M8              V         1.00         0.056000  
+M9              H         1.00         0.160000  
+MRDL            V         1.00         2.000000  
+
+Running Synthesis Turbo Flow Version 3.
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: test, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+
+Stage: pre_to_gen_setup
+-----------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |        0.00 | 
+-----------------------------------------------------
+Starting mux data reorder optimization [v1.0] (stage: post_to_gen_setup, startdef: test, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: post_to_gen_setup
+-----------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |        0.00 | 
+-----------------------------------------------------
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.000
+Via Resistance      : 1.600 ohm (from lef_library)
+Site size           : 1.824 um (from lef [tech+cell])
+
+                                   Capacitance  
+  Layer                             / Length         Data source:
+Name        Direction Utilization  (pF/micron)       default value
+------------------------------------------------
+<default>       U         n/a         0.000250  
+
+** = DEFAULT cap per unit length is used for timing analysis
+
+                                    Resistance   
+  Layer                              / Length         Data source:
+Name        Direction Utilization  (ohm/micron)       default value
+-------------------------------------------------
+<default>       U         n/a          0.000000  
+
+** = DEFAULT res per unit length is used for timing analysis
+
+                                        Area     
+  Layer                               / Length        Data source:
+Name        Direction Utilization     (micron)        lef_library
+-------------------------------------------------
+M1              H         0.00         0.050000  
+M2              V         1.00         0.056000  
+M3              H         1.00         0.056000  
+M4              V         1.00         0.056000  
+M5              H         1.00         0.056000  
+M6              V         1.00         0.056000  
+M7              H         1.00         0.056000  
+M8              V         1.00         0.056000  
+M9              H         1.00         0.160000  
+MRDL            V         1.00         2.000000  
+
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: pre_hlo_rtlopt
+-----------------------------------------------
+| Trick     | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------
+| ume_ssm   |       0 |       0 |        0.00 | 
+| ume_sweep |       0 |       0 |        0.00 | 
+| ume_share |       0 |       0 |        0.00 | 
+-----------------------------------------------
+Begin SDR optimization CTX_region 
+#Special hiers formed inside test = 0
+No special hier is found 
+End SDR optimization CTX_region 
+Starting recase case-box optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed recase case-box optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting infer macro optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed infer macro optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting decode mux sandwich optimization [v2.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed decode mux sandwich optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting decode mux optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed decode mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chop wide muxes [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed chop wide muxes (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting constant-data mux optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed constant-data mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chain-to-tree inequality transform [v2.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed chain-to-tree inequality transform (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting reconvergence optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed reconvergence optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting logic restructure optimization [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed logic restructure optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting identity transform [v3.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed identity transform (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting reduce operator chain [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed reduce operator chain (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting optimize datapath elements [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed optimize datapath elements (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting datapath recasting [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed datapath recasting (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting word-level redundancy removal [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed word-level redundancy removal (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip mux common data inputs [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip the non-user hierarchies [v2.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting basic netlist cleanup [v1.0] (stage: pre_rtlopt, startdef: test, recur: true)
+Completed basic netlist cleanup (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: pre_rtlopt
+-----------------------------------------------------------------
+| Transform                   | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------------------------
+| hlo_recase_casebox          |       0 |       0 |        0.00 | 
+| hlo_infer_macro             |       0 |       0 |        0.00 | 
+| hlo_decode_mux_sandwich     |       0 |       0 |        0.00 | 
+| hlo_mux_decode              |       0 |       0 |        0.00 | 
+| hlo_chop_mux                |       0 |       0 |        0.00 | 
+| hlo_mux_cascade_opt         |       0 |       0 |        0.00 | 
+| hlo_mux_consolidation       |       0 |       0 |        0.00 | 
+| hlo_constant_mux_opt        |       0 |       0 |        0.00 | 
+| hlo_inequality_transform    |       0 |       0 |        0.00 | 
+| hlo_reconv_opt              |       0 |       0 |        0.00 | 
+| hlo_restructure             |       0 |       0 |        0.00 | 
+| hlo_identity_transform      |       0 |       0 |        0.00 | 
+| hlo_reduce_operator_chain   |       0 |       0 |        0.00 | 
+| hlo_mux_cascade_opt         |       0 |       0 |        0.00 | 
+| hlo_mux_consolidation       |       0 |       0 |        0.00 | 
+| hlo_optimize_datapath       |       0 |       0 |        0.00 | 
+| hlo_datapath_recast         |       0 |       0 |        0.00 | 
+| hlo_redundancy_removal_word |       0 |       0 |        0.00 | 
+| hlo_clip_mux_input          |       0 |       0 |        0.00 | 
+| hlo_clip                    |       0 |       0 |        0.00 | 
+| hlo_cleanup                 |       0 |       0 |        0.00 | 
+-----------------------------------------------------------------
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: post_hlo_rtlopt
+-------------------------------------------------
+| Trick       | Accepts | Rejects | Runtime (s) | 
+-------------------------------------------------
+| ume_runtime |       0 |       0 |        0.00 | 
+-------------------------------------------------
+Number of big hc bmuxes before = 0
+Number of big hc bmuxes after = 0
+Starting bit-level redundancy removal [v1.0] (stage: post_rtlopt, startdef: test, recur: true)
+Completed bit-level redundancy removal (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting logic reduction [v1.0] (stage: post_rtlopt, startdef: test, recur: true)
+Completed logic reduction (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting mux data reorder optimization [v1.0] (stage: post_rtlopt, startdef: test, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+
+Stage: post_rtlopt
+----------------------------------------------------------------
+| Transform                  | Accepts | Rejects | Runtime (s) | 
+----------------------------------------------------------------
+| hlo_redundancy_removal_bit |       0 |       0 |        0.00 | 
+| hlo_logic_reduction        |       0 |       0 |        0.00 | 
+| hlo_mux_reorder            |       0 |       0 |        0.00 | 
+----------------------------------------------------------------
+Starting mux speculation [v1.0] (stage: post_muxopt, startdef: test, recur: true)
+Starting speculation optimization
+Completed speculation optimization (accepts:0)
+Completed mux speculation (accepts: 0, rejects: 0, runtime: 0.004s)
+
+Stage: post_muxopt
+-----------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (s) | 
+-----------------------------------------------------
+| hlo_speculation |       0 |       0 |        0.00 | 
+-----------------------------------------------------
+==================================
+Stage : to_generic 
+==================================
+  =================
+   Message Summary
+  =================
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   Id    |  Sev  |Count|                                                              Message Text                                                               |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|DPOPT-5  |Info   |    1|Skipping datapath optimization.                                                                                                          |
+|DPOPT-6  |Info   |    1|Pre-processed datapath logic.                                                                                                            |
+|LBR-9    |Warning|   72|Library cell has no output pins defined.                                                                                                 |
+|         |       |     |Add the missing output pin(s)                                                                                                            |
+|         |       |     | , then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not|
+|         |       |     | have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be      |
+|         |       |     | marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for         |
+|         |       |     | synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The     |
+|         |       |     | message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the |
+|         |       |     | pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.                               |
+|LBR-30   |Info   |   12|Promoting a setup arc to recovery.                                                                                                       |
+|         |       |     |Setup arcs to asynchronous input pins are not supported.                                                                                 |
+|LBR-31   |Info   |   12|Promoting a hold arc to removal.                                                                                                         |
+|         |       |     |Hold arcs to asynchronous input pins are not supported.                                                                                  |
+|LBR-34   |Warning|   60|Missing an incoming setup timing arc for next_state library pin.                                                                         |
+|         |       |     |Pin used in a next_state function must have an incoming setup timing arc. Otherwise, the library cell will be treated as a timing model. |
+|LBR-38   |Warning|    9|Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process   |
+|         |       |     | and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ.                                   |
+|         |       |     |This is a common source of delay calculation confusion and should be avoided.                                                            |
+|LBR-41   |Info   |   54|An output library pin lacks a function attribute.                                                                                        |
+|         |       |     |If the remainder of this library cell's semantic checks are successful, it will be considered as a timing-model                          |
+|         |       |     | (because one of its outputs does not have a valid function.                                                                             |
+|LBR-64   |Warning|   48|Malformed test_cell.                                                                                                                     |
+|         |       |     |Review the definition of the test_cell's function or its parent library-cell's function.  An inconsistency between the two may exist.    |
+|LBR-155  |Info   |  360|Mismatch in unateness between 'timing_sense' attribute and the function.                                                                 |
+|         |       |     |The 'timing_sense' attribute will be respected.                                                                                          |
+|LBR-161  |Info   |    1|Setting the maximum print count of this message to 10 if information_level is less than 9.                                               |
+|LBR-162  |Info   |   90|Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed.                                                                  |
+|         |       |     |Setting the 'timing_sense' to non_unate.                                                                                                 |
+|LBR-170  |Info   |   36|Ignoring specified timing sense.                                                                                                         |
+|         |       |     |Timing sense should never be set with 'rising_edge' or 'falling_edge' timing type.                                                       |
+|LBR-412  |Info   |   18|Created nominal operating condition.                                                                                                     |
+|         |       |     |The nominal operating condition is represented, either by the nominal PVT values specified in the library source                         |
+|         |       |     | (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).                             |
+|LBR-556  |Info   |   27|Libraries are valid for scaling.                                                                                                         |
+|         |       |     |The voltage will be scaled between the given range.                                                                                      |
+|PBS-3    |Warning|    1|Partition Based Synthesis (PBS) is turned off. Expect very long runtime.                                                                 |
+|PHYS-12  |Warning|    4|The variant range of wire parameters is too large. An example of wire parameters are, a WIDTH for layer, PITCH for layer, MINSPACING for |
+|         |       |     | layers, etc.                                                                                                                            |
+|         |       |     |Check the consistency of the parameters, and see if you can ignore this message or you're using different LEF file with wrong parameters.|
+|PHYS-13  |Warning|    2|The value of the wire parameter is too big.                                                                                              |
+|         |       |     |Check the consistency of the specified wire parameter.                                                                                   |
+|PHYS-15  |Warning|   30|Missing wire parameter.                                                                                                                  |
+|         |       |     |Check the wire parameter in LEF technology files.                                                                                        |
+|PHYS-127 |Info   |    2|Macro with non-zero origin.                                                                                                              |
+|PHYS-279 |Warning|   96|Physical cell not defined in library.                                                                                                    |
+|         |       |     |Ensure that the proper library files are available and have been imported.                                                               |
+|PHYS-752 |Info   |    1|Partition Based Synthesis execution skipped.                                                                                             |
+|PHYS-2381|Warning| 6397|Multiple ports are found on a pin without MUSTJOINALLPORTS in the pin property in the LEF file.                                          |
+|         |       |     |This means that only one port would be connected, which may not be the expected behavior. Should consider adding MUSTJOINALLPORTS        |
+|         |       |     | property.                                                                                                                               |
+|SYNTH-1  |Info   |    1|Synthesizing.                                                                                                                            |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Beginning report datapath command
+Command: report datapath 
+Warning: '-sort' is not specified. By default, 'report datapath' orders the components based on instance name
+============================================================
+  Generated by:           Innovus(TM) Synthesis Engine 23.10-b027_1
+  Generated on:           May 28 2024  09:34:59 pm
+  Module:                 test
+  Technology libraries:   saed32rvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32lvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32hvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32rvt_ss0p75vn40c 1.0000000
+                          saed32lvt_ss0p75vn40c 1.0000000
+                          saed32hvt_ss0p75vn40c 1.0000000
+                          saed32rvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32lvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32hvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          physical_cells 
+  Operating conditions:   _nominal_ 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+      Type       CellArea Percentage 
+-------------------------------------
+datapath modules     0.00       0.00 
+external muxes       0.00       0.00 
+others               2.72     100.00 
+-------------------------------------
+total                2.72     100.00 
+
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.000
+Via Resistance      : 1.600 ohm (from lef_library)
+Site size           : 1.824 um (from lef [tech+cell])
+
+                                   Capacitance  
+  Layer                             / Length         Data source:
+Name        Direction Utilization  (pF/micron)       default value
+------------------------------------------------
+<default>       U         n/a         0.000250  
+
+** = DEFAULT cap per unit length is used for timing analysis
+
+                                    Resistance   
+  Layer                              / Length         Data source:
+Name        Direction Utilization  (ohm/micron)       default value
+-------------------------------------------------
+<default>       U         n/a          0.000000  
+
+** = DEFAULT res per unit length is used for timing analysis
+
+                                        Area     
+  Layer                               / Length        Data source:
+Name        Direction Utilization     (micron)        lef_library
+-------------------------------------------------
+M1              H         0.00         0.050000  
+M2              V         1.00         0.056000  
+M3              H         1.00         0.056000  
+M4              V         1.00         0.056000  
+M5              H         1.00         0.056000  
+M6              V         1.00         0.056000  
+M7              H         1.00         0.056000  
+M8              V         1.00         0.056000  
+M9              H         1.00         0.160000  
+MRDL            V         1.00         2.000000  
+
+Mapper: Libraries have:
+	domain _default_: 390 combo usable cells and 324 sequential usable cells
+Multi-threaded constant propagation [1|1] ...
+Multi-threaded Virtual Mapping    (8 threads, 8 of 32 CPUs usable)
+==================================
+Stage : first_condense 
+==================================
+  =================
+   Message Summary
+  =================
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|    Id    |  Sev  |Count|                                                              Message Text                                                              |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|RPT_DP-100|Warning|    1|The filename, column and line number information will not be available in the report.                                                   |
+|          |       |     |You must set the 'hdl_track_filename_row_col' attribute to 'true' (before elaborate)                                                    |
+|          |       |     | to enable filename, column, and line number tracking in the datapath report.                                                           |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Global mapping target info
+==========================
+Cost Group 'default' target slack: Unconstrained
+
+Beginning report datapath command
+Command: report datapath 
+Warning: '-sort' is not specified. By default, 'report datapath' orders the components based on instance name
+============================================================
+  Generated by:           Innovus(TM) Synthesis Engine 23.10-b027_1
+  Generated on:           May 28 2024  09:35:00 pm
+  Module:                 test
+  Technology libraries:   saed32rvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32lvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32hvt_dlvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32rvt_ss0p75vn40c 1.0000000
+                          saed32lvt_ss0p75vn40c 1.0000000
+                          saed32hvt_ss0p75vn40c 1.0000000
+                          saed32rvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32lvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          saed32hvt_ulvl_ss0p75vn40c_i0p75v 1.0000000
+                          physical_cells 
+  Operating conditions:   _nominal_ 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+      Type       CellArea Percentage 
+-------------------------------------
+datapath modules     0.00       0.00 
+external muxes       0.00       0.00 
+others               2.72     100.00 
+-------------------------------------
+total                2.72     100.00 
+
+Starting post syn_generic ultra-effort Boolean optimization
+Redundancy removal succeeded.
+Done post syn_generic ultra-effort Boolean optimization (0.00 cpu seconds) (0.00 elapsed cpu seconds)
+##>========= Cadence Confidential (Generic-Logical) =========
+##>========= Cadence Confidential (Generic-Logical) =========
+##>Main Thread Summary:
+##>--------------------------------------------------------------------
+##>STEP                           Elapsed     Insts      Area    Memory
+##>--------------------------------------------------------------------
+##>G:Initial                            4         1         2       542
+##>G:Early Clock Gating                 0         -         -         -
+##>G:Setup                              0         -         -         -
+##>G:Launch ST                          0         -         -         -
+##>G:Design Partition                   0         -         -         -
+##>G:Create Partition Netlists          0         -         -         -
+##>G:Init Power                         0         -         -         -
+##>G:Budgeting                          0         -         -         -
+##>G:Derenv-DB                          0         -         -         -
+##>G:Debug Outputs                      0         -         -         -
+##>G:ST loading                         0         -         -         -
+##>G:Distributed                        0         -         -         -
+##>G:Timer                              0         -         -         -
+##>G:Assembly                           0         -         -         -
+##>G:DFT                                0         -         -         -
+##>G:Const Prop                         0         1         2       542
+##>G:Early Clock Gating Cleanup         0         -         -         -
+##>G:PostGen Opt                        0         1         2       542
+##>G:Misc                               3
+##>--------------------------------------------------------------------
+##>Total Elapsed                        7
+##>====================================================================
+min_lib_gates: 1
+Info: checking optional command features...
+  crr_map_def: Performs mapper CRR (critical region resynthesis). Use only for 
+               debugging. 
+
+Usage: crr_map_def <design> [-spatial] [-remap_always] [-use_crr_gst]
+           [-use_crr_shell]
+
+    <design>:
+        the design 
+    [-spatial]:
+        add spatial settings for DPUL 
+    [-remap_always]:
+        remap always without checking wns before remapping 
+    [-use_crr_gst]:
+        use crr_gst in timing optimization 
+    [-use_crr_shell]:
+        groups all leaf instances in the top design in a crr shell before 
+        mapping 
+crr_map_def command: 1
+  create_lib_context: create library context 
+
+Usage: create_lib_context -type <integer>
+
+    -type <integer>:
+        context type 
+create_lib_context command: 1
+  create_slack_adjusts: Create slack adjustments on ports. The base has to be 
+                        set by the slack_adjust_base attribute 
+
+Usage: create_slack_adjusts [<design>+] [-outputs_only]
+
+    [<design>+]:
+        the name of the design(s) 
+    [-outputs_only]:
+        Adjust the output slack only (default outputs and inputs). 
+create_slack_adjusts command: 1
+Usage:
+    set_pin_activity [-pin] <pin-path> \
+        -activity_type user|default|system (default: user)
+        -duty <duty> (duty cycle is a fraction from 0 to 1)
+        -freq <freq> (activity_type user :frequency e.g. 150.0e+6
+                      activity_type default|system:absolute freq or pct of specified -clock option)
+        [-toggles <tcnt>] (specify toggle count, instead of -freq, e.g. 250)
+            [-duration <duration>] (specify duration for given toggles, applicable only for -toggles, default stim duration is used.)
+        -pin_types {primary_input|seq_out|flop_out|latch_out|memory_out|icgc_out|icgc_enable|bbox_out|comb_out|all}+ (default = all pins)
+        [-clock related|local|<clock_pin_or_net>] (default = "related" clock, local is supported only for icgc_out)
+        [-global] 
+        [-force_propagate] (Removes the asserted activity in the fanout cone of given pin)
+        [-stims  <stim_id>+]  (default = all SDB stims)
+        [-frames <frame_id>+] (applies to -pin only, default = all frames of specified stims(s))
+        [-silent]
+Note:
+        -activity_type user applies the activity on pin, nothing can override this value.
+        -activity_type default applies the activity on different pin_types. This activity 
+                               is applicable only on pins which don't have asserted activities.
+                               Activity propagation cannot override this value.
+        -activity_type system applies the activity on different pin_types. This activity will 
+                              be used as a start value, however activity propagation can 
+                              override this value.
+Examples:
+    set_pin_activity /cpu_10bit/clk -duty 0.40 -freq 200e6 -stim /stim#1
+    set_pin_activity /cpu_10bit/rst -duty 0.02 -toggles 2 -frames /stim#1/frame#7 /stim#2/frame#12
+    set_pin_activity -activity_type default -pin_types primary_input -duty 0.3 -freq 2e7 -stims /stim#1
+    set_pin_activity -activity_type system -pin_types flop_out -duty 0.5 -freq 2e6 
+    set_pin_activity -activity_type system -pin_types flop_out -duty 0.5 -freq 0.3 -clock related
+Return value: 0 = success, 1 = failure
+set_pin_activity command: 1
+
+Usage: setPowerDomainOfDelayCorner -view_name <analysis_view>
+           -power_domain <string> <module|design>
+
+    -view_name <analysis_view>:
+        View Name 
+    -power_domain <string>:
+        Name of Power Domain 
+    <module|design>:
+        top level design 
+setPowerDomainOfDelayCorner command: 1
+
+Usage: crr_set_port_location -location_x <float> -location_y <float>
+           [-placement_status <string>] [-orientation <string>] <port>
+
+    -location_x <float>:
+        X coordinate 
+    -location_y <float>:
+        Y coordinate 
+    [-placement_status <string>]:
+        placement_status 
+    [-orientation <string>]:
+        orientation 
+    <port>:
+        port 
+crr_set_port_location command: 1
+  map_def: 
+
+Usage: map_def [<design>+] [-tns_opto] [-track_dft] [-no_tns_opto] [-verbose]
+           [-effort <string>]
+
+    [<design>+]:
+        the design(s) 
+    [-tns_opto]:
+        enable TNS opto 
+    [-track_dft]:
+        use the DFT Tracker 
+    [-no_tns_opto]:
+        disable TNS opto 
+    [-verbose]:
+        enable verbose output 
+    [-effort <string>]:
+        specifies the effort to use (low|medium|high=default) 
+map_def command: 1
+  set_load_fast: internal command for set_load 
+
+Usage: set_load_fast [-min] [-max] [-pin_load] [-subtract_pin_load] [-wire_load]
+           [<float>] <string>
+
+    [-min]:
+        minimum value 
+    [-max]:
+        maximum value 
+    [-pin_load]:
+        load is pin load 
+    [-subtract_pin_load]:
+        subtracts existing pin loads 
+    [-wire_load]:
+        load is wire load 
+    [<float>]:
+        value 
+    <string>:
+        objects 
+set_load_fast -mode command_option: 1
+Info: checking optional attribute features...
+root/dft_tracking attribute: 1
+root/dft_track_scan_chain attribute: 1
+port/dft_tracking_scan_out attribute: 1
+root/lp_toggle_rate_unit attribute: 1
+root/map_avg_toggle_count_root_scale attribute: 1
+root/use_inverter_for_scan_out attribute: 1
+port/slack_adjust_base_by_mode attribute: 1
+root/map_std_gate_power_area_factor attribute: 1
+root/map_eliminate_oupin_pos_slack attribute: 1
+root/innovus_crr_design_level_unit_dynamic_power_per_area attribute: 1
+root/init_design_skip_consistency_check attribute: 1
+Info: 36/1086 cells changed from unpreserve to preserve {SRAM2RW64x4 SRAM2RW64x8 SRAM2RW64x16 SRAM2RW64x32 SRAM2RW128x4 SRAM2RW128x8 SRAM2RW128x16 SRAM2RW128x32 SRAM2RW32x22 SRAM1RW32x50 SRAM1RW64x8 SRAM1RW64x32 SRAM1RW64x34 SRAM1RW64x128 SRAM1RW128x8 SRAM1RW128x46 SRAM1RW128x48 SRAM1RW256x8 SRAM1RW256x32 SRAM1RW256x46 SRAM1RW256x48 SRAM1RW256x128 SRAM1RW512x8 SRAM1RW512x32 SRAM1RW512x128 SRAM1RW1024x8 SRAM2RW16x4 SRAM2RW16x8 SRAM2RW16x16 SRAM2RW16x32 SRAM2RW32x4 SRAM2RW32x8 SRAM2RW32x16 SRAM2RW32x32 SRAM2RW32x39 PLL}
+Info: 0/1086 cells changed from preserve to unpreserve {}
+Info: 0/1086 cells changed from usable to dont_use {}
+Info: 0/1086 cells changed from dont_use to usable {}
+Info: creating specific use/dont_use cells per HInst groups...
+      Info: marking usable cells for lib_context 1.
+Info: 291/1086 cells changed from usable to hi_avoid {AODFFARX1_RVT AODFFARX2_RVT AODFFNARX1_RVT AODFFNARX2_RVT CGLNPRX2_RVT CGLNPRX8_RVT CGLNPSX16_RVT CGLNPSX2_RVT CGLNPSX4_RVT CGLNPSX8_RVT CGLPPRX2_RVT CGLPPRX8_RVT CGLPPSX16_RVT CGLPPSX2_RVT CGLPPSX4_RVT CGLPPSX8_RVT IBUFFX16_RVT IBUFFX2_RVT IBUFFX32_RVT IBUFFX4_RVT IBUFFX8_RVT INVX16_RVT INVX32_RVT INVX4_RVT INVX8_RVT LNANDX1_RVT LNANDX2_RVT RDFFARX1_RVT RDFFARX2_RVT RDFFNARX1_RVT RDFFNARX2_RVT RDFFNSRARX1_RVT RDFFNSRARX2_RVT RDFFNSRASRNX1_RVT RDFFNSRASRNX2_RVT RDFFNSRASRQX1_RVT RDFFNSRASRQX2_RVT RDFFNSRASRX1_RVT RDFFNSRASRX2_RVT RDFFNSRASX1_RVT RDFFNSRASX2_RVT RDFFNSRX1_RVT RDFFNSRX2_RVT RDFFNX1_RVT RDFFNX2_RVT RDFFSRARX1_RVT RDFFSRARX2_RVT RDFFSRASRX1_RVT RDFFSRASRX2_RVT RDFFSRASX1_RVT RDFFSRASX2_RVT RDFFSRSSRX1_RVT RDFFSRSSRX2_RVT RDFFSRX1_RVT RDFFSRX2_RVT RDFFX1_RVT RDFFX2_RVT RSDFFARX1_RVT RSDFFARX2_RVT RSDFFNARX1_RVT RSDFFNARX2_RVT RSDFFNSRARX1_RVT RSDFFNSRARX2_RVT RSDFFNSRASRNX1_RVT RSDFFNSRASRNX2_RVT RSDFFNSRASRQX1_RVT RSDFFNSRASRQX2_RVT RSDFFNSRASRX1_RVT RSDFFNSRASRX2_RVT RSDFFNSRASX1_RVT RSDFFNSRASX2_RVT RSDFFNSRX1_RVT RSDFFNSRX2_RVT RSDFFNX1_RVT RSDFFNX2_RVT RSDFFSRARX1_RVT RSDFFSRARX2_RVT RSDFFSRASRX1_RVT RSDFFSRASRX2_RVT RSDFFSRASX1_RVT RSDFFSRASX2_RVT RSDFFSRSSRX1_RVT RSDFFSRSSRX2_RVT RSDFFSRX1_RVT RSDFFSRX2_RVT RSDFFX1_RVT RSDFFX2_RVT AODFFARX1_LVT AODFFARX2_LVT AODFFNARX1_LVT AODFFNARX2_LVT CGLNPRX2_LVT CGLNPRX8_LVT CGLNPSX16_LVT CGLNPSX2_LVT CGLNPSX4_LVT CGLNPSX8_LVT CGLPPRX2_LVT CGLPPRX8_LVT CGLPPSX16_LVT CGLPPSX2_LVT CGLPPSX4_LVT CGLPPSX8_LVT INVX16_LVT LNANDX1_LVT LNANDX2_LVT RDFFARX1_LVT RDFFARX2_LVT RDFFNARX1_LVT RDFFNARX2_LVT RDFFNSRARX1_LVT RDFFNSRARX2_LVT RDFFNSRASRNX1_LVT RDFFNSRASRNX2_LVT RDFFNSRASRQX1_LVT RDFFNSRASRQX2_LVT RDFFNSRASRX1_LVT RDFFNSRASRX2_LVT RDFFNSRASX1_LVT RDFFNSRASX2_LVT RDFFNSRX1_LVT RDFFNSRX2_LVT RDFFNX1_LVT RDFFNX2_LVT RDFFSRARX1_LVT RDFFSRARX2_LVT RDFFSRASRX1_LVT RDFFSRASRX2_LVT RDFFSRASX1_LVT RDFFSRASX2_LVT RDFFSRSSRX1_LVT RDFFSRSSRX2_LVT RDFFSRX1_LVT RDFFSRX2_LVT RDFFX1_LVT RDFFX2_LVT RSDFFARX1_LVT RSDFFARX2_LVT RSDFFNARX1_LVT RSDFFNARX2_LVT RSDFFNSRARX1_LVT RSDFFNSRARX2_LVT RSDFFNSRASRNX1_LVT RSDFFNSRASRNX2_LVT RSDFFNSRASRQX1_LVT RSDFFNSRASRQX2_LVT RSDFFNSRASRX1_LVT RSDFFNSRASRX2_LVT RSDFFNSRASX1_LVT RSDFFNSRASX2_LVT RSDFFNSRX1_LVT RSDFFNSRX2_LVT RSDFFNX1_LVT RSDFFNX2_LVT RSDFFSRARX1_LVT RSDFFSRARX2_LVT RSDFFSRASRX1_LVT RSDFFSRASRX2_LVT RSDFFSRASX1_LVT RSDFFSRASX2_LVT RSDFFSRSSRX1_LVT RSDFFSRSSRX2_LVT RSDFFSRX1_LVT RSDFFSRX2_LVT RSDFFX1_LVT RSDFFX2_LVT AODFFARX1_HVT AODFFARX2_HVT AODFFNARX1_HVT AODFFNARX2_HVT CGLNPRX2_HVT CGLNPRX8_HVT CGLNPSX16_HVT CGLNPSX2_HVT CGLNPSX4_HVT CGLNPSX8_HVT CGLPPRX2_HVT CGLPPRX8_HVT CGLPPSX16_HVT CGLPPSX2_HVT CGLPPSX4_HVT CGLPPSX8_HVT IBUFFX16_HVT IBUFFX2_HVT IBUFFX32_HVT IBUFFX4_HVT IBUFFX8_HVT INVX0_HVT INVX16_HVT INVX2_HVT INVX32_HVT INVX4_HVT INVX8_HVT LNANDX1_HVT LNANDX2_HVT RDFFARX1_HVT RDFFARX2_HVT RDFFNARX1_HVT RDFFNARX2_HVT RDFFNSRARX1_HVT RDFFNSRARX2_HVT RDFFNSRASRNX1_HVT RDFFNSRASRNX2_HVT RDFFNSRASRQX1_HVT RDFFNSRASRQX2_HVT RDFFNSRASRX1_HVT RDFFNSRASRX2_HVT RDFFNSRASX1_HVT RDFFNSRASX2_HVT RDFFNSRX1_HVT RDFFNSRX2_HVT RDFFNX1_HVT RDFFNX2_HVT RDFFSRARX1_HVT RDFFSRARX2_HVT RDFFSRASRX1_HVT RDFFSRASRX2_HVT RDFFSRASX1_HVT RDFFSRASX2_HVT RDFFSRSSRX1_HVT RDFFSRSSRX2_HVT RDFFSRX1_HVT RDFFSRX2_HVT RDFFX1_HVT RDFFX2_HVT RSDFFARX1_HVT RSDFFARX2_HVT RSDFFNARX1_HVT RSDFFNARX2_HVT RSDFFNSRARX1_HVT RSDFFNSRARX2_HVT RSDFFNSRASRNX1_HVT RSDFFNSRASRNX2_HVT RSDFFNSRASRQX1_HVT RSDFFNSRASRQX2_HVT RSDFFNSRASRX1_HVT RSDFFNSRASRX2_HVT RSDFFNSRASX1_HVT RSDFFNSRASX2_HVT RSDFFNSRX1_HVT RSDFFNSRX2_HVT RSDFFNX1_HVT RSDFFNX2_HVT RSDFFSRARX1_HVT RSDFFSRARX2_HVT RSDFFSRASRX1_HVT RSDFFSRASRX2_HVT RSDFFSRASX1_HVT RSDFFSRASX2_HVT RSDFFSRSSRX1_HVT RSDFFSRSSRX2_HVT RSDFFSRX1_HVT RSDFFSRX2_HVT RSDFFX1_HVT RSDFFX2_HVT SRAM2RW64x4 SRAM2RW64x8 SRAM2RW64x16 SRAM2RW64x32 SRAM2RW128x4 SRAM2RW128x8 SRAM2RW128x16 SRAM2RW128x32 SRAM2RW32x22 SRAM1RW32x50 SRAM1RW64x8 SRAM1RW64x32 SRAM1RW64x34 SRAM1RW64x128 SRAM1RW128x8 SRAM1RW128x46 SRAM1RW128x48 SRAM1RW256x8 SRAM1RW256x32 SRAM1RW256x46 SRAM1RW256x48 SRAM1RW256x128 SRAM1RW512x8 SRAM1RW512x32 SRAM1RW512x128 SRAM1RW1024x8 SRAM2RW16x4 SRAM2RW16x8 SRAM2RW16x16 SRAM2RW16x32 SRAM2RW32x4 SRAM2RW32x8 SRAM2RW32x16 SRAM2RW32x32 SRAM2RW32x39 PLL}
+      (DontUseGroup 1 --> lib_context 1)
+Info: specific use/dont_use cells per HInst group {
+  1 +dont_use: {AODFFARX1_HVT AODFFARX1_LVT AODFFARX1_RVT AODFFARX2_HVT AODFFARX2_LVT AODFFARX2_RVT AODFFNARX1_HVT AODFFNARX1_LVT AODFFNARX1_RVT AODFFNARX2_HVT AODFFNARX2_LVT AODFFNARX2_RVT CGLNPRX2_HVT CGLNPRX2_LVT CGLNPRX2_RVT CGLNPRX8_HVT CGLNPRX8_LVT CGLNPRX8_RVT CGLNPSX2_HVT CGLNPSX2_LVT CGLNPSX2_RVT CGLNPSX4_HVT CGLNPSX4_LVT CGLNPSX4_RVT CGLNPSX8_HVT CGLNPSX8_LVT CGLNPSX8_RVT CGLNPSX16_HVT CGLNPSX16_LVT CGLNPSX16_RVT CGLPPRX2_HVT CGLPPRX2_LVT CGLPPRX2_RVT CGLPPRX8_HVT CGLPPRX8_LVT CGLPPRX8_RVT CGLPPSX2_HVT CGLPPSX2_LVT CGLPPSX2_RVT CGLPPSX4_HVT CGLPPSX4_LVT CGLPPSX4_RVT CGLPPSX8_HVT CGLPPSX8_LVT CGLPPSX8_RVT CGLPPSX16_HVT CGLPPSX16_LVT CGLPPSX16_RVT IBUFFX2_HVT IBUFFX2_RVT IBUFFX4_HVT IBUFFX4_RVT IBUFFX8_HVT IBUFFX8_RVT IBUFFX16_HVT IBUFFX16_RVT IBUFFX32_HVT IBUFFX32_RVT INVX0_HVT INVX2_HVT INVX4_HVT INVX4_RVT INVX8_HVT INVX8_RVT INVX16_HVT INVX16_LVT INVX16_RVT INVX32_HVT INVX32_RVT LNANDX1_HVT LNANDX1_LVT LNANDX1_RVT LNANDX2_HVT LNANDX2_LVT LNANDX2_RVT RDFFARX1_HVT RDFFARX1_LVT RDFFARX1_RVT RDFFARX2_HVT RDFFARX2_LVT RDFFARX2_RVT RDFFNARX1_HVT RDFFNARX1_LVT RDFFNARX1_RVT RDFFNARX2_HVT RDFFNARX2_LVT RDFFNARX2_RVT RDFFNSRARX1_HVT RDFFNSRARX1_LVT RDFFNSRARX1_RVT RDFFNSRARX2_HVT RDFFNSRARX2_LVT RDFFNSRARX2_RVT RDFFNSRASRNX1_HVT RDFFNSRASRNX1_LVT RDFFNSRASRNX1_RVT RDFFNSRASRNX2_HVT RDFFNSRASRNX2_LVT RDFFNSRASRNX2_RVT RDFFNSRASRQX1_HVT RDFFNSRASRQX1_LVT RDFFNSRASRQX1_RVT RDFFNSRASRQX2_HVT RDFFNSRASRQX2_LVT RDFFNSRASRQX2_RVT RDFFNSRASRX1_HVT RDFFNSRASRX1_LVT RDFFNSRASRX1_RVT RDFFNSRASRX2_HVT RDFFNSRASRX2_LVT RDFFNSRASRX2_RVT RDFFNSRASX1_HVT RDFFNSRASX1_LVT RDFFNSRASX1_RVT RDFFNSRASX2_HVT RDFFNSRASX2_LVT RDFFNSRASX2_RVT RDFFNSRX1_HVT RDFFNSRX1_LVT RDFFNSRX1_RVT RDFFNSRX2_HVT RDFFNSRX2_LVT RDFFNSRX2_RVT RDFFNX1_HVT RDFFNX1_LVT RDFFNX1_RVT RDFFNX2_HVT RDFFNX2_LVT RDFFNX2_RVT RDFFSRARX1_HVT RDFFSRARX1_LVT RDFFSRARX1_RVT RDFFSRARX2_HVT RDFFSRARX2_LVT RDFFSRARX2_RVT RDFFSRASRX1_HVT RDFFSRASRX1_LVT RDFFSRASRX1_RVT RDFFSRASRX2_HVT RDFFSRASRX2_LVT RDFFSRASRX2_RVT RDFFSRASX1_HVT RDFFSRASX1_LVT RDFFSRASX1_RVT RDFFSRASX2_HVT RDFFSRASX2_LVT RDFFSRASX2_RVT RDFFSRSSRX1_HVT RDFFSRSSRX1_LVT RDFFSRSSRX1_RVT RDFFSRSSRX2_HVT RDFFSRSSRX2_LVT RDFFSRSSRX2_RVT RDFFSRX1_HVT RDFFSRX1_LVT RDFFSRX1_RVT RDFFSRX2_HVT RDFFSRX2_LVT RDFFSRX2_RVT RDFFX1_HVT RDFFX1_LVT RDFFX1_RVT RDFFX2_HVT RDFFX2_LVT RDFFX2_RVT RSDFFARX1_HVT RSDFFARX1_LVT RSDFFARX1_RVT RSDFFARX2_HVT RSDFFARX2_LVT RSDFFARX2_RVT RSDFFNARX1_HVT RSDFFNARX1_LVT RSDFFNARX1_RVT RSDFFNARX2_HVT RSDFFNARX2_LVT RSDFFNARX2_RVT RSDFFNSRARX1_HVT RSDFFNSRARX1_LVT RSDFFNSRARX1_RVT RSDFFNSRARX2_HVT RSDFFNSRARX2_LVT RSDFFNSRARX2_RVT RSDFFNSRASRNX1_HVT RSDFFNSRASRNX1_LVT RSDFFNSRASRNX1_RVT RSDFFNSRASRNX2_HVT RSDFFNSRASRNX2_LVT RSDFFNSRASRNX2_RVT RSDFFNSRASRQX1_HVT RSDFFNSRASRQX1_LVT RSDFFNSRASRQX1_RVT RSDFFNSRASRQX2_HVT RSDFFNSRASRQX2_LVT RSDFFNSRASRQX2_RVT RSDFFNSRASRX1_HVT RSDFFNSRASRX1_LVT RSDFFNSRASRX1_RVT RSDFFNSRASRX2_HVT RSDFFNSRASRX2_LVT RSDFFNSRASRX2_RVT RSDFFNSRASX1_HVT RSDFFNSRASX1_LVT RSDFFNSRASX1_RVT RSDFFNSRASX2_HVT RSDFFNSRASX2_LVT RSDFFNSRASX2_RVT RSDFFNSRX1_HVT RSDFFNSRX1_LVT RSDFFNSRX1_RVT RSDFFNSRX2_HVT RSDFFNSRX2_LVT RSDFFNSRX2_RVT RSDFFNX1_HVT RSDFFNX1_LVT RSDFFNX1_RVT RSDFFNX2_HVT RSDFFNX2_LVT RSDFFNX2_RVT RSDFFSRARX1_HVT RSDFFSRARX1_LVT RSDFFSRARX1_RVT RSDFFSRARX2_HVT RSDFFSRARX2_LVT RSDFFSRARX2_RVT RSDFFSRASRX1_HVT RSDFFSRASRX1_LVT RSDFFSRASRX1_RVT RSDFFSRASRX2_HVT RSDFFSRASRX2_LVT RSDFFSRASRX2_RVT RSDFFSRASX1_HVT RSDFFSRASX1_LVT RSDFFSRASX1_RVT RSDFFSRASX2_HVT RSDFFSRASX2_LVT RSDFFSRASX2_RVT RSDFFSRSSRX1_HVT RSDFFSRSSRX1_LVT RSDFFSRSSRX1_RVT RSDFFSRSSRX2_HVT RSDFFSRSSRX2_LVT RSDFFSRSSRX2_RVT RSDFFSRX1_HVT RSDFFSRX1_LVT RSDFFSRX1_RVT RSDFFSRX2_HVT RSDFFSRX2_LVT RSDFFSRX2_RVT RSDFFX1_HVT RSDFFX1_LVT RSDFFX1_RVT RSDFFX2_HVT RSDFFX2_LVT RSDFFX2_RVT}
+}
+Info: starting 8 workers... {
+Info: started worker #0 with pid 30521
+Info: started worker #1 with pid 30523
+Info: started worker #2 with pid 30525
+Info: started worker #3 with pid 30527
+Info: started worker #4 with pid 30529
+Info: started worker #5 with pid 30531
+Info: started worker #6 with pid 30533
+Info: started worker #7 with pid 30535
+}
+Info: waiting for 8 workers... {
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 286s, ST: 53s, FG: 53s, CPU: 4.1%}, MEM {curr: 2.3G, peak: 6.4G, phys curr: 0.9G, phys peak: 0.9G}, SYS {load: 4.7, cpu: 32, total: 119.8G, free: 15.3G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 301s, ST: 53s, FG: 53s, CPU: 4.3%}, MEM {curr: 2.3G, peak: 6.4G, phys curr: 0.9G, phys peak: 0.9G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 302s, ST: 53s, FG: 53s, CPU: 4.8%}, MEM {curr: 2.3G, peak: 6.4G, phys curr: 0.9G, phys peak: 0.9G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}

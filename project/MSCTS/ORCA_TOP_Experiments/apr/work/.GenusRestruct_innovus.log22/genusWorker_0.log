@@ -1,0 +1,32 @@
+Info: setting up worker #0 < pip/t00_to.pipe > pip/t00_from.pipe
+Info: opened input pipe
+Info: opened output pipe
+Info: checking genus version has required version/features...
+  crr_map_def: Performs mapper CRR (critical region resynthesis). Use only for 
+               debugging. 
+
+Usage: crr_map_def <design> [-spatial] [-remap_always] [-use_crr_gst]
+           [-use_crr_shell]
+
+    <design>:
+        the design 
+    [-spatial]:
+        add spatial settings for DPUL 
+    [-remap_always]:
+        remap always without checking wns before remapping 
+    [-use_crr_gst]:
+        use crr_gst in timing optimization 
+    [-use_crr_shell]:
+        groups all leaf instances in the top design in a crr shell before 
+        mapping 
+Info: sanity check passed!
+END-of-innovus-batch 0 elapse: 0.0 seconds, total: 0.000000 seconds (status 0)
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 286s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.7, cpu: 32, total: 119.8G, free: 15.3G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 301s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 302s, ST: -0s, FG: -0s, CPU: 101.7%}, MEM {curr: 2.3G, peak: 2.3G, phys curr: 0.0G, phys peak: 0.0G}, SYS {load: 4.6, cpu: 32, total: 119.8G, free: 15.2G}

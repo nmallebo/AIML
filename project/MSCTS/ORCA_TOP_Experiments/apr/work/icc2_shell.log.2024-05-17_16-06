@@ -1,0 +1,38 @@
+setting auto_restore_mw_cel_lib_setup true
+icc2_shell> set_host_options -max_cores 32
+1
+icc2_shell> o
+setting top_design to: 
+ORCA_TOP
+icc2_shell> source ../scripts/icc2.tcl >> flow_flush_apr.log
+Information: The value of option cts.compile.enable_cell_relocation has been overridden to "leaf_only" to support latency-driven placement. (CTS-973)
+icc2_shell> start_gui
+icc2_shell> get_cells *occ*
+{occ_int2}
+icc2_shell> change_selection [get_cells *occ*]
+icc2_shell> zoom_selected
+Error: unknown command 'zoom_selected' (CMD-005)
+icc2_shell> get_selection
+{occ_int2}
+icc2_shell> get_attribute [get_selection] bbox
+Warning: Attribute 'bbox' does not exist on cell occ_int2 (ATTR-3)
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -start RulerTool
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {-7.735 309.427} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {1024.202 318.709} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -reset
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -start RulerTool
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {459.499 668.361} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -reset
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {439.386 674.550} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -reset
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {425.462 671.456} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -add_point {445.574 -1.547} -scale 1.5471
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -apply
+icc2_shell> gui_mouse_tool -window [gui_get_current_window -types Layout -mru] -reset
+icc2_shell> exit
+Maximum memory usage for this session: 4493.96 MB
+Maximum memory usage for this session including child processes: 4493.96 MB
+CPU usage for this session:  13666 seconds (  3.80 hours)
+Elapsed time for this session:  71490 seconds ( 19.86 hours)
+Thank you for using IC Compiler II.
+

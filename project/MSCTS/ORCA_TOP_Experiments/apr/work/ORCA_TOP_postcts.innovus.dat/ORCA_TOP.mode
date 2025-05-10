@@ -1,0 +1,76 @@
+catch { setDesignMode -earlyClockFlow false }
+catch { setDesignMode -flowEffort extreme }
+catch { setDesignMode -process 28 }
+catch { setAnalysisMode -analysisType onChipVariation }
+catch { setAnalysisMode -checkType setup }
+catch { setAnalysisMode -clkSrcPath true }
+catch { setAnalysisMode -clockPropagation sdcControl }
+catch { setAnalysisMode -cppr both }
+catch { setAnalysisMode -skew true }
+catch { setAnalysisMode -usefulSkew true }
+catch { setOptMode -opt_view_pruning_hold_views_active_list { test_best_scenario func_best_scenario } }
+catch { setOptMode -opt_view_pruning_setup_views_active_list { test_worst_scenario func_worst_scenario } }
+catch { setOptMode -opt_view_pruning_hold_views_persistent_list { func_best_scenario test_best_scenario} }
+catch { setOptMode -opt_view_pruning_setup_views_persistent_list { func_worst_scenario test_worst_scenario} }
+catch { setOptMode -opt_view_pruning_tdgr_setup_views_persistent_list { func_worst_scenario test_worst_scenario} }
+catch { setOptMode -opt_view_pruning_hold_target_slack_auto_flow 0 }
+catch { setOptMode -opt_drv_margin 0 }
+catch { setOptMode -opt_enable_podv2_clock_opt_flow false }
+catch { setOptMode -opt_exp_buffer_tat_enhancement true }
+catch { setOptMode -opt_exp_flow_effort_extreme true }
+catch { setOptMode -opt_exp_global_sizing_tat_fix true }
+catch { setOptMode -opt_exp_pre_cts_new_extreme_flow true }
+catch { setOptMode -opt_exp_pre_cts_new_standard_flow true }
+catch { setOptMode -opt_exp_reclaim_area_rebuffer_tat_fix true }
+catch { setOptMode -opt_exp_roi_flow_tat_enhancements true }
+catch { setOptMode -opt_exp_view_pruning_timer_mode low }
+catch { setOptMode -opt_flow_ccopt_extreme_tat_enhancement_v2 true }
+catch { setOptMode -opt_drv true }
+catch { setOptMode -opt_post_route_enable_si_attacker_sizing false }
+catch { setOptMode -opt_resize_flip_flops true }
+catch { setOptMode -opt_view_pruning_placement_setup_view_list { func_worst_scenario  } }
+catch { setOptMode -opt_preserve_all_sequential false }
+catch { setOptMode -opt_area_recovery true }
+catch { setOptMode -opt_setup_target_slack 0 }
+catch { setOptMode -opt_skew true }
+catch { setOptMode -opt_skew_ccopt none }
+catch { setOptMode -opt_skew_post_route false }
+catch { setOptMode -opt_skew_pre_cts false }
+catch { setPathGroupOptions reg2reg -effortLevel high -weight 2 }
+catch { setPathGroupOptions reg2reg -late -slackAdjustment -0 }
+catch { setPathGroupOptions reg2out -late -slackAdjustment -0 }
+catch { setPathGroupOptions reg2cgate -effortLevel high -weight 1 }
+catch { setPathGroupOptions reg2cgate -late -slackAdjustment -0 }
+catch { setPathGroupOptions in2reg -late -slackAdjustment -0 }
+catch { setPathGroupOptions in2out -late -slackAdjustment -0 }
+catch { setExtractRCMode  -engine preRoute -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.1 }
+catch {setNanoRouteMode -quiet -route_detail_end_iteration 5}
+catch {setNanoRouteMode -quiet -route_detail_post_route_spread_wire "false"}
+catch {setNanoRouteMode -quiet -route_extract_third_party_compatible false}
+catch {setNanoRouteMode -quiet -route_global_exp_timing_driven_std_delay 11.000000}
+catch {setNanoRouteMode -quiet -route_with_via_only_for_block_cell_pin "false"}
+catch {setNanoRouteMode -quiet -route_with_via_only_for_stdcell_pin "1:1"}
+
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepInstInSdc false -keepFlatten true }
+catch { setUsefulSkewMode -opt_skew_eco_route false }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -eng_enablePrePlacedFlow false }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setDelayCalMode -socv_accuracy_mode low }
+catch { setPinAssignMode -pinEditInBatch true }
+catch { setImportMode -discardFloatingVNets false }
+catch { setImportMode -keepEmptyModule true }
+catch { setSIMode -separate_delta_delay_on_data true }
+catch { setEcoMode -batchMode false }
+catch { setFPlanMode -cellsForExtraSites {} }
+catch { setFPlanMode -defaultRowPatternSite {} }
+catch { setFPlanMode -defaultTechSite unit }
+catch { setFPlanMode -disableEolBlockageOnEdges {} }
+catch { setFPlanMode -extraSites {} }
+catch { setFPlanMode -firstRowSiteIndex 0 }
+catch { setFPlanMode -lastRowSiteIndex -1 }
+catch { setFPlanMode -maxIoHeight false }
+catch { setFPlanMode -place_check_ignore_fixed_cell_list {} }
+catch { setFPlanMode -powerRailLayer {} }
+catch { setFPlanMode -skipViolations {} }

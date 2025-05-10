@@ -1,0 +1,104 @@
+****************************************
+Report : check_mv_design
+Design : ORCA_TOP
+Version: V-2023.12
+Date   : Sat May 18 18:53:22 2024
+****************************************
+
+---------- Power domain rule ----------
+No errors or warnings.
+
+---------- Supply set rule ----------
+No errors or warnings.
+
+---------- Supply net rule ----------
+No errors or warnings.
+
+---------- Supply port rule ----------
+No errors or warnings.
+
+---------- Isolation strategy rule ----------
+No errors or warnings.
+
+---------- Level shifter strategy rule ----------
+No errors or warnings.
+
+---------- Retention strategy rule ----------
+No errors or warnings.
+
+---------- Power switch strategy rule ----------
+No errors or warnings.
+
+---------- Repeater rule ----------
+No errors or warnings.
+
+---------- Terminal boundary rule ----------
+No errors or warnings.
+
+---------- Isolation cell rule ----------
+No errors or warnings.
+
+---------- Level shifter cell rule ----------
+No errors or warnings.
+
+---------- Retention cell rule ----------
+No errors or warnings.
+
+---------- Switch cell rule ----------
+No errors or warnings.
+
+---------- PGMUX rule ----------
+No errors or warnings.
+
+---------- Diode cell rule ----------
+No errors or warnings.
+
+---------- Model rule ----------
+No errors or warnings.
+
+---------- Isolation rule ----------
+No errors or warnings.
+
+---------- Voltage shifting rule ----------
+Warning: Driver pin 'occ_int2/U3/Y' (supply net 'VDD' [0.75V]) cannot drive load pin 'I_RISC_CORE/ZCTSBUF_3599_5616/A' (supply net 'VDDH' [0.95V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/I_CONTROL_EndOfInstrn_reg/Q' (supply net 'VDDH' [0.95V]) cannot drive load pin 'I_SDRAM_TOP/I_SDRAM_IF/HFSBUF_9_547/A' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSINV_344_1291/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'I_SDRAM_TOP/I_SDRAM_IF/sync_control_bus_reg_0_/D' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSINV_29_342/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'I_SDRAM_TOP/I_SDRAM_IF/sync_control_bus_reg_3_/D' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_353_1079/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'I_SDRAM_TOP/I_SDRAM_IF/sync_control_bus_reg_2_/D' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7515/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U469/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7515/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U219/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7511/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U464/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7511/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U246/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_67_605/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U466/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_67_605/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U258/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_53_598/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U470/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_53_598/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U276/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7521/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U450/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_66_inst_7521/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U240/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_45_602/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U467/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_45_602/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U401/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_83_inst_7524/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U451/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/gre_a_BUF_83_inst_7524/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U323/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Warning: Driver pin 'I_RISC_CORE/HFSBUF_67_599/Y' (supply net 'VDDH' [0.95V]) cannot drive load pin 'U474/A2' (supply net 'VDD' [0.75V]) due to voltage difference. (MV-012)
+Information: Message 'MV-012' limit (20) exceeded. Remainder will be suppressed. The limit can be changed with '-max_message_count' option. (MV-079)
+Information: Total 185 MV-012 violations. (MV-080)
+Please run check_mv_design for more details.
+
+---------- Tie-off connection rule ----------
+No errors or warnings.
+
+---------- Analog net rule ----------
+No errors or warnings.
+
+---------- Physical block pin rule ----------
+No errors or warnings.
+
+---------- PG pin rule ----------
+No errors or warnings.
+
+---------- Signal pin rule ----------
+No errors or warnings.
+
+---------- Summary ----------
+Information: Total 0 error(s) and 185 warning(s) from check_mv_design. (MV-082)
+1

@@ -1,0 +1,122 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Thu May  1 15:32:34 2025                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v23.10-p003_1 (64bit) 02/01/2024 13:54 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 23.10-p003_1 NR240109-1512/23_10-UB (database version 18.20.618) {superthreading v2.20}
+#@(#)CDS: AAE 23.10-p002 (64bit) 02/01/2024 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 23.10-p003_1 () Dec  5 2023 19:42:23 ( )
+#@(#)CDS: SYNTECH 23.10-p002_1 () Nov 29 2023 02:17:21 ( )
+#@(#)CDS: CPE v23.10-p004
+#@(#)CDS: IQuantus/TQuantus 22.1.1-s215 (64bit) Mon Nov 20 10:05:08 PST 2023 (Linux 3.10.0-693.el7.x86_64)
+
+alias fs set top_design fifo1_sram
+alias f set top_design fifo1
+alias o set top_design ORCA_TOP
+alias e set top_design ExampleRocketSystem
+set_table_style -name report_timing -max_widths { 8,6,23,70} -no_frame_fix_width
+set_global report_timing_format  {delay arrival slew cell hpin}
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getVersion
+define_proc_arguments ViaFillQor -info {This procedure extracts Viafill details from innovus db} -define_args {
+        {-window "window coordinates" "" list optional}
+        {-window_size "window size in microns" "" string optional}
+    
+    }
+define_proc_arguments ProcessFills -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+define_proc_arguments FillQor -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+define_proc_arguments ProcessFills_fast -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+define_proc_arguments FillQor_fast -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+define_proc_arguments ProcessFills_fast_stampOnly -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+	
+}
+define_proc_arguments FillQor_fast_stampOnly -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+}
+win
+o
+is_common_ui_mode
+setMultiCpuUsage -localCpu 8
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+set search_path {}
+set init_lef_file {/u/bcruik2/hacked_lefs/tech.lef saed32sram.lef saed32nm_rvt_1p9m.lef saed32nm_hvt_1p9m.lef saed32_PLL.lef saed32nm_lvt_1p9m.lef}
+is_common_ui_mode
+is_common_ui_mode
+set init_mmmc_file mmmc.tcl
+set init_design_netlisttype Verilog
+set init_verilog ../../syn/outputs/ORCA_TOP.dct.vg
+set init_top_cell ORCA_TOP
+set init_pwr_net VDD
+set init_gnd_net VSS
+init_design
+defIn ../outputs/ORCA_TOP.floorplan.innovus.macros_3B.def
+add_tracks -honor_pitch
+defIn /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.scan.def
+read_power_intent ../../syn/outputs/ORCA_TOP.dct.upf -1801
+commit_power_intent
+is_common_ui_mode
+modifyPowerDomainAttr PD_RISC_CORE -box 10.032 10.032 420.032 185.032
+is_common_ui_mode
+set_ccopt_property target_max_trans 0.3ns
+is_common_ui_mode
+setNanoRouteMode -drouteEndIteration 5
+is_common_ui_mode
+setOptMode -opt_enable_podv2_clock_opt_flow false
+setDesignMode -earlyClockFlow false
+setNanoRouteMode -routeWithViaOnlyForMacroCellPin false
+setNanoRouteMode -routeWithViaOnlyForStandardCellPin 1:1
+setOptMode -usefulSkew false
+setOptMode -usefulSkewCCOpt none
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+is_common_ui_mode
+setPinAssignMode -pinEditInBatch true
+all_constraint_modes -active
+set_interactive_constraint_modes [all_constraint_modes -active]
+set_units -time ns -resistance MOhm -capacitance fF -voltage V -current uA
+setDontUse DELLN true
+createBasicPathGroups -expanded
+saveDesign ORCA_TOP_floorplan.innovus
+add_tracks -honor_pitch
+clearGlobalNets
+globalNetConnect VDD -type pgpin -pin VDD -inst *
+globalNetConnect VSS -type pgpin -pin VSS -inst *
+checkDesign -powerGround -noHtml -outfile pg.rpt
+addRing -type core_rings -nets {VDD VSS} -layer {top M8 bottom M8 left M7 right M7} -offset 1 -width 4 -spacing 1.0
+addStripe -nets {VDD VSS} -direction vertical -layer M4 -width 0.060 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction horizontal -layer M5 -width 0.120 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction vertical -layer M6 -width 0.120 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction horizontal -layer M7 -width 2 -set_to_set_distance 40 -spacing 20
+addStripe -nets {VDD VSS} -direction vertical -layer M8 -width 4 -set_to_set_distance 80 -spacing 40
+sroute -connect {corePin padPin} -crossoverViaLayerRange {1 4}
+createRow -area {0.0000 0.0000 1000 644} -site unitdouble
+deselectAll
+fit
+is_common_ui_mode
+setMultiCpuUsage -localCpu 8
+delete_gui_object design:ORCA_TOP

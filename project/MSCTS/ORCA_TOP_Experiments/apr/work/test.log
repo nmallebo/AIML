@@ -1,0 +1,2 @@
+######## STARTING INITIALIZE and FLOORPLAN #################
+set_default_view -setup func_worst_scenario

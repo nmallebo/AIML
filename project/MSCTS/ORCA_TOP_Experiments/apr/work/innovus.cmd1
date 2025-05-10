@@ -1,0 +1,566 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Mon Apr 28 14:01:32 2025                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v23.10-p003_1 (64bit) 02/01/2024 13:54 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 23.10-p003_1 NR240109-1512/23_10-UB (database version 18.20.618) {superthreading v2.20}
+#@(#)CDS: AAE 23.10-p002 (64bit) 02/01/2024 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 23.10-p003_1 () Dec  5 2023 19:42:23 ( )
+#@(#)CDS: SYNTECH 23.10-p002_1 () Nov 29 2023 02:17:21 ( )
+#@(#)CDS: CPE v23.10-p004
+#@(#)CDS: IQuantus/TQuantus 22.1.1-s215 (64bit) Mon Nov 20 10:05:08 PST 2023 (Linux 3.10.0-693.el7.x86_64)
+
+alias fs set top_design fifo1_sram
+alias f set top_design fifo1
+alias o set top_design ORCA_TOP
+alias e set top_design ExampleRocketSystem
+set_table_style -name report_timing -max_widths { 8,6,23,70} -no_frame_fix_width
+set_global report_timing_format  {delay arrival slew cell hpin}
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getVersion
+define_proc_arguments ViaFillQor -info {This procedure extracts Viafill details from innovus db} -define_args {
+        {-window "window coordinates" "" list optional}
+        {-window_size "window size in microns" "" string optional}
+    
+    }
+define_proc_arguments ProcessFills -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+define_proc_arguments FillQor -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+define_proc_arguments ProcessFills_fast -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+				{-csvName "File path for Fill Data csv file" "Path of CSV file" string required}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list required}
+    {-output_data "Boolean Flag to output Fill Data for further processing" "" string required}
+}
+define_proc_arguments FillQor_fast -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+				{-selectFill "type of fill to be selected in session" "list of BRIDGE/EXTENSION/STAMP/FLOATING" list optional}
+				{-outData "Boolean Flag to output Fill Data for further processing" "" boolean optional}
+    {-outDataFile "File path for Fill Data csv file" "Path of CSV file" string optional}
+}
+define_proc_arguments ProcessFills_fast_stampOnly -info {This procedure processes Fill types} -define_args {
+    {-fillInfo "Design Fill data" "" list required}
+	
+}
+define_proc_arguments FillQor_fast_stampOnly -info {This procedure extracts fill details from innovus db} -define_args {
+    {-layers "Fills Cleanup on which all layers" "list of Metal/Routing layers" list optional}
+}
+win
+is_common_ui_mode
+setMultiCpuUsage -localCpu 8
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+set search_path {}
+set init_lef_file {/u/bcruik2/hacked_lefs/tech.lef saed32sram.lef saed32nm_rvt_1p9m.lef saed32nm_hvt_1p9m.lef saed32_PLL.lef saed32nm_lvt_1p9m.lef}
+is_common_ui_mode
+is_common_ui_mode
+set init_mmmc_file mmmc.tcl
+set init_design_netlisttype Verilog
+set init_verilog ../../syn/outputs/ORCA_TOP.dct.vg
+set init_top_cell ORCA_TOP
+set init_pwr_net VDD
+set init_gnd_net VSS
+init_design
+defIn ../outputs/ORCA_TOP.floorplan.innovus.macros_3B.def
+add_tracks -honor_pitch
+defIn /u/nmallebo/ECE530-2024-SPRING/finalprj-group4/syn/outputs/ORCA_TOP.dct.scan.def
+read_power_intent ../../syn/outputs/ORCA_TOP.dct.upf -1801
+commit_power_intent
+is_common_ui_mode
+modifyPowerDomainAttr PD_RISC_CORE -box 10.032 10.032 420.032 185.032
+is_common_ui_mode
+set_ccopt_property target_max_trans 0.3ns
+is_common_ui_mode
+setNanoRouteMode -drouteEndIteration 5
+is_common_ui_mode
+setOptMode -opt_enable_podv2_clock_opt_flow false
+setDesignMode -earlyClockFlow false
+setNanoRouteMode -routeWithViaOnlyForMacroCellPin false
+setNanoRouteMode -routeWithViaOnlyForStandardCellPin 1:1
+setOptMode -usefulSkew false
+setOptMode -usefulSkewCCOpt none
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+is_common_ui_mode
+setPinAssignMode -pinEditInBatch true
+all_constraint_modes -active
+set_interactive_constraint_modes [all_constraint_modes -active]
+set_units -time ns -resistance MOhm -capacitance fF -voltage V -current uA
+setDontUse DELLN true
+createBasicPathGroups -expanded
+saveDesign ORCA_TOP_floorplan.innovus
+add_tracks -honor_pitch
+clearGlobalNets
+globalNetConnect VDD -type pgpin -pin VDD -inst *
+globalNetConnect VSS -type pgpin -pin VSS -inst *
+checkDesign -powerGround -noHtml -outfile pg.rpt
+addRing -type core_rings -nets {VDD VSS} -layer {top M8 bottom M8 left M7 right M7} -offset 1 -width 4 -spacing 1.0
+addStripe -nets {VDD VSS} -direction vertical -layer M4 -width 0.060 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction horizontal -layer M5 -width 0.120 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction vertical -layer M6 -width 0.120 -set_to_set_distance 20 -spacing 10
+addStripe -nets {VDD VSS} -direction horizontal -layer M7 -width 2 -set_to_set_distance 40 -spacing 20
+addStripe -nets {VDD VSS} -direction vertical -layer M8 -width 4 -set_to_set_distance 80 -spacing 40
+sroute -connect {corePin padPin} -crossoverViaLayerRange {1 4}
+createRow -area {0.0000 0.0000 1000 644} -site unitdouble
+deselectAll
+getAnalysisMode -socv -quiet
+setOptMode -opt_enable_podv2_clock_opt_flow false
+getAnalysisMode -socv -quiet
+setDesignMode -earlyClockFlow false
+setOptMode -usefulSkew true
+setOptMode -usefulSkewCCOpt standard
+setDesignMode -flowEffort standard
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+createInstGroup CLOCK_GROUP
+deselectAll
+selectInst I_CLOCKING*
+selectInst occ*
+addInstToInstGroup CLOCK_GROUP {occ_int2/U_gf_mux_2/U6 occ_int2/U_clk_control_i_2/U_decode_i/U11 {occ_int2/U_clk_control_i_2/U_cycle_ctr_i/count_int_reg[1]} occ_int2/U_clk_control_i_2/U13 occ_int2/slow_clk_1_clkgt/u_icg occ_int2/U_clk_control_i_1/U_decode_i/U9 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/U9 occ_int2/U_clk_control_i_1/U14 occ_int2/U_clk_control_i_1/pipeline_or_tree_l_reg occ_int2/U_clk_control_i_0/U_decode_i/U8 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/U10 occ_int2/U_clk_control_i_0/U15 occ_int2/U_clk_control_i_0/fast_clk_enable_l_reg occ_int2/U_gf_mux_2/U8 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/add_421/U2 {occ_int2/U_clk_control_i_2/U_cycle_ctr_i/count_int_reg[0]} occ_int2/U_clk_control_i_2/U12 occ_int2/fast_clk_1_clkgt/u_icg occ_int2/U_clk_control_i_1/U_decode_i/U12 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/tercnt_n_reg_reg occ_int2/U_clk_control_i_1/U13 occ_int2/slow_clk_0_clkgt/u_icg occ_int2/U_clk_control_i_0/U_decode_i/U9 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/U9 occ_int2/U_clk_control_i_0/U14 occ_int2/U_clk_control_i_0/pipeline_or_tree_l_reg occ_int2/U_gf_mux_2/U7 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/add_421/U1 occ_int2/U_clk_control_i_2/U17 occ_int2/U_clk_control_i_2/load_n_meta_2_l_reg occ_int2/U_gf_mux_1/U6 occ_int2/U_clk_control_i_1/U_decode_i/U11 {occ_int2/U_clk_control_i_1/U_cycle_ctr_i/count_int_reg[1]} occ_int2/U_clk_control_i_1/U12 occ_int2/fast_clk_0_clkgt/u_icg occ_int2/U_clk_control_i_0/U_decode_i/U12 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg occ_int2/U_clk_control_i_0/U13 occ_int2/U4 occ_int2/U_gf_mux_2/U5 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/add_421/U3 occ_int2/U_clk_control_i_2/U11 occ_int2/U_clk_control_i_2/load_n_meta_1_l_reg occ_int2/U_gf_mux_1/U8 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/add_252/U2 {occ_int2/U_clk_control_i_1/U_cycle_ctr_i/count_int_reg[0]} occ_int2/U_clk_control_i_1/load_n_meta_2_l_reg occ_int2/U_gf_mux_0/U6 occ_int2/U_clk_control_i_0/U_decode_i/U11 {occ_int2/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[1]} occ_int2/U_clk_control_i_0/U12 occ_int2/U3 occ_int2/U_clk_control_i_2/U_or_tree_i/U2 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/U11 occ_int2/U_clk_control_i_2/U10 occ_int2/U_clk_control_i_2/load_n_meta_0_l_reg occ_int2/U_gf_mux_1/U7 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/add_252/U1 occ_int2/U_clk_control_i_1/U11 occ_int2/U_clk_control_i_1/load_n_meta_1_l_reg occ_int2/U_gf_mux_0/U8 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/add_83/U2 {occ_int2/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]} occ_int2/U_clk_control_i_0/load_n_meta_2_l_reg occ_int2/U2 occ_int2/U_clk_control_i_2/U_decode_i/U8 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/U10 occ_int2/U_clk_control_i_2/U16 occ_int2/U_clk_control_i_2/slow_clk_enable_l_reg occ_int2/U_gf_mux_1/U5 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/add_252/U3 occ_int2/U_clk_control_i_1/U10 occ_int2/U_clk_control_i_1/load_n_meta_0_l_reg occ_int2/U_gf_mux_0/U7 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/add_83/U1 occ_int2/U_clk_control_i_0/U11 occ_int2/U_clk_control_i_0/load_n_meta_1_l_reg occ_int2/U1 occ_int2/slow_clk_2_clkgt/u_icg occ_int2/U_clk_control_i_2/U_decode_i/U9 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/U9 occ_int2/U_clk_control_i_2/U15 occ_int2/U_clk_control_i_2/fast_clk_enable_l_reg occ_int2/U_clk_control_i_1/U_or_tree_i/U2 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/U11 occ_int2/U_clk_control_i_1/U16 occ_int2/U_clk_control_i_1/slow_clk_enable_l_reg occ_int2/U_gf_mux_0/U5 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/add_83/U3 occ_int2/U_clk_control_i_0/U10 occ_int2/U_clk_control_i_0/load_n_meta_0_l_reg occ_int2/fast_clk_2_clkgt/u_icg occ_int2/U_clk_control_i_2/U_decode_i/U12 occ_int2/U_clk_control_i_2/U_cycle_ctr_i/tercnt_n_reg_reg occ_int2/U_clk_control_i_2/U14 occ_int2/U_clk_control_i_2/pipeline_or_tree_l_reg occ_int2/U_clk_control_i_1/U_decode_i/U8 occ_int2/U_clk_control_i_1/U_cycle_ctr_i/U10 occ_int2/U_clk_control_i_1/U15 occ_int2/U_clk_control_i_1/fast_clk_enable_l_reg occ_int2/U_clk_control_i_0/U_or_tree_i/U2 occ_int2/U_clk_control_i_0/U_cycle_ctr_i/U11 occ_int2/U_clk_control_i_0/U16 occ_int2/U_clk_control_i_0/slow_clk_enable_l_reg I_CLOCKING/snps_clk_chain_0/U_shftreg_0/ff_0/q_reg I_CLOCKING/occ_int1/U_gf_mux_0/U8 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/add_83/U2 {I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[0]} I_CLOCKING/occ_int1/U_clk_control_i_0/load_n_meta_2_l_reg I_CLOCKING/U6 I_CLOCKING/U3 I_CLOCKING/prst_ff_reg I_CLOCKING/snps_clk_chain_0/U1 I_CLOCKING/occ_int1/U_gf_mux_0/U7 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/add_83/U1 I_CLOCKING/occ_int1/U_clk_control_i_0/U11 I_CLOCKING/occ_int1/U_clk_control_i_0/load_n_meta_1_l_reg I_CLOCKING/U4 I_CLOCKING/U2 I_CLOCKING/pci_rst_n_buf_reg I_CLOCKING/snps_clk_chain_0/U3 I_CLOCKING/occ_int1/U_gf_mux_0/U5 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/add_83/U3 I_CLOCKING/occ_int1/U_clk_control_i_0/U10 I_CLOCKING/occ_int1/U_clk_control_i_0/load_n_meta_0_l_reg I_CLOCKING/U11 I_CLOCKING/U5 I_CLOCKING/sys_rst_n_buf_reg I_CLOCKING/snps_clk_chain_0/U2 I_CLOCKING/occ_int1/U_clk_control_i_0/U_or_tree_i/U2 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/U11 I_CLOCKING/occ_int1/U_clk_control_i_0/U16 I_CLOCKING/occ_int1/U_clk_control_i_0/slow_clk_enable_l_reg I_CLOCKING/U8 I_CLOCKING/U1 I_CLOCKING/sdram_rst_n_buf_reg I_CLOCKING/snps_clk_chain_0/U_shftreg_0/ff_1/q_reg I_CLOCKING/occ_int1/U_clk_control_i_0/U_decode_i/U8 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/U10 I_CLOCKING/occ_int1/U_clk_control_i_0/U15 I_CLOCKING/occ_int1/U_clk_control_i_0/fast_clk_enable_l_reg I_CLOCKING/sys_2x_rst_n_testctl I_CLOCKING/sys_clk_in_reg I_CLOCKING/sys_2x_rst_n_buf_reg I_CLOCKING/occ_int1/slow_clk_clkgt/u_icg I_CLOCKING/occ_int1/U_clk_control_i_0/U_decode_i/U9 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/U9 I_CLOCKING/occ_int1/U_clk_control_i_0/U14 I_CLOCKING/occ_int1/U_clk_control_i_0/pipeline_or_tree_l_reg I_CLOCKING/sys_rst_n_testctl I_CLOCKING/sys_2x_rst_ff_reg I_CLOCKING/icc_clock3 I_CLOCKING/occ_int1/fast_clk_clkgt/u_icg I_CLOCKING/occ_int1/U_clk_control_i_0/U_decode_i/U12 I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/tercnt_n_reg_reg I_CLOCKING/occ_int1/U_clk_control_i_0/U13 I_CLOCKING/occ_int1/U2 I_CLOCKING/sdram_rst_n_testctl I_CLOCKING/sdram_rst_ff_reg I_CLOCKING/snps_clk_chain_0/U4 I_CLOCKING/occ_int1/U_gf_mux_0/U6 I_CLOCKING/occ_int1/U_clk_control_i_0/U_decode_i/U11 {I_CLOCKING/occ_int1/U_clk_control_i_0/U_cycle_ctr_i/count_int_reg[1]} I_CLOCKING/occ_int1/U_clk_control_i_0/U12 I_CLOCKING/occ_int1/U1 I_CLOCKING/pci_rst_n_testctl I_CLOCKING/sys_rst_ff_reg}
+createRegion CLOCK_GROUP 10.792 312.664 147.44 351.12
+create_library_set -name worst_libs_vddh -timing {
+update_delay_corner -name worst_corner -power_domain PD_RISC_CORE -library_set worst_libs_vddh
+is_common_ui_mode
+setEcoMode -batchMode true
+is_common_ui_mode
+ecoChangeCell -inst ls_out_61_test_so1 -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_60_STACK_FULL -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_59_OUT_VALID -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_58_RESULT_DATA_0_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_57_RESULT_DATA_1_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_56_RESULT_DATA_2_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_55_RESULT_DATA_3_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_54_RESULT_DATA_4_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_53_RESULT_DATA_5_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_52_RESULT_DATA_6_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_51_RESULT_DATA_7_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_50_RESULT_DATA_8_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_49_RESULT_DATA_9_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_48_RESULT_DATA_10_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_47_RESULT_DATA_11_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_46_RESULT_DATA_12_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_45_RESULT_DATA_13_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_44_RESULT_DATA_14_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_43_RESULT_DATA_15_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_42_Rd_Instr -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_41_PSW_2_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_40_PSW_3_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_39_PSW_4_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_38_PSW_5_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_37_PSW_6_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_36_PSW_7_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_35_PSW_8_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_34_PSW_9_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_33_PSW_10_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_32_EndOfInstrn -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_31_Xecutng_Instrn_0_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_30_Xecutng_Instrn_1_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_29_Xecutng_Instrn_2_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_28_Xecutng_Instrn_3_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_27_Xecutng_Instrn_4_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_26_Xecutng_Instrn_5_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_25_Xecutng_Instrn_6_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_24_Xecutng_Instrn_7_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_23_Xecutng_Instrn_8_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_22_Xecutng_Instrn_9_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_21_Xecutng_Instrn_10_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_20_Xecutng_Instrn_11_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_19_Xecutng_Instrn_12_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_18_Xecutng_Instrn_13_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_17_Xecutng_Instrn_14_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_16_Xecutng_Instrn_15_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_15_Xecutng_Instrn_16_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_14_Xecutng_Instrn_17_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_13_Xecutng_Instrn_18_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_12_Xecutng_Instrn_19_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_11_Xecutng_Instrn_20_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_10_Xecutng_Instrn_21_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_9_Xecutng_Instrn_22_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_8_Xecutng_Instrn_23_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_7_Xecutng_Instrn_24_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_6_Xecutng_Instrn_25_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_5_Xecutng_Instrn_26_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_4_Xecutng_Instrn_27_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_3_Xecutng_Instrn_28_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_2_Xecutng_Instrn_29_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_1_Xecutng_Instrn_30_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+ecoChangeCell -inst ls_out_0_Xecutng_Instrn_31_ -cell LSDNSSX8_LVT
+is_common_ui_mode
+setEcoMode -batchMode false
+place_opt_design
+redirect -tee ../reports/ORCA_TOP.innovus.place.congestion.2d.rpt { reportCongestion -hotSpot -overflow -includeBlockage }
+redirect -tee ../reports/ORCA_TOP.innovus.place.congestion.3d.rpt { reportCongestion -hotSpot -overflow -includeBlockage -3d }
+timeDesign -preCTS -prefix place -outDir ../reports/ORCA_TOP.innovus -expandedViews
+redirect -tee ../reports/ORCA_TOP.innovus.place.density.rpt { reportDensityMap }
+summaryReport -noHtml -outfile ../reports/ORCA_TOP.innovus.place.summary.rpt
+saveDesign ORCA_TOP_place.innovus
+setDesignMode -process 28
+getAnalysisMode -socv -quiet
+setOptMode -opt_enable_podv2_clock_opt_flow false
+setOptMode -usefulSkew true
+setOptMode -usefulSkewCCOpt none
+setDesignMode -flowEffort extreme
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+set_ccopt_property update_io_latency false
+set_ccopt_property target_skew 0.085
+set_ccopt_property use_inverters false
+set_dont_use {*/NBUFX32_LVT} true
+set_ccopt_property buffer_cells */NBUF*LVT*
+set_ccopt_property target_max_trans 0.243
+set_ccopt_property target_insertion_delay 0.8
+set_ccopt_property max_fanout 30
+set_ccopt_property routing_top_min_fanout 10000
+add_ndr -name CTS_RULE -spacing {M1 0.1 M2:M8 0.112 } -width_multiplier {M3:M8 2 } -generate_via
+create_route_type -name top_type -non_default_rule CTS_RULE -top_preferred_layer M8 -bottom_preferred_layer M7
+set_ccopt_property -net_type top route_type top_type
+create_route_type -name trunk_type -non_default_rule CTS_RULE -top_preferred_layer M6 -bottom_preferred_layer M5
+set_ccopt_property -net_type trunk route_type trunk_type
+create_ccopt_clock_tree_spec -file ccopt.spec
+get_ccopt_clock_trees
+ccopt_check_and_flatten_ilms_no_restore
+set_ccopt_property sink_type -pin sd_CK ignore
+set_ccopt_property sink_type_reasons -pin sd_CK {implicit design_io}
+set_ccopt_property sink_type -pin sd_CKn ignore
+set_ccopt_property sink_type_reasons -pin sd_CKn {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[0]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[0]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[10]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[10]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[11]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[11]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[12]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[12]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[13]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[13]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[14]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[14]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[15]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[15]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[16]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[16]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[17]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[17]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[18]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[18]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[19]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[19]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[1]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[1]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[20]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[20]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[21]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[21]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[22]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[22]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[23]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[23]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[24]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[24]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[25]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[25]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[26]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[26]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[27]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[27]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[28]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[28]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[29]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[29]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[2]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[2]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[30]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[30]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[31]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[31]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[3]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[3]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[4]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[4]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[5]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[5]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[6]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[6]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[7]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[7]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[8]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[8]} {implicit design_io}
+set_ccopt_property sink_type -pin {sd_DQ_out[9]} ignore
+set_ccopt_property sink_type_reasons -pin {sd_DQ_out[9]} {implicit design_io}
+set_ccopt_property sink_type -pin I_PCI_TOP/I_PCI_CORE_clk_gate_pad_out_buf_reg/latch/CLK stop
+set_ccopt_property sink_type_reasons -pin I_PCI_TOP/I_PCI_CORE_clk_gate_pad_out_buf_reg/latch/CLK no_sdc_clock
+set_ccopt_property cts_is_sdc_clock_root -pin I_CLOCKING/sys_clk_in_reg/Q true
+set_ccopt_property cts_is_sdc_clock_root -pin ate_clk true
+set_ccopt_property cts_is_sdc_clock_root -pin pclk true
+set_ccopt_property cts_is_sdc_clock_root -pin sd_CK true
+set_ccopt_property cts_is_sdc_clock_root -pin sd_CKn true
+set_ccopt_property cts_is_sdc_clock_root -pin sdram_clk true
+set_ccopt_property cts_is_sdc_clock_root -pin sys_2x_clk true
+set_ccopt_property case_analysis -pin I_CLOCKING/sys_clk_in_reg/SE 0
+set_ccopt_property case_analysis -pin I_CLOCKING/sys_clk_in_reg/SI 0
+create_ccopt_clock_tree -name ate_clk -source ate_clk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -early -clock_tree ate_clk 0.200
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -late -clock_tree ate_clk 0.200
+set_ccopt_property source_driver -clock_tree ate_clk {INVX8_HVT/A INVX8_HVT/Y}
+set_ccopt_property clock_period -pin ate_clk 30
+create_ccopt_clock_tree -name SYS_2x_CLK -source sys_2x_clk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -early -clock_tree SYS_2x_CLK 0.200
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -late -clock_tree SYS_2x_CLK 0.200
+set_ccopt_property source_driver -clock_tree SYS_2x_CLK {INVX8_HVT/A INVX8_HVT/Y}
+set_ccopt_property clock_period -pin sys_2x_clk 2.4
+create_ccopt_clock_tree -name SDRAM_CLK -source sdram_clk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -early -clock_tree SDRAM_CLK 0.200
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -late -clock_tree SDRAM_CLK 0.200
+set_ccopt_property source_driver -clock_tree SDRAM_CLK {INVX8_HVT/A INVX8_HVT/Y}
+set_ccopt_property clock_period -pin sdram_clk 4.1
+create_ccopt_clock_tree -name PCI_CLK -source pclk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -early -clock_tree PCI_CLK 0.200
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -late -clock_tree PCI_CLK 0.200
+set_ccopt_property source_driver -clock_tree PCI_CLK {INVX8_HVT/A INVX8_HVT/Y}
+set_ccopt_property clock_period -pin pclk 7.5
+create_ccopt_generated_clock_tree -name SYS_CLK -source I_CLOCKING/sys_clk_in_reg/Q -generated_by I_CLOCKING/sys_clk_in_reg/CLK
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -early -clock_tree SYS_CLK 0.200
+set_ccopt_property target_max_trans_sdc -delay_corner worst_corner -late -clock_tree SYS_CLK 0.200
+set_ccopt_property clock_period -pin I_CLOCKING/sys_clk_in_reg/Q 4.8
+set_ccopt_property timing_connectivity_info {}
+create_ccopt_skew_group -name PCI_CLK/test_worst_mode -sources pclk -auto_sinks
+set_ccopt_property include_source_latency -skew_group PCI_CLK/test_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group PCI_CLK/test_worst_mode PCI_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group PCI_CLK/test_worst_mode {test_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group PCI_CLK/test_worst_mode worst_corner
+create_ccopt_skew_group -name SDRAM_CLK/test_worst_mode -sources sdram_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SDRAM_CLK/test_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SDRAM_CLK/test_worst_mode SDRAM_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SDRAM_CLK/test_worst_mode {test_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SDRAM_CLK/test_worst_mode worst_corner
+create_ccopt_skew_group -name SYS_2x_CLK/test_worst_mode -sources sys_2x_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_2x_CLK/test_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SYS_2x_CLK/test_worst_mode SYS_2x_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_2x_CLK/test_worst_mode {test_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_2x_CLK/test_worst_mode worst_corner
+modify_ccopt_skew_group -skew_group SYS_2x_CLK/test_worst_mode -add_ignore_pins {  I_RISC_CORE/ls_in_0_clk/A  }
+create_ccopt_skew_group -name SYS_CLK/test_worst_mode -sources I_CLOCKING/sys_clk_in_reg/Q -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_CLK/test_worst_mode true
+set_ccopt_property constrains -skew_group SYS_CLK/test_worst_mode none
+set_ccopt_property extracted_from_clock_name -skew_group SYS_CLK/test_worst_mode SYS_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_CLK/test_worst_mode {test_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_CLK/test_worst_mode worst_corner
+create_ccopt_skew_group -name ate_clk/test_worst_mode -sources ate_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group ate_clk/test_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group ate_clk/test_worst_mode ate_clk
+set_ccopt_property extracted_from_constraint_mode_names -skew_group ate_clk/test_worst_mode {test_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group ate_clk/test_worst_mode worst_corner
+modify_ccopt_skew_group -skew_group ate_clk/test_worst_mode -add_ignore_pins {  I_RISC_CORE/ls_in_0_clk/A  }
+create_ccopt_skew_group -name PCI_CLK/func_worst_mode -sources pclk -auto_sinks
+set_ccopt_property include_source_latency -skew_group PCI_CLK/func_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group PCI_CLK/func_worst_mode PCI_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group PCI_CLK/func_worst_mode {func_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group PCI_CLK/func_worst_mode worst_corner
+create_ccopt_skew_group -name SDRAM_CLK/func_worst_mode -sources sdram_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SDRAM_CLK/func_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SDRAM_CLK/func_worst_mode SDRAM_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SDRAM_CLK/func_worst_mode {func_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SDRAM_CLK/func_worst_mode worst_corner
+create_ccopt_skew_group -name SYS_2x_CLK/func_worst_mode -sources sys_2x_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_2x_CLK/func_worst_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SYS_2x_CLK/func_worst_mode SYS_2x_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_2x_CLK/func_worst_mode {func_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_2x_CLK/func_worst_mode worst_corner
+modify_ccopt_skew_group -skew_group SYS_2x_CLK/func_worst_mode -add_ignore_pins {  I_RISC_CORE/ls_in_0_clk/A  }
+create_ccopt_skew_group -name SYS_CLK/func_worst_mode -sources I_CLOCKING/sys_clk_in_reg/Q -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_CLK/func_worst_mode true
+set_ccopt_property constrains -skew_group SYS_CLK/func_worst_mode none
+set_ccopt_property extracted_from_clock_name -skew_group SYS_CLK/func_worst_mode SYS_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_CLK/func_worst_mode {func_worst_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_CLK/func_worst_mode worst_corner
+create_ccopt_skew_group -name PCI_CLK/test_best_mode -sources pclk -auto_sinks
+set_ccopt_property include_source_latency -skew_group PCI_CLK/test_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group PCI_CLK/test_best_mode PCI_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group PCI_CLK/test_best_mode {test_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group PCI_CLK/test_best_mode best_corner
+create_ccopt_skew_group -name SDRAM_CLK/test_best_mode -sources sdram_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SDRAM_CLK/test_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SDRAM_CLK/test_best_mode SDRAM_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SDRAM_CLK/test_best_mode {test_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SDRAM_CLK/test_best_mode best_corner
+create_ccopt_skew_group -name SYS_2x_CLK/test_best_mode -sources sys_2x_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_2x_CLK/test_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SYS_2x_CLK/test_best_mode SYS_2x_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_2x_CLK/test_best_mode {test_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_2x_CLK/test_best_mode best_corner
+create_ccopt_skew_group -name SYS_CLK/test_best_mode -sources I_CLOCKING/sys_clk_in_reg/Q -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_CLK/test_best_mode true
+set_ccopt_property constrains -skew_group SYS_CLK/test_best_mode none
+set_ccopt_property extracted_from_clock_name -skew_group SYS_CLK/test_best_mode SYS_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_CLK/test_best_mode {test_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_CLK/test_best_mode best_corner
+create_ccopt_skew_group -name ate_clk/test_best_mode -sources ate_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group ate_clk/test_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group ate_clk/test_best_mode ate_clk
+set_ccopt_property extracted_from_constraint_mode_names -skew_group ate_clk/test_best_mode {test_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group ate_clk/test_best_mode best_corner
+create_ccopt_skew_group -name PCI_CLK/func_best_mode -sources pclk -auto_sinks
+set_ccopt_property include_source_latency -skew_group PCI_CLK/func_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group PCI_CLK/func_best_mode PCI_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group PCI_CLK/func_best_mode {func_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group PCI_CLK/func_best_mode best_corner
+create_ccopt_skew_group -name SDRAM_CLK/func_best_mode -sources sdram_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SDRAM_CLK/func_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SDRAM_CLK/func_best_mode SDRAM_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SDRAM_CLK/func_best_mode {func_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SDRAM_CLK/func_best_mode best_corner
+create_ccopt_skew_group -name SYS_2x_CLK/func_best_mode -sources sys_2x_clk -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_2x_CLK/func_best_mode true
+set_ccopt_property extracted_from_clock_name -skew_group SYS_2x_CLK/func_best_mode SYS_2x_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_2x_CLK/func_best_mode {func_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_2x_CLK/func_best_mode best_corner
+create_ccopt_skew_group -name SYS_CLK/func_best_mode -sources I_CLOCKING/sys_clk_in_reg/Q -auto_sinks
+set_ccopt_property include_source_latency -skew_group SYS_CLK/func_best_mode true
+set_ccopt_property constrains -skew_group SYS_CLK/func_best_mode none
+set_ccopt_property extracted_from_clock_name -skew_group SYS_CLK/func_best_mode SYS_CLK
+set_ccopt_property extracted_from_constraint_mode_names -skew_group SYS_CLK/func_best_mode {func_best_mode  }
+set_ccopt_property extracted_from_delay_corners -skew_group SYS_CLK/func_best_mode best_corner
+check_ccopt_clock_tree_convergence
+get_ccopt_property auto_design_state_for_ilms
+create_ccopt_flexible_htree -name flex_HTREE -trunk_cell INVX16_LVT -final_cell INVX8_LVT -no_symmetry_buffers -sink_instance_prefix HJ -pin sdram_clk -sink_grid {4 4} -sink_grid_box {82 146 697 397}
+synthesize_ccopt_flexible_htrees
+set_ccopt_property extract_balance_multi_source_clocks true
+create_route_type -name topshieldRoute -top_preferred_layer M8 -bottom_preferred_layer M7 -shield_net VSS
+set_ccopt_property -net_type top route_type topshieldRoute
+create_route_type -name trunkshieldRoute -top_preferred_layer M6 -bottom_preferred_layer M5 -shield_net VSS
+set_ccopt_property -net_type trunk route_type trunkshieldRoute
+setNanoRouteMode -droutePostRouteSpreadWire false
+is_common_ui_mode
+set_ccopt_property buffer_cells [ get_db [get_lib_cells */NBUF*LVT* ] .base_name ]
+ccopt_design
+route_ccopt_clock_tree_nets
+setAnalysisMode -analysisType onChipVariation
+setAnalysisMode -cppr both
+optDesign -postCTS -hold
+report_ccopt_skew_groups -summary -file ../reports/ORCA_TOP.innovus.postcts.ccopt_skew_groups.rpt
+report_ccopt_clock_trees -summary -file ../reports/ORCA_TOP.innovus.postcts.ccopt_clock_trees.rpt
+timeDesign -postCTS -prefix postcts -outDir ../reports/ORCA_TOP.innovus -expandedViews
+timeDesign -postCTS -hold -prefix postcts -outDir ../reports/ORCA_TOP.innovus -expandedViews
+redirect -tee ../reports/ORCA_TOP.innovus.postcts.density.rpt { reportDensityMap }
+summaryReport -noHtml -outfile ../reports/ORCA_TOP.innovus.postcts.summary.rpt
+saveDesign ORCA_TOP_postcts.innovus
+gui_show_edge_number
+fit
+setLayerPreference violation -isVisible 0
+setLayerPreference node_layer -isVisible 0
+ctd_win -side none -id ctd_window
+gui_select -rect {-42.74600 391.09300 2.54600 284.43700}
+zoomBox -45.66800 418.85300 47.83900 265.44400
+zoomBox -23.45300 395.17200 12.24000 352.27300
+zoomBox -4.02400 386.91900 0.19900 377.99300
+deselectAll
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 1
+panPage 0 1
+gui_select -rect {-0.48500 383.86400 0.09400 291.32700}

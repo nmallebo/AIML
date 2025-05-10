@@ -1,0 +1,189 @@
+****************************************
+Report : constraint
+        -all_violators
+Design : ORCA_TOP
+Version: V-2023.12
+Date   : Sat May 18 18:37:55 2024
+****************************************
+
+   late_timing
+   -----------
+
+Information: Timer using 'SI, Timing Window Analysis, CRPR'. (TIM-050)
+Endpoint                         Path Delay     Path Required       CRP    Slack Group    Scenario
+----------------------------------------------------------------------------------------------------------
+I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_39__13_/D (SDFFARX1_HVT)   3.63 f   3.63   0.07  -0.00 SDRAM_CLK func_worst
+
+   early_timing
+   -----------
+
+Warning: Scenario func_worst is not configured for hold analysis: skipping. (UIC-058)
+Error: None of the specified scenarios are active for hold analysis. (UIC-057)
+Information: Timer using 'SI, Timing Window Analysis, CRPR'. (TIM-050)
+Endpoint                         Path Delay     Path Required       CRP    Slack Group    Scenario
+----------------------------------------------------------------------------------------------------------
+No paths.
+
+   Mode: func Corner: Cmax
+   Scenario: func_worst
+   max_transition                                                              
+                             Required        Actual                            
+   Net                      Transition     Transition        Slack  Violation  
+  ---------------------------------------------------------------------------
+   net_sd_wfifo_data[44]        0.58           0.62          -0.05  (VIOLATED) 
+     PIN : U459/Y               0.58           0.62          -0.05  (VIOLATED) 
+
+   pad_out[31]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7076/Y     0.35     0.35         -0.00  (VIOLATED) 
+
+   pad_out[22]                  0.35           0.35          -0.00  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7061/Y     0.35     0.35         -0.00  (VIOLATED) 
+
+  ---------------------------------------------------------------------------
+   Number of max_transition violation(s): 3
+
+   Mode: func Corner: Cmax
+   Scenario: func_worst
+   max_capacitance                                                             
+                             Required        Actual                            
+   Net                      Capacitance    Capacitance       Slack  Violation  
+  ---------------------------------------------------------------------------
+   sd_DQ_en[0]                 82.00         163.04         -81.04  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7269/Y    82.00   163.04        -81.04  (VIOLATED) 
+
+   sd_DQ_en[1]                 82.00         162.24         -80.24  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7363/Y    82.00   162.24        -80.24  (VIOLATED) 
+
+   pad_out[12]                 82.00         108.64         -26.64  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5012/Y    82.00     108.64         -26.64  (VIOLATED) 
+
+   pad_out[17]                 82.00         106.67         -24.67  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5016/Y    82.00     106.67         -24.67  (VIOLATED) 
+
+   pad_out[18]                 82.00         104.57         -22.57  (VIOLATED) 
+     PIN : ZINV_389_f_inst_5321/Y    82.00   104.57         -22.57  (VIOLATED) 
+
+   pad_out[6]                  82.00         104.08         -22.08  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6023/Y    82.00     104.08         -22.08  (VIOLATED) 
+
+   pad_out[23]                 82.00         104.01         -22.01  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5348/Y    82.00     104.01         -22.01  (VIOLATED) 
+
+   pad_out[21]                 82.00         103.64         -21.64  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6880/Y    82.00     103.64         -21.64  (VIOLATED) 
+
+   pad_out[25]                 82.00         103.21         -21.21  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6021/Y    82.00     103.21         -21.21  (VIOLATED) 
+
+   pad_out[31]                 82.00         102.38         -20.38  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7076/Y    82.00   102.38        -20.38  (VIOLATED) 
+
+   pad_out[28]                 82.00         102.34         -20.34  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5352/Y    82.00     102.34         -20.34  (VIOLATED) 
+
+   pad_out[8]                  82.00         102.26         -20.26  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7280/Y    82.00   102.26        -20.26  (VIOLATED) 
+
+   pad_out[13]                 82.00         102.11         -20.11  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6867/Y    82.00     102.11         -20.11  (VIOLATED) 
+
+   pad_out[3]                  82.00         101.71         -19.71  (VIOLATED) 
+     PIN : ZBUF_210_f_inst_6871/Y    82.00   101.71         -19.71  (VIOLATED) 
+
+   pad_out[9]                  82.00         101.63         -19.63  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6869/Y    82.00     101.63         -19.63  (VIOLATED) 
+
+   pad_out[14]                 82.00         101.61         -19.61  (VIOLATED) 
+     PIN : ZINV_15_f_inst_4984/Y    82.00    101.61         -19.61  (VIOLATED) 
+
+   pad_out[7]                  82.00         101.61         -19.61  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5327/Y    82.00     101.61         -19.61  (VIOLATED) 
+
+   pad_out[10]                 82.00         101.59         -19.59  (VIOLATED) 
+     PIN : ZINV_15_f_inst_4986/Y    82.00    101.59         -19.59  (VIOLATED) 
+
+   pad_out[0]                  82.00         101.53         -19.53  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7066/Y    82.00   101.53        -19.53  (VIOLATED) 
+
+   pad_out[20]                 82.00         101.49         -19.49  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5006/Y    82.00     101.49         -19.49  (VIOLATED) 
+
+   pad_out[15]                 82.00         101.45         -19.45  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7927/Y    82.00   101.45        -19.45  (VIOLATED) 
+
+   pad_out[24]                 82.00         101.42         -19.42  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7060/Y    82.00   101.42        -19.42  (VIOLATED) 
+
+   pad_out[1]                  82.00         101.33         -19.33  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7063/Y    82.00   101.33        -19.33  (VIOLATED) 
+
+   pad_out[16]                 82.00         101.32         -19.32  (VIOLATED) 
+     PIN : ZBUF_210_f_inst_6009/Y    82.00   101.32         -19.32  (VIOLATED) 
+
+   pad_out[11]                 82.00         101.24         -19.24  (VIOLATED) 
+     PIN : ZINV_9_f_inst_5323/Y    82.00     101.24         -19.24  (VIOLATED) 
+
+   pad_out[30]                 82.00         101.19         -19.19  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7936/Y    82.00   101.19        -19.19  (VIOLATED) 
+
+   pad_out[19]                 82.00         101.14         -19.14  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7062/Y    82.00   101.14        -19.14  (VIOLATED) 
+
+   pad_out[2]                  82.00         101.14         -19.14  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7069/Y    82.00   101.14        -19.14  (VIOLATED) 
+
+   pad_out[4]                  82.00         101.13         -19.13  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7929/Y    82.00   101.13        -19.13  (VIOLATED) 
+
+   pad_out[27]                 82.00         101.12         -19.12  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7933/Y    82.00   101.12        -19.12  (VIOLATED) 
+
+   pad_out[5]                  82.00         101.04         -19.04  (VIOLATED) 
+     PIN : ZINV_9_f_inst_6015/Y    82.00     101.04         -19.04  (VIOLATED) 
+
+   pad_out[22]                 82.00         101.03         -19.03  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7061/Y    82.00   101.03        -19.03  (VIOLATED) 
+
+   pad_out[26]                 82.00         100.99         -18.99  (VIOLATED) 
+     PIN : HFSINV_22_f_398/Y    82.00        100.99         -18.99  (VIOLATED) 
+
+   pad_out[29]                 82.00         100.96         -18.96  (VIOLATED) 
+     PIN : copt_gre_mt_inst_7070/Y    82.00   100.96        -18.96  (VIOLATED) 
+
+   net_sd_wfifo_data[44]       16.00          18.72          -2.72  (VIOLATED) 
+     PIN : U459/Y              16.00          18.72          -2.72  (VIOLATED) 
+
+   I_PCI_TOP/n12385            16.00          17.93          -1.93  (VIOLATED) 
+     PIN : I_PCI_TOP/U9369/Y    16.00         17.93          -1.93  (VIOLATED) 
+
+   I_PCI_TOP/ZBUF_453_38       16.00          17.86          -1.86  (VIOLATED) 
+     PIN : I_PCI_TOP/ZBUF_453_inst_5081/Y    16.00    17.86    -1.86 (VIOLATED)
+
+   I_PCI_TOP/n12183            16.00          17.70          -1.70  (VIOLATED) 
+     PIN : I_PCI_TOP/U528/Y    16.00          17.70          -1.70  (VIOLATED) 
+
+   I_PCI_TOP/ZINV_820_1        16.00          16.99          -0.99  (VIOLATED) 
+     PIN : I_PCI_TOP/ZINV_820_inst_2590/Y    16.00    16.99    -0.99 (VIOLATED)
+
+   I_PCI_TOP/HFSNET_174        16.00          16.93          -0.93  (VIOLATED) 
+     PIN : I_PCI_TOP/HFSBUF_209_1170/Y    16.00    16.93     -0.93  (VIOLATED) 
+
+   I_PCI_TOP/n12132            16.00          16.78          -0.78  (VIOLATED) 
+     PIN : I_PCI_TOP/U1335/Y    16.00         16.78          -0.78  (VIOLATED) 
+
+   I_SDRAM_TOP/sram_fixnet_60    32.00        32.01          -0.01  (VIOLATED) 
+     PIN : I_SDRAM_TOP/sram_fixcell_60/Y    32.00    32.01    -0.01 (VIOLATED) 
+
+  ---------------------------------------------------------------------------
+   Number of max_capacitance violation(s): 42
+
+
+
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+
+  ---------------------------------------------------------------------------
+   Number of min_pulse_width violation(s): 0
+   Total number of violation(s): 45
+1

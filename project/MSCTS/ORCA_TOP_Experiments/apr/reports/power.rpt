@@ -1,0 +1,335 @@
+
+Power Net Detected:
+        Voltage	    Name
+          0.95V	    VDDH
+             0V	    VSS
+          0.75V	    VDD
+Using Power View: test_worst_scenario.
+AAE_INFO: opIsDesignInPostRouteState() is 0
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: ORCA_TOP
+# Design Mode: 28nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Start delay calculation (fullDC) (8 T). (MEM=4134.46)
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_STACK_TOP_I_STACK_FSM_TOS_int_reg_0_/SI (cell SDFFARX2_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1376/A1 (cell NAND2X0_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1369/A (cell INVX1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1545/A1 (cell NAND3X2_LVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1386/A1 (cell AND2X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25840_n1545, driver I_RISC_CORE/FE_OFC7189_n1545/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U810/A2 (cell AND2X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25840_n1545, driver I_RISC_CORE/FE_OFC7189_n1545/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U329/A2 (cell AO21X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25840_n1545, driver I_RISC_CORE/FE_OFC7189_n1545/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U299/A1 (cell AND2X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25800_n, driver I_RISC_CORE/FE_OFC7149_n396_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1509/A1 (cell AND2X1_LVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25799_n639, driver I_RISC_CORE/FE_OFC7148_n639/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/I1[10] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25809_RegPort_C_13, driver I_RISC_CORE/FE_OFC7158_RegPort_C_13/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/I1[13] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1368/A1 (cell AND3X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25841_I_STACK_TOP_TOS_1, driver I_RISC_CORE/FE_OFC7190_I_STACK_TOP_TOS_1/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U1453/A1 (cell AND4X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25665_n1200, driver I_RISC_CORE/FE_OFC5297_n1200/Y (cell NBUFFX4_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U130/A2 (cell OAI22X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25772_n, driver I_RISC_CORE/FE_OFC6787_n376_1/Y (cell INVX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/A2[3] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (EMS-27):	Message (IMPMSMV-1810) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25804_RegPort_C_7, driver I_RISC_CORE/FE_OFC7153_RegPort_C_7/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/I1[7] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25840_n1545, driver I_RISC_CORE/FE_OFC7189_n1545/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/U248/A2 (cell OR2X1_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_RN_1, driver I_RISC_CORE/FE_OFC5284_n714/Y (cell NBUFFX4_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM/A2[4] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25661_n681, driver I_RISC_CORE/FE_OFC5293_n681/Y (cell NBUFFX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_DATA_PATH_Oprnd_B_reg_7_/D (cell SDFFX2_RVT) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net I_RISC_CORE/FE_OFN25773_n, driver I_RISC_CORE/FE_OFC6789_n378_1/Y (cell INVX2_LVT) voltage 0.95 does not match receiver I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM/A2[1] (cell SRAM2RW128x16) voltage 0.75 for view test_worst_scenario.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (EMS-27):	Message (IMPMSMV-1810) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (EMS-27):	Message (IMPMSMV-1810) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+Total number of fetched objects 48419
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+End delay calculation. (MEM=4162.54 CPU=0:00:24.8 REAL=0:00:03.0)
+End delay calculation (fullDC). (MEM=4162.54 CPU=0:00:31.7 REAL=0:00:05.0)
+
+Begin Power Analysis
+
+          0.95V	    VDDH
+             0V	    VSS
+          0.75V	    VDD
+
+Begin Processing Timing Library for Power Calculation
+
+Ended Processing Timing Library for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4166.50MB/9110.94MB/4887.55MB)
+
+
+
+Begin Processing Power Net/Grid for Power Calculation
+
+Ended Processing Power Net/Grid for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4166.59MB/9110.94MB/4887.55MB)
+
+Begin Processing Timing Window Data for Power Calculation
+
+SYS_2x_CLK(416.667MHz) CK: assigning clock SYS_2x_CLK to net sys_2x_clk
+v_SDRAM_CLK(243.902MHz) SD_DDR_CLKn(243.902MHz) CK: assigning clock SD_DDR_CLKn to net sd_CKn
+SD_DDR_CLK(243.902MHz) CK: assigning clock SD_DDR_CLK to net sd_CK
+SDRAM_CLK(243.902MHz) CK: assigning clock SDRAM_CLK to net sdram_clk
+SYS_CLK(208.333MHz) CK: assigning clock SYS_CLK to net I_CLOCKING/n23
+v_PCI_CLK(133.333MHz) PCI_CLK(133.333MHz) CK: assigning clock PCI_CLK to net pclk
+ate_clk(33.3333MHz) CK: assigning clock ate_clk to net ate_clk
+** INFO:  (VOLTUS_POWR-2054): Setting default frequency to the dominant frequency 33.3333MHz.
+
+	To force set default frequency/period. Use either of the following command options:
+		set_power_analysis_mode        -default_frequency <frequency value>
+		set_default_switching_activity -period            <period value>.
+
+Ended Processing Timing Window Data for Power Calculation: (cpu=0:00:01, real=0:00:01, mem(process/total/peak)=4173.55MB/9110.94MB/4887.55MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4174.52MB/9110.94MB/4887.55MB)
+
+Begin Processing Signal Activity
+
+
+Starting Levelizing
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT)
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 10%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 20%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 30%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 40%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 50%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 60%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 70%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 80%
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT): 90%
+
+Finished Levelizing
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT)
+
+Starting Activity Propagation
+2024-Jun-12 03:38:06 (2024-Jun-12 10:38:06 GMT)
+** INFO:  (VOLTUS_POWR-1356): No default input activity has been set. Defaulting to 0.2.
+Use 'set_default_switching_activity -input_activity' command to change the default activity value.
+
+2024-Jun-12 03:38:07 (2024-Jun-12 10:38:07 GMT): 10%
+2024-Jun-12 03:38:07 (2024-Jun-12 10:38:07 GMT): 20%
+2024-Jun-12 03:38:08 (2024-Jun-12 10:38:08 GMT): 30%
+
+Finished Activity Propagation
+2024-Jun-12 03:38:09 (2024-Jun-12 10:38:09 GMT)
+Ended Processing Signal Activity: (cpu=0:00:03, real=0:00:04, mem(process/total/peak)=4180.80MB/9110.94MB/4887.55MB)
+
+Begin Power Computation
+
+      ----------------------------------------------------------
+      # of cell(s) missing both power/leakage table: 0
+      # of cell(s) missing power table: 3
+      # of cell(s) missing leakage table: 4
+      ----------------------------------------------------------
+CellName                                  Missing Table(s)
+DCAP_HVT                                  internal power, 
+SRAM2RW128x16                             leakage power, 
+SRAM2RW32x4                               leakage power, 
+SRAM2RW64x32                              leakage power, 
+SRAM2RW64x8                               leakage power, 
+TIEH_HVT                                  internal power, 
+TIEL_HVT                                  internal power, 
+
+
+** WARN:  (VOLTUS_POWR-3401): Leakage Power table for pg_pins VDDH VDDL not present in library of cell LSUPX8_LVT.
+
+** WARN:  (VOLTUS_POWR-3401): Leakage Power table for pg_pins VDDH VDDL not present in library of cell LSUPX1_RVT.
+
+
+Starting Calculating power
+2024-Jun-12 03:38:10 (2024-Jun-12 10:38:10 GMT)
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 10%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 20%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 30%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 40%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 50%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 60%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 70%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 80%
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT): 90%
+
+Finished Calculating power
+2024-Jun-12 03:38:13 (2024-Jun-12 10:38:13 GMT)
+      # of MSMV cell(s) missing power_level: 0
+Ended Power Computation: (cpu=0:00:11, real=0:00:03, mem(process/total/peak)=4217.39MB/9198.97MB/4887.55MB)
+
+Begin Processing User Attributes
+
+Begin Processing set_power
+Ended Processing set_power: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=4217.39MB/9198.97MB/4887.55MB)
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=4217.46MB/9198.97MB/4887.55MB)
+
+Ended Power Analysis: (cpu=0:00:17, real=0:00:09, mem(process/total/peak)=4217.46MB/9198.97MB/4887.55MB)
+
+Begin Boundary Leakage Calculation
+Ended Boundary Leakage Calculation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=4217.54MB/9198.97MB/4887.55MB)
+Begin Static Power Report Generation
+*----------------------------------------------------------------------------------------
+*	Innovus 23.10-p003_1 (64bit) 02/01/2024 13:54 (Linux 3.10.0-693.el7.x86_64)
+*	
+*
+* 	Date & Time:	2024-Jun-12 03:38:14 (2024-Jun-12 10:38:14 GMT)
+*
+*----------------------------------------------------------------------------------------
+*
+*	Design: ORCA_TOP
+*
+*	Liberty Libraries used:
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib
+*	        test_worst_scenario: /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib
+*
+*	Parasitic Files used:
+*
+*       Power View : test_worst_scenario
+*
+*       User-Defined Activity : N.A.
+*
+*       Activity File: N.A.
+*
+*       Hierarchical Global Activity: N.A.
+*
+*       Global Activity: N.A.
+*
+*       Sequential Element Activity: 0.200000
+*
+*       Primary Input Activity: 0.200000
+*
+*       Default icg ratio: N.A.
+*
+*       Global Comb ClockGate Ratio: N.A.
+*
+*	Power Units = 1mW
+*
+*	Time Units = 1e-09 secs
+*
+*       report_power
+*
+-----------------------------------------------------------------------------------------
+*
+
+
+
+Total Power
+-----------------------------------------------------------------------------------------
+Total Internal Power:        3.77018344 	   54.4134%
+Total Switching Power:       2.40368389 	   34.6913%
+Total Leakage Power:         0.75490563 	   10.8952%
+Total Power:                 6.92877297
+-----------------------------------------------------------------------------------------
+
+
+Group                           Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+Sequential                         1.183      0.1969      0.6115       1.991       28.74
+Macro                             0.0085     0.01694    0.007038     0.03248      0.4687
+IO                                     0           0           0           0           0
+Combinational                      2.508       1.943      0.1345       4.586       66.18
+Clock (Combinational)            0.05595      0.2394   0.0008217      0.2961       4.274
+Clock (Sequential)               0.01532    0.007112   0.0009993     0.02343      0.3381
+-----------------------------------------------------------------------------------------
+Total                               3.77       2.404      0.7549       6.929         100
+-----------------------------------------------------------------------------------------
+
+
+Rail                  Voltage   Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+VDDH                     0.95    0.04352      0.1259     0.01378      0.1832       2.644
+VDD                      0.75      3.727       2.278      0.7411       6.746       97.36
+
+
+Clock                           Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+SYS_CLK                         0.002536    0.003264   2.057e-05    0.005821     0.08401
+SYS_2x_CLK                       0.02026     0.03577    0.001031     0.05706      0.8236
+PCI_CLK                         0.003636     0.01555   8.168e-05     0.01926       0.278
+ate_clk                          0.03887      0.1353    0.001496      0.1757       2.536
+SDRAM_CLK                        0.04294      0.1882   0.0006256      0.2318       3.345
+-----------------------------------------------------------------------------------------
+Total                            0.07126      0.2465    0.001821      0.3195       4.612
+-----------------------------------------------------------------------------------------
+Clock: SYS_CLK
+Clock Period: 0.004800 usec 
+Clock Toggle Rate:   416.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: SYS_2x_CLK
+Clock Period: 0.002400 usec 
+Clock Toggle Rate:   833.3333 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: PCI_CLK
+Clock Period: 0.007500 usec 
+Clock Toggle Rate:   266.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: ate_clk
+Clock Period: 0.030000 usec 
+Clock Toggle Rate:    66.6667 Mhz 
+Clock Static Probability:  0.5000
+  
+Clock: SDRAM_CLK
+Clock Period: 0.004100 usec 
+Clock Toggle Rate:   487.8049 Mhz 
+Clock Static Probability:  0.5000
+  
+ 
+ 
+-----------------------------------------------------------------------------------------
+*	Power Distribution Summary: 
+*              Highest Average Power:         CTS_cfh_inv_00002 (INVX16_LVT):          0.01435
+*              Highest Leakage Power: I_RISC_CORE/I_DATA_PATH_Oprnd_B_reg_2_ (SDFFX2_RVT):          0.00653
+*                Total Cap:      1.90105e-10 F
+*                Total instances in design: 39336
+*                Total instances in design with no power:     0
+*                Total instances in design with no activty:     0
+
+*                Total Fillers and Decap:     0
+-----------------------------------------------------------------------------------------
+ 
+** INFO:  (VOLTUS_POWR-3465): There are 0 decaps and 404 fillers in the design
+
+Ended Static Power Report Generation: (cpu=0:00:01, real=0:00:01,
+mem(process/total/peak)=4231.19MB/9198.97MB/4887.55MB)
+
