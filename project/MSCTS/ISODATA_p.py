@@ -1,6 +1,20 @@
-from math import sqrt
 import matplotlib.pyplot as plt
 import random
+
+# Custom square root using Newton-Raphson method
+def sqrt_newton(x, tolerance=1e-10, max_iterations=100):
+    if x < 0:
+        raise ValueError("Cannot compute square root of negative number.")
+    if x == 0:
+        return 0
+
+    guess = x / 2.0
+    for _ in range(max_iterations):
+        new_guess = 0.5 * (guess + x / guess)
+        if abs(new_guess - guess) < tolerance:
+            return new_guess
+        guess = new_guess
+    return guess
 
 def load_points_from_file(filename):
     with open(filename, 'r') as f:
@@ -9,7 +23,7 @@ def load_points_from_file(filename):
     return points
 
 def distance_2point(x1, y1, x2, y2):
-    return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    return sqrt_newton((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 def volume_estimation(cluster, center):
     return sum(distance_2point(center[0], center[1], p[0], p[1]) for p in cluster) / len(cluster)
@@ -29,7 +43,7 @@ def standart_deviation(values, center):
     n = len(values)
     x_var = sum((p[0] - center[0]) ** 2 for p in values) / n
     y_var = sum((p[1] - center[1]) ** 2 for p in values) / n
-    return (sqrt(x_var), sqrt(y_var))
+    return (sqrt_newton(x_var), sqrt_newton(y_var))
 
 def cluster_points_distribution(centers, points):
     clusters = [[] for _ in centers]
@@ -131,13 +145,8 @@ def clusterize(points):
     final_clusters = cluster_points_distribution(centers, points)
     return final_clusters
 
-
-
 def plot_clusters(clusters, filename='isodata_clusters.png'):
-    colors = [
-        (random.random(), random.random(), random.random())
-        for _ in clusters
-    ]
+    colors = [(random.random(), random.random(), random.random()) for _ in clusters]
 
     plt.figure(figsize=(8, 6))
 
@@ -145,7 +154,7 @@ def plot_clusters(clusters, filename='isodata_clusters.png'):
         xs, ys = zip(*cluster)
         plt.scatter(xs, ys, color=color, alpha=0.6)
 
-        # Calculate and plot the centroid with 'X'
+        # Plot centroid
         cx = sum(xs) / len(xs)
         cy = sum(ys) / len(ys)
         plt.scatter(cx, cy, color='black', marker='x', s=100, linewidths=2)
@@ -153,18 +162,15 @@ def plot_clusters(clusters, filename='isodata_clusters.png'):
     plt.title('ISODATA Clustering with Centroids')
     plt.xlabel('X Coordinate')
     plt.ylabel('Y Coordinate')
-    plt.legend()
     plt.grid(True)
     plt.savefig(filename)
     plt.close()
     print(f"Plot saved to '{filename}'.")
 
-# Main execution
+# Main
 if __name__ == "__main__":
-    filename = 'seq_loc.txt'  # your file with coordinates
+    filename = 'seq_loc.txt'  # Replace with your filename
     points = load_points_from_file(filename)
     clusters = clusterize(points)
-#    for i, c in enumerate(clusters):
-#        print(f"Cluster {i + 1}: {c}")
     plot_clusters(clusters)
 
