@@ -1,0 +1,833 @@
+  Startpoint: I_SDRAM_TOP/I_SDRAM_IF/control_bus_reg_0_ (rising edge-triggered flip-flop clocked by SDRAM_CLK)
+  Endpoint: I_SDRAM_TOP/I_SDRAM_IF/R_10 (rising edge-triggered flip-flop clocked by SDRAM_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: SDRAM_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock SDRAM_CLK (rise edge)                                                                                               0.0000      0.0000
+  clock network delay (propagated)                                                                                          1.0768      1.0768
+
+  I_SDRAM_TOP/I_SDRAM_IF/control_bus_reg_0_/CLK (DFFX2_RVT)                                 0.1141      1.0000              0.0000      1.0768 r
+  I_SDRAM_TOP/I_SDRAM_IF/control_bus_reg_0_/QN (DFFX2_RVT)                                  0.2478      1.0000              0.5271      1.6040 r
+  I_SDRAM_TOP/I_SDRAM_IF/n17218 (net)                                    8     11.6261
+  I_SDRAM_TOP/I_SDRAM_IF/U13/A2 (NAND2X0_HVT)                                               0.2478      1.0000    0.0000    0.0001      1.6041 r
+  I_SDRAM_TOP/I_SDRAM_IF/U13/Y (NAND2X0_HVT)                                                0.3947      1.0000              0.4686      2.0727 f
+  I_SDRAM_TOP/I_SDRAM_IF/n5694 (net)                                     2      1.8358
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_1_2688/A2 (OAI221X2_RVT)                                  0.3947      1.0000    0.0500    0.0500      2.1227 f
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_1_2688/Y (OAI221X2_RVT)                                   0.0941      1.0000              0.6689      2.7916 r
+  I_SDRAM_TOP/I_SDRAM_IF/n45 (net)                                       2      2.7017
+  I_SDRAM_TOP/I_SDRAM_IF/U72/A2 (OA21X1_RVT)                                                0.0941      1.0000    0.0000    0.0000      2.7916 r
+  I_SDRAM_TOP/I_SDRAM_IF/U72/Y (OA21X1_RVT)                                                 0.1211      1.0000              0.2283      3.0199 r
+  I_SDRAM_TOP/I_SDRAM_IF/n227 (net)                                      2      2.3633
+  I_SDRAM_TOP/I_SDRAM_IF/U73/A2 (NOR2X1_RVT)                                                0.1211      1.0000    0.0000    0.0000      3.0199 r
+  I_SDRAM_TOP/I_SDRAM_IF/U73/Y (NOR2X1_RVT)                                                 0.0667      1.0000              0.2317      3.2516 f
+  I_SDRAM_TOP/I_SDRAM_IF/n229 (net)                                      2      1.2821
+  I_SDRAM_TOP/I_SDRAM_IF/U74/A1 (OR2X1_RVT)                                                 0.0667      1.0000    0.0000    0.0000      3.2516 f
+  I_SDRAM_TOP/I_SDRAM_IF/U74/Y (OR2X1_RVT)                                                  0.0804      1.0000              0.2308      3.4824 f
+  I_SDRAM_TOP/I_SDRAM_IF/n66 (net)                                       2      1.7441
+  I_SDRAM_TOP/I_SDRAM_IF/U83/A1 (NAND3X0_LVT)                                               0.0804      1.0000    0.0032    0.0032      3.4856 f
+  I_SDRAM_TOP/I_SDRAM_IF/U83/Y (NAND3X0_LVT)                                                0.0951      1.0000              0.0941      3.5797 r
+  I_SDRAM_TOP/I_SDRAM_IF/n59 (net)                                       1      1.3339
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_2_6520_roptpi_6825/A2 (AND3X1_LVT)                        0.0951      1.0000    0.0044    0.0044      3.5841 r
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_2_6520_roptpi_6825/Y (AND3X1_LVT)                         0.0692      1.0000              0.1287      3.7127 r
+  I_SDRAM_TOP/I_SDRAM_IF/tmp_net1170 (net)                               2      2.2840
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_3_4093/A3 (AO22X1_RVT)                                    0.0692      1.0000    0.0000    0.0000      3.7128 r
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_3_4093/Y (AO22X1_RVT)                                     0.1351      1.0000              0.2110      3.9237 r
+  I_SDRAM_TOP/I_SDRAM_IF/n17334 (net)                                    3      2.7475
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_1_4213/A2 (AOI221X1_RVT)                                  0.1351      1.0000    0.0109    0.0110      3.9347 r
+  I_SDRAM_TOP/I_SDRAM_IF/ctmTdsLR_1_4213/Y (AOI221X1_RVT)                                   0.0745      1.0000              0.4054      4.3401 f
+  I_SDRAM_TOP/I_SDRAM_IF/n4476 (net)                                     1      1.3991
+  I_SDRAM_TOP/I_SDRAM_IF/U7140/A3 (AO21X1_RVT)                                              0.0745      1.0000    0.0058    0.0058      4.3459 f
+  I_SDRAM_TOP/I_SDRAM_IF/U7140/Y (AO21X1_RVT)                                               0.1035      1.0000              0.1904      4.5363 f
+  I_SDRAM_TOP/I_SDRAM_IF/n17363 (net)                                    1      1.9959
+  I_SDRAM_TOP/I_SDRAM_IF/R_10/D (SDFFASX1_RVT)                                              0.1035      1.0000    0.0039    0.0040      4.5403 f
+  data arrival time                                                                                                                     4.5403
+
+  clock SDRAM_CLK (rise edge)                                                                                               4.1000      4.1000
+  clock network delay (propagated)                                                                                          0.9851      5.0851
+  clock reconvergence pessimism                                                                                             0.0897      5.1748
+  I_SDRAM_TOP/I_SDRAM_IF/R_10/CLK (SDFFASX1_RVT)                                            0.1028      0.9500    0.0000    0.0000      5.1748 r
+  clock uncertainty                                                                                                        -0.0600      5.1148
+  library setup time                                                                                    1.0000             -0.6181      4.4968
+  data required time                                                                                                                    4.4968
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    4.4968
+  data arrival time                                                                                                                    -4.5403
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0435
+
+----------------------------------------------
+  Startpoint: pgnt_n (input port clocked by v_PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_d_out_i_bus_reg_5_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: **in2reg_default**
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock v_PCI_CLK (rise edge)                                                                                               0.0000      0.0000
+  clock network delay (ideal)                                                                                               0.5000      0.6434
+  input external delay                                                                                                      4.0000      4.6434 f
+  pgnt_n (in)                                                                               0.3133      1.0000              0.1434      4.6434 f
+  pgnt_n (net)                                                           3     13.4054
+  I_PCI_TOP/U9440/A4 (NOR4X1_RVT)                                                           0.3130      1.0000    0.0894    0.0904      4.7338 f
+  I_PCI_TOP/U9440/Y (NOR4X1_RVT)                                                            0.0977      1.0000              0.5198      5.2535 r
+  I_PCI_TOP/n9544 (net)                                                  2      1.9890
+  I_PCI_TOP/U9442/A1 (NAND2X0_RVT)                                                          0.0977      1.0000    0.0029    0.0029      5.2565 r
+  I_PCI_TOP/U9442/Y (NAND2X0_RVT)                                                           0.1550      1.0000              0.1475      5.4040 f
+  I_PCI_TOP/n9542 (net)                                                  2      2.1125
+  I_PCI_TOP/U9443/A (INVX0_HVT)                                                             0.1550      1.0000    0.0144    0.0144      5.4184 f
+  I_PCI_TOP/U9443/Y (INVX0_HVT)                                                             0.1167      1.0000              0.1716      5.5900 r
+  I_PCI_TOP/n9536 (net)                                                  1      0.8382
+  I_PCI_TOP/U9447/A1 (NAND2X0_RVT)                                                          0.1167      1.0000    0.0000    0.0000      5.5900 r
+  I_PCI_TOP/U9447/Y (NAND2X0_RVT)                                                           0.1433      1.0000              0.1521      5.7420 f
+  I_PCI_TOP/n9553 (net)                                                  2      1.9751
+  I_PCI_TOP/U9452/A1 (AND2X1_RVT)                                                           0.1433      1.0000    0.0036    0.0037      5.7457 f
+  I_PCI_TOP/U9452/Y (AND2X1_RVT)                                                            0.0845      1.0000              0.2357      5.9814 f
+  I_PCI_TOP/n11639 (net)                                                 3      1.9276
+  I_PCI_TOP/ctmTdsLR_1_3823/A1 (AND3X1_RVT)                                                 0.0845      1.0000    0.0000    0.0000      5.9814 f
+  I_PCI_TOP/ctmTdsLR_1_3823/Y (AND3X1_RVT)                                                  0.1282      1.0000              0.2527      6.2341 f
+  I_PCI_TOP/n11640 (net)                                                 3      3.0116
+  I_PCI_TOP/U7266/A1 (AND2X1_RVT)                                                           0.1282      1.0000    0.0057    0.0058      6.2398 f
+  I_PCI_TOP/U7266/Y (AND2X1_RVT)                                                            0.0870      1.0000              0.2276      6.4675 f
+  I_PCI_TOP/n11637 (net)                                                 4      2.2005
+  I_PCI_TOP/ctmTdsLR_1_4205/A2 (NAND2X0_RVT)                                                0.0870      1.0000    0.0000    0.0000      6.4675 f
+  I_PCI_TOP/ctmTdsLR_1_4205/Y (NAND2X0_RVT)                                                 0.1529      1.0000              0.1517      6.6192 r
+  I_PCI_TOP/tmp_net610 (net)                                             1      0.9712
+  I_PCI_TOP/ctmTdsLR_2_4206/A3 (OA21X1_HVT)                                                 0.1529      1.0000    0.0075    0.0075      6.6267 r
+  I_PCI_TOP/ctmTdsLR_2_4206/Y (OA21X1_HVT)                                                  0.2090      1.0000              0.4577      7.0844 r
+  I_PCI_TOP/n11650 (net)                                                 1      1.3861
+  I_PCI_TOP/U11065/A1 (NAND3X0_RVT)                                                         0.2090      1.0000    0.0266    0.0266      7.1111 r
+  I_PCI_TOP/U11065/Y (NAND3X0_RVT)                                                          0.2629      1.0000              0.2577      7.3688 f
+  I_PCI_TOP/I_PCI_CORE_N238 (net)                                        1      2.4881
+  I_PCI_TOP/I_PCI_CORE_d_out_i_bus_reg_5_/D (SDFFARX1_RVT)                                  0.2629      1.0000    0.0070    0.0070      7.3759 f
+  data arrival time                                                                                                                     7.3759
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6266      8.1266
+  clock reconvergence pessimism                                                                                             0.0000      8.1266
+  I_PCI_TOP/I_PCI_CORE_d_out_i_bus_reg_5_/CLK (SDFFARX1_RVT)                                0.0767      0.9500    0.0000    0.0000      8.1266 r
+  clock uncertainty                                                                                                        -0.0600      8.0666
+  library setup time                                                                                    1.0000             -0.7273      7.3393
+  data required time                                                                                                                    7.3393
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.3393
+  data arrival time                                                                                                                    -7.3759
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0366
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__4_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__26_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6884      0.6884
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__4_/CLK (SDFFARX1_HVT)                              0.0769      1.0000              0.0000      0.6884 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_5__4_/QN (SDFFARX1_HVT)                               0.2999      1.0000              0.8643      1.5526 r
+  I_PCI_TOP/mult_x_27_n807 (net)                                         1      0.9641
+  I_PCI_TOP/HFSBUF_460_1106/A (NBUFFX4_LVT)                                                 0.2999      1.0000    0.0126    0.0126      1.5652 r
+  I_PCI_TOP/HFSBUF_460_1106/Y (NBUFFX4_LVT)                                                 0.1589      1.0000              0.2496      1.8149 r
+  I_PCI_TOP/HFSNET_122 (net)                                            16     24.4657
+  I_PCI_TOP/U6236/A1 (OR2X1_RVT)                                                            0.1589      1.0000    0.0000    0.0010      1.8159 r
+  I_PCI_TOP/U6236/Y (OR2X1_RVT)                                                             0.1355      1.0000              0.2377      2.0536 r
+  I_PCI_TOP/n6282 (net)                                                  2      3.4424
+  I_PCI_TOP/U6238/A2 (XNOR3X1_RVT)                                                          0.1355      1.0000    --        0.0000      2.0536 r
+  I_PCI_TOP/U6238/Y (XNOR3X1_RVT)                                                           0.1881      1.0000              0.7833      2.8368 f
+  I_PCI_TOP/n6323 (net)                                                  3      3.5071
+  I_PCI_TOP/ctmTdsLR_1_3193/A2 (AOI222X1_RVT)                                               0.1881      1.0000    0.0000    0.0001      2.8369 f
+  I_PCI_TOP/ctmTdsLR_1_3193/Y (AOI222X1_RVT)                                                0.1554      1.0000              0.6597      3.4966 r
+  I_PCI_TOP/n6374 (net)                                                  2      4.6176
+  I_PCI_TOP/ctmTdsLR_1_3408/A1 (XNOR3X1_RVT)                                                0.1554      1.0000    --        0.0000      3.4966 r
+  I_PCI_TOP/ctmTdsLR_1_3408/Y (XNOR3X1_RVT)                                                 0.1774      1.0000              0.6771      4.1737 f
+  I_PCI_TOP/n6426 (net)                                                  1      1.4614
+  I_PCI_TOP/U6438/CI (FADDX1_RVT)                                                           0.1774      1.0000    --        0.0000      4.1737 f
+  I_PCI_TOP/U6438/S (FADDX1_RVT)                                                            0.1217      1.0000              0.5794      4.7530 r
+  I_PCI_TOP/n6434 (net)                                                  1      1.6609
+  I_PCI_TOP/U6443/CI (FADDX1_RVT)                                                           0.1217      1.0000    0.0000    0.0000      4.7530 r
+  I_PCI_TOP/U6443/S (FADDX1_RVT)                                                            0.1386      1.0000              0.4653      5.2183 f
+  I_PCI_TOP/n6603 (net)                                                  2      1.3966
+  I_PCI_TOP/U6444/A2 (NOR2X1_RVT)                                                           0.1386      1.0000    0.0000    0.0000      5.2183 f
+  I_PCI_TOP/U6444/Y (NOR2X1_RVT)                                                            0.1116      1.0000              0.3145      5.5328 r
+  I_PCI_TOP/n10850 (net)                                                 3      2.9071
+  I_PCI_TOP/U6445/A (INVX0_LVT)                                                             0.1116      1.0000    0.0044    0.0044      5.5373 r
+  I_PCI_TOP/U6445/Y (INVX0_LVT)                                                             0.0659      1.0000              0.0567      5.5940 f
+  I_PCI_TOP/n10975 (net)                                                 2      1.8368
+  I_PCI_TOP/U6446/A2 (NAND2X0_LVT)                                                          0.0659      1.0000    0.0024    0.0025      5.5964 f
+  I_PCI_TOP/U6446/Y (NAND2X0_LVT)                                                           0.1465      1.0000              0.1333      5.7297 r
+  I_PCI_TOP/n10912 (net)                                                 3      2.4778
+  I_PCI_TOP/U6447/A2 (NOR2X0_RVT)                                                           0.1465      1.0000    0.0000    0.0000      5.7297 r
+  I_PCI_TOP/U6447/Y (NOR2X0_RVT)                                                            0.0645      1.0000              0.2488      5.9786 f
+  I_PCI_TOP/n6618 (net)                                                  2      1.4591
+  I_PCI_TOP/ctmTdsLR_1_3067/A1 (NAND2X0_LVT)                                                0.0645      1.0000    0.0000    0.0000      5.9786 f
+  I_PCI_TOP/ctmTdsLR_1_3067/Y (NAND2X0_LVT)                                                 0.1281      1.0000              0.1164      6.0950 r
+  I_PCI_TOP/n6592 (net)                                                  2      2.0240
+  I_PCI_TOP/U6450/A2 (NOR2X2_RVT)                                                           0.1281      1.0000    0.0042    0.0042      6.0992 r
+  I_PCI_TOP/U6450/Y (NOR2X2_RVT)                                                            0.0880      1.0000              0.2724      6.3716 f
+  I_PCI_TOP/n10945 (net)                                                 4      4.1038
+  I_PCI_TOP/U10540/A1 (NAND2X0_RVT)                                                         0.0880      1.0000    0.0000    0.0000      6.3717 f
+  I_PCI_TOP/U10540/Y (NAND2X0_RVT)                                                          0.2216      1.0000              0.1791      6.5508 r
+  I_PCI_TOP/n10923 (net)                                                 2      1.7101
+  I_PCI_TOP/ctmTdsLR_1_3922/A2 (OR2X1_RVT)                                                  0.2216      1.0000    0.0062    0.0062      6.5570 r
+  I_PCI_TOP/ctmTdsLR_1_3922/Y (OR2X1_RVT)                                                   0.0712      1.0000              0.2225      6.7795 r
+  I_PCI_TOP/tmp_net477 (net)                                             1      0.7643
+  I_PCI_TOP/ctmTdsLR_3_3924/A1 (OA221X1_RVT)                                                0.0712      1.0000    0.0042    0.0042      6.7838 r
+  I_PCI_TOP/ctmTdsLR_3_3924/Y (OA221X1_RVT)                                                 0.1424      1.0000              0.2983      7.0821 r
+  I_PCI_TOP/n10905 (net)                                                 1      1.6368
+  I_PCI_TOP/U10551/A1 (XOR2X2_RVT)                                                          0.1424      1.0000    --        0.0000      7.0821 r
+  I_PCI_TOP/U10551/Y (XOR2X2_RVT)                                                           0.1237      1.0000              0.4014      7.4835 f
+  I_PCI_TOP/I_PCI_CORE_N395 (net)                                        1      1.2879
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__26_/D (SDFFARX1_RVT)                               0.1237      1.0000    0.0115    0.0115      7.4950 f
+  data arrival time                                                                                                                     7.4950
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6212      8.1212
+  clock reconvergence pessimism                                                                                             0.0653      8.1865
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__26_/CLK (SDFFARX1_RVT)                             0.0693      0.9500    0.0000    0.0000      8.1865 r
+  clock uncertainty                                                                                                        -0.0600      8.1265
+  library setup time                                                                                    1.0000             -0.6578      7.4687
+  data required time                                                                                                                    7.4687
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4687
+  data arrival time                                                                                                                    -7.4950
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0263
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_10__21_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__26_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6930      0.6930
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_10__21_/CLK (SDFFARX1_HVT)                            0.1086      1.0000              0.0000      0.6930 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_10__21_/QN (SDFFARX1_HVT)                             0.3948      1.0000              0.9932      1.6862 r
+  I_PCI_TOP/mult_x_32_n822 (net)                                         3      3.4421
+  I_PCI_TOP/U194/A1 (NOR2X0_RVT)                                                            0.3948      1.0000    0.0378    0.0378      1.7240 r
+  I_PCI_TOP/U194/Y (NOR2X0_RVT)                                                             0.0713      1.0000              0.3890      2.1130 f
+  I_PCI_TOP/n113 (net)                                                   2      1.7526
+  I_PCI_TOP/U199/A1 (NAND2X0_RVT)                                                           0.0713      1.0000    0.0000    0.0000      2.1130 f
+  I_PCI_TOP/U199/Y (NAND2X0_RVT)                                                            0.4429      1.0000              0.2839      2.3969 r
+  I_PCI_TOP/n262 (net)                                                   2      4.3382
+  I_PCI_TOP/ctmTdsLR_2_2821/S1 (MUX41X1_RVT)                                                0.4429      1.0000    0.0141    0.0141      2.4111 r
+  I_PCI_TOP/ctmTdsLR_2_2821/Y (MUX41X1_RVT)                                                 0.1855      1.0000              0.7574      3.1685 f
+  I_PCI_TOP/n264 (net)                                                   2      1.9426
+  I_PCI_TOP/U346/A (INVX1_LVT)                                                              0.1855      1.0000    0.0093    0.0093      3.1777 f
+  I_PCI_TOP/U346/Y (INVX1_LVT)                                                              0.1046      1.0000              0.1351      3.3128 r
+  I_PCI_TOP/n382 (net)                                                   2      2.3910
+  I_PCI_TOP/U7138/A1 (XOR3X2_RVT)                                                           0.1046      1.0000    0.0035    0.0035      3.3163 r
+  I_PCI_TOP/U7138/Y (XOR3X2_RVT)                                                            0.1696      1.0000              0.5710      3.8873 f
+  I_PCI_TOP/n452 (net)                                                   1      5.3746
+  I_PCI_TOP/U516/CI (FADDX1_RVT)                                                            0.1696      1.0000    0.0041    0.0044      3.8917 f
+  I_PCI_TOP/U516/S (FADDX1_RVT)                                                             0.1262      1.0000              0.5795      4.4713 r
+  I_PCI_TOP/n455 (net)                                                   2      1.8784
+  I_PCI_TOP/U518/A2 (NOR2X1_RVT)                                                            0.1262      1.0000    0.0048    0.0048      4.4761 r
+  I_PCI_TOP/U518/Y (NOR2X1_RVT)                                                             0.0626      1.0000              0.2356      4.7117 f
+  I_PCI_TOP/n482 (net)                                                   2      1.3354
+  I_PCI_TOP/U519/A (INVX0_HVT)                                                              0.0626      1.0000    0.0000    0.0000      4.7117 f
+  I_PCI_TOP/U519/Y (INVX0_HVT)                                                              0.0800      1.0000              0.0889      4.8006 r
+  I_PCI_TOP/n459 (net)                                                   1      0.5525
+  I_PCI_TOP/U520/A2 (NAND2X0_LVT)                                                           0.0800      1.0000    --        0.0000      4.8006 r
+  I_PCI_TOP/U520/Y (NAND2X0_LVT)                                                            0.1056      1.0000              0.0631      4.8637 f
+  I_PCI_TOP/n467 (net)                                                   1      1.0547
+  I_PCI_TOP/U7140/A1 (XOR2X1_RVT)                                                           0.1056      1.0000    0.0000    0.0000      4.8637 f
+  I_PCI_TOP/U7140/Y (XOR2X1_RVT)                                                            0.1175      1.0000              0.3457      5.2094 r
+  I_PCI_TOP/n547 (net)                                                   2      1.5416
+  I_PCI_TOP/U524/A2 (NOR2X0_RVT)                                                            0.1175      1.0000    0.0000    0.0000      5.2094 r
+  I_PCI_TOP/U524/Y (NOR2X0_RVT)                                                             0.0763      1.0000              0.2428      5.4522 f
+  I_PCI_TOP/n10312 (net)                                                 3      2.4178
+  I_PCI_TOP/U7141/A1 (OR2X1_RVT)                                                            0.0763      1.0000    0.0026    0.0026      5.4548 f
+  I_PCI_TOP/U7141/Y (OR2X1_RVT)                                                             0.0746      1.0000              0.2313      5.6861 f
+  I_PCI_TOP/n681 (net)                                                   2      1.2786
+  I_PCI_TOP/ctmTdsLR_1_2876/A1 (OA221X1_LVT)                                                0.0746      1.0000    --        0.0000      5.6861 f
+  I_PCI_TOP/ctmTdsLR_1_2876/Y (OA221X1_LVT)                                                 0.0759      1.0000              0.2232      5.9093 f
+  I_PCI_TOP/n10269 (net)                                                 2      1.3514
+  I_PCI_TOP/ctmTdsLR_1_3090/A2 (OA221X1_RVT)                                                0.0759      1.0000    0.0020    0.0021      5.9114 f
+  I_PCI_TOP/ctmTdsLR_1_3090/Y (OA221X1_RVT)                                                 0.1751      1.0000              0.4688      6.3802 f
+  I_PCI_TOP/n10800 (net)                                                 4      3.6121
+  I_PCI_TOP/ctmTdsLR_1_4303/A3 (AO221X1_LVT)                                                0.1751      1.0000    0.0000    0.0000      6.3803 f
+  I_PCI_TOP/ctmTdsLR_1_4303/Y (AO221X1_LVT)                                                 0.0726      1.0000              0.2603      6.6406 f
+  I_PCI_TOP/ZINV_495_12 (net)                                            2      3.3359
+  I_PCI_TOP/ZINV_388_inst_2681/A (INVX2_LVT)                                                0.0726      1.0000    --        0.0000      6.6406 f
+  I_PCI_TOP/ZINV_388_inst_2681/Y (INVX2_LVT)                                                0.0825      1.0000              0.0911      6.7317 r
+  I_PCI_TOP/ZINV_388_12 (net)                                            9      8.4105
+  I_PCI_TOP/ctmTdsLR_1_4578/A (INVX0_RVT)                                                   0.0825      1.0000    0.0000    0.0003      6.7320 r
+  I_PCI_TOP/ctmTdsLR_1_4578/Y (INVX0_RVT)                                                   0.0518      1.0000              0.0696      6.8016 f
+  I_PCI_TOP/tmp_net775 (net)                                             1      0.9148
+  I_PCI_TOP/ctmTdsLR_2_4579/A1 (NAND3X0_LVT)                                                0.0518      1.0000    0.0000    0.0000      6.8016 f
+  I_PCI_TOP/ctmTdsLR_2_4579/Y (NAND3X0_LVT)                                                 0.0875      1.0000              0.0672      6.8688 r
+  I_PCI_TOP/tmp_net776 (net)                                             1      0.8379
+  I_PCI_TOP/ctmTdsLR_4_4581/A1 (NAND3X0_RVT)                                                0.0875      1.0000    0.0000    0.0000      6.8688 r
+  I_PCI_TOP/ctmTdsLR_4_4581/Y (NAND3X0_RVT)                                                 0.1756      1.0000              0.1565      7.0253 f
+  I_PCI_TOP/n11407 (net)                                                 1      1.3865
+  I_PCI_TOP/U10892/A1 (XNOR2X1_RVT)                                                         0.1756      1.0000    0.0000    0.0000      7.0253 f
+  I_PCI_TOP/U10892/Y (XNOR2X1_RVT)                                                          0.1434      1.0000              0.4392      7.4646 f
+  I_PCI_TOP/I_PCI_CORE_N555 (net)                                        1      2.9715
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__26_/D (SDFFARX1_RVT)                               0.1434      1.0000    0.0078    0.0079      7.4725 f
+  data arrival time                                                                                                                     7.4725
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6172      8.1172
+  clock reconvergence pessimism                                                                                             0.0522      8.1694
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__26_/CLK (SDFFARX1_RVT)                             0.0809      0.9500    0.0000    0.0000      8.1694 r
+  clock uncertainty                                                                                                        -0.0600      8.1094
+  library setup time                                                                                    1.0000             -0.6618      7.4476
+  data required time                                                                                                                    7.4476
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4476
+  data arrival time                                                                                                                    -7.4725
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0249
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__22_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6897      0.6897
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/CLK (SDFFARX1_RVT)                              0.0767      1.0000              0.0000      0.6897 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/QN (SDFFARX1_RVT)                               0.1804      1.0000              0.4152      1.1049 f
+  I_PCI_TOP/mult_x_26_n808 (net)                                         2      3.5805
+  I_PCI_TOP/U8997/A (NBUFFX4_RVT)                                                           0.1804      1.0000    0.0056    0.0057      1.1106 f
+  I_PCI_TOP/U8997/Y (NBUFFX4_RVT)                                                           0.1314      1.0000              0.2880      1.3986 f
+  I_PCI_TOP/n12309 (net)                                                15     20.6110
+  I_PCI_TOP/U5570/A1 (OR2X1_HVT)                                                            0.1314      1.0000    0.0000    0.0006      1.3992 f
+  I_PCI_TOP/U5570/Y (OR2X1_HVT)                                                             0.2391      1.0000              0.5248      1.9240 f
+  I_PCI_TOP/n5587 (net)                                                  3      3.6689
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/A2 (OAI22X1_RVT)                                    0.2391      1.0000    --        0.0000      1.9240 f
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/Y (OAI22X1_RVT)                                     0.0633      1.0000              0.4374      2.3614 r
+  I_PCI_TOP/tmp_net41 (net)                                              1      0.7971
+  I_PCI_TOP/ctmTdsLR_1_6797/A2 (AND2X1_RVT)                                                 0.0633      1.0000    --        0.0000      2.3614 r
+  I_PCI_TOP/ctmTdsLR_1_6797/Y (AND2X1_RVT)                                                  0.1356      1.0000              0.1978      2.5592 r
+  I_PCI_TOP/n5584 (net)                                                  3      3.5227
+  I_PCI_TOP/ctmTdsLR_1_3189/A4 (AO222X1_RVT)                                                0.1356      1.0000    --        0.0000      2.5593 r
+  I_PCI_TOP/ctmTdsLR_1_3189/Y (AO222X1_RVT)                                                 0.1719      1.0000              0.3694      2.9286 r
+  I_PCI_TOP/n5602 (net)                                                  3      3.1435
+  I_PCI_TOP/ctmTdsLR_1_3419/A1 (XOR3X2_RVT)                                                 0.1719      1.0000    0.0072    0.0073      2.9359 r
+  I_PCI_TOP/ctmTdsLR_1_3419/Y (XOR3X2_RVT)                                                  0.1465      1.0000              0.5753      3.5112 f
+  I_PCI_TOP/n5596 (net)                                                  2      1.6772
+  I_PCI_TOP/U2402/A2 (OR2X1_RVT)                                                            0.1465      1.0000    0.0034    0.0034      3.5146 f
+  I_PCI_TOP/U2402/Y (OR2X1_RVT)                                                             0.0770      1.0000              0.2418      3.7563 f
+  I_PCI_TOP/n11802 (net)                                                 2      1.4045
+  I_PCI_TOP/U5625/A (INVX0_RVT)                                                             0.0770      1.0000    0.0000    0.0000      3.7563 f
+  I_PCI_TOP/U5625/Y (INVX0_RVT)                                                             0.0656      1.0000              0.0894      3.8457 r
+  I_PCI_TOP/n5600 (net)                                                  1      0.7605
+  I_PCI_TOP/U5629/A2 (OA21X1_RVT)                                                           0.0656      1.0000    0.0019    0.0019      3.8476 r
+  I_PCI_TOP/U5629/Y (OA21X1_RVT)                                                            0.1133      1.0000              0.2090      4.0566 r
+  I_PCI_TOP/n9919 (net)                                                  2      2.2021
+  I_PCI_TOP/U5637/A1 (OA21X1_RVT)                                                           0.1133      1.0000    0.0048    0.0048      4.0614 r
+  I_PCI_TOP/U5637/Y (OA21X1_RVT)                                                            0.1200      1.0000              0.2515      4.3129 r
+  I_PCI_TOP/n9904 (net)                                                  3      2.3557
+  I_PCI_TOP/U5641/A2 (OA21X1_RVT)                                                           0.1200      1.0000    0.0000    0.0000      4.3129 r
+  I_PCI_TOP/U5641/Y (OA21X1_RVT)                                                            0.1135      1.0000              0.2386      4.5516 r
+  I_PCI_TOP/n9983 (net)                                                  2      2.0331
+  I_PCI_TOP/U5643/A2 (OAI21X2_RVT)                                                          0.1135      1.0000    0.0000    0.0000      4.5516 r
+  I_PCI_TOP/U5643/Y (OAI21X2_RVT)                                                           0.1075      1.0000              0.3368      4.8884 f
+  I_PCI_TOP/n10028 (net)                                                 2      1.8071
+  I_PCI_TOP/ctmTdsLR_1_4548/A1 (NAND2X0_LVT)                                                0.1075      1.0000    --        0.0000      4.8884 f
+  I_PCI_TOP/ctmTdsLR_1_4548/Y (NAND2X0_LVT)                                                 0.0869      1.0000              0.1205      5.0089 r
+  I_PCI_TOP/tmp_net761 (net)                                             1      1.0561
+  I_PCI_TOP/ctmTdsLR_2_4549/A1 (AND2X1_RVT)                                                 0.0869      1.0000    0.0058    0.0058      5.0147 r
+  I_PCI_TOP/ctmTdsLR_2_4549/Y (AND2X1_RVT)                                                  0.1313      1.0000              0.1913      5.2059 r
+  I_PCI_TOP/n10222 (net)                                                 3      3.1122
+  I_PCI_TOP/ctmTdsLR_1_4767/A4 (AO222X1_RVT)                                                0.1313      1.0000    0.0000    0.0000      5.2059 r
+  I_PCI_TOP/ctmTdsLR_1_4767/Y (AO222X1_RVT)                                                 0.1350      1.0000              0.3386      5.5446 r
+  I_PCI_TOP/n10277 (net)                                                 2      1.6412
+  I_PCI_TOP/ctmTdsLR_1_3091/A1 (NAND3X0_RVT)                                                0.1350      1.0000    --        0.0000      5.5446 r
+  I_PCI_TOP/ctmTdsLR_1_3091/Y (NAND3X0_RVT)                                                 0.1322      1.0000              0.1436      5.6882 f
+  I_PCI_TOP/tmp_net143 (net)                                             1      0.7254
+  I_PCI_TOP/ctmTdsLR_3_3093/A1 (AND3X1_RVT)                                                 0.1322      1.0000    0.0067    0.0067      5.6949 f
+  I_PCI_TOP/ctmTdsLR_3_3093/Y (AND3X1_RVT)                                                  0.1201      1.0000              0.2808      5.9757 f
+  I_PCI_TOP/n11964 (net)                                                 3      2.4720
+  I_PCI_TOP/ctmTdsLR_1_3746/A1 (OA222X1_LVT)                                                0.1201      1.0000    0.0000    0.0000      5.9757 f
+  I_PCI_TOP/ctmTdsLR_1_3746/Y (OA222X1_LVT)                                                 0.1052      1.0000              0.3080      6.2837 f
+  I_PCI_TOP/n10794 (net)                                                 3      4.9149
+  I_PCI_TOP/U5717/A2 (AOI21X2_RVT)                                                          0.1052      1.0000    0.0000    0.0002      6.2839 f
+  I_PCI_TOP/U5717/Y (AOI21X2_RVT)                                                           0.1851      1.0000              0.4680      6.7519 r
+  I_PCI_TOP/n11366 (net)                                                11     10.5074
+  I_PCI_TOP/ctmTdsLR_1_3998/A (INVX0_LVT)                                                   0.1851      1.0000    0.0052    0.0053      6.7572 r
+  I_PCI_TOP/ctmTdsLR_1_3998/Y (INVX0_LVT)                                                   0.0771      1.0000              0.0382      6.7953 f
+  I_PCI_TOP/tmp_net518 (net)                                             1      0.7592
+  I_PCI_TOP/ctmTdsLR_2_3999/A1 (NAND3X0_LVT)                                                0.0771      1.0000    0.0000    0.0000      6.7953 f
+  I_PCI_TOP/ctmTdsLR_2_3999/Y (NAND3X0_LVT)                                                 0.0970      1.0000              0.0889      6.8842 r
+  I_PCI_TOP/tmp_net519 (net)                                             1      1.1530
+  I_PCI_TOP/ctmTdsLR_4_4001/A1 (NAND3X0_RVT)                                                0.0970      1.0000    0.0049    0.0050      6.8892 r
+  I_PCI_TOP/ctmTdsLR_4_4001/Y (NAND3X0_RVT)                                                 0.1702      1.0000              0.1559      7.0451 f
+  I_PCI_TOP/n11349 (net)                                                 1      1.2971
+  I_PCI_TOP/U10855/A1 (XNOR2X1_RVT)                                                         0.1702      1.0000    0.0000    0.0000      7.0451 f
+  I_PCI_TOP/U10855/Y (XNOR2X1_RVT)                                                          0.1336      1.0000              0.4229      7.4680 f
+  I_PCI_TOP/I_PCI_CORE_N359 (net)                                        1      2.1439
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__22_/D (SDFFARX1_RVT)                               0.1336      1.0000    0.0000    0.0001      7.4681 f
+  data arrival time                                                                                                                     7.4681
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6257      8.1257
+  clock reconvergence pessimism                                                                                             0.0419      8.1677
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__22_/CLK (SDFFARX1_RVT)                             0.0685      0.9500    0.0000    0.0000      8.1677 r
+  clock uncertainty                                                                                                        -0.0600      8.1077
+  library setup time                                                                                    1.0000             -0.6631      7.4446
+  data required time                                                                                                                    7.4446
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4446
+  data arrival time                                                                                                                    -7.4681
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0235
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__3_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__24_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6860      0.6860
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__3_/CLK (SDFFARX1_HVT)                              0.0890      1.0000              0.0000      0.6860 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_9__3_/Q (SDFFARX1_HVT)                                0.2325      1.0000              1.3598      2.0458 r
+  I_PCI_TOP/n1220 (net)                                                  2      2.1573
+  I_PCI_TOP/HFSBUF_540_1147/A (NBUFFX4_LVT)                                                 0.2325      1.0000    0.0002    0.0002      2.0460 r
+  I_PCI_TOP/HFSBUF_540_1147/Y (NBUFFX4_LVT)                                                 0.1425      1.0000              0.2227      2.2687 r
+  I_PCI_TOP/HFSNET_154 (net)                                            16     21.9911
+  I_PCI_TOP/U6879/A2 (AND2X1_RVT)                                                           0.1420      1.0000    0.0000    0.0014      2.2701 r
+  I_PCI_TOP/U6879/Y (AND2X1_RVT)                                                            0.1371      1.0000              0.2453      2.5153 r
+  I_PCI_TOP/n6996 (net)                                                  2      3.5645
+  I_PCI_TOP/U6880/CI (FADDX1_RVT)                                                           0.1371      1.0000    --        0.0000      2.5154 r
+  I_PCI_TOP/U6880/CO (FADDX1_RVT)                                                           0.1907      1.0000              0.3437      2.8591 r
+  I_PCI_TOP/n6985 (net)                                                  2      3.9532
+  I_PCI_TOP/U7025/A2 (XOR3X2_RVT)                                                           0.1907      1.0000    --        0.0000      2.8591 r
+  I_PCI_TOP/U7025/Y (XOR3X2_RVT)                                                            0.1501      1.0000              0.6413      3.5004 f
+  I_PCI_TOP/n7044 (net)                                                  1      2.2015
+  I_PCI_TOP/U7065/A (FADDX1_RVT)                                                            0.1501      1.0000    0.0000    0.0000      3.5004 f
+  I_PCI_TOP/U7065/CO (FADDX1_RVT)                                                           0.1484      1.0000              0.4202      3.9206 f
+  I_PCI_TOP/n7016 (net)                                                  1      2.8146
+  I_PCI_TOP/U7046/B (FADDX1_RVT)                                                            0.1484      1.0000    0.0000    0.0001      3.9206 f
+  I_PCI_TOP/U7046/CO (FADDX1_RVT)                                                           0.1449      1.0000              0.3673      4.2879 f
+  I_PCI_TOP/n7054 (net)                                                  1      2.5736
+  I_PCI_TOP/U7072/B (FADDX1_RVT)                                                            0.1449      1.0000    0.0038    0.0038      4.2917 f
+  I_PCI_TOP/U7072/S (FADDX1_RVT)                                                            0.1458      1.0000              0.4790      4.7707 f
+  I_PCI_TOP/n7061 (net)                                                  1      1.9713
+  I_PCI_TOP/U7078/CI (FADDX1_RVT)                                                           0.1458      1.0000    0.0000    0.0000      4.7708 f
+  I_PCI_TOP/U7078/CO (FADDX1_RVT)                                                           0.1490      1.0000              0.3856      5.1564 f
+  I_PCI_TOP/n7064 (net)                                                  1      2.8521
+  I_PCI_TOP/U7080/A (INVX0_RVT)                                                             0.1490      1.0000    0.0103    0.0104      5.1668 f
+  I_PCI_TOP/U7080/Y (INVX0_RVT)                                                             0.1223      1.0000              0.1661      5.3329 r
+  I_PCI_TOP/n7470 (net)                                                  2      1.7679
+  I_PCI_TOP/U7442/A1 (NAND2X1_HVT)                                                          0.1223      1.0000    0.0040    0.0040      5.3369 r
+  I_PCI_TOP/U7442/Y (NAND2X1_HVT)                                                           0.1863      1.0000              0.5676      5.9045 f
+  I_PCI_TOP/n10397 (net)                                                 3      2.4536
+  I_PCI_TOP/ctmTdsLR_1_6251/A3 (OA221X1_LVT)                                                0.1863      1.0000    0.0071    0.0071      5.9116 f
+  I_PCI_TOP/ctmTdsLR_1_6251/Y (OA221X1_LVT)                                                 0.0963      1.0000              0.2943      6.2059 f
+  I_PCI_TOP/n10376 (net)                                                 4      3.7459
+  I_PCI_TOP/U10164/A (INVX0_HVT)                                                            0.0963      1.0000    0.0000    0.0001      6.2059 f
+  I_PCI_TOP/U10164/Y (INVX0_HVT)                                                            0.2381      1.0000              0.1868      6.3928 r
+  I_PCI_TOP/n10388 (net)                                                 3      2.6474
+  I_PCI_TOP/ctmTdsLR_3_3628/A3 (AOI221X1_RVT)                                               0.2381      1.0000    0.0095    0.0095      6.4023 r
+  I_PCI_TOP/ctmTdsLR_3_3628/Y (AOI221X1_RVT)                                                0.0757      1.0000              0.4082      6.8105 f
+  I_PCI_TOP/n10507 (net)                                                 2      1.5002
+  I_PCI_TOP/ctmTdsLR_2_3974/A3 (OA21X1_RVT)                                                 0.0757      1.0000    0.0000    0.0000      6.8105 f
+  I_PCI_TOP/ctmTdsLR_2_3974/Y (OA21X1_RVT)                                                  0.0955      1.0000              0.2087      7.0192 f
+  I_PCI_TOP/n10365 (net)                                                 1      1.2203
+  I_PCI_TOP/ctmTdsLR_2_4313/S0 (MUX21X1_RVT)                                                0.0955      1.0000    0.0000    0.0000      7.0192 f
+  I_PCI_TOP/ctmTdsLR_2_4313/Y (MUX21X1_RVT)                                                 0.1702      1.0000              0.4331      7.4523 f
+  I_PCI_TOP/I_PCI_CORE_N521 (net)                                        1      1.9375
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__24_/D (SDFFARX1_RVT)                               0.1702      1.0000    0.0189    0.0189      7.4712 f
+  data arrival time                                                                                                                     7.4712
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6226      8.1226
+  clock reconvergence pessimism                                                                                             0.0522      8.1748
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__24_/CLK (SDFFARX1_RVT)                             0.0989      0.9500    0.0000    0.0000      8.1748 r
+  clock uncertainty                                                                                                        -0.0600      8.1148
+  library setup time                                                                                    1.0000             -0.6665      7.4483
+  data required time                                                                                                                    7.4483
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4483
+  data arrival time                                                                                                                    -7.4712
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0229
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_1__9_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_0__18_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6899      0.6899
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_1__9_/CLK (SDFFARX1_RVT)                              0.0714      1.0000              0.0000      0.6899 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_1__9_/QN (SDFFARX1_RVT)                               0.2226      1.0000              0.4595      1.1494 r
+  I_PCI_TOP/mult_x_23_n802 (net)                                         2      5.2751
+  I_PCI_TOP/U1369/A (NBUFFX4_RVT)                                                           0.2226      1.0000    0.0339    0.0341      1.1835 r
+  I_PCI_TOP/U1369/Y (NBUFFX4_RVT)                                                           0.1914      1.0000              0.2973      1.4807 r
+  I_PCI_TOP/n12244 (net)                                                15     21.9093
+  I_PCI_TOP/U2882/A2 (NOR2X1_HVT)                                                           0.1921      1.0000    0.0000    0.0009      1.4816 r
+  I_PCI_TOP/U2882/Y (NOR2X1_HVT)                                                            0.1685      1.0000              0.5169      1.9986 f
+  I_PCI_TOP/n2908 (net)                                                  1      2.1537
+  I_PCI_TOP/U2989/A (FADDX1_RVT)                                                            0.1685      1.0000    0.0000    0.0000      1.9986 f
+  I_PCI_TOP/U2989/S (FADDX1_RVT)                                                            0.1310      1.0000              0.6210      2.6196 r
+  I_PCI_TOP/n2914 (net)                                                  2      2.1049
+  I_PCI_TOP/U1651/A1 (OR2X1_RVT)                                                            0.1310      1.0000    0.0000    0.0000      2.6196 r
+  I_PCI_TOP/U1651/Y (OR2X1_RVT)                                                             0.0825      1.0000              0.1903      2.8099 r
+  I_PCI_TOP/n11706 (net)                                                 2      1.4230
+  I_PCI_TOP/ctmTdsLR_1_3176/A2 (NAND2X0_HVT)                                                0.0825      1.0000    0.0000    0.0000      2.8099 r
+  I_PCI_TOP/ctmTdsLR_1_3176/Y (NAND2X0_HVT)                                                 0.2214      1.0000              0.2312      3.0411 f
+  I_PCI_TOP/tmp_net178 (net)                                             1      0.7334
+  I_PCI_TOP/ctmTdsLR_2_3177/A1 (AND2X1_HVT)                                                 0.2214      1.0000    0.0315    0.0315      3.0725 f
+  I_PCI_TOP/ctmTdsLR_2_3177/Y (AND2X1_HVT)                                                  0.1875      1.0000              0.4365      3.5090 f
+  I_PCI_TOP/n3168 (net)                                                  2      1.9649
+  I_PCI_TOP/U3228/A2 (XNOR2X1_RVT)                                                          0.1875      1.0000    0.0070    0.0071      3.5161 f
+  I_PCI_TOP/U3228/Y (XNOR2X1_RVT)                                                           0.1234      1.0000              0.4871      4.0032 f
+  I_PCI_TOP/n3170 (net)                                                  2      1.4502
+  I_PCI_TOP/U3229/A2 (OR2X1_RVT)                                                            0.1234      1.0000    0.0000    0.0000      4.0032 f
+  I_PCI_TOP/U3229/Y (OR2X1_RVT)                                                             0.0771      1.0000              0.2293      4.2325 f
+  I_PCI_TOP/n3474 (net)                                                  2      1.4707
+  I_PCI_TOP/U3504/A2 (NAND2X0_LVT)                                                          0.0771      1.0000    0.0028    0.0028      4.2353 f
+  I_PCI_TOP/U3504/Y (NAND2X0_LVT)                                                           0.1071      1.0000              0.1150      4.3503 r
+  I_PCI_TOP/n3476 (net)                                                  1      1.4651
+  I_PCI_TOP/U2702/A2 (XOR2X1_RVT)                                                           0.1071      1.0000    0.0027    0.0027      4.3531 r
+  I_PCI_TOP/U2702/Y (XOR2X1_RVT)                                                            0.1560      1.0000              0.5056      4.8587 f
+  I_PCI_TOP/n11819 (net)                                                 1      2.1069
+  I_PCI_TOP/U3792/B (FADDX1_RVT)                                                            0.1560      1.0000    0.0000    0.0000      4.8587 f
+  I_PCI_TOP/U3792/S (FADDX1_RVT)                                                            0.1399      1.0000              0.5655      5.4242 r
+  I_PCI_TOP/n3495 (net)                                                  2      2.5180
+  I_PCI_TOP/ctmTdsLR_1_2883/A (INVX0_HVT)                                                   0.1399      1.0000    0.0118    0.0119      5.4360 r
+  I_PCI_TOP/ctmTdsLR_1_2883/Y (INVX0_HVT)                                                   0.0920      1.0000              0.1454      5.5815 f
+  I_PCI_TOP/tmp_net68 (net)                                              1      0.7038
+  I_PCI_TOP/ctmTdsLR_2_2884/A1 (NAND2X0_LVT)                                                0.0920      1.0000    --        0.0000      5.5815 f
+  I_PCI_TOP/ctmTdsLR_2_2884/Y (NAND2X0_LVT)                                                 0.1148      1.0000              0.1206      5.7021 r
+  I_PCI_TOP/n11161 (net)                                                 2      1.4698
+  I_PCI_TOP/U10724/A1 (NAND2X0_HVT)                                                         0.1148      1.0000    --        0.0000      5.7021 r
+  I_PCI_TOP/U10724/Y (NAND2X0_HVT)                                                          0.3465      1.0000              0.3085      6.0106 f
+  I_PCI_TOP/n11162 (net)                                                 2      1.5376
+  I_PCI_TOP/ctmTdsLR_5_6331/A2 (NAND2X0_HVT)                                                0.3465      1.0000    0.0000    0.0000      6.0106 f
+  I_PCI_TOP/ctmTdsLR_5_6331/Y (NAND2X0_HVT)                                                 0.2301      1.0000              0.3788      6.3894 r
+  I_PCI_TOP/tmp_net1032 (net)                                            1      0.6121
+  I_PCI_TOP/ctmTdsLR_1_6327/A2 (NAND2X0_RVT)                                                0.2301      1.0000    0.0000    0.0000      6.3894 r
+  I_PCI_TOP/ctmTdsLR_1_6327/Y (NAND2X0_RVT)                                                 0.1919      1.0000              0.2559      6.6453 f
+  I_PCI_TOP/I_PCI_CORE_N259 (net)                                        1      2.4923
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_0__18_/D (SDFFARX1_HVT)                               0.1919      1.0000    0.0783    0.0783      6.7236 f
+  data arrival time                                                                                                                     6.7236
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6255      8.1255
+  clock reconvergence pessimism                                                                                             0.0526      8.1782
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_0__18_/CLK (SDFFARX1_HVT)                             0.0744      0.9500    0.0000    0.0000      8.1782 r
+  clock uncertainty                                                                                                        -0.0600      8.1182
+  library setup time                                                                                    1.0000             -1.4154      6.7027
+  data required time                                                                                                                    6.7027
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    6.7027
+  data arrival time                                                                                                                    -6.7236
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0209
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__14_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__28_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6934      0.6934
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__14_/CLK (SDFFARX1_HVT)                             0.1113      1.0000              0.0000      0.6934 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_8__14_/QN (SDFFARX1_HVT)                              0.3956      1.0000              0.9960      1.6894 r
+  I_PCI_TOP/mult_x_30_n797 (net)                                         3      3.4653
+  I_PCI_TOP/U573/A (NBUFFX4_RVT)                                                            0.3956      1.0000    0.0092    0.0093      1.6987 r
+  I_PCI_TOP/U573/Y (NBUFFX4_RVT)                                                            0.1989      1.0000              0.3774      2.0761 r
+  I_PCI_TOP/n12131 (net)                                                14     20.3447
+  I_PCI_TOP/U7750/A1 (NOR2X1_HVT)                                                           0.1984      1.0000    0.0000    0.0016      2.0777 r
+  I_PCI_TOP/U7750/Y (NOR2X1_HVT)                                                            0.1658      1.0000              0.5469      2.6246 f
+  I_PCI_TOP/n7800 (net)                                                  1      2.0788
+  I_PCI_TOP/U7780/A (FADDX1_RVT)                                                            0.1658      1.0000    0.0000    0.0000      2.6247 f
+  I_PCI_TOP/U7780/CO (FADDX1_RVT)                                                           0.1527      1.0000              0.4375      3.0621 f
+  I_PCI_TOP/n7796 (net)                                                  1      3.0990
+  I_PCI_TOP/U7779/B (FADDX1_RVT)                                                            0.1527      1.0000    0.0000    0.0001      3.0622 f
+  I_PCI_TOP/U7779/CO (FADDX1_RVT)                                                           0.1401      1.0000              0.3635      3.4257 f
+  I_PCI_TOP/n7793 (net)                                                  1      2.2351
+  I_PCI_TOP/U7778/B (FADDX1_RVT)                                                            0.1401      1.0000    --        0.0000      3.4257 f
+  I_PCI_TOP/U7778/S (FADDX1_RVT)                                                            0.1706      1.0000              0.5801      4.0058 r
+  I_PCI_TOP/n7887 (net)                                                  2      3.9256
+  I_PCI_TOP/U45/A2 (XOR3X1_RVT)                                                             0.1706      1.0000    --        0.0000      4.0058 r
+  I_PCI_TOP/U45/Y (XOR3X1_RVT)                                                              0.1339      1.0000              0.6871      4.6929 f
+  I_PCI_TOP/n7951 (net)                                                  1      2.0802
+  I_PCI_TOP/U7946/CI (FADDX1_RVT)                                                           0.1339      1.0000    0.0000    0.0000      4.6929 f
+  I_PCI_TOP/U7946/S (FADDX1_RVT)                                                            0.1212      1.0000              0.5559      5.2488 r
+  I_PCI_TOP/n1327 (net)                                                  2      1.6363
+  I_PCI_TOP/U7943/A1 (NOR2X0_RVT)                                                           0.1212      1.0000    0.0043    0.0043      5.2532 r
+  I_PCI_TOP/U7943/Y (NOR2X0_RVT)                                                            0.0707      1.0000              0.2509      5.5041 f
+  I_PCI_TOP/n10698 (net)                                                 3      2.0272
+  I_PCI_TOP/U7944/A (INVX0_RVT)                                                             0.0707      1.0000    0.0000    0.0000      5.5041 f
+  I_PCI_TOP/U7944/Y (INVX0_RVT)                                                             0.1029      1.0000              0.1059      5.6100 r
+  I_PCI_TOP/n10707 (net)                                                 2      1.6635
+  I_PCI_TOP/U9547/A1 (NAND2X0_LVT)                                                          0.1029      1.0000    0.0074    0.0074      5.6174 r
+  I_PCI_TOP/U9547/Y (NAND2X0_LVT)                                                           0.0825      1.0000              0.0725      5.6899 f
+  I_PCI_TOP/n10636 (net)                                                 2      1.6724
+  I_PCI_TOP/U9538/A2 (NOR2X1_RVT)                                                           0.0825      1.0000    0.0025    0.0025      5.6924 f
+  I_PCI_TOP/U9538/Y (NOR2X1_RVT)                                                            0.0821      1.0000              0.2670      5.9595 r
+  I_PCI_TOP/n10645 (net)                                                 2      1.7063
+  I_PCI_TOP/U10363/A (INVX0_HVT)                                                            0.0821      1.0000    --        0.0000      5.9595 r
+  I_PCI_TOP/U10363/Y (INVX0_HVT)                                                            0.1213      1.0000              0.1271      6.0866 f
+  I_PCI_TOP/n10649 (net)                                                 2      1.4262
+  I_PCI_TOP/U10364/A1 (NOR2X1_RVT)                                                          0.1213      1.0000    0.0089    0.0089      6.0955 f
+  I_PCI_TOP/U10364/Y (NOR2X1_RVT)                                                           0.1131      1.0000              0.3461      6.4416 r
+  I_PCI_TOP/n10712 (net)                                                 3      2.9671
+  I_PCI_TOP/U9592/A1 (NAND2X0_LVT)                                                          0.1131      1.0000    0.0000    0.0000      6.4417 r
+  I_PCI_TOP/U9592/Y (NAND2X0_LVT)                                                           0.0837      1.0000              0.0715      6.5132 f
+  I_PCI_TOP/n10743 (net)                                                 2      1.5241
+  I_PCI_TOP/ctmTdsLR_1_2948/A2 (OR2X1_RVT)                                                  0.0837      1.0000    --        0.0000      6.5132 f
+  I_PCI_TOP/ctmTdsLR_1_2948/Y (OR2X1_RVT)                                                   0.0659      1.0000              0.1935      6.7067 f
+  I_PCI_TOP/tmp_net100 (net)                                             1      0.5861
+  I_PCI_TOP/ctmTdsLR_3_2950/A1 (OA221X1_RVT)                                                0.0659      1.0000    0.0000    0.0000      6.7067 f
+  I_PCI_TOP/ctmTdsLR_3_2950/Y (OA221X1_RVT)                                                 0.1516      1.0000              0.4562      7.1629 f
+  I_PCI_TOP/n10754 (net)                                                 2      1.7007
+  I_PCI_TOP/ctmTdsLR_1_6338/A2 (OA21X1_RVT)                                                 0.1516      1.0000    0.0151    0.0151      7.1781 f
+  I_PCI_TOP/ctmTdsLR_1_6338/Y (OA21X1_RVT)                                                  0.0948      1.0000              0.3053      7.4833 f
+  I_PCI_TOP/I_PCI_CORE_N493 (net)                                        1      1.1656
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__28_/D (SDFFARX1_RVT)                               0.0948      1.0000    0.0087    0.0087      7.4921 f
+  data arrival time                                                                                                                     7.4921
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6252      8.1252
+  clock reconvergence pessimism                                                                                             0.0419      8.1672
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_7__28_/CLK (SDFFARX1_RVT)                             0.0889      0.9500    0.0000    0.0000      8.1672 r
+  clock uncertainty                                                                                                        -0.0600      8.1072
+  library setup time                                                                                    1.0000             -0.6332      7.4739
+  data required time                                                                                                                    7.4739
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4739
+  data arrival time                                                                                                                    -7.4921
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0181
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__13_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6897      0.6897
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/CLK (SDFFARX1_RVT)                              0.0767      1.0000              0.0000      0.6897 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/QN (SDFFARX1_RVT)                               0.1804      1.0000              0.4152      1.1049 f
+  I_PCI_TOP/mult_x_26_n808 (net)                                         2      3.5805
+  I_PCI_TOP/U8997/A (NBUFFX4_RVT)                                                           0.1804      1.0000    0.0056    0.0057      1.1106 f
+  I_PCI_TOP/U8997/Y (NBUFFX4_RVT)                                                           0.1314      1.0000              0.2880      1.3986 f
+  I_PCI_TOP/n12309 (net)                                                15     20.6110
+  I_PCI_TOP/U5570/A1 (OR2X1_HVT)                                                            0.1314      1.0000    0.0000    0.0006      1.3992 f
+  I_PCI_TOP/U5570/Y (OR2X1_HVT)                                                             0.2391      1.0000              0.5248      1.9240 f
+  I_PCI_TOP/n5587 (net)                                                  3      3.6689
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/A2 (OAI22X1_RVT)                                    0.2391      1.0000    --        0.0000      1.9240 f
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/Y (OAI22X1_RVT)                                     0.0633      1.0000              0.4374      2.3614 r
+  I_PCI_TOP/tmp_net41 (net)                                              1      0.7971
+  I_PCI_TOP/ctmTdsLR_1_6797/A2 (AND2X1_RVT)                                                 0.0633      1.0000    --        0.0000      2.3614 r
+  I_PCI_TOP/ctmTdsLR_1_6797/Y (AND2X1_RVT)                                                  0.1356      1.0000              0.1978      2.5592 r
+  I_PCI_TOP/n5584 (net)                                                  3      3.5227
+  I_PCI_TOP/ctmTdsLR_1_3189/A4 (AO222X1_RVT)                                                0.1356      1.0000    --        0.0000      2.5593 r
+  I_PCI_TOP/ctmTdsLR_1_3189/Y (AO222X1_RVT)                                                 0.1719      1.0000              0.3694      2.9286 r
+  I_PCI_TOP/n5602 (net)                                                  3      3.1435
+  I_PCI_TOP/ctmTdsLR_1_3419/A1 (XOR3X2_RVT)                                                 0.1719      1.0000    0.0072    0.0073      2.9359 r
+  I_PCI_TOP/ctmTdsLR_1_3419/Y (XOR3X2_RVT)                                                  0.1465      1.0000              0.5753      3.5112 f
+  I_PCI_TOP/n5596 (net)                                                  2      1.6772
+  I_PCI_TOP/U2402/A2 (OR2X1_RVT)                                                            0.1465      1.0000    0.0034    0.0034      3.5146 f
+  I_PCI_TOP/U2402/Y (OR2X1_RVT)                                                             0.0770      1.0000              0.2418      3.7563 f
+  I_PCI_TOP/n11802 (net)                                                 2      1.4045
+  I_PCI_TOP/U5625/A (INVX0_RVT)                                                             0.0770      1.0000    0.0000    0.0000      3.7563 f
+  I_PCI_TOP/U5625/Y (INVX0_RVT)                                                             0.0656      1.0000              0.0894      3.8457 r
+  I_PCI_TOP/n5600 (net)                                                  1      0.7605
+  I_PCI_TOP/U5629/A2 (OA21X1_RVT)                                                           0.0656      1.0000    0.0019    0.0019      3.8476 r
+  I_PCI_TOP/U5629/Y (OA21X1_RVT)                                                            0.1133      1.0000              0.2090      4.0566 r
+  I_PCI_TOP/n9919 (net)                                                  2      2.2021
+  I_PCI_TOP/U5637/A1 (OA21X1_RVT)                                                           0.1133      1.0000    0.0048    0.0048      4.0614 r
+  I_PCI_TOP/U5637/Y (OA21X1_RVT)                                                            0.1200      1.0000              0.2515      4.3129 r
+  I_PCI_TOP/n9904 (net)                                                  3      2.3557
+  I_PCI_TOP/U5641/A2 (OA21X1_RVT)                                                           0.1200      1.0000    0.0000    0.0000      4.3129 r
+  I_PCI_TOP/U5641/Y (OA21X1_RVT)                                                            0.1135      1.0000              0.2386      4.5516 r
+  I_PCI_TOP/n9983 (net)                                                  2      2.0331
+  I_PCI_TOP/U5643/A2 (OAI21X2_RVT)                                                          0.1135      1.0000    0.0000    0.0000      4.5516 r
+  I_PCI_TOP/U5643/Y (OAI21X2_RVT)                                                           0.1075      1.0000              0.3368      4.8884 f
+  I_PCI_TOP/n10028 (net)                                                 2      1.8071
+  I_PCI_TOP/ctmTdsLR_1_4548/A1 (NAND2X0_LVT)                                                0.1075      1.0000    --        0.0000      4.8884 f
+  I_PCI_TOP/ctmTdsLR_1_4548/Y (NAND2X0_LVT)                                                 0.0869      1.0000              0.1205      5.0089 r
+  I_PCI_TOP/tmp_net761 (net)                                             1      1.0561
+  I_PCI_TOP/ctmTdsLR_2_4549/A1 (AND2X1_RVT)                                                 0.0869      1.0000    0.0058    0.0058      5.0147 r
+  I_PCI_TOP/ctmTdsLR_2_4549/Y (AND2X1_RVT)                                                  0.1313      1.0000              0.1913      5.2059 r
+  I_PCI_TOP/n10222 (net)                                                 3      3.1122
+  I_PCI_TOP/ctmTdsLR_1_4767/A4 (AO222X1_RVT)                                                0.1313      1.0000    0.0000    0.0000      5.2059 r
+  I_PCI_TOP/ctmTdsLR_1_4767/Y (AO222X1_RVT)                                                 0.1350      1.0000              0.3386      5.5446 r
+  I_PCI_TOP/n10277 (net)                                                 2      1.6412
+  I_PCI_TOP/U10101/A (INVX0_RVT)                                                            0.1350      1.0000    --        0.0000      5.5446 r
+  I_PCI_TOP/U10101/Y (INVX0_RVT)                                                            0.1018      1.0000              0.1282      5.6728 f
+  I_PCI_TOP/n10442 (net)                                                 3      2.7300
+  I_PCI_TOP/ctmTdsLR_1_3103/A (INVX0_HVT)                                                   0.1018      1.0000    0.0000    0.0000      5.6728 f
+  I_PCI_TOP/ctmTdsLR_1_3103/Y (INVX0_HVT)                                                   0.0938      1.0000              0.1240      5.7968 r
+  I_PCI_TOP/tmp_net149 (net)                                             1      0.6593
+  I_PCI_TOP/ctmTdsLR_2_3104/A1 (AO21X1_HVT)                                                 0.0938      1.0000    0.0028    0.0028      5.7996 r
+  I_PCI_TOP/ctmTdsLR_2_3104/Y (AO21X1_HVT)                                                  0.2243      1.0000              0.5118      6.3114 r
+  I_PCI_TOP/n10439 (net)                                                 1      1.4439
+  I_PCI_TOP/U5537/A1 (XOR2X1_HVT)                                                           0.2243      1.0000    0.0071    0.0071      6.3185 r
+  I_PCI_TOP/U5537/Y (XOR2X1_HVT)                                                            0.3000      1.0000              1.0287      7.3472 f
+  I_PCI_TOP/n12035 (net)                                                 1      1.7703
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__13_/D (SDFFARX1_RVT)                               0.3000      1.0000    0.0264    0.0264      7.3736 f
+  data arrival time                                                                                                                     7.3736
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6260      8.1260
+  clock reconvergence pessimism                                                                                             0.0419      8.1679
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__13_/CLK (SDFFARX1_RVT)                             0.0683      0.9500    0.0000    0.0000      8.1679 r
+  clock uncertainty                                                                                                        -0.0600      8.1079
+  library setup time                                                                                    1.0000             -0.7524      7.3555
+  data required time                                                                                                                    7.3555
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.3555
+  data arrival time                                                                                                                    -7.3736
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0180
+
+----------------------------------------------
+  Startpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Endpoint: I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__20_ (rising edge-triggered flip-flop clocked by PCI_CLK)
+  Mode: func
+  Corner: Cmax
+  Scenario: func_worst
+  Path Group: PCI_CLK
+  Path Type: max
+
+  Point                                                               Fanout     Cap        Trans      Derate    Delta       Incr        Path  
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  clock PCI_CLK (rise edge)                                                                                                 0.0000      0.0000
+  clock network delay (propagated)                                                                                          0.6897      0.6897
+
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/CLK (SDFFARX1_RVT)                              0.0767      1.0000              0.0000      0.6897 r
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_4__3_/QN (SDFFARX1_RVT)                               0.1804      1.0000              0.4152      1.1049 f
+  I_PCI_TOP/mult_x_26_n808 (net)                                         2      3.5805
+  I_PCI_TOP/U8997/A (NBUFFX4_RVT)                                                           0.1804      1.0000    0.0056    0.0057      1.1106 f
+  I_PCI_TOP/U8997/Y (NBUFFX4_RVT)                                                           0.1314      1.0000              0.2880      1.3986 f
+  I_PCI_TOP/n12309 (net)                                                15     20.6110
+  I_PCI_TOP/U5570/A1 (OR2X1_HVT)                                                            0.1314      1.0000    0.0000    0.0006      1.3992 f
+  I_PCI_TOP/U5570/Y (OR2X1_HVT)                                                             0.2391      1.0000              0.5248      1.9240 f
+  I_PCI_TOP/n5587 (net)                                                  3      3.6689
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/A2 (OAI22X1_RVT)                                    0.2391      1.0000    --        0.0000      1.9240 f
+  I_PCI_TOP/ctmTdsLR_1_2764_roptpi_6830/Y (OAI22X1_RVT)                                     0.0633      1.0000              0.4374      2.3614 r
+  I_PCI_TOP/tmp_net41 (net)                                              1      0.7971
+  I_PCI_TOP/ctmTdsLR_1_6797/A2 (AND2X1_RVT)                                                 0.0633      1.0000    --        0.0000      2.3614 r
+  I_PCI_TOP/ctmTdsLR_1_6797/Y (AND2X1_RVT)                                                  0.1356      1.0000              0.1978      2.5592 r
+  I_PCI_TOP/n5584 (net)                                                  3      3.5227
+  I_PCI_TOP/ctmTdsLR_1_3189/A4 (AO222X1_RVT)                                                0.1356      1.0000    --        0.0000      2.5593 r
+  I_PCI_TOP/ctmTdsLR_1_3189/Y (AO222X1_RVT)                                                 0.1719      1.0000              0.3694      2.9286 r
+  I_PCI_TOP/n5602 (net)                                                  3      3.1435
+  I_PCI_TOP/ctmTdsLR_1_3419/A1 (XOR3X2_RVT)                                                 0.1719      1.0000    0.0072    0.0073      2.9359 r
+  I_PCI_TOP/ctmTdsLR_1_3419/Y (XOR3X2_RVT)                                                  0.1465      1.0000              0.5753      3.5112 f
+  I_PCI_TOP/n5596 (net)                                                  2      1.6772
+  I_PCI_TOP/U2402/A2 (OR2X1_RVT)                                                            0.1465      1.0000    0.0034    0.0034      3.5146 f
+  I_PCI_TOP/U2402/Y (OR2X1_RVT)                                                             0.0770      1.0000              0.2418      3.7563 f
+  I_PCI_TOP/n11802 (net)                                                 2      1.4045
+  I_PCI_TOP/U5625/A (INVX0_RVT)                                                             0.0770      1.0000    0.0000    0.0000      3.7563 f
+  I_PCI_TOP/U5625/Y (INVX0_RVT)                                                             0.0656      1.0000              0.0894      3.8457 r
+  I_PCI_TOP/n5600 (net)                                                  1      0.7605
+  I_PCI_TOP/U5629/A2 (OA21X1_RVT)                                                           0.0656      1.0000    0.0019    0.0019      3.8476 r
+  I_PCI_TOP/U5629/Y (OA21X1_RVT)                                                            0.1133      1.0000              0.2090      4.0566 r
+  I_PCI_TOP/n9919 (net)                                                  2      2.2021
+  I_PCI_TOP/U5637/A1 (OA21X1_RVT)                                                           0.1133      1.0000    0.0048    0.0048      4.0614 r
+  I_PCI_TOP/U5637/Y (OA21X1_RVT)                                                            0.1200      1.0000              0.2515      4.3129 r
+  I_PCI_TOP/n9904 (net)                                                  3      2.3557
+  I_PCI_TOP/U5641/A2 (OA21X1_RVT)                                                           0.1200      1.0000    0.0000    0.0000      4.3129 r
+  I_PCI_TOP/U5641/Y (OA21X1_RVT)                                                            0.1135      1.0000              0.2386      4.5516 r
+  I_PCI_TOP/n9983 (net)                                                  2      2.0331
+  I_PCI_TOP/U5643/A2 (OAI21X2_RVT)                                                          0.1135      1.0000    0.0000    0.0000      4.5516 r
+  I_PCI_TOP/U5643/Y (OAI21X2_RVT)                                                           0.1075      1.0000              0.3368      4.8884 f
+  I_PCI_TOP/n10028 (net)                                                 2      1.8071
+  I_PCI_TOP/ctmTdsLR_1_4548/A1 (NAND2X0_LVT)                                                0.1075      1.0000    --        0.0000      4.8884 f
+  I_PCI_TOP/ctmTdsLR_1_4548/Y (NAND2X0_LVT)                                                 0.0869      1.0000              0.1205      5.0089 r
+  I_PCI_TOP/tmp_net761 (net)                                             1      1.0561
+  I_PCI_TOP/ctmTdsLR_2_4549/A1 (AND2X1_RVT)                                                 0.0869      1.0000    0.0058    0.0058      5.0147 r
+  I_PCI_TOP/ctmTdsLR_2_4549/Y (AND2X1_RVT)                                                  0.1313      1.0000              0.1913      5.2059 r
+  I_PCI_TOP/n10222 (net)                                                 3      3.1122
+  I_PCI_TOP/ctmTdsLR_1_4767/A4 (AO222X1_RVT)                                                0.1313      1.0000    0.0000    0.0000      5.2059 r
+  I_PCI_TOP/ctmTdsLR_1_4767/Y (AO222X1_RVT)                                                 0.1350      1.0000              0.3386      5.5446 r
+  I_PCI_TOP/n10277 (net)                                                 2      1.6412
+  I_PCI_TOP/ctmTdsLR_1_3091/A1 (NAND3X0_RVT)                                                0.1350      1.0000    --        0.0000      5.5446 r
+  I_PCI_TOP/ctmTdsLR_1_3091/Y (NAND3X0_RVT)                                                 0.1322      1.0000              0.1436      5.6882 f
+  I_PCI_TOP/tmp_net143 (net)                                             1      0.7254
+  I_PCI_TOP/ctmTdsLR_3_3093/A1 (AND3X1_RVT)                                                 0.1322      1.0000    0.0067    0.0067      5.6949 f
+  I_PCI_TOP/ctmTdsLR_3_3093/Y (AND3X1_RVT)                                                  0.1201      1.0000              0.2808      5.9757 f
+  I_PCI_TOP/n11964 (net)                                                 3      2.4720
+  I_PCI_TOP/ctmTdsLR_1_3746/A1 (OA222X1_LVT)                                                0.1201      1.0000    0.0000    0.0000      5.9757 f
+  I_PCI_TOP/ctmTdsLR_1_3746/Y (OA222X1_LVT)                                                 0.1052      1.0000              0.3080      6.2837 f
+  I_PCI_TOP/n10794 (net)                                                 3      4.9149
+  I_PCI_TOP/U5717/A2 (AOI21X2_RVT)                                                          0.1052      1.0000    0.0000    0.0002      6.2839 f
+  I_PCI_TOP/U5717/Y (AOI21X2_RVT)                                                           0.1851      1.0000              0.4680      6.7519 r
+  I_PCI_TOP/n11366 (net)                                                11     10.5074
+  I_PCI_TOP/U10864/A2 (OAI21X1_RVT)                                                         0.1851      1.0000    0.0052    0.0052      6.7571 r
+  I_PCI_TOP/U10864/Y (OAI21X1_RVT)                                                          0.1128      1.0000              0.4078      7.1649 f
+  I_PCI_TOP/n11371 (net)                                                 1      1.6464
+  I_PCI_TOP/U10866/A1 (XNOR2X2_RVT)                                                         0.1128      1.0000    --        0.0000      7.1649 f
+  I_PCI_TOP/U10866/Y (XNOR2X2_RVT)                                                          0.1007      1.0000              0.3117      7.4766 f
+  I_PCI_TOP/I_PCI_CORE_N357 (net)                                        1      1.0040
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__20_/D (SDFFARX1_RVT)                               0.1007      1.0000    0.0000    0.0000      7.4766 f
+  data arrival time                                                                                                                     7.4766
+
+  clock PCI_CLK (rise edge)                                                                                                 7.5000      7.5000
+  clock network delay (propagated)                                                                                          0.6257      8.1257
+  clock reconvergence pessimism                                                                                             0.0419      8.1677
+  I_PCI_TOP/I_PCI_CORE_mega_shift_reg_3__20_/CLK (SDFFARX1_RVT)                             0.0685      0.9500    0.0000    0.0000      8.1677 r
+  clock uncertainty                                                                                                        -0.0600      8.1077
+  library setup time                                                                                    1.0000             -0.6474      7.4603
+  data required time                                                                                                                    7.4603
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                    7.4603
+  data arrival time                                                                                                                    -7.4766
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                                                                                     -0.0163
+
+----------------------------------------------
