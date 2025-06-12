@@ -1,0 +1,779 @@
+setting auto_restore_mw_cel_lib_setup true
+Initializing gui preferences from file  /u/nmallebo/.synopsys_dv_prefs.tcl
+dc_shell> set top_design isodata_cluster
+isodata_cluster
+dc_shell> source ../scripts/dc.tcl
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set hack_lef_dir /u/bcruik2/hacked_lefs
+/u/bcruik2/hacked_lefs
+# Decoder ring for the libraries
+# You will need to follow another example or look in the library directories to understand.
+# lib_types is used for the dc/dct linking variables and ICC2 NDM lcoations.
+# /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# /          $lib_dir                   /lib/ $lib_type /db_nldm
+# link_library, Target_library use the sub_lib_types and corner variables. 
+# For sub_lib_types and corner:
+# Example:
+#     saed32hvt_ss0p75v125c.db
+#     |sub_lib  corner    .db
+# The current flow tries to find all sub_lib and all corners in all the search paths.  Any match will be put in the library list.
+# Wild cards can be used, but be careful.  Multiple matches can occur in ways you don't want.
+# For the target library, the same method is used as the link library except only HVT and RVT lib_types are used.
+# ICC2 NDM choosing also uses the sub_lib_types so that only the required libraries and extras are not loaded.
+# ORCA
+# The RTL version does not currently have macros
+# The one pulled from a lab does have macros, but no RTL.  Similar to the version with RTL.
+# Below is an effort to get the design pulled from a lap working for ICC2
+# Original lab had sram_lp memories, but the NDMs don't seem to be build correctly for the current libraries.  Converted code to regular SRAMs.
+set top_design isodata_cluster
+isodata_cluster
+set FCL 0
+0
+set add_ios 0
+0
+set pad_design 0
+0
+set design_size {500 500}
+500 500
+set design_io_border 10
+10
+set dc_floorplanning 1
+1
+set enable_dft  0
+0
+set innovus_enable_manual_macro_placement 1
+1
+set split_constraints 0
+0
+# This is the raw RTL without SRAMS
+#set rtl_list [list [glob /pkgs/synopsys/32_28nm/SAED_EDK32.28nm_REF_v_15032018/SAED32_EDK/references/orca/dc/rtl/*.vhd ] ../rtl/MUX21X2.sv ]
+# This is hacked P&R netlist with SRAMs and test and level shifters removed.
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+../../syn/rtl/isodata_cluster.sv
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set synth_corners_slow $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set slow_metal Cmax.tlup_-40
+Cmax.tlup_-40
+set fast_metal Cmin.tlup_-40
+Cmin.tlup_-40
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_
+set sub_lib_type_target "saed32rvt_"
+saed32rvt_
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+ss0p95vn40c ss0p75vn40c
+#set synth_corners_target "ss0p95v125c" 
+set tech_lef ${hack_lef_dir}/tech.lef 
+/u/bcruik2/hacked_lefs/tech.lef
+# set tech_lef ../../cadence_cap_tech/tech.lef
+set lef_types [list $hack_lef_dir  $lib_dir/sram/lef/ $lib_dir/io_std/lef $lib_dir/pll/lef ]
+/u/bcruik2/hacked_lefs /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/lef/ /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/lef
+#set lef_types [list $lib_dir/stdcell_hvt/lef  $lib_dir/stdcell_rvt/lef $lib_dir/stdcell_lvt/lef $lib_dir/sram/lef $lib_dir/io_std/lef $lib_dir/pll/lef ]
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef
+set synth_corners $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_slow $slow_corner
+ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_rvt/milkyway $lib_dir/stdcell_lvt/milkyway  $lib_dir/io_std/milkyway $lib_dir/sram/milkyway $lib_dir/pll/milkyway  ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*
+#set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram"
+# Get just the main standard cells, srams
+#set sub_lib_type "saed32?vt_ saed32sram_ saed32?vt_ulvl_ saed32?vt_dlvl_ "
+# Full MCMM Corners
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+#set topdir /u/$env(USER)/PSU_RTL2GDS
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/
+#declaring sub blocks
+set sub_block {SDRAM_TOP 
+                                BLENDER_0 
+                                PCI_TOP 
+                                CONTEXT_MEM 
+                                RISC_CORE 
+                                CLOCKING 
+                                BLENDER_1 
+                                PARSER 
+                                }
+SDRAM_TOP 
+                                BLENDER_0 
+                                PCI_TOP 
+                                CONTEXT_MEM 
+                                RISC_CORE 
+                                CLOCKING 
+                                BLENDER_1 
+                                PARSER 
+                                
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_serve 8
+}
+Warning: No designs to list. (UID-275)
+== ANALYZE autoread all files ==
+
+Starting ANALYZE autoread mode...
+Warning: Defining design library 'WORK' at directory '/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/work/WORK_autoread'. (AUTOREAD-107)
+Information: Adding '/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv'.  (AUTOREAD-100)
+Information: Scanning file { isodata_cluster.sv }. (AUTOREAD-303)
+Compiling source file /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv
+Presto compilation completed successfully.
+Autoread command completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_ss0p75vn40c'
+  Loading link library 'saed32rvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32rvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32rvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32rvt_ss0p95vn40c'
+  Loading link library 'saed32rvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32lvt_ss0p75vn40c'
+  Loading link library 'saed32lvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32lvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32lvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32lvt_ss0p95vn40c'
+  Loading link library 'saed32lvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32hvt_ss0p75vn40c'
+  Loading link library 'saed32hvt_dlvl_ss0p75vn40c_i0p95v'
+  Loading link library 'saed32hvt_ulvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32hvt_dlvl_ss0p75vn40c_i0p75v'
+  Loading link library 'saed32hvt_ss0p95vn40c'
+  Loading link library 'saed32hvt_ulvl_ss0p95vn40c_i0p75v'
+  Loading link library 'saed32sram_ss0p95vn40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv:67: signed to unsigned conversion occurs. (VER-318)
+Warning:  /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv:68: signed to unsigned conversion occurs. (VER-318)
+Warning:  /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv:69: signed to unsigned conversion occurs. (VER-318)
+Warning:  /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv:80: signed to unsigned assignment occurs. (VER-318)
+Warning:  /u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv:81: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 24 in file
+        '/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            29            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+        in routine isodata_cluster line 24 in file
+                '/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/isodata_cluster.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   centroid_x_reg    | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      done_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   centroid_y_reg    | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|       cx_reg        | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|       cy_reg        | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|      iter_reg       | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|  cluster_sum_x_reg  | Flip-flop |  320  |  Y  | N  | N  | N  | N  | N  | N  |
+|  cluster_sum_y_reg  | Flip-flop |  320  |  Y  | N  | N  | N  | N  | N  | N  |
+|  cluster_count_reg  | Flip-flop |  320  |  Y  | N  | N  | N  | N  | N  | N  |
+|     prev_cx_reg     | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|     prev_cy_reg     | Flip-flop |  160  |  Y  | N  | N  | N  | N  | N  | N  |
+|        i_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (isodata_cluster)
+Elaborated 1 design.
+Current design is now 'isodata_cluster'.
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+#Seed RTL SDC
+# Create clock
+set design_clk clk
+clk
+set design_clk_period 1.0
+1.0
+create_clock -period ${design_clk_period} -waveform {0 0.5} -name $design_clk [get_ports upf_clk]
+Warning: Can't find port 'upf_clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+0
+set_clock_transition 0.0001 [get_clocks $design_clk]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list 'clock_list' must have 1 elements. (CMD-036)
+0
+set_clock_latency 0.02 [get_clocks $design_clk]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+set_clock_uncertainty 0.01 -setup [get_clocks $design_clk]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+set_clock_uncertainty 0.01 -hold [get_clocks $design_clk]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+# 30% of clock period for input delay
+set_input_delay -max [expr 0.001 * $design_clk_period] -clock $design_clk [get_ports [all_inputs]]  
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+0
+set_input_delay -min [expr 0.001 * $design_clk_period] -clock $design_clk [get_ports [all_inputs]]  
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+0
+#60% of clock periold for output delay
+set_output_delay -max [expr 0.001 * $design_clk_period] -clock $design_clk [get_ports [all_outputs]]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+0
+set_output_delay -min [expr 0.001 * $design_clk_period] -clock $design_clk [get_ports [all_outputs]]
+Warning: Can't find clock 'clk' in design 'isodata_cluster'. (UID-95)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+0
+#
+set_max_delay [expr 0.001 * $design_clk_period] -from [all_inputs] -to [get_ports [all_outputs]] 
+1
+set_input_transition 0.01 [get_ports [all_inputs]] 
+1
+set_drive 0.002 [get_ports [all_inputs]] 
+1
+set_load 0.002 [get_ports [all_outputs]]
+1
+if { [info exists synopsys_program_name ] && ($synopsys_program_name == "icc2_shell") } {
+    puts " Creating ICC2 MCMM "
+    create_mode func
+    create_corner slow
+    create_scenario -mode func -corner slow -name func_slow
+    current_scenario func_slow
+    set_operating_conditions ss0p75v125c
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmax.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmax
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmin.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmin
+ 
+    set_parasitic_parameters -early_spec Cmax -early_temperature 125
+    set_parasitic_parameters -late_spec Cmax -late_temperature 125
+    set_scenario_status func_slow -active true -hold true -setup true
+}
+#setting voltages for the power nets and ground nets
+set_voltage 0.0 -min 0.0 -object_list VSS
+Warning: Can't find supply nets or internal power pins matching 'VSS' in design 'isodata_cluster'. (UID-95)
+Error: Cannot set_voltage on an empty list of supply net(s). (UPF-087)
+0
+set_voltage 0.85 -min 0.85 -object_list [list VDDL VDDL_gated_B VDDL_gated_C]
+Warning: Can't find supply nets or internal power pins matching 'VDDL' in design 'isodata_cluster'. (UID-95)
+Warning: Can't find supply nets or internal power pins matching 'VDDL_gated_B' in design 'isodata_cluster'. (UID-95)
+Warning: Can't find supply nets or internal power pins matching 'VDDL_gated_C' in design 'isodata_cluster'. (UID-95)
+Error: Cannot set_voltage on an empty list of supply net(s). (UPF-087)
+0
+set_voltage 1.16 -min 1.16 -object_list [list VDDH VDDH_gated_A VDDH_gated_D]
+Warning: Can't find supply nets or internal power pins matching 'VDDH' in design 'isodata_cluster'. (UID-95)
+Warning: Can't find supply nets or internal power pins matching 'VDDH_gated_A' in design 'isodata_cluster'. (UID-95)
+Warning: Can't find supply nets or internal power pins matching 'VDDH_gated_D' in design 'isodata_cluster'. (UID-95)
+Error: Cannot set_voltage on an empty list of supply net(s). (UPF-087)
+0
+group_path -name COMBO -from [all_inputs ] -to [ get_ports -filter "direction==out"]
+1
+group_path -name INPUTS -from [all_inputs]
+1
+group_path -name OUTPUTS -to [all_outputs]
+1
+set_cost_priority -delay 
+1
+Current design is 'isodata_cluster'.
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 331 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'isodata_cluster'
+
+  Loading target library 'saed32rvt_ss0p75vn40c'
+Loaded alib file './alib-52/saed32rvt_ss0p95vn40c.db.alib'
+Loaded alib file './alib-52/saed32rvt_ss0p75vn40c.db.alib'
+Warning: Operating condition ss0p95vn40c set on design isodata_cluster has different process,
+voltage and temperatures parameters than the parameters at which target library 
+saed32rvt_ss0p75vn40c is characterized. Delays may be inaccurate as a result. (OPT-998)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'isodata_cluster'
+Information: Added key list 'DesignWare' to design 'isodata_cluster'. (DDB-72)
+ Implement Synthetic for 'isodata_cluster'.
+  Processing 'isodata_cluster_DW_div_tc_J1_0'
+  Processing 'isodata_cluster_DW01_absval_J1_0'
+  Processing 'isodata_cluster_DW01_inc_J1_1_DW01_inc_J1_0'
+  Processing 'isodata_cluster_DW_div_tc_J1_1'
+  Processing 'isodata_cluster_DW01_absval_J1_1'
+  Processing 'isodata_cluster_DW01_inc_J1_2_DW01_inc_J1_1'
+  Processing 'isodata_cluster_DW_div_tc_J1_2'
+  Processing 'isodata_cluster_DW01_absval_J1_2'
+  Processing 'isodata_cluster_DW01_inc_J1_3_DW01_inc_J1_2'
+  Processing 'isodata_cluster_DW_div_tc_J1_3'
+  Processing 'isodata_cluster_DW01_absval_J1_3'
+  Processing 'isodata_cluster_DW01_inc_J1_4_DW01_inc_J1_3'
+  Processing 'isodata_cluster_DW_div_tc_J1_4'
+  Processing 'isodata_cluster_DW01_absval_J1_4'
+  Processing 'isodata_cluster_DW01_inc_J1_5_DW01_inc_J1_4'
+  Processing 'isodata_cluster_DW_div_tc_J1_5'
+  Processing 'isodata_cluster_DW01_absval_J1_5'
+  Processing 'isodata_cluster_DW01_inc_J1_6_DW01_inc_J1_5'
+  Processing 'isodata_cluster_DW_div_tc_J1_6'
+  Processing 'isodata_cluster_DW01_absval_J1_6'
+  Processing 'isodata_cluster_DW01_inc_J1_7_DW01_inc_J1_6'
+  Processing 'isodata_cluster_DW_div_tc_J1_7'
+  Processing 'isodata_cluster_DW01_absval_J1_7'
+  Processing 'isodata_cluster_DW01_inc_J1_8_DW01_inc_J1_7'
+  Processing 'isodata_cluster_DW_div_tc_J1_8'
+  Processing 'isodata_cluster_DW01_absval_J1_8'
+  Processing 'isodata_cluster_DW01_inc_J1_9_DW01_inc_J1_8'
+  Processing 'isodata_cluster_DW_div_tc_J1_9'
+  Processing 'isodata_cluster_DW01_absval_J1_9'
+  Processing 'isodata_cluster_DW01_inc_J1_10_DW01_inc_J1_9'
+  Processing 'isodata_cluster_DW_div_tc_J1_10'
+  Processing 'isodata_cluster_DW01_absval_J1_10'
+  Processing 'isodata_cluster_DW01_inc_J1_11_DW01_inc_J1_10'
+  Processing 'isodata_cluster_DW_div_tc_J1_11'
+  Processing 'isodata_cluster_DW01_absval_J1_11'
+  Processing 'isodata_cluster_DW01_inc_J1_12_DW01_inc_J1_11'
+  Processing 'isodata_cluster_DW_div_tc_J1_12'
+  Processing 'isodata_cluster_DW01_absval_J1_12'
+  Processing 'isodata_cluster_DW01_inc_J1_13_DW01_inc_J1_12'
+  Processing 'isodata_cluster_DW_div_tc_J1_13'
+  Processing 'isodata_cluster_DW01_absval_J1_13'
+  Processing 'isodata_cluster_DW01_inc_J1_14_DW01_inc_J1_13'
+  Processing 'isodata_cluster_DW_div_tc_J1_14'
+  Processing 'isodata_cluster_DW01_absval_J1_14'
+  Processing 'isodata_cluster_DW01_inc_J1_15_DW01_inc_J1_14'
+  Processing 'isodata_cluster_DW_div_tc_J1_15'
+  Processing 'isodata_cluster_DW01_absval_J1_15'
+  Processing 'isodata_cluster_DW01_inc_J1_16_DW01_inc_J1_15'
+  Processing 'isodata_cluster_DW_div_tc_J1_16'
+  Processing 'isodata_cluster_DW01_absval_J1_16'
+  Processing 'isodata_cluster_DW01_inc_J1_17_DW01_inc_J1_16'
+  Processing 'isodata_cluster_DW_div_tc_J1_17'
+  Processing 'isodata_cluster_DW01_absval_J1_17'
+  Processing 'isodata_cluster_DW01_inc_J1_18_DW01_inc_J1_17'
+  Processing 'isodata_cluster_DW_div_tc_J1_18'
+  Processing 'isodata_cluster_DW01_absval_J1_18'
+  Processing 'isodata_cluster_DW01_inc_J1_19_DW01_inc_J1_18'
+  Processing 'isodata_cluster_DW_div_tc_J1_19'
+  Processing 'isodata_cluster_DW01_absval_J1_19'
+  Processing 'isodata_cluster_DW01_inc_J1_20_DW01_inc_J1_19'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p95vn40c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:56:01  845268.0      0.00       0.0   61513.6                           9235323904.0000
+    0:59:45  843918.7      0.00       0.0   64147.3                           9234594816.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    1:09:52  584341.4      0.00       0.0   17148.5                           8923469824.0000
+    1:09:52  584341.4      0.00       0.0   17148.5                           8923469824.0000
+    1:09:52  584341.4      0.00       0.0   17148.5                           8923469824.0000
+    1:09:53  584341.4      0.00       0.0   17148.5                           8923469824.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 0.00%
+    1:10:01  584341.4      0.00       0.0   17148.5                           8923469824.0000
+    1:11:47  584339.6      0.00       0.0   17148.5                           8923469824.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    1:12:14  583825.7      0.00       0.0   17110.4                           8922161152.0000
+    1:12:18  583815.8      0.00       0.0   17107.5                           8922150912.0000
+    1:12:22  583807.7      0.00       0.0   17106.7                           8922140672.0000
+    1:25:52  583665.1      0.00       0.0   17092.5                           8922102784.0000
+    1:28:44  583510.6      0.00       0.0   17055.7                           8922074112.0000
+    1:31:06  583434.3      0.00       0.0   17017.6                           8922061824.0000
+    1:32:16  583388.1      0.00       0.0   17004.8                           8922051584.0000
+    1:35:06  583336.0      0.00       0.0   16995.8                           8922038272.0000
+    1:35:49  583148.4      0.00       0.0   16941.6                           8921949184.0000
+    1:36:42  581860.9      0.00       0.0   16866.2                           8920199168.0000
+    1:36:43  581601.9      0.00       0.0   16861.8                           8919958528.0000
+    1:36:43  581601.9      0.00       0.0   16861.8                           8919958528.0000
+    1:36:43  581601.9      0.00       0.0   16861.8                           8919958528.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:07  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    1:38:08  581348.8      0.00       0.0   15277.5                           8917647360.0000
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+    1:38:42  583109.8      0.00       0.0    4699.3 net293777                 8922165248.0000
+    1:38:44  583772.1      0.00       0.0    2495.5 net246765                 8922235904.0000
+    1:38:52  584869.5      0.00       0.0    1220.6 net205561                 8922421248.0000
+    1:38:57  585735.1      0.00       0.0     476.6 DP_OP_167948J1_128_8533/n792 8922528768.0000
+    1:39:01  586515.0      0.00       0.0     191.4 net291486                 8922735616.0000
+    1:39:13  587679.8      0.00       0.0     115.9 net229525                 8923002880.0000
+    1:39:24  588948.0      0.00       0.0      93.0 net199827                 8923232256.0000
+    1:39:41  590610.1      0.00       0.0      74.8 net203919                 8923368448.0000
+    1:39:55  592075.5      0.00       0.0      61.4 net194409                 8923558912.0000
+    1:40:12  593783.6      0.00       0.0      50.9 net202821                 8923732992.0000
+    1:40:26  595342.0      0.00       0.0      40.3 net192979                 8923988992.0000
+    1:40:41  596914.4      0.00       0.0      29.8 net203331                 8924217344.0000
+    1:40:49  598474.3      0.00       0.0      19.2 net192201                 8924477440.0000
+    1:41:05  599986.2      0.00       0.0      11.6 net204017                 8924690432.0000
+    1:41:20  601657.5      0.00       0.0       4.8 net201777                 8924836864.0000
+    1:41:35  603198.6      0.00       0.0       0.3 net195173                 8924939264.0000
+    1:41:38  603512.5      0.00       0.0       0.0                           8924955648.0000
+    1:41:38  603512.5      0.00       0.0       0.0                           8924955648.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    1:41:38  603512.5      0.00       0.0       0.0                           8924955648.0000
+  Global Optimization (Phase 62)
+  Global Optimization (Phase 63)
+  Global Optimization (Phase 64)
+  Global Optimization (Phase 65)
+  Global Optimization (Phase 66)
+  Global Optimization (Phase 67)
+  Global Optimization (Phase 68)
+  Global Optimization (Phase 69)
+  Global Optimization (Phase 70)
+  Global Optimization (Phase 71)
+  Global Optimization (Phase 72)
+  Global Optimization (Phase 73)
+  Global Optimization (Phase 74)
+  Global Optimization (Phase 75)
+  Global Optimization (Phase 76)
+    1:53:59  594256.8      0.00       0.0       0.2                           8936701952.0000
+    1:53:59  594256.8      0.00       0.0       0.2                           8936701952.0000
+    1:53:59  594256.8      0.00       0.0       0.2                           8936701952.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:23  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:24  584599.3      0.00       0.0       0.2                           8922095616.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    1:54:34  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:44  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:44  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:54:45  584599.3      0.00       0.0       0.2                           8922095616.0000
+    1:55:01  584599.3      0.00       0.0       0.2                           8922036224.0000
+    1:56:55  584298.9      0.00       0.0       0.2                           8922016768.0000
+    1:59:25  584171.8      0.00       0.0       0.2                           8922006528.0000
+    2:03:20  584156.3      0.00       0.0       0.2                           8922005504.0000
+    2:04:34  584070.7      0.00       0.0       0.2                           8921999360.0000
+    2:09:55  584051.9      0.00       0.0       0.2                           8921991168.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:10:55  584018.1      0.00       0.0       0.2                           8921978880.0000
+    2:11:08  583733.2      0.00       0.0       8.8                           8921315328.0000
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p95v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_dlvl_ss0p75vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ulvl_ss0p95vn40c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'isodata_cluster' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'n150630': 3974 load(s), 1 driver(s)
+  Loading target library 'saed32rvt_ss0p75vn40c'
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Writing verilog file '/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/outputs/isodata_cluster.dc.vg'.
+Writing ddc file '../outputs/isodata_cluster.dc.ddc'.
+1
+dc_shell> gui_show
+Current design is 'isodata_cluster'.
+Current design is 'isodata_cluster'.
+dc_shell> 
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/generic.sdb'
+dc_shell> report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : isodata_cluster
+Version: Q-2019.12-SP3
+Date   : Wed Jun 11 09:33:34 2025
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95vn40c   Library: saed32rvt_ss0p95vn40c
+Wire Load Model Mode: enclosed
+
+  Startpoint: done_reg (rising edge-triggered flip-flop)
+  Endpoint: done (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  isodata_cluster    1000000               saed32rvt_ss0p95vn40c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  done_reg/CLK (SDFFARX1_RVT)              0.00       0.00 r
+  done_reg/Q (SDFFARX1_RVT)                0.21       0.21 r
+  done (out)                               0.00       0.21 r
+  data arrival time                                   0.21
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+dc_shell> llength [get_ports *]
+1
+dc_shell> filter_collection  [get_ports *]
+Error: Required argument 'expression' was not found (CMD-007)
+dc_shell> llength [get_ports *]
+1
+dc_shell> get_ports
+{x[83135] x[83134] x[83133] x[83132] x[83131] x[83130] x[83129] x[83128] x[83127] x[83126] x[83125] x[83124] x[83123] x[83122] x[83121] x[83120] x[83119] x[83118] x[83117] x[83116] x[83115] x[83114] x[83113] x[83112] x[83111] x[83110] x[83109] x[83108] x[83107] x[83106] x[83105] x[83104] x[83103] x[83102] x[83101] x[83100] x[83099] x[83098] x[83097] x[83096] x[83095] x[83094] x[83093] x[83092] x[83091] x[83090] x[83089] x[83088] x[83087] x[83086] x[83085] x[83084] x[83083] x[83082] x[83081] x[83080] x[83079] x[83078] x[83077] x[83076] x[83075] x[83074] x[83073] x[83072] x[83071] x[83070] x[83069] x[83068] x[83067] x[83066] x[83065] x[83064] x[83063] x[83062] x[83061] x[83060] x[83059] x[83058] x[83057] x[83056] x[83055] x[83054] x[83053] x[83052] x[83051] x[83050] x[83049] x[83048] x[83047] x[83046] x[83045] x[83044] x[83043] x[83042] x[83041] x[83040] x[83039] x[83038] x[83037] x[83036] ...}
+dc_shell> llength [~get_ports *]
+Error: unknown command '~get_ports' (CMD-005)
+dc_shell> get_clocks
+Warning: Can't find clocks matching '*' in design 'isodata_cluster'. (UID-95)
+dc_shell> get_clock
+Warning: Can't find clocks matching '*' in design 'isodata_cluster'. (UID-95)
+dc_shell> get_clocks *
+Warning: Can't find clocks matching '*' in design 'isodata_cluster'. (UID-95)
+dc_shell> get_nets *clk*
+{clk}
+dc_shell> 

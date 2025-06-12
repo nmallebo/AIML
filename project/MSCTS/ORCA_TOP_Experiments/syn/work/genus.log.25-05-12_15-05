@@ -1,0 +1,835 @@
+  Setting attribute of root '/': 'stdout_log' = genus.log.25-05-12_15-05
+  Setting attribute of root '/': 'command_log' = genus.cmd.25-05-12_15-05
+WARNING: This version of the tool is 466 days old.
+@genus:root: 1> set top_design sqrt_newton_test
+sqrt_newton_test
+@genus:root: 2> source ../scripts/genus.tcl
+Sourcing '../scripts/genus.tcl' (Mon May 12 15:42:12 PDT 2025)...
+#@ Begin verbose source ../scripts/genus.tcl
+@file(genus.tcl) 1: history keep 100
+@file(genus.tcl) 2: set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+@file(genus.tcl) 4: source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../sqrt_newton_test.design_config.tcl' (Mon May 12 15:42:12 PDT 2025)...
+#@ Begin verbose source ../../sqrt_newton_test.design_config.tcl
+@file(sqrt_newton_test.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(sqrt_newton_test.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(sqrt_newton_test.design_config.tcl) 29: set top_design sqrt_newton_test
+set top_design sqrt_newton_test
+@file(sqrt_newton_test.design_config.tcl) 30: set FCL 0
+set FCL 0
+@file(sqrt_newton_test.design_config.tcl) 31: set add_ios 0
+set add_ios 0
+@file(sqrt_newton_test.design_config.tcl) 32: set pad_design 0
+set pad_design 0
+@file(sqrt_newton_test.design_config.tcl) 33: set design_size {1000 644}
+set design_size {1000 644}
+@file(sqrt_newton_test.design_config.tcl) 34: set design_io_border 10
+set design_io_border 10
+@file(sqrt_newton_test.design_config.tcl) 35: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(sqrt_newton_test.design_config.tcl) 36: set enable_dft  1
+set enable_dft  1
+@file(sqrt_newton_test.design_config.tcl) 37: set innovus_enable_manual_macro_placement 1
+set innovus_enable_manual_macro_placement 1
+@file(sqrt_newton_test.design_config.tcl) 38: set split_constraints 0
+set split_constraints 0
+@file(sqrt_newton_test.design_config.tcl) 43: set rtl_list [list ../../syn/rtl/$top_design.sv ]
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+@file(sqrt_newton_test.design_config.tcl) 45: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(sqrt_newton_test.design_config.tcl) 46: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(sqrt_newton_test.design_config.tcl) 47: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 48: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(sqrt_newton_test.design_config.tcl) 49: set slow_metal Cmax.tlup_-40
+set slow_metal Cmax.tlup_-40
+@file(sqrt_newton_test.design_config.tcl) 50: set fast_metal Cmin.tlup_-40
+set fast_metal Cmin.tlup_-40
+@file(sqrt_newton_test.design_config.tcl) 52: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+@file(sqrt_newton_test.design_config.tcl) 53: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+@file(sqrt_newton_test.design_config.tcl) 54: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(sqrt_newton_test.design_config.tcl) 55: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(sqrt_newton_test.design_config.tcl) 56: set sub_lib_type_target "saed32rvt_"
+set sub_lib_type_target "saed32rvt_"
+@file(sqrt_newton_test.design_config.tcl) 57: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(sqrt_newton_test.design_config.tcl) 59: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(sqrt_newton_test.design_config.tcl) 62: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+@file(sqrt_newton_test.design_config.tcl) 69: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+@file(sqrt_newton_test.design_config.tcl) 71: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 72: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 73: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(sqrt_newton_test.design_config.tcl) 74: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+@file(sqrt_newton_test.design_config.tcl) 80: set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+@file(sqrt_newton_test.design_config.tcl) 87: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+@file(sqrt_newton_test.design_config.tcl) 101: set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+@file(sqrt_newton_test.design_config.tcl) 104: set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+@file(sqrt_newton_test.design_config.tcl) 113: 				
+				
+@file(sqrt_newton_test.design_config.tcl) 114: set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+@file(sqrt_newton_test.design_config.tcl) 115: 				
+				
+@file(sqrt_newton_test.design_config.tcl) 116: set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+@file(sqrt_newton_test.design_config.tcl) 119: if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+Error   : Argument 'value' is required for command 'set_db'. [TUI-192] [set_db]
+        : Argument 'value' is required for command 'set_db'.
+        : Refer to the Command Reference for details.
+#@ End verbose source ../../sqrt_newton_test.design_config.tcl
+#@ End verbose source ../scripts/genus.tcl
+1
+@genus:root: 3> source ../scripts/genus.tcl
+Sourcing '../scripts/genus.tcl' (Mon May 12 15:42:51 PDT 2025)...
+#@ Begin verbose source ../scripts/genus.tcl
+@file(genus.tcl) 1: history keep 100
+@file(genus.tcl) 2: set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+@file(genus.tcl) 4: source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../sqrt_newton_test.design_config.tcl' (Mon May 12 15:42:51 PDT 2025)...
+#@ Begin verbose source ../../sqrt_newton_test.design_config.tcl
+@file(sqrt_newton_test.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(sqrt_newton_test.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(sqrt_newton_test.design_config.tcl) 29: set top_design sqrt_newton_test
+set top_design sqrt_newton_test
+@file(sqrt_newton_test.design_config.tcl) 30: set FCL 0
+set FCL 0
+@file(sqrt_newton_test.design_config.tcl) 31: set add_ios 0
+set add_ios 0
+@file(sqrt_newton_test.design_config.tcl) 32: set pad_design 0
+set pad_design 0
+@file(sqrt_newton_test.design_config.tcl) 33: set design_size {1000 644}
+set design_size {1000 644}
+@file(sqrt_newton_test.design_config.tcl) 34: set design_io_border 10
+set design_io_border 10
+@file(sqrt_newton_test.design_config.tcl) 35: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(sqrt_newton_test.design_config.tcl) 36: set enable_dft  0
+set enable_dft  0
+@file(sqrt_newton_test.design_config.tcl) 37: set innovus_enable_manual_macro_placement 1
+set innovus_enable_manual_macro_placement 1
+@file(sqrt_newton_test.design_config.tcl) 38: set split_constraints 0
+set split_constraints 0
+@file(sqrt_newton_test.design_config.tcl) 43: set rtl_list [list ../../syn/rtl/$top_design.sv ]
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+@file(sqrt_newton_test.design_config.tcl) 45: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(sqrt_newton_test.design_config.tcl) 46: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(sqrt_newton_test.design_config.tcl) 47: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 48: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(sqrt_newton_test.design_config.tcl) 49: set slow_metal Cmax.tlup_-40
+set slow_metal Cmax.tlup_-40
+@file(sqrt_newton_test.design_config.tcl) 50: set fast_metal Cmin.tlup_-40
+set fast_metal Cmin.tlup_-40
+@file(sqrt_newton_test.design_config.tcl) 52: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+@file(sqrt_newton_test.design_config.tcl) 53: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+@file(sqrt_newton_test.design_config.tcl) 54: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(sqrt_newton_test.design_config.tcl) 55: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(sqrt_newton_test.design_config.tcl) 56: set sub_lib_type_target "saed32rvt_"
+set sub_lib_type_target "saed32rvt_"
+@file(sqrt_newton_test.design_config.tcl) 57: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(sqrt_newton_test.design_config.tcl) 59: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(sqrt_newton_test.design_config.tcl) 62: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+@file(sqrt_newton_test.design_config.tcl) 69: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+@file(sqrt_newton_test.design_config.tcl) 71: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 72: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(sqrt_newton_test.design_config.tcl) 73: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(sqrt_newton_test.design_config.tcl) 74: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+@file(sqrt_newton_test.design_config.tcl) 80: set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+@file(sqrt_newton_test.design_config.tcl) 87: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+@file(sqrt_newton_test.design_config.tcl) 101: set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+@file(sqrt_newton_test.design_config.tcl) 104: set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+@file(sqrt_newton_test.design_config.tcl) 113: 				
+				
+@file(sqrt_newton_test.design_config.tcl) 114: set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+@file(sqrt_newton_test.design_config.tcl) 115: 				
+				
+@file(sqrt_newton_test.design_config.tcl) 116: set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+@file(sqrt_newton_test.design_config.tcl) 119: if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8
+}
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8
+}
+  Setting attribute of root '/': 'max_cpus_per_server' = 8
+#@ End verbose source ../../sqrt_newton_test.design_config.tcl
+@file(genus.tcl) 6: set designs [get_db designs * ]
+@file(genus.tcl) 7: if { $designs != "" } {
+  delete_obj $designs
+}
+@file(genus.tcl) 11: source ../scripts/genus-get-timlibslefs.tcl
+Sourcing '../scripts/genus-get-timlibslefs.tcl' (Mon May 12 15:42:51 PDT 2025)...
+#@ Begin verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus-get-timlibslefs.tcl) 9: set search_path ""
+@file(genus-get-timlibslefs.tcl) 10: foreach i $lib_types { lappend search_path $i }
+@file(genus-get-timlibslefs.tcl) 20: set link_library ""
+@file(genus-get-timlibslefs.tcl) 21: foreach i $search_path {
+  foreach k $synth_corners {
+      foreach m $sub_lib_type {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 32: foreach i $lib_types_target { 
+   lappend search_path_target $i 
+   lappend search_path $i 
+}
+@file(genus-get-timlibslefs.tcl) 45: set target_library ""
+@file(genus-get-timlibslefs.tcl) 46: foreach i $search_path_target {
+  foreach k $synth_corners_target {
+      foreach m $sub_lib_type_target {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend target_library [file tail $j ]
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 58: set lef_path ""
+@file(genus-get-timlibslefs.tcl) 59: foreach k $lef_types {
+  foreach m $sub_lef_type {
+    foreach j [glob -nocomplain $k/$m ] {
+      lappend lef_path  $j 
+    }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 69: lappend search_path .
+#@ End verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus.tcl) 13: set_db init_lib_search_path $search_path
+  Setting attribute of root '/': 'init_lib_search_path' = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .
+@file(genus.tcl) 15: set_db library $link_library
+  Setting attribute of root '/': 'library' = 
+@file(genus.tcl) 17: set_db dft_opcg_domain_blocking true
+  Setting attribute of root '/': 'dft_opcg_domain_blocking' = true
+@file(genus.tcl) 19: set_db auto_ungroup none
+  Setting attribute of root '/': 'auto_ungroup' = none
+@file(genus.tcl) 23: read_hdl -language sv ../rtl/${top_design}.sv
+@file(genus.tcl) 35: elaborate $top_design
+Error   : Failed to execute command. [LBR-163] [elaborate]
+        : No target technology library was loaded.
+        : Specify libraries using read_libs or read_mmmc.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ../scripts/genus.tcl
+1
+@genus:root: 4> set top_design ORCA_TOP
+ORCA_TOP
+@genus:root: 5> source ../scripts/genus.tcl
+Sourcing '../scripts/genus.tcl' (Mon May 12 15:43:24 PDT 2025)...
+#@ Begin verbose source ../scripts/genus.tcl
+@file(genus.tcl) 1: history keep 100
+@file(genus.tcl) 2: set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+@file(genus.tcl) 4: source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../ORCA_TOP.design_config.tcl' (Mon May 12 15:43:24 PDT 2025)...
+#@ Begin verbose source ../../ORCA_TOP.design_config.tcl
+@file(ORCA_TOP.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(ORCA_TOP.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(ORCA_TOP.design_config.tcl) 29: set top_design ORCA_TOP
+set top_design ORCA_TOP
+@file(ORCA_TOP.design_config.tcl) 30: set FCL 0
+set FCL 0
+@file(ORCA_TOP.design_config.tcl) 31: set add_ios 0
+set add_ios 0
+@file(ORCA_TOP.design_config.tcl) 32: set pad_design 0
+set pad_design 0
+@file(ORCA_TOP.design_config.tcl) 33: set design_size {1000 644}
+set design_size {1000 644}
+@file(ORCA_TOP.design_config.tcl) 34: set design_io_border 10
+set design_io_border 10
+@file(ORCA_TOP.design_config.tcl) 35: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(ORCA_TOP.design_config.tcl) 36: set enable_dft  1
+set enable_dft  1
+@file(ORCA_TOP.design_config.tcl) 37: set innovus_enable_manual_macro_placement 1
+set innovus_enable_manual_macro_placement 1
+@file(ORCA_TOP.design_config.tcl) 38: set split_constraints 0
+set split_constraints 0
+@file(ORCA_TOP.design_config.tcl) 43: set rtl_list [list ../../syn/rtl/$top_design.sv ]
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+@file(ORCA_TOP.design_config.tcl) 45: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(ORCA_TOP.design_config.tcl) 46: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(ORCA_TOP.design_config.tcl) 47: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(ORCA_TOP.design_config.tcl) 48: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(ORCA_TOP.design_config.tcl) 49: set slow_metal Cmax.tlup_-40
+set slow_metal Cmax.tlup_-40
+@file(ORCA_TOP.design_config.tcl) 50: set fast_metal Cmin.tlup_-40
+set fast_metal Cmin.tlup_-40
+@file(ORCA_TOP.design_config.tcl) 52: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+@file(ORCA_TOP.design_config.tcl) 53: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+@file(ORCA_TOP.design_config.tcl) 54: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(ORCA_TOP.design_config.tcl) 55: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(ORCA_TOP.design_config.tcl) 56: set sub_lib_type_target "saed32rvt_"
+set sub_lib_type_target "saed32rvt_"
+@file(ORCA_TOP.design_config.tcl) 57: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(ORCA_TOP.design_config.tcl) 59: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(ORCA_TOP.design_config.tcl) 62: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+@file(ORCA_TOP.design_config.tcl) 69: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+@file(ORCA_TOP.design_config.tcl) 71: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(ORCA_TOP.design_config.tcl) 72: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(ORCA_TOP.design_config.tcl) 73: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(ORCA_TOP.design_config.tcl) 74: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+@file(ORCA_TOP.design_config.tcl) 80: set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+@file(ORCA_TOP.design_config.tcl) 87: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+@file(ORCA_TOP.design_config.tcl) 101: set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+@file(ORCA_TOP.design_config.tcl) 104: set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+@file(ORCA_TOP.design_config.tcl) 113: 				
+				
+@file(ORCA_TOP.design_config.tcl) 114: set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+@file(ORCA_TOP.design_config.tcl) 115: 				
+				
+@file(ORCA_TOP.design_config.tcl) 116: set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+@file(ORCA_TOP.design_config.tcl) 119: if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8 
+}
+Error   : Argument 'value' is required for command 'set_db'. [TUI-192] [set_db]
+        : Argument 'value' is required for command 'set_db'.
+#@ End verbose source ../../ORCA_TOP.design_config.tcl
+#@ End verbose source ../scripts/genus.tcl
+1
+@genus:root: 6> source ../scripts/genus.tcl
+Sourcing '../scripts/genus.tcl' (Mon May 12 15:43:59 PDT 2025)...
+#@ Begin verbose source ../scripts/genus.tcl
+@file(genus.tcl) 1: history keep 100
+@file(genus.tcl) 2: set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+@file(genus.tcl) 4: source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../ORCA_TOP.design_config.tcl' (Mon May 12 15:43:59 PDT 2025)...
+#@ Begin verbose source ../../ORCA_TOP.design_config.tcl
+@file(ORCA_TOP.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(ORCA_TOP.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(ORCA_TOP.design_config.tcl) 29: set top_design ORCA_TOP
+set top_design ORCA_TOP
+@file(ORCA_TOP.design_config.tcl) 30: set FCL 0
+set FCL 0
+@file(ORCA_TOP.design_config.tcl) 31: set add_ios 0
+set add_ios 0
+@file(ORCA_TOP.design_config.tcl) 32: set pad_design 0
+set pad_design 0
+@file(ORCA_TOP.design_config.tcl) 33: set design_size {1000 644}
+set design_size {1000 644}
+@file(ORCA_TOP.design_config.tcl) 34: set design_io_border 10
+set design_io_border 10
+@file(ORCA_TOP.design_config.tcl) 35: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(ORCA_TOP.design_config.tcl) 36: set enable_dft  1
+set enable_dft  1
+@file(ORCA_TOP.design_config.tcl) 37: set innovus_enable_manual_macro_placement 1
+set innovus_enable_manual_macro_placement 1
+@file(ORCA_TOP.design_config.tcl) 38: set split_constraints 0
+set split_constraints 0
+@file(ORCA_TOP.design_config.tcl) 43: set rtl_list [list ../../syn/rtl/$top_design.sv ]
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+@file(ORCA_TOP.design_config.tcl) 45: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(ORCA_TOP.design_config.tcl) 46: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(ORCA_TOP.design_config.tcl) 47: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(ORCA_TOP.design_config.tcl) 48: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(ORCA_TOP.design_config.tcl) 49: set slow_metal Cmax.tlup_-40
+set slow_metal Cmax.tlup_-40
+@file(ORCA_TOP.design_config.tcl) 50: set fast_metal Cmin.tlup_-40
+set fast_metal Cmin.tlup_-40
+@file(ORCA_TOP.design_config.tcl) 52: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+@file(ORCA_TOP.design_config.tcl) 53: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+@file(ORCA_TOP.design_config.tcl) 54: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(ORCA_TOP.design_config.tcl) 55: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(ORCA_TOP.design_config.tcl) 56: set sub_lib_type_target "saed32rvt_"
+set sub_lib_type_target "saed32rvt_"
+@file(ORCA_TOP.design_config.tcl) 57: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(ORCA_TOP.design_config.tcl) 59: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(ORCA_TOP.design_config.tcl) 62: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+@file(ORCA_TOP.design_config.tcl) 69: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+@file(ORCA_TOP.design_config.tcl) 71: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(ORCA_TOP.design_config.tcl) 72: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(ORCA_TOP.design_config.tcl) 73: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(ORCA_TOP.design_config.tcl) 74: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+@file(ORCA_TOP.design_config.tcl) 80: set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+@file(ORCA_TOP.design_config.tcl) 87: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+@file(ORCA_TOP.design_config.tcl) 101: set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+@file(ORCA_TOP.design_config.tcl) 104: set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+@file(ORCA_TOP.design_config.tcl) 113: 				
+				
+@file(ORCA_TOP.design_config.tcl) 114: set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+@file(ORCA_TOP.design_config.tcl) 115: 				
+				
+@file(ORCA_TOP.design_config.tcl) 116: set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+@file(ORCA_TOP.design_config.tcl) 119: if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8
+}
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_server 8
+}
+  Setting attribute of root '/': 'max_cpus_per_server' = 8
+#@ End verbose source ../../ORCA_TOP.design_config.tcl
+@file(genus.tcl) 6: set designs [get_db designs * ]
+@file(genus.tcl) 7: if { $designs != "" } {
+  delete_obj $designs
+}
+@file(genus.tcl) 11: source ../scripts/genus-get-timlibslefs.tcl
+Sourcing '../scripts/genus-get-timlibslefs.tcl' (Mon May 12 15:43:59 PDT 2025)...
+#@ Begin verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus-get-timlibslefs.tcl) 9: set search_path ""
+@file(genus-get-timlibslefs.tcl) 10: foreach i $lib_types { lappend search_path $i }
+@file(genus-get-timlibslefs.tcl) 20: set link_library ""
+@file(genus-get-timlibslefs.tcl) 21: foreach i $search_path {
+  foreach k $synth_corners {
+      foreach m $sub_lib_type {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 32: foreach i $lib_types_target { 
+   lappend search_path_target $i 
+   lappend search_path $i 
+}
+@file(genus-get-timlibslefs.tcl) 45: set target_library ""
+@file(genus-get-timlibslefs.tcl) 46: foreach i $search_path_target {
+  foreach k $synth_corners_target {
+      foreach m $sub_lib_type_target {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend target_library [file tail $j ]
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 58: set lef_path ""
+@file(genus-get-timlibslefs.tcl) 59: foreach k $lef_types {
+  foreach m $sub_lef_type {
+    foreach j [glob -nocomplain $k/$m ] {
+      lappend lef_path  $j 
+    }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 69: lappend search_path .
+#@ End verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus.tcl) 13: set_db init_lib_search_path $search_path
+  Setting attribute of root '/': 'init_lib_search_path' = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .
+@file(genus.tcl) 15: set_db library $link_library
+  Setting attribute of root '/': 'library' = 
+@file(genus.tcl) 17: set_db dft_opcg_domain_blocking true
+  Setting attribute of root '/': 'dft_opcg_domain_blocking' = true
+@file(genus.tcl) 19: set_db auto_ungroup none
+  Setting attribute of root '/': 'auto_ungroup' = none
+@file(genus.tcl) 23: read_hdl -language sv ../rtl/${top_design}.sv
+@file(genus.tcl) 35: elaborate $top_design
+Error   : Failed to execute command. [LBR-163] [elaborate]
+        : No target technology library was loaded.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ../scripts/genus.tcl
+1
+@genus:root: 7> exit
+
+Lic Summary:
+[15:44:47.114552] Cdslmd servers: gashapon
+[15:44:47.638867] Feature usage summary:
+[15:44:47.638867] Genus_Synthesis
+
+Normal exit.

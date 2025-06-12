@@ -1,0 +1,66 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+do run.do
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:20:54 on Jun 05,2025
+# vlog -reportprogress 300 sqrt_newton.sv 
+# -- Compiling module sqrt
+# 
+# Top level modules:
+# 	sqrt
+# End time: 22:20:55 on Jun 05,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 22:20:55 on Jun 05,2025
+# vlog -reportprogress 300 tb_sqrt_newton.sv 
+# -- Compiling module sqrt_tb
+# 
+# Top level modules:
+# 	sqrt_tb
+# End time: 22:20:55 on Jun 05,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim work.sqrt_tb 
+# Start time: 22:20:55 on Jun 05,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.sqrt_tb(fast)
+# End time: 22:21:01 on Jun 05,2025, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.sqrt_tb 
+# Start time: 22:21:01 on Jun 05,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.sqrt_tb(fast)
+# Loading work.sqrt(fast)
+#     262144
+#     589824
+#    1048576
+#    1638400
+#    6553600
+#      16384
+#        655
+#  809086412
+# Finished processing inputs. Results in output.txt
+# ** Note: $finish    : tb_sqrt_newton.sv(72)
+#    Time: 2080 ns  Iteration: 1  Instance: /sqrt_tb
+# 1
+# Break in Module sqrt_tb at tb_sqrt_newton.sv line 72
+# Can't move the Now cursor.
+# Can't move the Now cursor.
+exit
+# End time: 22:22:21 on Jun 05,2025, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 1

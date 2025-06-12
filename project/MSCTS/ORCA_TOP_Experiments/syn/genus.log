@@ -1,0 +1,47 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2024 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[00:25:27.350082] Configured Lic search path (23.02-s003): 5280@cadence-lic.cecs.pdx.edu:27000@synopsys-lic.cat.pdx.edu
+
+Version: 23.10-p004_1, built Thu Feb 01 13:43:46 PST 2024
+Options: 
+Date:    Wed Jun 11 00:25:27 2025
+Host:    mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB) (125666820KB)
+PID:     16576
+OS:      CentOS Linux release 7.9.2009 (Core)
+
+Checking out license: Genus_Synthesis
+[00:25:27.008355] Periodic Lic check successful
+[00:25:27.532696] Feature usage summary:
+[00:25:27.532697] Genus_Synthesis
+
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (1 second elapsed).
+
+Loading tool scripts...
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 7s, ST: 5s, FG: 5s, CPU: 100.0%}, MEM {curr: 0.8G, peak: 0.8G, phys curr: 0.1G, phys peak: 0.1G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.7G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 8s, ST: 6s, FG: 6s, CPU: 100.0%}, MEM {curr: 0.8G, peak: 0.8G, phys curr: 0.1G, phys peak: 0.1G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.7G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 10s, ST: 8s, FG: 8s, CPU: 100.0%}, MEM {curr: 0.8G, peak: 0.8G, phys curr: 0.1G, phys peak: 0.1G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.7G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 11s, ST: 9s, FG: 9s, CPU: 100.0%}, MEM {curr: 0.9G, peak: 0.9G, phys curr: 0.1G, phys peak: 0.1G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.7G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 12s, ST: 10s, FG: 10s, CPU: 91.7%}, MEM {curr: 0.9G, peak: 0.9G, phys curr: 0.2G, phys peak: 0.2G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.7G}
+
+Another Ctrl-C within 1 second will terminate the tool.
+CURRENT RESOURCES: RT {elapsed: 13s, ST: 11s, FG: 11s, CPU: 91.7%}, MEM {curr: 0.9G, peak: 0.9G, phys curr: 0.2G, phys peak: 0.2G}, SYS {load: 2.8, cpu: 32, total: 119.8G, free: 58.6G}
+Abnormal exit.

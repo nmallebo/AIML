@@ -1,0 +1,799 @@
+  Setting attribute of root '/': 'stdout_log' = genus.log.25-06-11_10-06
+  Setting attribute of root '/': 'command_log' = genus.cmd.25-06-11_10-06
+WARNING: This version of the tool is 495 days old.
+@genus:root: 1> source -echo -verbose ../../$top_design.design_config.tcl
+can't read "top_design": no such variable
+@genus:root: 2> 
+@genus:root: 2> 
+@genus:root: 2> # List all current designs
+@genus:root: 3> set this_design [ list_designs ]
+invalid command name "list_designs"
+@genus:root: 4> 
+@genus:root: 4> # If there are existing designs reset/remove them
+@genus:root: 5> if { $this_design != 0 } {
+  # To reset the earlier designs
+  reset_design
+  remove_design -designs
+}
+can't read "this_design": no such variable
+@genus:root: 6> 
+@genus:root: 6> if { ! [ info exists top_design ] } {
+   set top_design fifo1
+}
+fifo1
+@genus:root: 7> 
+@genus:root: 7> source ../scripts/dc-get-timlibs.tcl
+Sourcing '../scripts/dc-get-timlibs.tcl' (Wed Jun 11 10:30:40 PDT 2025)...
+#@ Begin verbose source ../scripts/dc-get-timlibs.tcl
+@file(dc-get-timlibs.tcl) 1: set search_path ""
+@file(dc-get-timlibs.tcl) 8: foreach i $lib_types {
+   lappend search_path $i
+}
+#@ End verbose source ../scripts/dc-get-timlibs.tcl
+can't read "lib_types": no such variable
+@genus:root: 8> 
+@genus:root: 8> 
+@genus:root: 8> # Analyzing the files for the design
+@genus:root: 9> analyze $rtl_list -autoread -define SYNTHESIS
+can't read "rtl_list": no such variable
+@genus:root: 10> 
+@genus:root: 10> # Elaborate the FIFO design
+@genus:root: 11> elaborate ${top_design}
+Error   : Failed to execute command. [LBR-163] [elaborate]
+        : No target technology library was loaded.
+        : Specify libraries using read_libs or read_mmmc.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+1
+@genus:root: 12> 
+@genus:root: 12> if { [ info exists add_ios ] && $add_ios } {
+   source -echo -verbose ../scripts/add_ios.tcl
+   # Source the design dependent code that will put IOs on different sides
+   source ../../$top_design.add_ios.tcl
+}
+@genus:root: 13> 
+@genus:root: 13> change_names -rules verilog -hierarchy
+Error   : An invalid option was specified. [TUI-204] [parse_options]
+        : An option named '-rules' could not be found.
+        : Run 'command_name -help' to check all valid options. To correct the option and rerun the command.
+  update_names: change names of select objects 
+
+Usage: update_names [-quiet] [-unresolved_ok] [-skip_bus_net] [-local] [-hnet] [-inst] [-design] [-module] [-port_bus] [-hport_bus] [-force] [-vhdl] [-verilog]
+           [-system_verilog] [-nocase] [-prefix <string>] [-log <string>] [-append_log] [-lec] [-first_restricted <string>] [-suffix <string>]
+           [-last_restricted <string>] [-restricted <string>] [-replace_str <string>] [-reserved_words <string>] [-map <string>] [-allowed <string>]
+           [-max_length <integer>] [-lower_to_upper] [-upper_to_lower] [-collapse_name_space] [-name_collision] [-dummy_net_prefix <string>] [-regexp]
+           [-check_internal_net_name] [<inst|hinst|design>]
+
+    [-quiet]:
+        disable messages (CHNM-102, CHNM-103 and CHNM-110) 
+    [-unresolved_ok]:
+        change names of unresolved modules 
+    [-skip_bus_net]:
+        change names of scalar net only 
+    [-local]:
+        disable recursive mode (default is recursive) 
+    [-hnet]:
+        change names of net objects 
+    [-inst]:
+        change names of instance objects 
+    [-design]:
+        change names of design objects 
+    [-module]:
+        change names of subdesign objects 
+    [-port_bus]:
+        change names of port_bus objects 
+    [-hport_bus]:
+        change names of hport_bus objects 
+    [-force]:
+        execute change even if object is preserved 
+    [-vhdl]:
+        replace VHDL reserved words 
+    [-verilog]:
+        replace Verilog reserved words 
+    [-system_verilog]:
+        replace System Verilog reserved words 
+    [-nocase]:
+        enable case_insensitive name-spaces 
+    [-prefix <string>]:
+        add a prefix 
+    [-log <string>]:
+        generates log 
+    [-append_log]:
+        appends the log. Could be used only with -log 
+    [-lec]:
+        captures log changes in LEC preferred format 
+    [-first_restricted <string>]:
+        restricted first characters (e.g. " 0 1 2") 
+    [-suffix <string>]:
+        add a suffix 
+    [-last_restricted <string>]:
+        restricted last characters (e.g. "0 1 2") 
+    [-restricted <string>]:
+        list of restricted strings (to be replaced with 'replace_str') 
+    [-replace_str <string>]:
+        replacement-string (default is '_'). Use NULL for the replacement string to be null 
+    [-reserved_words <string>]:
+        words to be avoided (e.g. "begin end") 
+    [-map <string>]:
+        {{"from" "to"} ...} character mapping 
+    [-allowed <string>]:
+        characters allowed in names (min 10) (e.g. "a b c d e f g h i 1 2 3") 
+    [-max_length <integer>]:
+        limit name lengths 
+    [-lower_to_upper]:
+        change names of all objects from lower case to upper case (instance|port|hnet|subport|design|subdesign) 
+    [-upper_to_lower]:
+        change names of all objects from upper case to lower case (instance|port|hnet|subport|design|subdesign) 
+    [-collapse_name_space]:
+        no port, net or instance in the design should have the same name 
+    [-name_collision]:
+        specified prefix/suffix values are used only for resolving name collision during update_names 
+    [-dummy_net_prefix <string>]:
+        prefix for the naming of dummy nets tied to unconnected pins 
+    [-regexp]:
+        allows to specify character ranges with -allowed or -first_restricted option 
+    [-check_internal_net_name]:
+        rename any net whose name matches that of a port|subport but is actually not connected to the corresponding port|subport 
+    [<inst|hinst|design>]:
+        change names under the specified instance hierarchy or top design 
+@genus:root: 14> 
+@genus:root: 14> set top_design isodata_cluster_multi_iter
+isodata_cluster_multi_iter
+@genus:root: 15> history keep 100
+100
+@genus:root: 16> set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+  Setting attribute of root '/': 'timing_report_fields' = delay arrival transition fanout load cell timing_point
+1 {delay arrival transition fanout load cell timing_point}
+@genus:root: 17> 
+@genus:root: 17> source -echo -verbose ../../$top_design.design_config.tcl
+Sourcing '../../isodata_cluster_multi_iter.design_config.tcl' (Wed Jun 11 10:31:18 PDT 2025)...
+#@ Begin verbose source ../../isodata_cluster_multi_iter.design_config.tcl
+@file(isodata_cluster_multi_iter.design_config.tcl) 1: set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+@file(isodata_cluster_multi_iter.design_config.tcl) 2: set hack_lef_dir /u/bcruik2/hacked_lefs
+set hack_lef_dir /u/bcruik2/hacked_lefs
+@file(isodata_cluster_multi_iter.design_config.tcl) 29: set top_design isodata_cluster_multi_iter
+set top_design isodata_cluster_multi_iter
+@file(isodata_cluster_multi_iter.design_config.tcl) 30: set FCL 0
+set FCL 0
+@file(isodata_cluster_multi_iter.design_config.tcl) 31: set add_ios 0
+set add_ios 0
+@file(isodata_cluster_multi_iter.design_config.tcl) 32: set pad_design 0
+set pad_design 0
+@file(isodata_cluster_multi_iter.design_config.tcl) 33: set design_size {500 500}
+set design_size {500 500}
+@file(isodata_cluster_multi_iter.design_config.tcl) 34: set design_io_border 10
+set design_io_border 10
+@file(isodata_cluster_multi_iter.design_config.tcl) 35: set dc_floorplanning 1
+set dc_floorplanning 1
+@file(isodata_cluster_multi_iter.design_config.tcl) 36: set enable_dft  0
+set enable_dft  0
+@file(isodata_cluster_multi_iter.design_config.tcl) 37: set innovus_enable_manual_macro_placement 1
+set innovus_enable_manual_macro_placement 1
+@file(isodata_cluster_multi_iter.design_config.tcl) 38: set split_constraints 0
+set split_constraints 0
+@file(isodata_cluster_multi_iter.design_config.tcl) 43: set rtl_list [list ../../syn/rtl/$top_design.sv ]
+set rtl_list [list ../../syn/rtl/$top_design.sv ]
+@file(isodata_cluster_multi_iter.design_config.tcl) 45: set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+set slow_corner "ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+@file(isodata_cluster_multi_iter.design_config.tcl) 46: set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+set fast_corner "ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+@file(isodata_cluster_multi_iter.design_config.tcl) 47: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(isodata_cluster_multi_iter.design_config.tcl) 48: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(isodata_cluster_multi_iter.design_config.tcl) 49: set slow_metal Cmax.tlup_-40
+set slow_metal Cmax.tlup_-40
+@file(isodata_cluster_multi_iter.design_config.tcl) 50: set fast_metal Cmin.tlup_-40
+set fast_metal Cmin.tlup_-40
+@file(isodata_cluster_multi_iter.design_config.tcl) 52: set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+set lib_types "$lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm $lib_dir/stdcell_hvt/db_nldm $lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+@file(isodata_cluster_multi_iter.design_config.tcl) 53: set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_lvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+@file(isodata_cluster_multi_iter.design_config.tcl) 54: set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+@file(isodata_cluster_multi_iter.design_config.tcl) 55: set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_ saed32?vt_ulvl_ saed32?vt_dlvl_"
+@file(isodata_cluster_multi_iter.design_config.tcl) 56: set sub_lib_type_target "saed32rvt_"
+set sub_lib_type_target "saed32rvt_"
+@file(isodata_cluster_multi_iter.design_config.tcl) 57: set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+set synth_corners_target "ss0p95vn40c ss0p75vn40c" 
+@file(isodata_cluster_multi_iter.design_config.tcl) 59: set tech_lef ${hack_lef_dir}/tech.lef 
+set tech_lef ${hack_lef_dir}/tech.lef 
+@file(isodata_cluster_multi_iter.design_config.tcl) 62: set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+set lef_types [list $hack_lef_dir  \
+$lib_dir/sram/lef/ \
+$lib_dir/io_std/lef \
+$lib_dir/pll/lef \
+]
+@file(isodata_cluster_multi_iter.design_config.tcl) 69: set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+set sub_lef_type "saed32nm_?vt_*.lef saed32sram.lef saed32io_std_wb saed32_PLL.lef"
+@file(isodata_cluster_multi_iter.design_config.tcl) 71: set synth_corners $slow_corner
+set synth_corners $slow_corner
+@file(isodata_cluster_multi_iter.design_config.tcl) 72: set synth_corners_slow $slow_corner
+set synth_corners_slow $slow_corner
+@file(isodata_cluster_multi_iter.design_config.tcl) 73: set synth_corners_fast $fast_corner
+set synth_corners_fast $fast_corner
+@file(isodata_cluster_multi_iter.design_config.tcl) 74: set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway \
+$lib_dir/stdcell_rvt/milkyway \
+$lib_dir/stdcell_lvt/milkyway  \
+$lib_dir/io_std/milkyway \
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway \
+ ]
+@file(isodata_cluster_multi_iter.design_config.tcl) 80: set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+@file(isodata_cluster_multi_iter.design_config.tcl) 87: if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+if { 0 } {
+    set corners ""
+    #Add Worst corners
+    set corners "$corners ss0p75vn40c ss0p75vn40c_i0p95v ss0p75vn40c_i0p75v ss0p95vn40c ss0p95vn40c_i0p75v"
+    #Add Best corners
+    set corners "$corners ff0p95vn40c ff0p95vn40c_i1p16v ff0p95vn40c_i0p95v ff1p16vn40c ff1p16vn40c_i1p16v ff1p16vn40c_i0p95v"
+    #Add Leakage corners
+    set corners "$corners ff0p95v125c f0p95v125c_i1p16v ff0p95v125c_i0p95v ff1p16v125c ff1p16v125c_i1p16v ff1p16v125c ff1p16v125c_i0p95v"
+    set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
+    # Get the main standard cells, and also the level shifters.  Plus srams.
+    set sub_lib_type "saed32?vt_ saed32?vt_ulvl_ saed32?vt_dlvl_ saed32sram_"
+}
+@file(isodata_cluster_multi_iter.design_config.tcl) 101: set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+@file(isodata_cluster_multi_iter.design_config.tcl) 104: set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+set sub_block {SDRAM_TOP 
+				BLENDER_0 
+				PCI_TOP 
+				CONTEXT_MEM 
+				RISC_CORE 
+				CLOCKING 
+				BLENDER_1 
+				PARSER 
+				}
+@file(isodata_cluster_multi_iter.design_config.tcl) 113: 				
+				
+@file(isodata_cluster_multi_iter.design_config.tcl) 114: set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+set sub_block_I {I_SDRAM_TOP I_BLENDER_1  I_BLENDER_0 I_RISC_CORE I_CONTEXT_MEM I_PCI_TOP I_PARSER I_CLOCKING}
+@file(isodata_cluster_multi_iter.design_config.tcl) 115: 				
+				
+@file(isodata_cluster_multi_iter.design_config.tcl) 116: set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+set macro_block {I_SDRAM_TOP I_PCI_TOP I_RISC_CORE I_CONTEXT_MEM}
+@file(isodata_cluster_multi_iter.design_config.tcl) 119: if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_serve 8
+}
+if {[info exists synopsys_program_name]} {
+        if { $synopsys_program_name == "dc_shell" } {
+           set_host_options -max_cores 4
+        } 
+        if { ( $synopsys_program_name == "icc2_shell" ) || ($synopsys_program_name == "fc_shell" ) } {
+           set_host_options -max_cores 4
+        }
+} elseif {[get_db root: .program_short_name] == "innovus"} {
+        if [is_common_ui_mode ] {set_multi_cpu_usage -local_cpu 8  
+        } else { setMultiCpuUsage -localCpu 8 }
+} elseif {[get_db root: .program_short_name] == "genus"} {
+  set_db / .max_cpus_per_serve 8
+}
+  Setting attribute of root '/': 'max_cpus_per_server' = 8
+#@ End verbose source ../../isodata_cluster_multi_iter.design_config.tcl
+1 8
+@genus:root: 18> 
+@genus:root: 18> set designs [get_db designs * ]
+@genus:root: 19> if { $designs != "" } {
+  delete_obj $designs
+}
+@genus:root: 20> 
+@genus:root: 20> source ../scripts/genus-get-timlibslefs.tcl
+Sourcing '../scripts/genus-get-timlibslefs.tcl' (Wed Jun 11 10:31:18 PDT 2025)...
+#@ Begin verbose source ../scripts/genus-get-timlibslefs.tcl
+@file(genus-get-timlibslefs.tcl) 9: set search_path ""
+@file(genus-get-timlibslefs.tcl) 10: foreach i $lib_types { lappend search_path $i }
+@file(genus-get-timlibslefs.tcl) 20: set link_library ""
+@file(genus-get-timlibslefs.tcl) 21: foreach i $search_path {
+  foreach k $synth_corners {
+      foreach m $sub_lib_type {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 32: foreach i $lib_types_target { 
+   lappend search_path_target $i 
+   lappend search_path $i 
+}
+@file(genus-get-timlibslefs.tcl) 45: set target_library ""
+@file(genus-get-timlibslefs.tcl) 46: foreach i $search_path_target {
+  foreach k $synth_corners_target {
+      foreach m $sub_lib_type_target {
+        foreach j [glob -nocomplain $i/$m$k.lib ] {
+          lappend target_library [file tail $j ]
+          lappend link_library [file tail $j ]
+        }
+      }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 58: set lef_path ""
+@file(genus-get-timlibslefs.tcl) 59: foreach k $lef_types {
+  foreach m $sub_lef_type {
+    foreach j [glob -nocomplain $k/$m ] {
+      lappend lef_path  $j 
+    }
+  }
+}
+@file(genus-get-timlibslefs.tcl) 69: lappend search_path .
+#@ End verbose source ../scripts/genus-get-timlibslefs.tcl
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .
+@genus:root: 21> 
+@genus:root: 21> set_db init_lib_search_path $search_path
+  Setting attribute of root '/': 'init_lib_search_path' = /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .
+1 {/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm .}
+@genus:root: 22> 
+@genus:root: 22> set_db library $link_library
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 75616)
+        : Sequential timing checks, such as 'setup_rising' or 'hold_rising', on flop and latch cells require a clock pin. Verify that the 'clock' attribute of the clock pin is set to 'true' or that the clock pin has a 'clocked_on' attribute.
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib, Line 75953)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226658 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226659 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 226660 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 6569 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 6570 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 6571 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_RVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib, Line 75949)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226626 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226627 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 226628 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 3945 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 3946 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load_selection on line 3947 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib, Line 75949)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_operating_conditions on line 226612 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+Warning : An attribute is used before it is defined. [LBR-511]
+        : The library level attribute default_wire_load on line 226613 is defined after at least one cell definition. The attribute will be ignored. (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p75vn40c.lib)
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-511'.
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 75612)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_LVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95vn40c.lib, Line 75949)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 75714)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p75vn40c.lib, Line 76053)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX1_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib, Line 75616)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'LNANDX2_HVT' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95vn40c.lib, Line 75955)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW1024x8' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 1441)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x46' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 1881)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x48' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 2321)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW128x8' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 2761)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x32' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 3641)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x128' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 3201)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x46' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 4081)
+Warning : Missing clock pin in the sequential cell. [LBR-525]
+        : Clock pin absent in sequential cell(s) 'SRAM1RW256x48' (File /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm/saed32sram_ss0p95vn40c.lib, Line 4521)
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-525'.
+
+  Message Summary for Library all 19 libraries:
+  *********************************************
+  Missing clock pin in the sequential cell. [LBR-525]: 47
+  Missing a function attribute in the output pin definition. [LBR-518]: 384
+  An attribute is used before it is defined. [LBR-511]: 57
+  An unsupported construct was detected in this library. [LBR-40]: 180
+  *********************************************
+ 
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_dlvl_ss0p75vn40c_i0p95v'.
+        : This is a common source of delay calculation confusion and should be avoided.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32rvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_dlvl_ss0p75vn40c_i0p95v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32lvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_dlvl_ss0p75vn40c_i0p95v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_ss0p95vn40c'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32hvt_ulvl_ss0p95vn40c_i0p75v'.
+Warning : Libraries have inconsistent nominal operating conditions. In the Liberty library, there are attributes called nom_voltage, nom_process and nom_temperature. Genus reports the message, if the respective values of the 2 given .libs differ. [LBR-38]
+        : The libraries are 'saed32rvt_ss0p75vn40c' and 'saed32sram_ss0p95vn40c'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_ss0p75vn40c.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_ss0p75vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_ss0p75vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.750000, -40.000000) in library 'saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_ss0p95vn40c.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib'.
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (0.990000, 0.950000, -40.000000) in library 'saed32sram_ss0p95vn40c.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_HVT' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'BUSKP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'BUSKP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'CLOAD1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'CLOAD1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLH2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLH2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHLHLS11_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DHFILLHLHLS11_HVT' must have an output pin.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX1_HVT'.  Ignoring the test_cell.
+        : Review the definition of the test_cell's function or its parent library-cell's function.  An inconsistency between the two may exist.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRARX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRSSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRSSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFSRX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'SDFFSSRX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'SDFFSSRX2_HVT'.  Ignoring the test_cell.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL128_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL128_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL1_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL2_HVT' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'SHFILL2_HVT' must have an output pin.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-9'.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRARX2_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX1_HVT'.  Ignoring the test_cell.
+Warning : Malformed test_cell. [LBR-64]
+        : Unusable test_cell in 'RSDFFNSRASX2_HVT'.  Ignoring the test_cell.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-64'.
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX1_RVT).
+        : Library cell names must be unique.  Any duplicates will be deleted.  Only the first (as determined by the order of libraries) will be retained.
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLSSX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENCLX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENCLX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENSSX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNENX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNENX8_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX1_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX1_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX1_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX2_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX2_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX2_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX4_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX4_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX4_RVT).
+Warning : Multiply-defined library cell. [LBR-22]
+        : Library-cell name collision (saed32rvt_dlvl_ss0p75vn40c_i0p95v/LSDNSSX8_RVT and saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX8_RVT).  Deleting (saed32rvt_dlvl_ss0p75vn40c_i0p75v/LSDNSSX8_RVT).
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-22'.
+  Setting attribute of root '/': 'library' = saed32rvt_ss0p75vn40c.lib saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib saed32rvt_ss0p95vn40c.lib saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib saed32lvt_ss0p75vn40c.lib saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib saed32lvt_ss0p95vn40c.lib saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib saed32hvt_ss0p75vn40c.lib saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib saed32hvt_ss0p95vn40c.lib saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib saed32sram_ss0p95vn40c.lib saed32rvt_ss0p95vn40c.lib saed32rvt_ss0p75vn40c.lib
+1 {saed32rvt_ss0p75vn40c.lib saed32rvt_dlvl_ss0p75vn40c_i0p95v.lib saed32rvt_ulvl_ss0p75vn40c_i0p75v.lib saed32rvt_dlvl_ss0p75vn40c_i0p75v.lib saed32rvt_ss0p95vn40c.lib saed32rvt_ulvl_ss0p95vn40c_i0p75v.lib saed32lvt_ss0p75vn40c.lib saed32lvt_dlvl_ss0p75vn40c_i0p95v.lib saed32lvt_ulvl_ss0p75vn40c_i0p75v.lib saed32lvt_dlvl_ss0p75vn40c_i0p75v.lib saed32lvt_ss0p95vn40c.lib saed32lvt_ulvl_ss0p95vn40c_i0p75v.lib saed32hvt_ss0p75vn40c.lib saed32hvt_dlvl_ss0p75vn40c_i0p95v.lib saed32hvt_ulvl_ss0p75vn40c_i0p75v.lib saed32hvt_dlvl_ss0p75vn40c_i0p75v.lib saed32hvt_ss0p95vn40c.lib saed32hvt_ulvl_ss0p95vn40c_i0p75v.lib saed32sram_ss0p95vn40c.lib saed32rvt_ss0p95vn40c.lib saed32rvt_ss0p75vn40c.lib}
+@genus:root: 23> 
+@genus:root: 23> set_db dft_opcg_domain_blocking true
+  Setting attribute of root '/': 'dft_opcg_domain_blocking' = true
+1 true
+@genus:root: 24> 
+@genus:root: 24> set_db auto_ungroup none
+  Setting attribute of root '/': 'auto_ungroup' = none
+1 none
+@genus:root: 25> #set_db lp_insert_clock_gating true
+@genus:root: 26> 
+@genus:root: 26> # Analyzing the current FIFO design
+@genus:root: 27> read_hdl -language sv ../rtl/${top_design}.sv
+@genus:root: 28> 
+@genus:root: 28> #set_db hdl_array_naming_style %s_%d
+@genus:root: 29> #set_db hdl_instance_array_naming_style %s_%d
+@genus:root: 30> #set_db bus_naming_style %s_%d
+@genus:root: 31> #set_db hdl_record_naming_style %s_%s
+@genus:root: 32> #set_db hdl_parameter_naming_style _%s%d
+@genus:root: 33> #set_db hdlin_template_naming_style "%s_%p"
+@genus:root: 34> #set_db hdlin_template_parameter_style "%d"
+@genus:root: 35> #set_db hdlin_template_separator_style "_"
+@genus:root: 36> #set_db hdlin_template_parameter_style_variable "%d"
+@genus:root: 37> # Elaborate the FIFO design
+@genus:root: 38> elaborate $top_design
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX1_RVT/D' has no incoming setup arc.
+        : Pin used in a next_state function must have an incoming setup timing arc. Otherwise, the library cell will be treated as a timing model.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX1_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_RVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_RVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFNX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RDFFX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX1_LVT/SI' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/D' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/SE' has no incoming setup arc.
+Warning : Missing an incoming setup timing arc for next_state library pin. [LBR-34]
+        : Library pin 'RSDFFNSRX2_LVT/SI' has no incoming setup arc.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'LBR-34'.
+  Libraries have 390 usable logic and 324 usable sequential lib-cells.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'isodata_cluster_multi_iter' from file '../rtl/isodata_cluster_multi_iter.sv'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'isodata_cluster_multi_iter' with default parameters value.
+Error   : All assignments within a conditional statement should be either all blocking or all non-blocking. [CDFG-463] [elaborate]
+        : Assignment to 'cluster_sum_x[0]' in file '../rtl/isodata_cluster_multi_iter.sv' on line 29.
+        : The following example shows an unallowed mix of blocking and non-blocking assignments.
+    if (in)
+        out = data1;
+    else
+        out <= data2;
+Info    : Unable to elaborate the design. [ELAB-4]
+        : Module 'isodata_cluster_multi_iter' contains errors and cannot be elaborated.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+1
+@genus:root: 39> 
+@genus:root: 39> #set_db $top_design .lp_clock_gating_cell base_cell:CGLPPRX2_RVT
+@genus:root: 40> 
+@genus:root: 40> #return -level 9
+@genus:root: 41> 
+@genus:root: 41> 
+@genus:root: 41> # This needs to be after add_ios
+@genus:root: 42> update_names -map { {"." "_" }} -inst -force
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+        : If user is setting write_sv_port_wrapper = true then the port names affected by this command need to be updated manually in the written out SV wrapper module.
+@genus:root: 43> update_names -map {{"[" "_"} {"]" "_"}} -inst -force
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+@genus:root: 44> update_names -map {{"[" "_"} {"]" "_"}} -port_bus
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+@genus:root: 45> update_names -map {{"[" "_"} {"]" "_"}} -hport_bus
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+@genus:root: 46> update_names -inst -hnet -restricted {[} -convert_string "_"
+Warning : Option 'convert_string' is obsolete. [CHNM-107] [update_names]
+        : Option 'convert_string' has been replaced by 'replace_str'.
+        : The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use new option.
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+@genus:root: 47> update_names -inst -hnet -restricted {]} -convert_string "_"
+Warning : Option 'convert_string' is obsolete. [CHNM-107] [update_names]
+        : Option 'convert_string' has been replaced by 'replace_str'.
+Warning : Port names affected by this command do not automatically get updated in written out SV wrapper module. [CHNM-108] [update_names]
+        : If user is setting  write_sv_port_wrapper = true then the port names affected by usage of update_names  
+      need to be updated manually in the written out SV wrapper module.
+@genus:root: 48> 
+@genus:root: 48> 
+@genus:root: 48> # Load the timing and design constraints
+@genus:root: 49> source -echo -verbose ../../constraints/${top_design}.sdc
+Sourcing '../../constraints/isodata_cluster_multi_iter.sdc' (Wed Jun 11 10:31:28 PDT 2025)...
+#@ Begin verbose source ../../constraints/isodata_cluster_multi_iter.sdc
+@file(isodata_cluster_multi_iter.sdc) 4: set design_clk clk
+set design_clk clk
+@file(isodata_cluster_multi_iter.sdc) 5: set design_clk_period 1.0
+set design_clk_period 1.0
+@file(isodata_cluster_multi_iter.sdc) 7: create_clock -period ${design_clk_period} -waveform {0 0.5} -name $design_clk [get_ports clk]
+create_clock -period ${design_clk_period} -waveform {0 0.5} -name $design_clk [get_ports clk]
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [get_ports]
+        : There is no design here.
+        : A design must first be read in with 'read_hdl' command and elaborated with 'elaborate' command.
+#@ End verbose source ../../constraints/isodata_cluster_multi_iter.sdc
+Failed on find_unique_design
+@genus:root: 50> exit
+
+Lic Summary:
+[11:19:01.046928] Cdslmd servers: gashapon
+[11:19:01.046953] Feature usage summary:
+[11:19:01.046954] Genus_Synthesis
+
+Normal exit.

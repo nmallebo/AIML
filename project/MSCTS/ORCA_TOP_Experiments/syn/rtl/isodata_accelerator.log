@@ -1,0 +1,267 @@
+do run.do
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:25 on May 15,2025
+# vlog -reportprogress 300 sqrt_newton.sv 
+# -- Compiling module sqrt_newton
+# 
+# Top level modules:
+# 	sqrt_newton
+# End time: 23:46:26 on May 15,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:26 on May 15,2025
+# vlog -reportprogress 300 euclidean_distance.sv 
+# -- Compiling module euclidean_distance
+# 
+# Top level modules:
+# 	euclidean_distance
+# End time: 23:46:26 on May 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:26 on May 15,2025
+# vlog -reportprogress 300 centroid_calc.sv 
+# -- Compiling module centroid_calc
+# 
+# Top level modules:
+# 	centroid_calc
+# End time: 23:46:26 on May 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:26 on May 15,2025
+# vlog -reportprogress 300 cluster_assign.sv 
+# -- Compiling module cluster_assign
+# ** Warning: cluster_assign.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(11): (vlog-13314) Defaulting port 'centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(12): (vlog-13314) Defaulting port 'centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	cluster_assign
+# End time: 23:46:27 on May 15,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 4
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:27 on May 15,2025
+# vlog -reportprogress 300 volume_estimation_unit.sv 
+# -- Compiling module volume_estimation_unit
+# ** Warning: volume_estimation_unit.sv(11): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: volume_estimation_unit.sv(12): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	volume_estimation_unit
+# End time: 23:46:27 on May 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:27 on May 15,2025
+# vlog -reportprogress 300 stddev_calc.sv 
+# -- Compiling module stddev_calc
+# ** Warning: stddev_calc.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: stddev_calc.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	stddev_calc
+# End time: 23:46:27 on May 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:27 on May 15,2025
+# vlog -reportprogress 300 isodata_accelerator.sv 
+# -- Compiling module cluster_assign
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(11): (vlog-13314) Defaulting port 'centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(12): (vlog-13314) Defaulting port 'centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module centroid_calc
+# -- Compiling module stddev_calc
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(3)
+# ** at ../rtl/stddev_calc.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(3)
+# ** at ../rtl/stddev_calc.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module volume_estimation_unit
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(4)
+# ** at ../rtl/volume_estimation_unit.sv(11): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(4)
+# ** at ../rtl/volume_estimation_unit.sv(12): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module sqrt_newton
+# -- Compiling module euclidean_distance
+# -- Compiling module isodata_accelerator
+# ** Warning: isodata_accelerator.sv(18): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(19): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(20): (vlog-13314) Defaulting port 'init_centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(21): (vlog-13314) Defaulting port 'init_centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	euclidean_distance
+# 	isodata_accelerator
+# End time: 23:46:27 on May 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 12
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 23:46:27 on May 15,2025
+# vlog -reportprogress 300 tb_isodata.sv 
+# -- Compiling module tb_isodata
+# ** Warning: tb_isodata.sv(47): (vlog-2244) Variable 'i' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: tb_isodata.sv(48): (vlog-2244) Variable 'file' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# 
+# Top level modules:
+# 	tb_isodata
+# End time: 23:46:28 on May 15,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 2
+# vsim work.tb_isodata 
+# Start time: 23:26:41 on May 15,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): isodata_accelerator.sv(74): (vopt-2732) Module parameter 'FRAC' not found for override.
+# ** Error (suppressible): isodata_accelerator.sv(100): (vopt-2732) Module parameter 'DATA_WIDTH' not found for override.
+# ** Error (suppressible): isodata_accelerator.sv(100): (vopt-2732) Module parameter 'FRAC' not found for override.
+# ** Error (suppressible): isodata_accelerator.sv(100): (vopt-2732) Module parameter 'NUM_POINTS' not found for override.
+# ** Error (suppressible): isodata_accelerator.sv(122): (vopt-2732) Module parameter 'DATA_WIDTH' not found for override.
+# ** Error (suppressible): isodata_accelerator.sv(122): (vopt-2732) Module parameter 'FRAC' not found for override.
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=11, Warnings=0.
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 9
+do run.do
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:55 on May 16,2025
+# vlog -reportprogress 300 sqrt_newton.sv 
+# -- Compiling module sqrt_newton
+# 
+# Top level modules:
+# 	sqrt_newton
+# End time: 00:02:55 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:55 on May 16,2025
+# vlog -reportprogress 300 euclidean_distance.sv 
+# -- Compiling module euclidean_distance
+# 
+# Top level modules:
+# 	euclidean_distance
+# End time: 00:02:56 on May 16,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:56 on May 16,2025
+# vlog -reportprogress 300 centroid_calc.sv 
+# -- Compiling module centroid_calc
+# 
+# Top level modules:
+# 	centroid_calc
+# End time: 00:02:56 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:56 on May 16,2025
+# vlog -reportprogress 300 cluster_assign.sv 
+# -- Compiling module cluster_assign
+# ** Warning: cluster_assign.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(11): (vlog-13314) Defaulting port 'centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: cluster_assign.sv(12): (vlog-13314) Defaulting port 'centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	cluster_assign
+# End time: 00:02:56 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 4
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:56 on May 16,2025
+# vlog -reportprogress 300 volume_estimation_unit.sv 
+# -- Compiling module volume_estimation_unit
+# ** Warning: volume_estimation_unit.sv(11): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: volume_estimation_unit.sv(12): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	volume_estimation_unit
+# End time: 00:02:56 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:56 on May 16,2025
+# vlog -reportprogress 300 stddev_calc.sv 
+# -- Compiling module stddev_calc
+# ** Warning: stddev_calc.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: stddev_calc.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	stddev_calc
+# End time: 00:02:56 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:56 on May 16,2025
+# vlog -reportprogress 300 isodata_accelerator.sv 
+# -- Compiling module cluster_assign
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(11): (vlog-13314) Defaulting port 'centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(1)
+# ** at ../rtl/cluster_assign.sv(12): (vlog-13314) Defaulting port 'centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module centroid_calc
+# -- Compiling module stddev_calc
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(3)
+# ** at ../rtl/stddev_calc.sv(9): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(3)
+# ** at ../rtl/stddev_calc.sv(10): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module volume_estimation_unit
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(4)
+# ** at ../rtl/volume_estimation_unit.sv(11): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ** while parsing file included at isodata_accelerator.sv(4)
+# ** at ../rtl/volume_estimation_unit.sv(12): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# -- Compiling module sqrt_newton
+# -- Compiling module euclidean_distance
+# -- Compiling module isodata_accelerator
+# ** Warning: isodata_accelerator.sv(19): (vlog-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(20): (vlog-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(21): (vlog-13314) Defaulting port 'init_centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(22): (vlog-13314) Defaulting port 'init_centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	euclidean_distance
+# 	isodata_accelerator
+# End time: 00:02:57 on May 16,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 12
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 00:02:57 on May 16,2025
+# vlog -reportprogress 300 tb_isodata.sv 
+# -- Compiling module tb_isodata
+# ** Warning: tb_isodata.sv(47): (vlog-2244) Variable 'i' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: tb_isodata.sv(48): (vlog-2244) Variable 'file' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# 
+# Top level modules:
+# 	tb_isodata
+# End time: 00:02:57 on May 16,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# vsim work.tb_isodata 
+# Start time: 23:26:41 on May 15,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: ../rtl/stddev_calc.sv(9): (vopt-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/stddev_calc.sv(10): (vopt-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/volume_estimation_unit.sv(11): (vopt-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/volume_estimation_unit.sv(12): (vopt-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/cluster_assign.sv(9): (vopt-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/cluster_assign.sv(10): (vopt-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/cluster_assign.sv(11): (vopt-13314) Defaulting port 'centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: ../rtl/cluster_assign.sv(12): (vopt-13314) Defaulting port 'centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(19): (vopt-13314) Defaulting port 'points_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(20): (vopt-13314) Defaulting port 'points_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(21): (vopt-13314) Defaulting port 'init_centers_x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_accelerator.sv(22): (vopt-13314) Defaulting port 'init_centers_y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: tb_isodata.sv(47): (vopt-2244) Variable 'i' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: tb_isodata.sv(48): (vopt-2244) Variable 'file' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: ../rtl/centroid_calc.sv(28): (vopt-8630) Infinity results from division operation.
+# ** Warning: ../rtl/centroid_calc.sv(29): (vopt-8630) Infinity results from division operation.
+# ** Warning: ../rtl/stddev_calc.sv(111): (vopt-8630) Infinity results from division operation.
+# ** Warning: ../rtl/stddev_calc.sv(118): (vopt-8630) Infinity results from division operation.
+# ** Warning: ../rtl/volume_estimation_unit.sv(58): (vopt-8630) Infinity results from division operation.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=11, Warnings=19.
+# Loading sv_std.std
+# Loading work.tb_isodata(fast)
+# Causality operation skipped due to absence of debug database file

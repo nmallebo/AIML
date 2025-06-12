@@ -1,0 +1,54 @@
+# Cadence Genus(TM) Synthesis Solution, Version 23.10-p004_1, built Feb  1 2024 13:43:46
+
+# Date: Wed Jun 11 10:22:49 2025
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+# Cadence Genus(TM) Synthesis Solution, Version 23.10-p004_1, built Feb  1 2024 13:43:46
+
+# Date: Wed Jun 11 10:23:06 2025
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.119.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon Processor (Cascadelake) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+source -echo -verbose ../../$top_design.design_config.tcl
+set this_design [ list_designs ]
+if { $this_design != 0 } {
+  # To reset the earlier designs
+  reset_design
+  remove_design -designs
+}
+if { ! [ info exists top_design ] } {
+   set top_design fifo1
+}
+source ../scripts/dc-get-timlibs.tcl
+analyze $rtl_list -autoread -define SYNTHESIS
+elaborate ${top_design}
+if { [ info exists add_ios ] && $add_ios } {
+   source -echo -verbose ../scripts/add_ios.tcl
+   # Source the design dependent code that will put IOs on different sides
+   source ../../$top_design.add_ios.tcl
+}
+change_names -rules verilog -hierarchy
+set top_design isodata_cluster_multi_iter
+history keep 100
+set_db timing_report_fields "delay arrival transition fanout load cell timing_point"
+source -echo -verbose ../../$top_design.design_config.tcl
+set designs [get_db designs * ]
+if { $designs != "" } {
+  delete_obj $designs
+}
+source ../scripts/genus-get-timlibslefs.tcl
+set_db init_lib_search_path $search_path
+set_db library $link_library
+set_db dft_opcg_domain_blocking true
+set_db auto_ungroup none
+read_hdl -language sv ../rtl/${top_design}.sv
+elaborate $top_design
+update_names -map { {"." "_" }} -inst -force
+update_names -map {{"[" "_"} {"]" "_"}} -inst -force
+update_names -map {{"[" "_"} {"]" "_"}} -port_bus
+update_names -map {{"[" "_"} {"]" "_"}} -hport_bus
+update_names -inst -hnet -restricted {[} -convert_string "_"
+update_names -inst -hnet -restricted {]} -convert_string "_"
+source -echo -verbose ../../constraints/${top_design}.sdc
+exit

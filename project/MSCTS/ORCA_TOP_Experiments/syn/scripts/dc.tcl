@@ -39,7 +39,7 @@ source -echo -verbose ../../constraints/${top_design}.sdc
 set_max_transition 0.5 [current_design ]
 
 # Duplicate any non-unique modules so details can be different inside for synthesis
-set_dont_use [get_lib_cells */DELLN* ]
+#set_dont_use [get_lib_cells */DELLN* ]
 
 uniquify
 

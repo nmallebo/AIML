@@ -1,0 +1,526 @@
+CRTE_SNAPSHOT_START
+
+SECTION_CRTE_VERSION
+3.0
+
+SECTION_PID
+16230
+
+SECTION_POLLING_INTERVAL
+5
+
+SECTION_DATE_TIME
+Wed Jun 11 12:47:45 PDT 2025 (1749671265)
+
+SECTION_OS_VERSION
+osname: Linux
+hostname: mo.ece.pdx.edu
+arch: x86_64
+release_version: 3.10.0-1160.119.1.el7.x86_64
+
+SECTION_IPC_INFO
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages    
+
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x00000000 234749952  nmallebo   600        524288     2          dest         
+0x00000000 235274241  suhaila    600        524288     2          dest         
+0x00000000 237207554  kunduru    600        229500     2          dest         
+0x00000000 234749955  nmallebo   600        393216     2          dest         
+0x00000000 236716036  ajalgar    777        5652480    2          dest         
+0x00000000 235274245  suhaila    600        524288     2          dest         
+0x00000000 235274246  suhaila    600        393216     2          dest         
+0x00000000 237207559  kunduru    600        145320     2          dest         
+0x00000000 236847112  gowthami   777        5505024    2          dest         
+0x00000000 236847113  ajalgar    600        393216     2        SECTION_ULIMIT
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 490764
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 32768
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) 67108864
+file locks                      (-x) unlimited
+
+SECTION_SYSCONF
+_SC_THREAD_SAFE_FUNCTIONS= 200809
+_SC_CLK_TCK= 100
+_SC_OPEN_MAX= 32768
+_SC_PAGE_SIZE= 4096
+_SC_ARG_MAX= 4611686018427387903
+_SC_CHILD_MAX= 4096
+_SC_LINE_MAX= 2048
+
+SECTION_FULL_COMMAND
+/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/linux64/syn/bin/common_shell_exec -shell dc_shell -r /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3
+
+SECTION_CPUINFO
+total_core: 32
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+model_name:  Intel Xeon Processor (Cascadelake)
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd rsb_ctxsw ibrs ibpb ibrs_enhanced fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 arat pku ospke avx512_vnni spec_ctrl arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2500
+core_per_socket: 0
+stepping: 6
+cache_size_kb: 16384
+ht: 0
+
+SECTION_OS_RELEASE_VERSION
+CentOS Linux release 7.9.2009 (Core)
+
+
+SECTION_SYS/VM
+/proc/sys/vm/admin_reserve_kbytes:8192
+/proc/sys/vm/block_dump:0
+/proc/sys/vm/dirty_background_bytes:0
+/proc/sys/vm/dirty_background_ratio:10
+/proc/sys/vm/dirty_bytes:0
+/proc/sys/vm/dirty_expire_centisecs:3000
+/proc/sys/vm/dirty_ratio:30
+/proc/sys/vm/dirty_writeback_centisecs:500
+/proc/sys/vm/drop_caches:0
+/proc/sys/vm/extfrag_threshold:500
+/proc/sys/vm/hugepages_treat_as_movable:0
+/proc/sys/vm/hugetlb_shm_group:0
+/proc/sys/vm/laptop_mode:0
+/proc/sys/vm/legacy_va_layout:0
+/proc/sys/vm/lowmem_reserve_ratio:256	256	32
+/proc/sys/vm/max_map_count:65530
+/proc/sys/vm/memory_failure_early_kill:0
+/proc/sys/vm/memory_failure_recovery:1
+/proc/sys/vm/min_free_kbytes:67584
+/proc/sys/vm/min_slab_ratio:5
+/proc/sys/vm/min_unmapped_ratio:1
+/proc/sys/vm/mmap_min_addr:4096
+/proc/sys/vm/nr_hugepages:0
+/proc/sys/vm/nr_hugepages_mempolicy:0
+/proc/sys/vm/nr_overcommit_hugepages:0
+/proc/sys/vm/nr_pdflush_threads:0
+/proc/sys/vm/numa_zonelist_order:default
+/proc/sys/vm/oom_dump_tasks:1
+/proc/sys/vm/oom_kill_allocating_task:0
+/proc/sys/vm/overcommit_kbytes:0
+/proc/sys/vm/overcommit_memory:0
+/proc/sys/vm/overcommit_ratio:50
+/proc/sys/vm/page-cluster:3
+/proc/sys/vm/panic_on_oom:0
+/proc/sys/vm/percpu_pagelist_fraction:0
+/proc/sys/vm/stat_interval:1
+/proc/sys/vm/swappiness:30
+/proc/sys/vm/user_reserve_kbytes:131072
+/proc/sys/vm/vfs_cache_pressure:100
+/proc/sys/vm/zone_reclaim_mode:0
+
+
+SECTION_SWAP
+Error: Could not collect the data.
+
+CRTE_SNAPSHOT_END
+
+CRTE_PERIODIC_START 1 1749671265352
+
+SECTION_MPSTAT
+total_core: 32
+
+CPU     %user   %kernel %wait   %idle   
+all   4.655907 1.831973 0.062657 93.449463
+0     4.365158 1.721668 0.058628 93.854546
+1     7.522359 2.439095 0.072009 89.966537
+2     6.403535 3.310715 0.074894 90.210861
+3     5.627345 1.936653 0.068883 92.367119
+4     6.597498 1.799750 0.066476 91.536270
+5     5.834786 1.412401 0.073748 92.679062
+6     5.115323 1.439433 0.065009 93.380234
+7     4.979300 1.948026 0.065114 93.007568
+8     5.954329 3.541650 0.065691 90.438332
+9     3.692106 1.239652 0.062022 95.006218
+10     3.173971 1.319775 0.060084 95.446175
+11     5.278687 1.477908 0.056889 93.186516
+12     3.088191 1.062862 0.061885 95.787064
+13     5.383774 1.740608 0.061496 92.814125
+14     3.936573 1.914212 0.061999 94.087212
+15     4.106905 1.522420 0.056859 94.313820
+16     4.290512 2.554860 0.059228 93.095398
+17     5.331757 1.719661 0.056203 92.892380
+18     3.712558 1.594167 0.058552 94.634727
+19     4.167526 1.085863 0.064189 94.682426
+20     4.693511 1.584153 0.060344 93.661987
+21     3.663548 1.712273 0.082123 94.542053
+22     3.840246 1.310717 0.091784 94.757256
+23     4.081076 1.774560 0.054355 94.090012
+24     4.788922 2.744924 0.055729 92.410431
+25     3.816202 1.229873 0.056491 94.897438
+26     5.124681 2.559839 0.056200 92.259270
+27     3.845894 1.814923 0.056589 94.282593
+28     4.250337 1.467330 0.058392 94.223938
+29     4.399825 1.434443 0.052833 94.112900
+30     3.529487 1.229809 0.056123 95.184578
+31     4.414553 2.985505 0.054498 92.545448
+SECTION_LOADAVG
+4.61 4.10 4.39 3/5272 12082
+
+SECTION_PID_STATUS
+name: common_shell_ex
+state: 1
+vmsize: 8555428
+vmrss: 6939216
+vmdata: 8066116
+vmstk: 192
+vmexe: 333444
+vmlib: 25016
+threads: 1
+
+SECTION_PROCESS_CPU_UTIL
+pid: 16230
+cpu_total_time: 27144492821
+cpu_used_time: 40100
+cpu_p: 
+
+SECTION_SYSTEM_CPU_UTIL
+sys_cpu_p: 
+
+SECTION_MEMINFO
+memtotal: 125666820
+memfree: 48089660
+cached: 2590104
+swapcached: 0
+active: 73182896
+swaptotal: 0
+swapfree: 0
+
+SECTION_SMAPS
+shared_kb: 536
+private_kb: 6938768
+
+SECTION_DF
+Filesystem  Size  Used Avail Use%
+filesystem        49G  19G  26G    42
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          3276800  345502 2931298   4294966548
+
+SECTION_CWD
+Filesystem  Size  Used Avail Use%
+filesystem        8005G  158G  7846G    2
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          3573481519  3125962 3570355557   100
+
+SECTION_SWAP_RATE
+Error: Could not collect the data.
+
+SECTION_FD_SIZE
+files: 13
+total_size: 12476470
+
+SECTION_NET_INTERFACE
+total_eth_avbl: 1
+
+name net_rx_err net_rx_drp net_tx_err net_tx_drp 
+  eth0:         0        1        0        0
+
+SECTION_NFSSTAT
+readlink: 0
+write: 7
+getattr: 25
+retrans: 0
+raw_data: 
+net 0 0 0 0
+rpc 312912964 3016 313047305
+proc4 60 0 44993908 22385292 870985 7997595 0 16405392 72634 20754821 9057054 78625 0 0 0 15013405 1587 1256945 36230214 79241554 13750448 15724 4148348 938830 126471 95984 609141 62901 17458057 312227 5146185 141526 15553110 13694 14133 0 0 0 0 118 140 117 4972 22 115 0 0 0 0 0 22534 147120 0 101 95 0 0 0 0 0 0
+
+
+SECTION_THREAD_CPU_UTIL
+16230 : 16230 (common_shell_ex) R 8183 16230 8183 34823 16230 8192 1908924 121736 336 31 39131 647 216 115 20 0 1 0 853752020 8760758272 1734804 18446744073709551615 4194304 345640725 140737488346240 140737488333112 46912507610944 0 0 67112960 1132523263 0 0 0 17 22 0 0 108 0 0 347739936 362740984 1553498112 140737488347089 140737488347250 140737488347250 140737488351136 0
+
+CRTE_PERIODIC_END 1 1749671265352

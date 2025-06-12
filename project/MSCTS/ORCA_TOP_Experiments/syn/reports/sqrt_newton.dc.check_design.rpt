@@ -1,0 +1,19 @@
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Mon May 12 15:29:01 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Nets                                                                5
+    Unloaded nets (LINT-2)                                          5
+--------------------------------------------------------------------------------
+
+Warning: In design 'sqrt_newton', net 'net908' driven by pin 'C697/Z' has no loads. (LINT-2)
+Warning: In design 'sqrt_newton', net 'net907' driven by pin 'C696/Z' has no loads. (LINT-2)
+Warning: In design 'sqrt_newton', net 'net906' driven by pin 'C692/Z' has no loads. (LINT-2)
+Warning: In design 'sqrt_newton', net 'SYNOPSYS_UNCONNECTED_2' driven by pin 'add_48/Z_0' has no loads. (LINT-2)
+Warning: In design 'sqrt_newton', net 'SYNOPSYS_UNCONNECTED_1' driven by pin 'add_43/Z_0' has no loads. (LINT-2)
+1

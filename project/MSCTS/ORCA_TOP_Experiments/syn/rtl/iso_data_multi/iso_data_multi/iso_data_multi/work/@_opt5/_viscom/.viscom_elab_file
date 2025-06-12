@@ -1,0 +1,1 @@
+/pkgs/mentor/questa/2024.2/questasim/linux_x86_64/VisualizerRls/bin/viscom -nolock -quiet -jmem_size 393216 work.tb_isodata_cluster -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt5 -id 1-525400b63b2a-6849ca95-ae865-1f85 +__design_bin_path+/u/nmallebo/AIML/project/MSCTS/ORCA_TOP_Experiments/syn/rtl/iso_data_multi/iso_data_multi/iso_data_multi +__betafsm

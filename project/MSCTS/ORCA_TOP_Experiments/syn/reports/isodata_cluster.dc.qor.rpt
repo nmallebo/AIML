@@ -1,0 +1,85 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'isodata_cluster' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : qor
+Design : isodata_cluster
+Version: Q-2019.12-SP3
+Date   : Wed Jun 11 03:14:08 2025
+****************************************
+
+
+  Timing Path Group (none)
+  -----------------------------------
+  Levels of Logic:               0.00
+  Critical Path Length:          0.21
+  Critical Path Slack:         uninit
+  Critical Path Clk Period:       n/a
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:             212415
+  Buf/Inv Cell Count:           23702
+  Buf Cell Count:                 417
+  Inv Cell Count:               23285
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:    210428
+  Sequential Cell Count:         1987
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:   566561.695133
+  Noncombinational Area: 17171.493195
+  Buf/Inv Area:          31014.463207
+  Total Buffer Area:           878.58
+  Total Inverter Area:       30135.89
+  Macro/Black Box Area:      0.000000
+  Net Area:             659963.514711
+  -----------------------------------
+  Cell Area:            583733.188327
+  Design Area:         1243696.703039
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:        392941
+  Nets With Violations:           227
+  Max Trans Violations:            38
+  Max Cap Violations:             189
+  -----------------------------------
+
+
+  Hostname: mo.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                 1235.96
+  Logic Optimization:                157.27
+  Mapping Optimization:             6118.33
+  -----------------------------------------
+  Overall Compile Time:            11049.10
+  Overall Compile Wall Clock Time:  7842.84
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

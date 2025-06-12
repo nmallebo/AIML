@@ -1,0 +1,74 @@
+# //  Questa Sim-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+do run.do
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 11:18:17 on Jun 11,2025
+# vlog -reportprogress 300 -lint isodata_cluster_multi_iter.sv 
+# -- Compiling module isodata_cluster_multi_iter
+# ** Warning: isodata_cluster_multi_iter.sv(6): (vlog-13314) Defaulting port 'x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_cluster_multi_iter.sv(7): (vlog-13314) Defaulting port 'y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	isodata_cluster_multi_iter
+# End time: 11:18:17 on Jun 11,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 11:18:17 on Jun 11,2025
+# vlog -reportprogress 300 -lint tb_isodata_cluster_scaled_real_output.sv 
+# -- Compiling module tb_isodata_cluster_scaled_real_output
+# 
+# Top level modules:
+# 	tb_isodata_cluster_scaled_real_output
+# End time: 11:18:18 on Jun 11,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim work.tb_isodata_cluster_scaled_real_output 
+# Start time: 11:18:18 on Jun 11,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: isodata_cluster_multi_iter.sv(6): (vopt-13314) Defaulting port 'x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_cluster_multi_iter.sv(7): (vopt-13314) Defaulting port 'y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=2.
+# Loading sv_std.std
+# Loading work.tb_isodata_cluster_scaled_real_output(fast)
+# End time: 11:18:25 on Jun 11,2025, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 2
+# vsim -voptargs="+acc" work.tb_isodata_cluster_scaled_real_output 
+# Start time: 11:18:25 on Jun 11,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: isodata_cluster_multi_iter.sv(6): (vopt-13314) Defaulting port 'x' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: isodata_cluster_multi_iter.sv(7): (vopt-13314) Defaulting port 'y' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "isodata_cluster_multi_iter(fast)".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=3.
+# Loading sv_std.std
+# Loading work.tb_isodata_cluster_scaled_real_output(fast)
+# Loading work.isodata_cluster_multi_iter(fast)
+# Clustering complete.
+# Centroid 0: X = 327.408000, Y = 349.600000
+# Centroid 1: X = 637.640000, Y = 245.632000
+# Centroid 2: X = 404.168000, Y = 279.376000
+# Centroid 3: X = 323.760000, Y = 349.296000
+# Centroid 4: X = 191.064000, Y = 329.536000
+# Centroid 5: X = 112.784000, Y = 378.024000
+# Centroid 6: X = 109.288000, Y = 364.344000
+# Centroid 7: X = 109.288000, Y = 361.304000
+# Centroid 8: X = 112.024000, Y = 374.376000
+# Centroid 9: X = 109.744000, Y = 364.648000
+# ** Note: $finish    : tb_isodata_cluster_scaled_real_output.sv(56)
+#    Time: 52015 ns  Iteration: 2  Instance: /tb_isodata_cluster_scaled_real_output
+# 1
+# Break in Module tb_isodata_cluster_scaled_real_output at tb_isodata_cluster_scaled_real_output.sv line 56
+exit
+# End time: 11:21:34 on Jun 11,2025, Elapsed time: 0:03:09
+# Errors: 0, Warnings: 3
