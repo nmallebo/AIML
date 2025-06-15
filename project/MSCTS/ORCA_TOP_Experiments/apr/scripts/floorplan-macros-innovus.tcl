@@ -51,7 +51,8 @@ if { $innovus_enable_manual_macro_placement == 0} {
     source -echo -verbose ../../${top_design}.macro_placement_innovus.tcl
 }
 #defOut -noStdCells -noTracks -noSpecialNet -noTracks  "../outputs/${top_design}.floorplan.innovus.macros.def"
-
+deselectAll
+set_db [get_db insts -if {.is_black_box == false}] .place_status unplaced
 deselectAll
 select_obj [ get_ports * ]
 select_obj [ get_db ports * ]
